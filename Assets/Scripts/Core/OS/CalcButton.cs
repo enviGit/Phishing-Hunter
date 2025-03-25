@@ -4,28 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace com.fanboatstudios.unitycalculator
-{
-    public class CalcButton : MonoBehaviour
-    {
+namespace ph.Core.OS {
+    public class CalcButton : MonoBehaviour {
         [SerializeField] Text label;
 
         private Manager calcManager;
 
-        private void Awake()
-        {
+        private void Awake() {
             calcManager = GetComponentInParent<Manager>();
         }
 
-        public void OnTapped()
-        {
+        public void OnTapped() {
             Debug.Log($"Tapped: {label.text}");
-            if (label.text == "OFF")
-            {
+            if (label.text == "OFF") {
                 Manager.PowerOff();
             }
-            else
-            {
+            else {
                 calcManager.ButtonTapped(label.text[0]);
             }
         }

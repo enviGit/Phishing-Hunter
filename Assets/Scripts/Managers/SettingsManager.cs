@@ -1,9 +1,7 @@
 using UnityEngine;
 
-namespace ph.Managers
-{
-    public class SettingsManager
-    {
+namespace ph.Managers {
+    public class SettingsManager {
         #region PlayerPrefs_Keys
         private static string mouseSens = "mouseSens";
         private static string sfxMixer = "sfxMixer";
@@ -15,65 +13,55 @@ namespace ph.Managers
         private static string quality = "quality";
         private static string vsyncCount = "vsyncCount";
         private static string subtitlesEnabled = "subtitlesEnabled";
-        //private static string difficulty = "difficulty";
+        private static string difficulty = "difficulty";
         private static string language = "language";
         #endregion
 
         #region MouseSettings
-        public static float Sensitivity
-        {
+        public static float Sensitivity {
             get => PlayerPrefs.GetFloat(mouseSens, 1);
             set => PlayerPrefs.SetFloat(mouseSens, value);
         }
         #endregion
 
         #region AudioSettings
-        public static float SfxMixer
-        {
+        public static float SfxMixer {
             get => PlayerPrefs.GetFloat(sfxMixer, 100);
             set => PlayerPrefs.SetFloat(sfxMixer, value);
         }
 
-        public static float MusicMixer
-        {
+        public static float MusicMixer {
             get => PlayerPrefs.GetFloat(musicMixer, 100);
             set => PlayerPrefs.SetFloat(musicMixer, value);
         }
         #endregion
 
         #region ScreenSettings
-        public static float Brightness
-        {
+        public static float Brightness {
             get => PlayerPrefs.GetFloat(brightness, 0);
             set => PlayerPrefs.SetFloat(brightness, value);
         }
 
-        public static bool FullScreen
-        {
+        public static bool FullScreen {
             get => PlayerPrefs.GetInt(fullScreen, 1) != 0;
             set => PlayerPrefs.SetInt(fullScreen, value ? 1 : 0);
         }
 
-        public static int ResolutionIndex
-        {
-            get
-            {
+        public static int ResolutionIndex {
+            get {
                 int defaultResolutionIndex = GetDefaultResolutionIndex();
                 return PlayerPrefs.GetInt(resolutionIndex, defaultResolutionIndex);
             }
             set => PlayerPrefs.SetInt(resolutionIndex, value);
         }
 
-        private static int GetDefaultResolutionIndex()
-        {
+        private static int GetDefaultResolutionIndex() {
             Resolution[] resolutions = Screen.resolutions;
             int[] commonWidths = { 3840, 2560, 1920, 1366 };
             int[] commonHeights = { 2160, 1440, 1080, 768 };
 
-            for (int i = 0; i < commonWidths.Length; i++)
-            {
-                for (int j = 0; j < resolutions.Length; j++)
-                {
+            for (int i = 0; i < commonWidths.Length; i++) {
+                for (int j = 0; j < resolutions.Length; j++) {
                     if (resolutions[j].width == commonWidths[i] && resolutions[j].height == commonHeights[i])
                         return j;
                 }
@@ -84,50 +72,43 @@ namespace ph.Managers
         #endregion
 
         #region Performance
-        public static bool RunInBg
-        {
+        public static bool RunInBg {
             get => PlayerPrefs.GetInt(runInBg, 1) != 0;
             set => PlayerPrefs.SetInt(runInBg, value ? 1 : 0);
         }
 
-        public static int QualityPreset
-        {
+        public static int QualityPreset {
             get => PlayerPrefs.GetInt(quality, 1);
             set => PlayerPrefs.SetInt(quality, value);
         }
 
-        public static bool VSync
-        {
+        public static bool VSync {
             get => PlayerPrefs.GetInt(vsyncCount, 0) != 0;
             set => PlayerPrefs.SetInt(vsyncCount, value ? 1 : 0);
         }
         #endregion
 
         #region Gameplay
-        /*public static int Difficulty
-        {
-            get => PlayerPrefs.GetInt(difficulty, 1); // 0 - Easy, 1 - Normal, 2 - Hard
+        public static int Difficulty {
+            get => PlayerPrefs.GetInt(difficulty, 0); // 0 - Newbie, 1 - Cybersecurity Analyst
             set => PlayerPrefs.SetInt(difficulty, value);
-        }*/
+        }
         #endregion
 
         #region Accessibility
-        public static bool SubtitlesEnabled
-        {
+        public static bool SubtitlesEnabled {
             get => PlayerPrefs.GetInt(subtitlesEnabled, 1) != 0;
             set => PlayerPrefs.SetInt(subtitlesEnabled, value ? 1 : 0);
         }
 
-        public static string Language
-        {
+        public static string Language {
             get => PlayerPrefs.GetString(language, "en");
             set => PlayerPrefs.SetString(language, value);
         }
         #endregion
 
         #region ResetSettings
-        public static void ResetToDefaults()
-        {
+        public static void ResetToDefaults() {
             PlayerPrefs.DeleteAll();
             PlayerPrefs.Save();
         }

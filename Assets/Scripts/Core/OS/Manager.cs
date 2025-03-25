@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace com.fanboatstudios.unitycalculator
-{
-    public class Manager : MonoBehaviour
-    {
+namespace ph.Core.OS {
+    public class Manager : MonoBehaviour {
         [SerializeField] Text digitLabel;
         [SerializeField] Text operatorLabel;
         bool errorDisplayed;
@@ -18,36 +13,27 @@ namespace com.fanboatstudios.unitycalculator
         double result;
         char storedOperator;
 
-        private void Start()
-        {
+        private void Start() {
             ButtonTapped('c');
         }
 
-        public static void PowerOff()
-        {
-            if (!Application.isEditor)
-            {
+        public static void PowerOff() {
+            if (!Application.isEditor) {
                 Application.Quit();
             }
         }
 
-        public void ButtonTapped(char value)
-        {
-            if (errorDisplayed)
-            {
+        public void ButtonTapped(char value) {
+            if (errorDisplayed) {
                 ClearCalc();
             }
 
-            if((value >= '0' && value <= '9') || value == '.')
-            {
-                if(digitLabel.text.Length < 15 || !displayValid)
-                {
-                    if (!displayValid)
-                    {
+            if ((value >= '0' && value <= '9') || value == '.') {
+                if (digitLabel.text.Length < 15 || !displayValid) {
+                    if (!displayValid) {
                         digitLabel.text = (value == '.' ? "0" : "");
                     }
-                    else if (digitLabel.text == "0" && value != '.')
-                    {
+                    else if (digitLabel.text == "0" && value != '.') {
                         digitLabel.text = "";
                     }
 
@@ -55,28 +41,23 @@ namespace com.fanboatstudios.unitycalculator
                     displayValid = true;
                 }
             }
-            else if(value == 'c')
-            {
+            else if (value == 'c') {
                 ClearCalc();
             }
-            else if(value == '±')
-            {
+            else if (value == '±') {
                 currentValue = -double.Parse(digitLabel.text);
                 UpdateDigitLabel();
                 specialAction = true;
             }
-            else if(value == '%')
-            {
+            else if (value == '%') {
                 currentValue = double.Parse(digitLabel.text) / 100.0d;
                 UpdateDigitLabel();
                 specialAction = true;
             }
-            else if(displayValid || storedOperator == '=' || specialAction)
-            {
+            else if (displayValid || storedOperator == '=' || specialAction) {
                 currentValue = double.Parse(digitLabel.text);
                 displayValid = false;
-                if (storedOperator != ' ')
-                {
+                if (storedOperator != ' ') {
                     CalculateResult(storedOperator);
                     storedOperator = ' ';
                 }
@@ -89,8 +70,7 @@ namespace com.fanboatstudios.unitycalculator
             }
         }
 
-        void ClearCalc()
-        {
+        void ClearCalc() {
             digitLabel.text = "0";
             operatorLabel.text = "";
             specialAction = displayValid = errorDisplayed = false;
@@ -98,19 +78,15 @@ namespace com.fanboatstudios.unitycalculator
             storedOperator = ' ';
         }
 
-        void UpdateDigitLabel()
-        {
-            if (!errorDisplayed)
-            {
+        void UpdateDigitLabel() {
+            if (!errorDisplayed) {
                 digitLabel.text = currentValue.ToString();
             }
             displayValid = false;
         }
 
-        void CalculateResult(char activeOperator)
-        {
-            switch (activeOperator)
-            {
+        void CalculateResult(char activeOperator) {
+            switch (activeOperator) {
                 case '=':
                     result = currentValue;
                     break;
@@ -124,12 +100,10 @@ namespace com.fanboatstudios.unitycalculator
                     result = storedValue * currentValue;
                     break;
                 case '÷':
-                    if(currentValue != 0)
-                    {
+                    if (currentValue != 0) {
                         result = storedValue / currentValue;
                     }
-                    else
-                    {
+                    else {
                         errorDisplayed = true;
                         digitLabel.text = "ERROR";
                     }

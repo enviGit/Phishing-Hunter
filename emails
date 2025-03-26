@@ -1,0 +1,46 @@
+{
+    "newbieEmails": [
+        {
+            "id": 1,
+            "subject": "Monthly IT Security Update",
+            "sender": "security@company.com",
+            "recipient": "security@ironwall.com",
+            "body": "Dear Employee,\nPlease review the latest security policies attached.",
+            "difficulty": "newbie",
+            "isPhishing": false,
+            "dateTime": "2025-03-17 05:02"
+        },
+        {
+            "id": 2,
+            "subject": "Urgent: Password Reset Required",
+            "sender": "admin@secure-login.com",
+            "recipient": "security@ironwall.com",
+            "body": "We've detected suspicious activity on your account. Please reset your password immediately: http://secure-login.com/reset",
+            "difficulty": "newbie",
+            "isPhishing": true,
+            "dateTime": "2025-03-18 17:54"
+        },
+        {
+            "id": 3,
+            "subject": "New Company Benefits Program",
+            "sender": "hr@company.com",
+            "recipient": "security@ironwall.com",
+            "body": "We have updated our benefits package. Click here to see the details: http://company.com/benefits",
+            "difficulty": "newbie",
+            "isPhishing": false,
+            "dateTime": "2025-03-21 02:34"
+        }
+    ],
+    "cybersecEmails": [
+        {
+            "id": 4,
+            "subject": "CONFIDENTIAL: Salary Increase Proposal",
+            "sender": "ceo@company.com",
+            "recipient": "security@ironwall.com",
+            "body": "We are considering a salary increase for you. Please confirm your bank details here: http://secure-finance.com/update",
+            "difficulty": "cybersecurity_analyst",
+            "isPhishing": true,
+            "dateTime": ""
+        }
+    ]
+}

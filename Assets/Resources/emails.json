@@ -1,40 +1,156 @@
 {
-    "emails": [
+    "newbieEmails": [
         {
             "id": 1,
             "subject": "Monthly IT Security Update",
             "sender": "security@company.com",
             "recipient": "security@ironwall.com",
-            "body": "Dear Employee,\nPlease review the latest security policies attached.",
+            "body": "Dear Employee,\nPlease review the latest security policies attached. It's important to ensure your systems are in line with the company's updated security standards.",
             "difficulty": "newbie",
-            "isPhishing": false
+            "isPhishing": false,
+            "dateTime": ""
         },
         {
             "id": 2,
             "subject": "Urgent: Password Reset Required",
             "sender": "admin@secure-login.com",
             "recipient": "security@ironwall.com",
-            "body": "We've detected suspicious activity on your account. Please reset your password immediately: http://secure-login.com/reset",
+            "body": "We've detected suspicious activity on your account. Please reset your password immediately to protect your data: http://secure-login.com/reset\nFailure to do so may lead to further security risks.",
             "difficulty": "newbie",
-            "type": true
+            "isPhishing": true,
+            "dateTime": ""
         },
         {
             "id": 3,
             "subject": "New Company Benefits Program",
             "sender": "hr@company.com",
             "recipient": "security@ironwall.com",
-            "body": "We have updated our benefits package. Click here to see the details: http://company.com/benefits",
+            "body": "We have updated our benefits package. Click here to see the full list of changes: http://company.com/benefits\nYou can also review the updated terms of our healthcare plan and retirement options.",
             "difficulty": "newbie",
-            "type": false
+            "isPhishing": false,
+            "dateTime": ""
         },
         {
             "id": 4,
+            "subject": "Action Required: Software Update",
+            "sender": "it-support@company.com",
+            "recipient": "security@ironwall.com",
+            "body": "A new software update has been released for your system. Please update your software as soon as possible to avoid compatibility issues and enhance security features.",
+            "difficulty": "newbie",
+            "isPhishing": false,
+            "dateTime": ""
+        },
+        {
+            "id": 5,
+            "subject": "Tax Filing Deadline Approaching",
+            "sender": "tax@company.com",
+            "recipient": "security@ironwall.com",
+            "body": "The tax filing deadline is fast approaching. Please visit our tax filing system to submit your information and avoid late fees. Click here to file: http://company.com/tax-filing",
+            "difficulty": "newbie",
+            "isPhishing": false,
+            "dateTime": ""
+        },
+        {
+            "id": 6,
+            "subject": "Unauthorized Access Attempt Alert",
+            "sender": "noreply@company.com",
+            "recipient": "security@ironwall.com",
+            "body": "Our security team detected an unauthorized login attempt on your account from a new device. If this was not you, please reset your password immediately.",
+            "difficulty": "newbie",
+            "isPhishing": false,
+            "dateTime": ""
+        },
+        {
+            "id": 7,
+            "subject": "New Employee Onboarding Documents",
+            "sender": "hr@company.com",
+            "recipient": "security@ironwall.com",
+            "body": "Welcome to the team! Please review the following onboarding documents to get started with your new role. You can find the documents here: http://company.com/onboarding",
+            "difficulty": "newbie",
+            "isPhishing": false,
+            "dateTime": ""
+        },
+        {
+            "id": 8,
+            "subject": "Security Patch Installation Reminder",
+            "sender": "it@company.com",
+            "recipient": "security@ironwall.com",
+            "body": "Reminder: A critical security patch has been released for your system. Please install it by the end of the week to ensure your system remains protected.",
+            "difficulty": "newbie",
+            "isPhishing": false,
+            "dateTime": ""
+        },
+        {
+            "id": 9,
+            "subject": "Congratulations: You've Won a Prize!",
+            "sender": "support@company.com",
+            "recipient": "security@ironwall.com",
+            "body": "Congratulations! You have won a special prize in our company raffle. Please click the link to claim your prize: http://company.com/claim-prize",
+            "difficulty": "newbie",
+            "isPhishing": true,
+            "dateTime": ""
+        },
+        {
+            "id": 10,
+            "subject": "Account Verification Required",
+            "sender": "noreply@company.com",
+            "recipient": "security@ironwall.com",
+            "body": "Your account requires verification before it can be activated. Please verify your details by clicking the link below: http://company.com/verify-account",
+            "difficulty": "newbie",
+            "isPhishing": true,
+            "dateTime": ""
+        }
+    ],
+    "cybersecEmails": [
+        {
+            "id": 11,
             "subject": "CONFIDENTIAL: Salary Increase Proposal",
             "sender": "ceo@company.com",
             "recipient": "security@ironwall.com",
-            "body": "We are considering a salary increase for you. Please confirm your bank details here: http://secure-finance.com/update",
+            "body": "We are considering a salary increase for you. Please confirm your bank details here: http://secure-finance.com/update\nThis information is confidential, please do not share.",
             "difficulty": "cybersecurity_analyst",
-            "type": true
+            "isPhishing": true,
+            "dateTime": ""
+        },
+        {
+            "id": 12,
+            "subject": "New Security Policy Rollout",
+            "sender": "security@company.com",
+            "recipient": "security@ironwall.com",
+            "body": "Our security policies have been updated for the upcoming quarter. Please review the changes and acknowledge receipt by following the link: http://company.com/security-policy\nFailure to do so may result in non-compliance penalties.",
+            "difficulty": "cybersecurity_analyst",
+            "isPhishing": false,
+            "dateTime": ""
+        },
+        {
+            "id": 13,
+            "subject": "Critical System Vulnerability Alert",
+            "sender": "admin@company.com",
+            "recipient": "security@ironwall.com",
+            "body": "A critical vulnerability has been detected in your system. Please download and install the latest patch immediately to mitigate any potential risks. The patch can be found here: http://company.com/patch",
+            "difficulty": "cybersecurity_analyst",
+            "isPhishing": false,
+            "dateTime": ""
+        },
+        {
+            "id": 14,
+            "subject": "Request for Security Audit Access",
+            "sender": "auditor@company.com",
+            "recipient": "security@ironwall.com",
+            "body": "We are conducting a routine security audit. Please grant access to the requested logs and systems to assist with the audit. Your cooperation is appreciated.\nThe request form can be found here: http://company.com/security-audit",
+            "difficulty": "cybersecurity_analyst",
+            "isPhishing": false,
+            "dateTime": ""
+        },
+        {
+            "id": 15,
+            "subject": "CONFIDENTIAL: Cybersecurity Breach Notification",
+            "sender": "ceo@company.com",
+            "recipient": "security@ironwall.com",
+            "body": "We have been alerted to a cybersecurity breach involving one of our critical systems. Please investigate and report back immediately. A full report can be found here: http://company.com/breach-report",
+            "difficulty": "cybersecurity_analyst",
+            "isPhishing": true,
+            "dateTime": ""
         }
     ]
 }

@@ -61,10 +61,10 @@ namespace ph.Core.OS {
                 Debug.Log("Nowe dane w Resources. Kopiowanie do persistentDataPath...");
 
                 SaveEmails(emailsFromResources);
-                emailList = SettingsManager.Difficulty == 0 ? emailsFromResources.newbieEmails : emailsFromResources.cybersecEmails;
+                emailList = Settings.Difficulty == 0 ? emailsFromResources.newbieEmails : emailsFromResources.cybersecEmails;
             }
             else {
-                emailList = SettingsManager.Difficulty == 0 ? emailsFromPersistent.newbieEmails : emailsFromPersistent.cybersecEmails;
+                emailList = Settings.Difficulty == 0 ? emailsFromPersistent.newbieEmails : emailsFromPersistent.cybersecEmails;
             }
 
             foreach (var email in emailList) {
@@ -98,7 +98,7 @@ namespace ph.Core.OS {
             }
         }
         private void DisplayEmails() {
-            string selectedDifficulty = SettingsManager.Difficulty == 0 ? "newbie" : "cybersecurity_analyst";
+            string selectedDifficulty = Settings.Difficulty == 0 ? "newbie" : "cybersecurity_analyst";
 
             List<Email> filteredEmails = emailList
                 .Where(email => email.difficulty == selectedDifficulty)

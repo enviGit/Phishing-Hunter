@@ -61,7 +61,7 @@ namespace ph.Core.OS {
 
         void PointToMousePos() {
             Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
-            if (lastPos != mousePos) {
+            if (lastPos != mousePos && mousePos != null) {
                 AddAPoint(mousePos);
                 lastPos = mousePos;
             }

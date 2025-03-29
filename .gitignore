@@ -9,6 +9,9 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/Assets/Art/GM_LogCabin/Source/Textures/LogCabin/LogsWall_Dry_Normal.tif
+/Assets/Art/GM_LogCabin/Source/Textures/LogCabin/LogsWall_Normal.tif
+/Assets/Art/GM_LogCabin/Source/Textures/LogCabin/LogsWall_Reversed_Normal.tif
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data

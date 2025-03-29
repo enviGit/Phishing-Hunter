@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bb308865a72bf354dbff5d193085c700
+timeCreated: 1512210205
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 107583
+  packageName: Winter Zone Mini
+  packageVersion: 1.0
+  assetPath: Assets/Winter Zone Mini 1.0/UnityTerrains/Terrain_1/Maps/terrain_1_heightmap_1025x1025.raw
+  uploadId: 220084

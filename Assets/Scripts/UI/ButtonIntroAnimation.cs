@@ -4,8 +4,8 @@ using DG.Tweening;
 namespace ph.UI {
     public class ButtonIntroAnimation : MonoBehaviour {
         [SerializeField] private RectTransform[] buttons;
-        [SerializeField] private float animationDuration = 0.5f;
-        [SerializeField] private float delayBetweenButtons = 0.1f;
+        [SerializeField] private float animationDuration = 1.5f;
+        [SerializeField] private float delayBetweenButtons = 0.25f;
         [SerializeField] private Vector2 startOffset = new Vector2(0, -50f);
 
         private void Start() {

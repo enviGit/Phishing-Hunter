@@ -1,13 +1,17 @@
 using Unity.Cinemachine;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
-namespace ph.Managers {
-    public class MenuCamera : MonoBehaviour {
+namespace ph.UI {
+    public class MenuCam : MonoBehaviour {
         [SerializeField] private CinemachineCamera mainMenuCam;
         [SerializeField] private CinemachineCamera settingsCam;
         [SerializeField] private CinemachineCamera confirmationCam;
         [SerializeField] private CinemachineBrain cinemachineBrain;
         [SerializeField] private float transitionDuration = 1f;
+        [SerializeField] private GameObject[] canvases;
 
         private void Start() {
             if (cinemachineBrain != null) {
@@ -24,5 +28,17 @@ namespace ph.Managers {
         public void MoveToMainMenu() => SetActiveCamera(mainMenuCam);
         public void MoveToSettings() => SetActiveCamera(settingsCam);
         public void MoveToConfirmation() => SetActiveCamera(confirmationCam);
+        public void SetActiveCanvas(GameObject activeCanvas) {
+            foreach (var canvas in canvases) {
+                canvas.SetActive(canvas == activeCanvas);
+            }
+        }
+        public void ExitApplication() {
+#if UNITY_EDITOR
+            EditorApplication.ExitPlaymode();
+#else
+            Application.Quit();
+#endif
+        }
     }
 }

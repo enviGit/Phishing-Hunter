@@ -1,10 +1,12 @@
+using DG.Tweening;
+using ph.Managers;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
-using ph.Managers;
 
 namespace ph.Core.OS {
     [Serializable]
@@ -28,6 +30,7 @@ namespace ph.Core.OS {
         public TextAsset jsonFile;
         public Transform workSpace;
         public GameObject mailPrefab;
+        public GameObject mailPreview;
         public float verticalSpacing = 25f;
         public int maxDisplayedEmails = 10;
         private List<Email> emailList;
@@ -116,14 +119,40 @@ namespace ph.Core.OS {
                 rectTransform.localPosition = new Vector3(0, currentY, 0);
                 currentY -= verticalSpacing;
 
-                TextMeshProUGUI senderText = mailItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI subjectText = mailItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI dateTimeText = mailItem.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI senderText = mailItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI subjectText = mailItem.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI dateTimeText = mailItem.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI messageText = mailItem.transform.GetChild(6).GetComponent<TextMeshProUGUI>();
+                Button openButton = mailItem.transform.GetChild(0).GetComponent<Button>();
 
                 senderText.text = displayedEmails[i].sender;
                 subjectText.text = displayedEmails[i].subject;
                 dateTimeText.text = generatedDates[displayedEmails[i]].ToString("dd.MM.yyyy HH:mm");
+                messageText.text = displayedEmails[i].body;
+
+                openButton.onClick.AddListener(() => OpenEmail(mailItem));
             }
+        }
+        private void OpenEmail(GameObject mailItem) {
+            if (!mailPreview.activeSelf) {
+                mailPreview.SetActive(true);
+            }
+
+            CanvasGroup canvasGroup = mailPreview.GetComponent<CanvasGroup>();
+            canvasGroup.alpha = 0;
+            mailPreview.transform.localScale = Vector3.one * 0.8f;
+            canvasGroup.DOFade(1f, 0.25f).SetEase(Ease.OutQuad);
+            mailPreview.transform.DOScale(0.65f, 0.25f).SetEase(Ease.OutBack);
+
+            TextMeshProUGUI senderText = mailPreview.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI subjectText = mailPreview.transform.GetChild(1).GetChild(3).GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI dateTimeText = mailPreview.transform.GetChild(1).GetChild(4).GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI messageText = mailPreview.transform.GetChild(1).GetChild(5).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+
+            senderText.text = mailItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text;
+            subjectText.text = mailItem.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text;
+            dateTimeText.text = mailItem.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text;
+            messageText.text = mailItem.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text;
         }
     }
 }

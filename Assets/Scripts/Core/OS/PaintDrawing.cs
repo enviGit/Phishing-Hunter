@@ -50,7 +50,6 @@ namespace ph.Core.OS {
 
             currentLineRenderer.SetPosition(0, mousePos);
             currentLineRenderer.SetPosition(1, mousePos);
-
         }
 
         void AddAPoint(Vector2 pointPos) {
@@ -61,7 +60,7 @@ namespace ph.Core.OS {
 
         void PointToMousePos() {
             Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
-            if (lastPos != mousePos && mousePos != null) {
+            if (lastPos != mousePos && mousePos != null && lastPos != null) {
                 AddAPoint(mousePos);
                 lastPos = mousePos;
             }

@@ -14,7 +14,7 @@ namespace ph.Managers {
         private static string vsyncCount = "vsyncCount";
         //private static string subtitlesEnabled = "subtitlesEnabled";
         private static string difficulty = "difficulty";
-        //private static string language = "language";
+        private static string language = "language";
         #endregion
 
         #region MouseSettings
@@ -99,12 +99,11 @@ namespace ph.Managers {
         /*public static bool SubtitlesEnabled {
             get => PlayerPrefs.GetInt(subtitlesEnabled, 1) != 0;
             set => PlayerPrefs.SetInt(subtitlesEnabled, value ? 1 : 0);
-        }
-
-        {
+        }*/
+        public static string Language {
             get => PlayerPrefs.GetString(language, "en");
             set => PlayerPrefs.SetString(language, value);
-        }*/
+        }
         #endregion
 
         #region ResetSettings

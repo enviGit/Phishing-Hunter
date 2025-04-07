@@ -38,16 +38,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DistortStrength: 0.015
+    - _DistortStrength: 1
     - _Metallic: 1
-    - _NoiseScale: 0.01
+    - _NoiseScale: 10
     - _NormalStrength: 0.261
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReflectionStrength: 0.61
     - _Smoothness: 0.463
     m_Colors:
-    - _GlassColor: {r: 1, g: 1, b: 1, a: 0}
+    - _GlassColor: {r: 0, g: 0.71931314, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &6224474087664203315

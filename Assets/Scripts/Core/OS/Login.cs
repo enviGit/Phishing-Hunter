@@ -7,12 +7,12 @@ namespace ph.Core.OS {
         public static Login instance;
         public GameObject[] dontDestroy;
         public TextMeshProUGUI user1;
-        public TextMeshProUGUI description;
-        public int descChars = 0;
-        public TextMeshProUGUI descriptionCharsCounter;
+        //public TextMeshProUGUI description;
+        //public int descChars = 0;
+        //public TextMeshProUGUI descriptionCharsCounter;
         public GameObject loginAnimation;
         [SerializeField] TextMeshProUGUI user2;
-        void Update() {
+        /*void Update() {
             descChars = description.textInfo.characterCount;
             descriptionCharsCounter.text = (descChars - 1).ToString() + "/70";
             if (descChars < 51) {
@@ -24,7 +24,7 @@ namespace ph.Core.OS {
             if (descChars > 61) {
                 descriptionCharsCounter.color = new Color32(255, 3, 0, 255);
             }
-        }
+        }*/
 
         private void Awake() {
             instance = this;

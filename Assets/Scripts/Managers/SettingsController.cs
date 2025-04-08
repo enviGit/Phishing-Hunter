@@ -26,17 +26,14 @@ namespace ph.Managers {
         [Header("Post Processing")]
         [SerializeField] private Volume globalVolume;
         private ColorAdjustments brightnessComponent;
-        private TextMeshProUGUI brightnessText;
         private float originalBrightness;
 
         [Header("Audio")]
         [SerializeField] private Slider musicSlider;
         [SerializeField] private AudioMixer musicMixer;
-        private TextMeshProUGUI musicVolumeText;
         private float originalMusicVolume;
         [SerializeField] private Slider sfxSlider;
         [SerializeField] private AudioMixer sfxMixer;
-        private TextMeshProUGUI sfxVolumeText;
         private float originalSfxVolume;
 
         [Header("Accesibility")]
@@ -61,7 +58,6 @@ namespace ph.Managers {
         private int currentLanguageIndex = 0;
         private int originalLanguageIndex = 0;
         [SerializeField] private Slider sensitivitySlider;
-        private TextMeshProUGUI sensitivityText;
         private float originalSensitivity;
         [SerializeField] private Toggle runInBgToggle;
         private bool originalRunInBg;
@@ -71,14 +67,9 @@ namespace ph.Managers {
         }
         private void Start() {
             resolutionText = resolutionSlider.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            brightnessText = brightnessSlider.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            sensitivityText = sensitivitySlider.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             languageText = languageSlider.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            musicVolumeText = musicSlider.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            sfxVolumeText = sfxSlider.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
             LoadSettingsOnStart();
-
         }
 
         #region Loading Settings
@@ -96,7 +87,6 @@ namespace ph.Managers {
             fullscreenToggle.isOn = originalFullscreen;
             originalBrightness = Settings.Brightness;
             brightnessSlider.value = originalBrightness;
-            UpdateBrightnessText(brightnessSlider.value);
 
             if (globalVolume.profile.TryGet(out ColorAdjustments colorAdjustments)) {
                 brightnessComponent = colorAdjustments;
@@ -108,8 +98,6 @@ namespace ph.Managers {
             qualityDropdown.value = originalQualityPreset;
             originalSensitivity = Settings.Sensitivity;
             SetSensitivity(originalSensitivity);
-            UpdateMouseSensitivityText(sensitivitySlider.value);
-            sensitivitySlider.onValueChanged.AddListener(UpdateMouseSensitivityText);
             originalLanguageIndex = Mathf.Clamp(Array.IndexOf(languageCodes, Settings.Language), 0, supportedLanguages.Length - 1);
             currentLanguageIndex = originalLanguageIndex;
             languageSlider.value = (float)currentLanguageIndex / (supportedLanguages.Length - 1);
@@ -118,11 +106,7 @@ namespace ph.Managers {
             originalMusicVolume = Settings.MusicMixer;
             originalSfxVolume = Settings.SfxMixer;
             SetMusicVolume(originalMusicVolume);
-            UpdateMusicVolumeText(musicSlider.value);
-            musicSlider.onValueChanged.AddListener(UpdateMusicVolumeText);
             SetSfxVolume(originalSfxVolume);
-            UpdateSfxVolumeText(sfxSlider.value);
-            sfxSlider.onValueChanged.AddListener(UpdateSfxVolumeText);
         }
         private void LoadSettingsOnAwake() {
             originalVsync = Settings.VSync ? 1 : 0;
@@ -229,12 +213,8 @@ namespace ph.Managers {
             originalBrightness = brightnessSlider.value;
             Settings.Brightness = originalBrightness;
         }
-        private void UpdateBrightnessText(float value) {
-            brightnessText.text = $"{(int)value}";
-        }
         private void OnBrightnessSliderChanged(float value) {
             brightnessComponent.postExposure.value = value;
-            UpdateBrightnessText(value);
         }
         #endregion
 
@@ -315,9 +295,6 @@ namespace ph.Managers {
         public void SetFromSensitivitySlider() {
             SetSensitivity(sensitivitySlider.value);
         }
-        private void UpdateMouseSensitivityText(float value) {
-            sensitivityText.text = $"{(int)value}";
-        }
         private void RefreshSensitivitySlider(float _value) {
             sensitivitySlider.value = _value;
         }
@@ -339,9 +316,6 @@ namespace ph.Managers {
             RefreshSlider(_value, musicSlider);
             musicMixer.SetFloat("musicVolume", Mathf.Log10(_value / 100) * 20f);
         }
-        private void UpdateMusicVolumeText(float value) {
-            musicVolumeText.text = $"{(int)value}";
-        }
         public void SetVolumeFromMusicSlider() {
             SetMusicVolume(musicSlider.value);
         }
@@ -351,9 +325,6 @@ namespace ph.Managers {
 
             RefreshSlider(_value, sfxSlider);
             sfxMixer.SetFloat("sfxVolume", Mathf.Log10(_value / 100) * 20f);
-        }
-        private void UpdateSfxVolumeText(float value) {
-            sfxVolumeText.text = $"{(int)value}";
         }
         public void SetVolumeFromSfxSlider() {
             SetSfxVolume(sfxSlider.value);

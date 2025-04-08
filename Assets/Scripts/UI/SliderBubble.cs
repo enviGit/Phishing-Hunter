@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -8,7 +9,8 @@ namespace ph.UI {
         private Slider slider;
         [SerializeField] private Image bubble;
         [SerializeField] private Image fillImage;
-
+        private CanvasGroup bubbleCanvasGroup;
+        private bool isAnimating = false;
         private TextMeshProUGUI bubbleText;
         private readonly Color[] gradientColors = new Color[] {
     new Color(1f, 0.2f, 0.2f),     // Red
@@ -31,6 +33,11 @@ namespace ph.UI {
             if (bubble != null) {
                 bubbleText = bubble.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
                 bubble.gameObject.SetActive(false);
+                bubbleCanvasGroup = bubble.GetComponent<CanvasGroup>();
+
+                if (bubbleCanvasGroup == null) {
+                    bubbleCanvasGroup = bubble.gameObject.AddComponent<CanvasGroup>();
+                }
             }
 
             slider.onValueChanged.AddListener(OnSliderValueChanged);
@@ -57,15 +64,41 @@ namespace ph.UI {
         }
 
         public void OnPointerDown(PointerEventData eventData) {
+            if (isAnimating) return;
+
             if (bubble != null) {
                 bubble.gameObject.SetActive(true);
+
+                bubbleCanvasGroup.alpha = 0f;
+                isAnimating = true;
+
+                DOTween.To(() => bubbleCanvasGroup.alpha, x => bubbleCanvasGroup.alpha = x, 1f, 0.2f)
+                    .SetEase(Ease.OutBack)
+                    .OnComplete(() => {
+                        isAnimating = false;
+                    });
+
+                bubble.transform.DOScale(0.75f, 0.2f).SetEase(Ease.OutBack);
+
                 OnSliderValueChanged(slider.value);
             }
         }
 
         public void OnPointerUp(PointerEventData eventData) {
-            if (bubble != null)
-                bubble.gameObject.SetActive(false);
+            if (isAnimating) return;
+
+            if (bubble != null) {
+                isAnimating = true;
+
+                DOTween.To(() => bubbleCanvasGroup.alpha, x => bubbleCanvasGroup.alpha = x, 0f, 0.15f)
+                    .SetEase(Ease.InBack)
+                    .OnComplete(() => {
+                        bubble.gameObject.SetActive(false);
+                        isAnimating = false;
+                    });
+
+                bubble.transform.DOScale(Vector3.zero, 0.15f).SetEase(Ease.InBack);
+            }
         }
 
         private Color GetSmoothColor(float normalized) {

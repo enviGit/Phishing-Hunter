@@ -269,7 +269,7 @@ namespace ph.Managers {
             RectTransform textRect = languageText.GetComponent<RectTransform>();
 
             if (selectedLang == "日本語" || selectedLang == "한국어" || selectedLang == "简体中文") {
-                textRect.anchoredPosition = new Vector2(textRect.anchoredPosition.x, 5f);
+                textRect.anchoredPosition = new Vector2(textRect.anchoredPosition.x - 3f, 7f);
             }
             else {
                 textRect.anchoredPosition = new Vector2(textRect.anchoredPosition.x, 0f);

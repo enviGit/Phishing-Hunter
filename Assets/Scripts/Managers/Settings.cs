@@ -19,7 +19,7 @@ namespace ph.Managers {
 
         #region MouseSettings
         public static float Sensitivity {
-            get => PlayerPrefs.GetFloat(mouseSens, 1);
+            get => PlayerPrefs.GetFloat(mouseSens, 5);
             set => PlayerPrefs.SetFloat(mouseSens, value);
         }
         #endregion

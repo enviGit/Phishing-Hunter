@@ -100,7 +100,7 @@ namespace ph.Managers {
             SetSensitivity(originalSensitivity);
             originalLanguageIndex = Mathf.Clamp(Array.IndexOf(languageCodes, Settings.Language), 0, supportedLanguages.Length - 1);
             currentLanguageIndex = originalLanguageIndex;
-            languageSlider.value = (float)currentLanguageIndex / (supportedLanguages.Length - 1);
+            languageSlider.value = originalLanguageIndex;
             languageSlider.onValueChanged.AddListener(OnLanguageSliderChanged);
             UpdateLanguageText(currentLanguageIndex);
             originalMusicVolume = Settings.MusicMixer;
@@ -256,8 +256,7 @@ namespace ph.Managers {
 
         #region Interface Language
         public void OnLanguageSliderChanged(float value) {
-            int maxIndex = supportedLanguages.Length - 1;
-            int newIndex = Mathf.Clamp(Mathf.RoundToInt(value * maxIndex), 0, maxIndex);
+            int newIndex = Mathf.RoundToInt(value);
 
             if (newIndex != currentLanguageIndex) {
                 currentLanguageIndex = newIndex;
@@ -278,7 +277,7 @@ namespace ph.Managers {
         }
         private void RestoreLanguage() {
             currentLanguageIndex = originalLanguageIndex;
-            languageSlider.value = (float)originalLanguageIndex / (supportedLanguages.Length - 1);
+            languageSlider.value = originalLanguageIndex;
             UpdateLanguageText(currentLanguageIndex);
         }
         private void ApplyLanguage() {

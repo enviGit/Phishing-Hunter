@@ -10,7 +10,7 @@ namespace ph.Managers {
     public class SettingsMenu : MonoBehaviour {
         [Header("Graphics")]
         [SerializeField] private Slider resolutionSlider;
-        private Resolution[] resolutions;
+        private Resolution[] filteredResolutions;
         private TextMeshProUGUI resolutionText;
         private int currentResolutionIndex = 0;
         private int originalResolutionIndex = 0;
@@ -74,13 +74,15 @@ namespace ph.Managers {
 
         #region Loading Settings
         private void LoadSettingsOnStart() {
-            resolutions = Screen.resolutions;
+            filteredResolutions = Array.FindAll(Screen.resolutions, resolution => resolution.width >= 800 && resolution.height >= 600);
+            resolutionSlider.maxValue = filteredResolutions.Length - 1;
             originalResolutionIndex = Settings.ResolutionIndex;
+            originalResolutionIndex = Mathf.Clamp(originalResolutionIndex, 0, filteredResolutions.Length - 1);
             currentResolutionIndex = originalResolutionIndex;
             SetResolution(currentResolutionIndex);
-            resolutionSlider.value = (float)currentResolutionIndex / (resolutions.Length - 1);
+            resolutionSlider.value = currentResolutionIndex;
             resolutionSlider.onValueChanged.AddListener(OnResolutionSliderChanged);
-            UpdateResolutionText(resolutions[currentResolutionIndex]);
+            UpdateResolutionText(filteredResolutions[currentResolutionIndex]);
             originalFullscreen = Settings.FullScreen;
             Screen.fullScreen = originalFullscreen;
             fullscreenToggle.onValueChanged.AddListener(OnFullscreenToggleChanged);
@@ -160,47 +162,63 @@ namespace ph.Managers {
         #region Resolution
         private void SetResolution(int index) {
             currentResolutionIndex = index;
-            UpdateResolutionText(resolutions[currentResolutionIndex]);
+            UpdateResolutionText(filteredResolutions[currentResolutionIndex]);
         }
         private void RestoreResolution() {
             SetAndApplyResolution(originalResolutionIndex);
-            resolutionSlider.value = (float)originalResolutionIndex / (resolutions.Length - 1);
+            resolutionSlider.value = originalResolutionIndex;
+
+            Debug.Log($"Resolution restored to: {filteredResolutions[originalResolutionIndex].width} x {filteredResolutions[originalResolutionIndex].height}");
         }
         private void ApplyResolution(Resolution resolution) {
             UpdateResolutionText(resolution);
             Screen.SetResolution(resolution.width, resolution.height, Settings.FullScreen);
             originalResolutionIndex = currentResolutionIndex;
             Settings.ResolutionIndex = originalResolutionIndex;
+
+            Debug.Log($"Resolution applied: {resolution.width} x {resolution.height}");
         }
         private void SetAndApplyResolution(int newResolutionIndex) {
             currentResolutionIndex = newResolutionIndex;
-            ApplyResolution(resolutions[currentResolutionIndex]);
+            ApplyResolution(filteredResolutions[currentResolutionIndex]);
         }
         private void UpdateResolutionText(Resolution res) {
             resolutionText.text = $"{res.width} x {res.height}";
         }
         private void OnResolutionSliderChanged(float value) {
-            int newIndex = Mathf.RoundToInt(value * (resolutions.Length - 1));
+            int newIndex = Mathf.RoundToInt(value);
+            newIndex = Mathf.Clamp(newIndex, 0, filteredResolutions.Length - 1);
 
-            if (newIndex != currentResolutionIndex)
+            if (newIndex != currentResolutionIndex) {
                 SetResolution(newIndex);
+            }
+
+            Debug.Log($"Resolution changed to: {filteredResolutions[newIndex].width} x {filteredResolutions[newIndex].height}");
         }
         #endregion
 
         #region FullScreen
         public void ChangeFullscreen() {
             Screen.fullScreen = !Screen.fullScreen;
+
+            Debug.Log($"Fullscreen is now {(Screen.fullScreen ? "enabled" : "disabled")} on build.");
         }
         private void RestoreFullscreen() {
             fullscreenToggle.isOn = originalFullscreen;
             Settings.FullScreen = fullscreenToggle.isOn;
+
+            Debug.Log($"Fullscreen restored to: {(fullscreenToggle.isOn ? "enabled" : "disabled")}");
         }
         private void ApplyFullscreen() {
             originalFullscreen = fullscreenToggle.isOn;
             Settings.FullScreen = originalFullscreen;
+
+            Debug.Log($"Fullscreen set to: {(originalFullscreen ? "enabled" : "disabled")}");
         }
         private void OnFullscreenToggleChanged(bool newValue) {
             Settings.FullScreen = newValue;
+
+            Debug.Log($"Fullscreen toggle changed to: {(newValue ? "enabled" : "disabled")}");
         }
         #endregion
 

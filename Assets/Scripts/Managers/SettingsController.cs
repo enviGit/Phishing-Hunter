@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using TMPro;
 using UnityEngine;
@@ -14,10 +15,13 @@ namespace ph.Managers {
         private TextMeshProUGUI resolutionText;
         private int currentResolutionIndex = 0;
         private int originalResolutionIndex = 0;
-        [SerializeField] private Toggle fullscreenToggle;
+        [SerializeField] private Slider fullscreenSlider;
+        private Toggle fullscreenToggle;
+        private bool isAnimating = false;
         private bool originalFullscreen;
         [SerializeField] private Slider brightnessSlider;
-        [SerializeField] private Toggle vsyncToggle;
+        [SerializeField] private Slider vsyncSlider;
+        private Toggle vsyncToggle;
         private int originalVsync;
         [SerializeField] private TMP_Dropdown qualityDropdown;
         [SerializeField] private RenderPipelineAsset[] qualityLevels;
@@ -59,15 +63,20 @@ namespace ph.Managers {
         private int originalLanguageIndex = 0;
         [SerializeField] private Slider sensitivitySlider;
         private float originalSensitivity;
-        [SerializeField] private Toggle runInBgToggle;
+        [SerializeField] private Slider runInBgSlider;
+        private Toggle runInBgToggle;
         private bool originalRunInBg;
 
         private void Awake() {
+            vsyncToggle = vsyncSlider.transform.GetChild(0).GetComponent<Toggle>();
+            runInBgToggle = runInBgSlider.transform.GetChild(0).GetComponent<Toggle>();
+
             LoadSettingsOnAwake();
         }
         private void Start() {
             resolutionText = resolutionSlider.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             languageText = languageSlider.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            fullscreenToggle = fullscreenSlider.transform.GetChild(0).GetComponent<Toggle>();
 
             LoadSettingsOnStart();
         }
@@ -87,6 +96,7 @@ namespace ph.Managers {
             Screen.fullScreen = originalFullscreen;
             fullscreenToggle.onValueChanged.AddListener(OnFullscreenToggleChanged);
             fullscreenToggle.isOn = originalFullscreen;
+            AnimateSlider(Settings.FullScreen, fullscreenSlider);
             originalBrightness = Settings.Brightness;
             brightnessSlider.value = originalBrightness;
 
@@ -115,14 +125,16 @@ namespace ph.Managers {
             QualitySettings.vSyncCount = originalVsync;
             vsyncToggle.onValueChanged.AddListener(OnVsyncToggleChanged);
             vsyncToggle.isOn = originalVsync != 0;
+            AnimateSlider(Settings.VSync, vsyncSlider);
             originalRunInBg = Settings.RunInBg;
             Application.runInBackground = originalRunInBg;
             runInBgToggle.onValueChanged.AddListener(OnRunInBgToggleChanged);
             runInBgToggle.isOn = originalRunInBg;
+            AnimateSlider(Settings.RunInBg, runInBgSlider);
         }
         #endregion
 
-        #region Apply & Abort buttons
+        #region Apply, Abort and Quit buttons
         public void ApplyAllChanges() {
             SetAndApplyResolution(currentResolutionIndex);
             ApplyFullscreen();
@@ -147,8 +159,6 @@ namespace ph.Managers {
             RestoreRunInBg();
             PlayerPrefs.Save();
         }
-        #endregion
-
         public void QuitGame() {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
@@ -156,6 +166,7 @@ namespace ph.Managers {
         Application.Quit();
 #endif
         }
+        #endregion
 
         #region Settings
 
@@ -198,11 +209,6 @@ namespace ph.Managers {
         #endregion
 
         #region FullScreen
-        public void ChangeFullscreen() {
-            Screen.fullScreen = !Screen.fullScreen;
-
-            Debug.Log($"Fullscreen is now {(Screen.fullScreen ? "enabled" : "disabled")} on build.");
-        }
         private void RestoreFullscreen() {
             fullscreenToggle.isOn = originalFullscreen;
             Settings.FullScreen = fullscreenToggle.isOn;
@@ -217,9 +223,10 @@ namespace ph.Managers {
         }
         private void OnFullscreenToggleChanged(bool newValue) {
             Settings.FullScreen = newValue;
-
-            Debug.Log($"Fullscreen toggle changed to: {(newValue ? "enabled" : "disabled")}");
+            Screen.fullScreen = !Screen.fullScreen;
+            AnimateSlider(newValue, fullscreenSlider);
         }
+
         #endregion
 
         #region Brightness
@@ -237,10 +244,6 @@ namespace ph.Managers {
         #endregion
 
         #region Vsync
-        public void ChangeVsync() {
-            Settings.VSync = !Settings.VSync;
-            QualitySettings.vSyncCount = Settings.VSync ? 1 : 0;
-        }
         private void RestoreVsync() {
             vsyncToggle.isOn = originalVsync != 0;
             Settings.VSync = vsyncToggle.isOn;
@@ -254,6 +257,7 @@ namespace ph.Managers {
         private void OnVsyncToggleChanged(bool newValue) {
             Settings.VSync = newValue;
             QualitySettings.vSyncCount = newValue ? 1 : 0;
+            AnimateSlider(newValue, vsyncSlider);
         }
         #endregion
 
@@ -364,9 +368,6 @@ namespace ph.Managers {
         #endregion
 
         #region Run In Background
-        public void ChangeRunInBg() {
-            Application.runInBackground = !Application.runInBackground;
-        }
         private void RestoreRunInBg() {
             runInBgToggle.isOn = originalRunInBg;
             Settings.RunInBg = runInBgToggle.isOn;
@@ -377,6 +378,18 @@ namespace ph.Managers {
         }
         private void OnRunInBgToggleChanged(bool newValue) {
             Settings.RunInBg = newValue;
+            Application.runInBackground = !Application.runInBackground;
+            AnimateSlider(newValue, runInBgSlider);
+        }
+        #endregion
+
+        #region Utility Methods
+        private void AnimateSlider(bool value, Slider slider) {
+            float target = value ? 1f : 0f;
+            isAnimating = true;
+            slider.DOValue(target, 0.3f)
+                .SetEase(Ease.InOutQuad)
+                .OnComplete(() => isAnimating = false);
         }
         #endregion
 

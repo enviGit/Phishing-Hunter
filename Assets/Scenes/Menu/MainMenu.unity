@@ -2302,8 +2302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.5686275, g: 0.5686275, b: 0.5686275, a: 1}
+  m_Material: {fileID: 2100000, guid: c2d4dcc3292538d4aa1f20c2b37c164d, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
@@ -4016,8 +4016,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolutionSlider: {fileID: 620333536}
   fullscreenSlider: {fileID: 935069205}
+  fullscreenMaterial: {fileID: 2100000, guid: c2d4dcc3292538d4aa1f20c2b37c164d, type: 2}
   brightnessSlider: {fileID: 346496271}
   vsyncSlider: {fileID: 602087944}
+  vsyncMaterial: {fileID: 2100000, guid: 8556da4e0ffd7db469b556d5e02f3e9b, type: 2}
   qualityDropdown: {fileID: 379842443}
   qualityLevels:
   - {fileID: 11400000, guid: 4b83569d67af61e458304325a23e5dfd, type: 2}
@@ -4031,6 +4033,7 @@ MonoBehaviour:
   languageSlider: {fileID: 703145585}
   sensitivitySlider: {fileID: 111655106}
   runInBgSlider: {fileID: 161906303}
+  runInBgMaterial: {fileID: 2100000, guid: b2155720682f8cf439e8de5520d170e5, type: 2}
 --- !u!1 &409000335
 GameObject:
   m_ObjectHideFlags: 0
@@ -5445,8 +5448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.5686275, g: 0.5686275, b: 0.5686275, a: 1}
+  m_Material: {fileID: 2100000, guid: 8556da4e0ffd7db469b556d5e02f3e9b, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
@@ -17634,8 +17637,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  m_Material: {fileID: 2100000, guid: b2155720682f8cf439e8de5520d170e5, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0

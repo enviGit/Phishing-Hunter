@@ -17,15 +17,17 @@ namespace ph.Managers {
         private int originalResolutionIndex = 0;
         [SerializeField] private Slider fullscreenSlider;
         private Toggle fullscreenToggle;
-        private bool isAnimating = false;
+        [SerializeField] private Material fullscreenMaterial;
         private bool originalFullscreen;
         [SerializeField] private Slider brightnessSlider;
         [SerializeField] private Slider vsyncSlider;
         private Toggle vsyncToggle;
         private int originalVsync;
+        [SerializeField] private Material vsyncMaterial;
         [SerializeField] private TMP_Dropdown qualityDropdown;
         [SerializeField] private RenderPipelineAsset[] qualityLevels;
         private int originalQualityPreset;
+        private bool isAnimating = false;
 
         [Header("Post Processing")]
         [SerializeField] private Volume globalVolume;
@@ -66,6 +68,7 @@ namespace ph.Managers {
         [SerializeField] private Slider runInBgSlider;
         private Toggle runInBgToggle;
         private bool originalRunInBg;
+        [SerializeField] private Material runInBgMaterial;
 
         private void Awake() {
             vsyncToggle = vsyncSlider.transform.GetChild(0).GetComponent<Toggle>();
@@ -163,7 +166,7 @@ namespace ph.Managers {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
-        Application.Quit();
+            Application.Quit();
 #endif
         }
         #endregion
@@ -385,9 +388,43 @@ namespace ph.Managers {
 
         #region Utility Methods
         private void AnimateSlider(bool value, Slider slider) {
-            float target = value ? 1f : 0f;
+            Material targetMaterial = null;
+
+            switch (slider.name) {
+                case "Fullscreen":
+                    targetMaterial = fullscreenMaterial;
+                    break;
+                case "VSync":
+                    targetMaterial = vsyncMaterial;
+                    break;
+                case "RunInBg":
+                    targetMaterial = runInBgMaterial;
+                    break;
+                default:
+                    Debug.LogWarning($"Unrecognized slider: {slider.name}");
+                    return;
+            }
+
+            if (targetMaterial == null) {
+                Debug.LogWarning("Material not assigned!");
+                return;
+            }
+
+            // Animacja koloru materiału
+            Color fromColor = targetMaterial.GetColor("_Color");
+            Color toColor = value
+        ? new Color(0.2f, 0.5f, 1f)       // niebieski
+        : new Color(0.15f, 0.15f, 0.15f); // szary
+
+            DOTween.To(() => fromColor, x => {
+                targetMaterial.SetColor("_Color", x);
+            }, toColor, 0.3f)
+            .SetEase(Ease.InOutQuad);
+
+            // Animacja samego slidera
+            float targetSliderValue = value ? 1f : 0f;
             isAnimating = true;
-            slider.DOValue(target, 0.3f)
+            slider.DOValue(targetSliderValue, 0.3f)
                 .SetEase(Ease.InOutQuad)
                 .OnComplete(() => isAnimating = false);
         }

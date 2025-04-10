@@ -1,50 +1,52 @@
-{
-    "newbieQuestions": [
-        {
-            "id": 1,
-            "question": "What is the primary purpose of a firewall?",
-            "ansA": "To speed up internet connections",
-            "ansB": "To block unauthorized access",
-            "ansC": "To store encrypted passwords",
-            "ansD": "To optimize computer performance",
-            "correctAns": "B",
-            "isAnswered": false,
-            "difficulty": "newbie"
-        },
-        {
-            "id": 2,
-            "question": "Which of the following is a strong password example?",
-            "ansA": "password123",
-            "ansB": "letmein",
-            "ansC": "P@ssw0rd!2024",
-            "ansD": "12345678",
-            "correctAns": "C",
-            "isAnswered": false,
-            "difficulty": "newbie"
-        }
-    ],
-    "cybersecQuestions": [
-        {
-            "id": 11,
-            "question": "Which cryptographic algorithm is commonly used for digital signatures?",
-            "ansA": "AES",
-            "ansB": "RSA",
-            "ansC": "SHA-256",
-            "ansD": "Blowfish",
-            "correctAns": "B",
-            "isAnswered": false,
-            "difficulty": "cybersecurity_analyst"
-        },
-        {
-            "id": 12,
-            "question": "What is the primary purpose of a zero-day exploit?",
-            "ansA": "To test software updates",
-            "ansB": "To exploit an unknown vulnerability before a patch is available",
-            "ansC": "To remove malware from infected systems",
-            "ansD": "To create backups of sensitive data",
-            "correctAns": "B",
-            "isAnswered": false,
-            "difficulty": "cybersecurity_analyst"
-        }
-    ]
-}
+[
+    {
+        "lang": "en",
+        "newbieQuestions": [
+            {
+                "id": 1,
+                "question": "What is the primary purpose of a firewall?",
+                "ansA": "To speed up internet connections",
+                "ansB": "To block unauthorized access",
+                "ansC": "To store encrypted passwords",
+                "ansD": "To optimize computer performance",
+                "correctAns": "B"
+            }
+        ],
+        "advancedQuestions": [
+            {
+                "id": 11,
+                "question": "Which cryptographic algorithm is commonly used for digital signatures?",
+                "ansA": "AES",
+                "ansB": "RSA",
+                "ansC": "SHA-256",
+                "ansD": "Blowfish",
+                "correctAns": "B"
+            }
+        ]
+    },
+    {
+        "lang": "pl",
+        "newbieQuestions": [
+            {
+                "id": 1,
+                "question": "Jaki jest główny cel zapory sieciowej (firewalla)?",
+                "ansA": "Przyspieszenie internetu",
+                "ansB": "Blokowanie nieautoryzowanego dostępu",
+                "ansC": "Przechowywanie haseł",
+                "ansD": "Optymalizacja wydajności",
+                "correctAns": "B"
+            }
+        ],
+        "advancedQuestions": [
+            {
+                "id": 11,
+                "question": "Który algorytm kryptograficzny jest używany do podpisów cyfrowych?",
+                "ansA": "AES",
+                "ansB": "RSA",
+                "ansC": "SHA-256",
+                "ansD": "Blowfish",
+                "correctAns": "B"
+            }
+        ]
+    }
+]

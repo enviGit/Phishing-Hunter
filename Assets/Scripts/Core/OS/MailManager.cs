@@ -16,16 +16,23 @@ namespace ph.Core.OS {
         public string sender;
         public string recipient;
         public string body;
-        public string difficulty;
         public bool isPhishing;
         public string dateTime;
     }
-
     [Serializable]
-    public class Emails {
+    public class EmailData {
         public List<Email> newbieEmails;
-        public List<Email> cybersecEmails;
+        public List<Email> advancedEmails;
     }
+    [Serializable]
+    public class LocalizedEmailData : EmailData {
+        public string lang;
+    }
+    [Serializable]
+    public class LocalizedEmailDataList {
+        public List<LocalizedEmailData> items;
+    }
+
     public class MailManager : MonoBehaviour {
         public TextAsset jsonFile;
         public Transform workSpace;
@@ -34,7 +41,9 @@ namespace ph.Core.OS {
         public float verticalSpacing = 25f;
         public int maxDisplayedEmails = 10;
         private List<Email> emailList;
+        private List<LocalizedEmailData> resourcesData = null;
         private Dictionary<Email, DateTime> generatedDates = new Dictionary<Email, DateTime>();
+        private Dictionary<int, bool> emailFlags = new Dictionary<int, bool>();
 
         private void Start() {
             LoadEmails();
@@ -42,32 +51,28 @@ namespace ph.Core.OS {
             DisplayEmails();
         }
         private void LoadEmails() {
-            string persistentFilePath = Path.Combine(Application.persistentDataPath, "mails.json");
-
-            Emails emailsFromResources = null;
-            Emails emailsFromPersistent = null;
-
             if (jsonFile != null) {
-                string jsonTextFromResources = jsonFile.text;
-                emailsFromResources = JsonUtility.FromJson<Emails>(jsonTextFromResources);
+                string wrappedJson = "{\"items\":" + jsonFile.text + "}";
+                resourcesData = JsonUtility.FromJson<LocalizedEmailDataList>(wrappedJson).items;
             }
             else {
-                Debug.LogError("Brak pliku mails.json w folderze Resources.");
+                Debug.LogError("Brak pliku emails.json w folderze Resources.");
+                return;
             }
 
-            if (File.Exists(persistentFilePath)) {
-                string jsonTextFromPersistent = File.ReadAllText(persistentFilePath);
-                emailsFromPersistent = JsonUtility.FromJson<Emails>(jsonTextFromPersistent);
+            string selectedLanguage = Settings.Language == "pl" ? "pl" : "en";
+            var resLangData = resourcesData?.FirstOrDefault(x => x.lang == selectedLanguage);
+
+            if (resLangData == null) {
+                Debug.LogError("Brak danych e-maili dla wybranego języka.");
+                return;
             }
 
-            if (emailsFromPersistent == null || emailsFromResources.newbieEmails.Count > emailsFromPersistent.newbieEmails.Count || emailsFromResources.cybersecEmails.Count > emailsFromPersistent.cybersecEmails.Count) {
-                Debug.Log("Nowe dane w Resources. Kopiowanie do persistentDataPath...");
-
-                SaveEmails(emailsFromResources);
-                emailList = Settings.Difficulty == 0 ? emailsFromResources.newbieEmails : emailsFromResources.cybersecEmails;
+            if (Settings.Difficulty == 0) {
+                emailList = resLangData.newbieEmails;
             }
             else {
-                emailList = Settings.Difficulty == 0 ? emailsFromPersistent.newbieEmails : emailsFromPersistent.cybersecEmails;
+                emailList = resLangData.advancedEmails;
             }
 
             foreach (var email in emailList) {
@@ -75,14 +80,6 @@ namespace ph.Core.OS {
                     email.dateTime = GenerateRandomDate().ToString("yyyy-MM-dd HH:mm");
                 }
             }
-        }
-
-        private void SaveEmails(Emails emails) {
-            string filePath = Path.Combine(Application.persistentDataPath, "mails.json");
-            string json = JsonUtility.ToJson(emails, true);
-
-            File.WriteAllText(filePath, json);
-            Debug.Log("Zapisano dane e-maili do pliku w persistentDataPath.");
         }
         private DateTime GenerateRandomDate() {
             DateTime now = DateTime.Now;
@@ -101,36 +98,44 @@ namespace ph.Core.OS {
             }
         }
         private void DisplayEmails() {
-            string selectedDifficulty = Settings.Difficulty == 0 ? "newbie" : "cybersecurity_analyst";
+            string selectedLanguage = Settings.Language;
 
-            List<Email> filteredEmails = emailList
-                .Where(email => email.difficulty == selectedDifficulty)
-                .OrderBy(email => generatedDates[email])
-                .ToList();
+            var emailData = resourcesData
+                .FirstOrDefault(e => e.lang == selectedLanguage);
 
-            List<Email> displayedEmails = filteredEmails.Take(maxDisplayedEmails).ToList();
+            if (emailData != null) {
+                List<Email> filteredEmails = (Settings.Difficulty == 0)
+                    ? emailData.newbieEmails
+                    : emailData.advancedEmails;
 
-            float currentY = -5f;
+                filteredEmails = filteredEmails
+                    .OrderBy(email => generatedDates[email])
+                    .ToList();
 
-            for (int i = displayedEmails.Count - 1; i >= 0; i--) {
-                GameObject mailItem = Instantiate(mailPrefab, workSpace.GetChild(0));
+                List<Email> displayedEmails = filteredEmails.Take(maxDisplayedEmails).ToList();
 
-                RectTransform rectTransform = mailItem.GetComponent<RectTransform>();
-                rectTransform.localPosition = new Vector3(0, currentY, 0);
-                currentY -= verticalSpacing;
+                float currentY = -5f;
 
-                TextMeshProUGUI senderText = mailItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI subjectText = mailItem.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI dateTimeText = mailItem.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI messageText = mailItem.transform.GetChild(6).GetComponent<TextMeshProUGUI>();
-                Button openButton = mailItem.transform.GetChild(0).GetComponent<Button>();
+                for (int i = displayedEmails.Count - 1; i >= 0; i--) {
+                    GameObject mailItem = Instantiate(mailPrefab, workSpace.GetChild(0));
 
-                senderText.text = displayedEmails[i].sender;
-                subjectText.text = displayedEmails[i].subject;
-                dateTimeText.text = generatedDates[displayedEmails[i]].ToString("dd.MM.yyyy HH:mm");
-                messageText.text = displayedEmails[i].body;
+                    RectTransform rectTransform = mailItem.GetComponent<RectTransform>();
+                    rectTransform.localPosition = new Vector3(0, currentY, 0);
+                    currentY -= verticalSpacing;
 
-                openButton.onClick.AddListener(() => OpenEmail(mailItem));
+                    TextMeshProUGUI senderText = mailItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI subjectText = mailItem.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI dateTimeText = mailItem.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI messageText = mailItem.transform.GetChild(6).GetComponent<TextMeshProUGUI>();
+                    Button openButton = mailItem.transform.GetChild(0).GetComponent<Button>();
+
+                    senderText.text = displayedEmails[i].sender;
+                    subjectText.text = displayedEmails[i].subject;
+                    dateTimeText.text = generatedDates[displayedEmails[i]].ToString("dd.MM.yyyy HH:mm");
+                    messageText.text = displayedEmails[i].body;
+
+                    openButton.onClick.AddListener(() => OpenEmail(mailItem));
+                }
             }
         }
         private void OpenEmail(GameObject mailItem) {
@@ -150,9 +155,9 @@ namespace ph.Core.OS {
             TextMeshProUGUI messageText = mailPreview.transform.GetChild(1).GetChild(5).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
 
             senderText.text = mailItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text;
-            subjectText.text = mailItem.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text;
-            dateTimeText.text = mailItem.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text;
-            messageText.text = mailItem.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text;
+            subjectText.text = mailItem.transform.GetChild(4).GetComponentInChildren<TextMeshProUGUI>().text;
+            dateTimeText.text = mailItem.transform.GetChild(5).GetComponentInChildren<TextMeshProUGUI>().text;
+            messageText.text = mailItem.transform.GetChild(6).GetComponentInChildren<TextMeshProUGUI>().text;
         }
     }
 }

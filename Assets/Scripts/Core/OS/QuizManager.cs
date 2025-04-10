@@ -16,14 +16,22 @@ namespace ph.Core.OS {
         public string ansC;
         public string ansD;
         public string correctAns;
-        public string difficulty;
-        public bool isAnsweredCorrectly;
     }
 
     [Serializable]
     public class QuizData {
         public List<QuizQuestion> newbieQuestions;
         public List<QuizQuestion> advancedQuestions;
+    }
+
+    [Serializable]
+    public class LocalizedQuizData : QuizData {
+        public string lang;
+    }
+
+    [Serializable]
+    public class LocalizedQuizDataList {
+        public List<LocalizedQuizData> items;
     }
 
     public class QuizManager : MonoBehaviour {
@@ -40,46 +48,29 @@ namespace ph.Core.OS {
         }
 
         private void LoadQuestions() {
-            string persistentFilePath = Path.Combine(Application.persistentDataPath, "quiz.json");
-
-            QuizData questionsFromResources = null;
-            QuizData questionsFromPersistent = null;
+            List<LocalizedQuizData> resourcesData = null;
 
             if (jsonFile != null) {
-                questionsFromResources = JsonUtility.FromJson<QuizData>(jsonFile.text);
+                string wrappedJson = "{\"items\":" + jsonFile.text + "}";
+                resourcesData = JsonUtility.FromJson<LocalizedQuizDataList>(wrappedJson).items;
             }
             else {
-                Debug.LogError("Brak pliku quiz.json w folderze Resources.");
+                Debug.LogError("Brak pliku questions.json w folderze Resources.");
             }
 
-            if (File.Exists(persistentFilePath)) {
-                string jsonTextFromPersistent = File.ReadAllText(persistentFilePath);
-                questionsFromPersistent = JsonUtility.FromJson<QuizData>(jsonTextFromPersistent);
-            }
+            string lang = Settings.Language.ToLower();
 
-            if (questionsFromPersistent == null || questionsFromResources.newbieQuestions.Count > questionsFromPersistent.newbieQuestions.Count || questionsFromResources.advancedQuestions.Count > questionsFromPersistent.advancedQuestions.Count) {
-                Debug.Log("Nowe dane w Resources. Kopiowanie do persistentDataPath...");
-                SaveQuestions(questionsFromResources);
-                questionList = Settings.Difficulty == 0 ? questionsFromResources.newbieQuestions : questionsFromResources.advancedQuestions;
+            var resLangData = resourcesData?.FirstOrDefault(x => x.lang == lang);
+
+            if (resLangData != null) {
+                questionList = Settings.Difficulty == 0 ? resLangData.newbieQuestions : resLangData.advancedQuestions;
             }
             else {
-                questionList = Settings.Difficulty == 0 ? questionsFromPersistent.newbieQuestions : questionsFromPersistent.advancedQuestions;
+                Debug.LogError("Brak danych dla wybranego języka.");
             }
         }
-
-        private void SaveQuestions(QuizData quizData) {
-            string filePath = Path.Combine(Application.persistentDataPath, "quiz.json");
-            string json = JsonUtility.ToJson(quizData, true);
-            File.WriteAllText(filePath, json);
-            Debug.Log("Zapisano dane quizu do pliku w persistentDataPath.");
-        }
-
         private void DisplayQuestions() {
-            string selectedDifficulty = Settings.Difficulty == 0 ? "newbie" : "cybersecurity_analyst";
-            List<QuizQuestion> filteredQuestions = questionList
-                .Where(q => q.difficulty == selectedDifficulty)
-                .Take(maxDisplayedQuestions)
-                .ToList();
+            List<QuizQuestion> filteredQuestions = questionList.Take(maxDisplayedQuestions).ToList();
 
             float currentY = -5f;
 

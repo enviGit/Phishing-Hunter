@@ -2,7 +2,6 @@ using DG.Tweening;
 using ph.Managers;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,14 +37,17 @@ namespace ph.Core.OS {
         public Transform workSpace;
         public GameObject mailPrefab;
         public GameObject mailPreview;
-        public float verticalSpacing = 25f;
+        private CanvasGroup mainPreviewCanvas;
         public int maxDisplayedEmails = 10;
         private List<Email> emailList;
         private List<LocalizedEmailData> resourcesData = null;
         private Dictionary<Email, DateTime> generatedDates = new Dictionary<Email, DateTime>();
-        private Dictionary<int, bool> emailFlags = new Dictionary<int, bool>();
+        private List<int> flaggedEmailIds = new List<int>();
+        private List<int> correctlyMarkedEmails = new List<int>();
+        private int correctMarksCount = 0;
 
         private void Start() {
+            mainPreviewCanvas = mailPreview.GetComponent<CanvasGroup>();
             LoadEmails();
             AssignRandomDates();
             DisplayEmails();
@@ -109,19 +111,14 @@ namespace ph.Core.OS {
                     : emailData.advancedEmails;
 
                 filteredEmails = filteredEmails
-                    .OrderBy(email => generatedDates[email])
-                    .ToList();
+            .Where(email => !flaggedEmailIds.Contains(email.id))
+            .OrderBy(email => generatedDates[email])
+            .ToList();
 
                 List<Email> displayedEmails = filteredEmails.Take(maxDisplayedEmails).ToList();
 
-                float currentY = -5f;
-
                 for (int i = displayedEmails.Count - 1; i >= 0; i--) {
                     GameObject mailItem = Instantiate(mailPrefab, workSpace.GetChild(0));
-
-                    RectTransform rectTransform = mailItem.GetComponent<RectTransform>();
-                    rectTransform.localPosition = new Vector3(0, currentY, 0);
-                    currentY -= verticalSpacing;
 
                     TextMeshProUGUI senderText = mailItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI subjectText = mailItem.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
@@ -129,24 +126,30 @@ namespace ph.Core.OS {
                     TextMeshProUGUI messageText = mailItem.transform.GetChild(6).GetComponent<TextMeshProUGUI>();
                     Button openButton = mailItem.transform.GetChild(0).GetComponent<Button>();
 
+                    Email emailCopy = displayedEmails[i];
+
                     senderText.text = displayedEmails[i].sender;
                     subjectText.text = displayedEmails[i].subject;
                     dateTimeText.text = generatedDates[displayedEmails[i]].ToString("dd.MM.yyyy HH:mm");
                     messageText.text = displayedEmails[i].body;
 
-                    openButton.onClick.AddListener(() => OpenEmail(mailItem));
+                    openButton.onClick.AddListener(() => OpenEmail(emailCopy, mailItem));
+
+                    Button safeButton = mailItem.transform.GetChild(1).GetComponent<Button>();
+                    Button phishingButton = mailItem.transform.GetChild(2).GetComponent<Button>();
+                    safeButton.onClick.AddListener(() => MarkEmailAsSafe(emailCopy, mailItem));
+                    phishingButton.onClick.AddListener(() => MarkEmailAsPhishing(emailCopy, mailItem));
                 }
             }
         }
-        private void OpenEmail(GameObject mailItem) {
+        private void OpenEmail(Email email, GameObject mailItem) {
             if (!mailPreview.activeSelf) {
                 mailPreview.SetActive(true);
             }
 
-            CanvasGroup canvasGroup = mailPreview.GetComponent<CanvasGroup>();
-            canvasGroup.alpha = 0;
+            mainPreviewCanvas.alpha = 0;
             mailPreview.transform.localScale = Vector3.one * 0.8f;
-            canvasGroup.DOFade(1f, 0.25f).SetEase(Ease.OutQuad);
+            mainPreviewCanvas.DOFade(1f, 0.25f).SetEase(Ease.OutQuad);
             mailPreview.transform.DOScale(0.65f, 0.25f).SetEase(Ease.OutBack);
 
             TextMeshProUGUI senderText = mailPreview.transform.GetChild(1).GetChild(2).GetComponent<TextMeshProUGUI>();
@@ -158,6 +161,47 @@ namespace ph.Core.OS {
             subjectText.text = mailItem.transform.GetChild(4).GetComponentInChildren<TextMeshProUGUI>().text;
             dateTimeText.text = mailItem.transform.GetChild(5).GetComponentInChildren<TextMeshProUGUI>().text;
             messageText.text = mailItem.transform.GetChild(6).GetComponentInChildren<TextMeshProUGUI>().text;
+
+            Button safeButton = mailPreview.transform.GetChild(1).GetChild(0).GetComponent<Button>();
+            Button phishingButton = mailPreview.transform.GetChild(1).GetChild(1).GetComponent<Button>();
+            safeButton.onClick.AddListener(() => MarkEmailAsSafe(email, mailItem));
+            phishingButton.onClick.AddListener(() => MarkEmailAsPhishing(email, mailItem));
+        }
+        private void MarkEmailAsSafe(Email email, GameObject mailItem) {
+            flaggedEmailIds.Add(email.id);
+
+            mainPreviewCanvas.DOFade(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
+                mailPreview.SetActive(false);
+            });
+
+            mailItem.transform.DOScale(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
+                Destroy(mailItem);
+            });
+
+            if (email.isPhishing) {
+                return;
+            }
+
+            correctMarksCount++;
+            correctlyMarkedEmails.Add(email.id);
+        }
+        private void MarkEmailAsPhishing(Email email, GameObject mailItem) {
+            flaggedEmailIds.Add(email.id);
+
+            mainPreviewCanvas.DOFade(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
+                mailPreview.SetActive(false);
+            });
+
+            mailItem.transform.DOScale(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
+                Destroy(mailItem);
+            });
+
+            if (!email.isPhishing) {
+                return;
+            }
+
+            correctMarksCount++;
+            correctlyMarkedEmails.Add(email.id);
         }
     }
 }

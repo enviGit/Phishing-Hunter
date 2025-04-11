@@ -1,5 +1,4 @@
 using DG.Tweening;
-using ph.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace ph.Core.OS
+namespace ph.Managers
 {
     [Serializable]
     public class Email

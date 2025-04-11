@@ -9,7 +9,8 @@
                 "ansB": "To block unauthorized access",
                 "ansC": "To store encrypted passwords",
                 "ansD": "To optimize computer performance",
-                "correctAns": "B"
+                "correctAns": "B",
+                "tag": ""
             }
         ],
         "advancedQuestions": [
@@ -20,7 +21,8 @@
                 "ansB": "RSA",
                 "ansC": "SHA-256",
                 "ansD": "Blowfish",
-                "correctAns": "B"
+                "correctAns": "B",
+                "tag": ""
             }
         ]
     },
@@ -34,7 +36,8 @@
                 "ansB": "Blokowanie nieautoryzowanego dostępu",
                 "ansC": "Przechowywanie haseł",
                 "ansD": "Optymalizacja wydajności",
-                "correctAns": "B"
+                "correctAns": "B",
+                "tag": ""
             }
         ],
         "advancedQuestions": [
@@ -45,7 +48,8 @@
                 "ansB": "RSA",
                 "ansC": "SHA-256",
                 "ansD": "Blowfish",
-                "correctAns": "B"
+                "correctAns": "B",
+                "tag": ""
             }
         ]
     }

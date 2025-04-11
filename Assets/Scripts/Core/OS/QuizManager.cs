@@ -17,6 +17,7 @@ namespace ph.Core.OS {
         public string ansC;
         public string ansD;
         public string correctAns;
+        public string tag;
     }
 
     [Serializable]

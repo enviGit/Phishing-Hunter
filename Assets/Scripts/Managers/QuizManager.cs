@@ -6,11 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace ph.Managers
-{
+namespace ph.Managers {
     [Serializable]
-    public class QuizQuestion
-    {
+    public class QuizQuestion {
         public int id;
         public string question;
         public string ansA;
@@ -22,30 +20,25 @@ namespace ph.Managers
     }
 
     [Serializable]
-    public class QuizData
-    {
+    public class QuizData {
         public List<QuizQuestion> newbieQuestions;
         public List<QuizQuestion> advancedQuestions;
     }
 
     [Serializable]
-    public class LocalizedQuizData : QuizData
-    {
+    public class LocalizedQuizData : QuizData {
         public string lang;
     }
 
     [Serializable]
-    public class LocalizedQuizDataList
-    {
+    public class LocalizedQuizDataList {
         public List<LocalizedQuizData> items;
     }
 
-    public class QuizManager : MonoBehaviour
-    {
+    public class QuizManager : MonoBehaviour {
         [SerializeField] private TextAsset jsonFile;
         [SerializeField] private Transform workSpace;
         [SerializeField] private GameObject questionPrefab;
-        [SerializeField] private float verticalSpacing = 75f;
         [SerializeField] private int maxDisplayedQuestions = 7;
         [SerializeField] private GameObject resultPanel;
         private TextMeshProUGUI resultText;
@@ -58,8 +51,7 @@ namespace ph.Managers
         private Dictionary<int, string> userAnswers = new Dictionary<int, string>();
         private List<int> incorrectQuestions = new List<int>();
 
-        private void Start()
-        {
+        private void Start() {
             resultText = resultPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             LoadQuestions();
             DisplayQuestions();
@@ -68,17 +60,14 @@ namespace ph.Managers
             newButton.interactable = false;
         }
 
-        private void LoadQuestions()
-        {
+        private void LoadQuestions() {
             List<LocalizedQuizData> resourcesData = null;
 
-            if (jsonFile != null)
-            {
+            if (jsonFile != null) {
                 string wrappedJson = "{\"items\":" + jsonFile.text + "}";
                 resourcesData = JsonUtility.FromJson<LocalizedQuizDataList>(wrappedJson).items;
             }
-            else
-            {
+            else {
                 Debug.LogError("Brak pliku questions.json w folderze Resources.");
             }
 
@@ -86,31 +75,22 @@ namespace ph.Managers
 
             var resLangData = resourcesData?.FirstOrDefault(x => x.lang == lang);
 
-            if (resLangData != null)
-            {
+            if (resLangData != null) {
                 questionList = Settings.Difficulty == 0 ? resLangData.newbieQuestions : resLangData.advancedQuestions;
             }
-            else
-            {
+            else {
                 Debug.LogError("Brak danych dla wybranego języka.");
             }
         }
-        private void DisplayQuestions()
-        {
+        private void DisplayQuestions() {
             // Pytania, które jeszcze nie zostały wyświetlone oraz pytania, które zostały odpowiedziane błędnie.
             List<QuizQuestion> questionsToDisplay = questionList
         .Where(q => !displayedQuestionIds.Contains(q.id) || incorrectQuestions.Contains(q.id))
         .Where(q => !userAnswers.ContainsKey(q.id) || userAnswers[q.id] != q.correctAns)
         .ToList();
 
-            float currentY = -5f;
-
-            foreach (var question in questionsToDisplay)
-            {
+            foreach (var question in questionsToDisplay) {
                 GameObject questionItem = Instantiate(questionPrefab, workSpace.GetChild(0));
-                RectTransform rectTransform = questionItem.GetComponent<RectTransform>();
-                rectTransform.localPosition = new Vector3(0, currentY, 0);
-                currentY -= verticalSpacing;
 
                 TextMeshProUGUI questionText = questionItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI ansAText = questionItem.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -138,24 +118,20 @@ namespace ph.Managers
                 totalQuestions++;
             }
         }
-        public void CheckAnswers()
-        {
+        public void CheckAnswers() {
             checkButton.interactable = false;
 
-            foreach (var question in questionList.Where(q => displayedQuestionIds.Contains(q.id)))
-            {
+            foreach (var question in questionList.Where(q => displayedQuestionIds.Contains(q.id))) {
                 string selectedAnswer = GetSelectedAnswerForQuestion(question.id);
                 bool isCorrect = selectedAnswer == question.correctAns;
 
-                if (!isCorrect)
-                {
+                if (!isCorrect) {
                     incorrectQuestions.Add(question.id);
                 }
 
                 UpdateToggleColor(selectedAnswer, isCorrect);
 
-                if (isCorrect)
-                {
+                if (isCorrect) {
                     correctAnswers++;
                 }
             }
@@ -166,13 +142,11 @@ namespace ph.Managers
             resultPanel.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
             newButton.interactable = true;
         }
-        public void LoadNewQuestions()
-        {
+        public void LoadNewQuestions() {
             newButton.interactable = false;
             checkButton.interactable = true;
 
-            foreach (Transform child in workSpace.GetChild(0))
-            {
+            foreach (Transform child in workSpace.GetChild(0)) {
                 Destroy(child.gameObject);
             }
 
@@ -184,42 +158,31 @@ namespace ph.Managers
             DisplayQuestions();
             resultPanel.GetComponent<CanvasGroup>().DOFade(0, 0.5f);
         }
-        private void SetAnswer(int questionId, bool isSelected, string answer)
-        {
-            if (isSelected)
-            {
-                if (userAnswers.ContainsKey(questionId))
-                {
+        private void SetAnswer(int questionId, bool isSelected, string answer) {
+            if (isSelected) {
+                if (userAnswers.ContainsKey(questionId)) {
                     userAnswers[questionId] = answer;
                 }
-                else
-                {
+                else {
                     userAnswers.Add(questionId, answer);
                 }
             }
-            else
-            {
-                if (userAnswers.ContainsKey(questionId) && userAnswers[questionId] == answer)
-                {
+            else {
+                if (userAnswers.ContainsKey(questionId) && userAnswers[questionId] == answer) {
                     userAnswers.Remove(questionId);
                 }
             }
         }
-        private string GetSelectedAnswerForQuestion(int questionId)
-        {
-            if (userAnswers.ContainsKey(questionId))
-            {
+        private string GetSelectedAnswerForQuestion(int questionId) {
+            if (userAnswers.ContainsKey(questionId)) {
                 return userAnswers[questionId];
             }
-            else
-            {
+            else {
                 return "";
             }
         }
-        private void UpdateToggleColor(string selectedAnswer, bool isCorrect)
-        {
-            foreach (Transform questionItem in workSpace.GetChild(0))
-            {
+        private void UpdateToggleColor(string selectedAnswer, bool isCorrect) {
+            foreach (Transform questionItem in workSpace.GetChild(0)) {
                 Toggle ansAToggle = questionItem.GetChild(3).GetChild(0).GetComponent<Toggle>();
                 Toggle ansBToggle = questionItem.GetChild(3).GetChild(1).GetComponent<Toggle>();
                 Toggle ansCToggle = questionItem.GetChild(3).GetChild(2).GetComponent<Toggle>();
@@ -235,8 +198,7 @@ namespace ph.Managers
                     colorMultiplier = 1f
                 };
 
-                switch (selectedAnswer)
-                {
+                switch (selectedAnswer) {
                     case "A":
                         ansAToggle.colors = colorBlock;
                         break;

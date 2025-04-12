@@ -6,11 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace ph.Managers
-{
+namespace ph.Managers {
     [Serializable]
-    public class Email
-    {
+    public class Email {
         public int id;
         public string subject;
         public string sender;
@@ -20,24 +18,20 @@ namespace ph.Managers
         public string tag;
     }
     [Serializable]
-    public class EmailData
-    {
+    public class EmailData {
         public List<Email> newbieEmails;
         public List<Email> advancedEmails;
     }
     [Serializable]
-    public class LocalizedEmailData : EmailData
-    {
+    public class LocalizedEmailData : EmailData {
         public string lang;
     }
     [Serializable]
-    public class LocalizedEmailDataList
-    {
+    public class LocalizedEmailDataList {
         public List<LocalizedEmailData> items;
     }
 
-    public class MailManager : MonoBehaviour
-    {
+    public class MailManager : MonoBehaviour {
         public TextAsset jsonFile;
         public Transform workSpace;
         public GameObject mailPrefab;
@@ -51,22 +45,18 @@ namespace ph.Managers
         private List<int> correctlyMarkedEmails = new List<int>();
         private int correctMarksCount = 0;
 
-        private void Start()
-        {
+        private void Start() {
             mainPreviewCanvas = mailPreview.GetComponent<CanvasGroup>();
             LoadEmails();
             AssignRandomDates();
             DisplayEmails();
         }
-        private void LoadEmails()
-        {
-            if (jsonFile != null)
-            {
+        private void LoadEmails() {
+            if (jsonFile != null) {
                 string wrappedJson = "{\"items\":" + jsonFile.text + "}";
                 resourcesData = JsonUtility.FromJson<LocalizedEmailDataList>(wrappedJson).items;
             }
-            else
-            {
+            else {
                 Debug.LogError("Brak pliku emails.json w folderze Resources.");
                 return;
             }
@@ -74,59 +64,47 @@ namespace ph.Managers
             string selectedLanguage = Settings.Language == "pl" ? "pl" : "en";
             var resLangData = resourcesData?.FirstOrDefault(x => x.lang == selectedLanguage);
 
-            if (resLangData == null)
-            {
+            if (resLangData == null) {
                 Debug.LogError("Brak danych e-maili dla wybranego języka.");
                 return;
             }
 
-            if (Settings.Difficulty == 0)
-            {
+            if (Settings.Difficulty == 0) {
                 emailList = resLangData.newbieEmails;
             }
-            else
-            {
+            else {
                 emailList = resLangData.advancedEmails;
             }
 
-            foreach (var email in emailList)
-            {
-                if (string.IsNullOrEmpty(email.dateTime))
-                {
+            foreach (var email in emailList) {
+                if (string.IsNullOrEmpty(email.dateTime)) {
                     email.dateTime = GenerateRandomDate().ToString("yyyy-MM-dd HH:mm");
                 }
             }
         }
-        private DateTime GenerateRandomDate()
-        {
+        private DateTime GenerateRandomDate() {
             DateTime now = DateTime.Now;
             return now.AddDays(UnityEngine.Random.Range(-30, 0))
                       .AddHours(UnityEngine.Random.Range(-23, 0))
                       .AddMinutes(UnityEngine.Random.Range(-59, 0));
         }
-        private void AssignRandomDates()
-        {
-            foreach (var email in emailList)
-            {
-                if (DateTime.TryParse(email.dateTime, out DateTime emailDate))
-                {
+        private void AssignRandomDates() {
+            foreach (var email in emailList) {
+                if (DateTime.TryParse(email.dateTime, out DateTime emailDate)) {
                     generatedDates[email] = emailDate;
                 }
-                else
-                {
+                else {
                     generatedDates[email] = GenerateRandomDate();
                 }
             }
         }
-        private void DisplayEmails()
-        {
+        private void DisplayEmails() {
             string selectedLanguage = Settings.Language;
 
             var emailData = resourcesData
                 .FirstOrDefault(e => e.lang == selectedLanguage);
 
-            if (emailData != null)
-            {
+            if (emailData != null) {
                 List<Email> filteredEmails = (Settings.Difficulty == 0)
                     ? emailData.newbieEmails
                     : emailData.advancedEmails;
@@ -138,8 +116,7 @@ namespace ph.Managers
 
                 List<Email> displayedEmails = filteredEmails.Take(maxDisplayedEmails).ToList();
 
-                for (int i = displayedEmails.Count - 1; i >= 0; i--)
-                {
+                for (int i = displayedEmails.Count - 1; i >= 0; i--) {
                     GameObject mailItem = Instantiate(mailPrefab, workSpace.GetChild(0));
 
                     TextMeshProUGUI senderText = mailItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
@@ -164,10 +141,8 @@ namespace ph.Managers
                 }
             }
         }
-        private void OpenEmail(Email email, GameObject mailItem)
-        {
-            if (!mailPreview.activeSelf)
-            {
+        private void OpenEmail(Email email, GameObject mailItem) {
+            if (!mailPreview.activeSelf) {
                 mailPreview.SetActive(true);
             }
 
@@ -191,44 +166,36 @@ namespace ph.Managers
             safeButton.onClick.AddListener(() => MarkEmailAsSafe(email, mailItem));
             phishingButton.onClick.AddListener(() => MarkEmailAsPhishing(email, mailItem));
         }
-        private void MarkEmailAsSafe(Email email, GameObject mailItem)
-        {
+        private void MarkEmailAsSafe(Email email, GameObject mailItem) {
             flaggedEmailIds.Add(email.id);
 
-            mainPreviewCanvas.DOFade(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() =>
-            {
+            mainPreviewCanvas.DOFade(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
                 mailPreview.SetActive(false);
             });
 
-            mailItem.transform.DOScale(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() =>
-            {
+            mailItem.transform.DOScale(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
                 Destroy(mailItem);
             });
 
-            if (email.isPhishing)
-            {
+            if (email.isPhishing) {
                 return;
             }
 
             correctMarksCount++;
             correctlyMarkedEmails.Add(email.id);
         }
-        private void MarkEmailAsPhishing(Email email, GameObject mailItem)
-        {
+        private void MarkEmailAsPhishing(Email email, GameObject mailItem) {
             flaggedEmailIds.Add(email.id);
 
-            mainPreviewCanvas.DOFade(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() =>
-            {
+            mainPreviewCanvas.DOFade(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
                 mailPreview.SetActive(false);
             });
 
-            mailItem.transform.DOScale(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() =>
-            {
+            mailItem.transform.DOScale(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
                 Destroy(mailItem);
             });
 
-            if (!email.isPhishing)
-            {
+            if (!email.isPhishing) {
                 return;
             }
 

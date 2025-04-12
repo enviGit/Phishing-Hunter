@@ -11,6 +11,16 @@
                 "ansD": "To optimize computer performance",
                 "correctAns": "B",
                 "tag": ""
+            },
+            {
+                "id": 2,
+                "question": "TEST",
+                "ansA": "a",
+                "ansB": "b",
+                "ansC": "c",
+                "ansD": "d",
+                "correctAns": "B",
+                "tag": ""
             }
         ],
         "advancedQuestions": [

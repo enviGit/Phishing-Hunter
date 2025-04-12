@@ -10,6 +10,7 @@ TagManager:
   - NewTextPanels
   - NewImages
   - NewPanels
+  - NewTextFiles
   layers:
   - Default
   - TransparentFX

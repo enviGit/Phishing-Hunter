@@ -1,16 +1,20 @@
+using DG.Tweening;
 using UnityEngine;
 
 namespace ph.Core.OS {
     public class Start : MonoBehaviour {
-        public Animator anim;
         public GameObject shutDownCanvas;
+        [SerializeField] private CanvasGroup buttonCanvasGroup;
         public void StartMenu() {
-            if (anim.GetBool("isRunning") == true) {
-                anim.SetBool("isRunning", false);
+            if (buttonCanvasGroup.alpha <= 0.9f) {
+                buttonCanvasGroup.DOFade(1, 0.5f);
+                buttonCanvasGroup.blocksRaycasts = true;
             }
             else {
-                anim.SetBool("isRunning", true);
+                buttonCanvasGroup.blocksRaycasts = false;
+                buttonCanvasGroup.DOFade(0, 0.5f);
             }
+
         }
         public void ShutDown() {
             shutDownCanvas.SetActive(true);

@@ -68,6 +68,7 @@ namespace ph.Core.OS {
                 newPanel.transform.SetParent(newPanelParent);
                 newPanel.GetComponent<RectTransform>().localScale = panel.GetComponent<RectTransform>().localScale;
                 newPanel.GetComponent<RectTransform>().sizeDelta = panel.GetComponent<RectTransform>().sizeDelta;
+                newPanel.GetComponent<RectTransform>().localPosition = panel.GetComponent<RectTransform>().localPosition;
                 newPanel.gameObject.SetActive(true);
                 newText.GetComponent<Button>().onClick.AddListener(() => newPanel.transform.position = actualFolder.transform.position);
             }

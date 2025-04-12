@@ -1,20 +1,13 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace ph.Core.OS {
     public class TaskBar : MonoBehaviour {
-        public Transform iconsParent;
-        public int k;
-        void Start() {
-
-        }
-
-        void Update() {
-            k = GetComponentsInChildren<Button>().GetLength(0) - 1;
-            GameObject[] icons = GameObject.FindGameObjectsWithTag("Icons");
-            foreach (GameObject icon in icons) {
-                icon.transform.SetSiblingIndex(k +2);
-            }
+        private void Update() {
+            //k = GetComponentsInChildren<Button>().GetLength(0) - 1;
+            //GameObject[] icons = GameObject.FindGameObjectsWithTag("Icons");
+            //foreach (GameObject icon in icons) {
+            //icon.transform.SetSiblingIndex(k + 2);
+            //}
         }
     }
 }

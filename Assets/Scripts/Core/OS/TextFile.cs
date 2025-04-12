@@ -18,9 +18,6 @@ namespace ph.Core.OS {
         public TMP_FontAsset fontF;
         public TMPro.TMP_Dropdown fontDropDown;
         [SerializeField] TextMeshProUGUI dropDownText;
-        void Start() {
-
-        }
 
         void Update() {
             if (fontsDropdownObject.transform.childCount > 3) {

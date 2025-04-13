@@ -75,8 +75,11 @@ namespace ph.Managers {
                 return;
             }
 
-            emailList = resLangData.newbieEmails;
-            emailList.AddRange(resLangData.advancedEmails);
+            emailList = resLangData.newbieEmails
+    .Concat(resLangData.advancedEmails)
+    .GroupBy(e => e.id)
+    .Select(g => g.First())
+    .ToList();
 
             foreach (var email in emailList) {
                 if (string.IsNullOrEmpty(email.dateTime)) {

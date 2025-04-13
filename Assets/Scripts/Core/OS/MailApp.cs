@@ -1,3 +1,4 @@
+using ph.Managers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,11 +11,13 @@ namespace ph.Core.OS {
         private bool mailIsRunning = false;
         public GameObject mailInTaskbar;
         public Animator mailAnim;
+        [SerializeField] private MailManager mailManager;
 
         private void Update() {
             if (isSelected) {
                 selected.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.Mouse0)) {
+                    mailManager.RefreshEmails();
                     mailIsRunning = true;
                     actualMail.SetActive(true);
                     selectedAnim.SetTrigger("Clicked");

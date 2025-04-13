@@ -1,5 +1,6 @@
 using DG.Tweening;
 using ph.Core;
+using Random = UnityEngine.Random;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,20 +68,15 @@ namespace ph.Managers {
                 return;
             }
 
-            string selectedLanguage = Settings.Language == "pl" ? "pl" : "en";
-            var resLangData = resourcesData?.FirstOrDefault(x => x.lang == selectedLanguage);
+            var resLangData = resourcesData?.FirstOrDefault(x => x.lang == Settings.Language);
 
             if (resLangData == null) {
                 Debug.LogError("Brak danych e-maili dla wybranego języka.");
                 return;
             }
 
-            if (Settings.Difficulty == 0) {
-                emailList = resLangData.newbieEmails;
-            }
-            else {
-                emailList = resLangData.advancedEmails;
-            }
+            emailList = resLangData.newbieEmails;
+            emailList.AddRange(resLangData.advancedEmails);
 
             foreach (var email in emailList) {
                 if (string.IsNullOrEmpty(email.dateTime)) {
@@ -90,9 +86,9 @@ namespace ph.Managers {
         }
         private DateTime GenerateRandomDate() {
             DateTime now = DateTime.Now;
-            return now.AddDays(UnityEngine.Random.Range(-30, 0))
-                      .AddHours(UnityEngine.Random.Range(-23, 0))
-                      .AddMinutes(UnityEngine.Random.Range(-59, 0));
+            return now.AddDays(Random.Range(-30, 0))
+                      .AddHours(Random.Range(-23, 0))
+                      .AddMinutes(Random.Range(-59, 0));
         }
         private void AssignRandomDates() {
             foreach (var email in emailList) {
@@ -200,7 +196,7 @@ namespace ph.Managers {
             });
 
             mailItem.transform.DOScale(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
-                Destroy(mailItem);
+                if (mailItem != null) Destroy(mailItem);
             });
 
             if (!email.isPhishing) {
@@ -217,7 +213,7 @@ namespace ph.Managers {
                 return 0;
             }
 
-            var langData = resourcesData.FirstOrDefault(x => x.lang == "en");
+            var langData = resourcesData.FirstOrDefault(x => x.lang == Settings.Language);
 
             if (langData == null) {
                 Debug.LogError("Brak danych maili dla wybranego języka.");
@@ -228,11 +224,76 @@ namespace ph.Managers {
             if (langData.newbieEmails != null) {
                 count += langData.newbieEmails.Count;
             }
-            if (langData.advancedEmails != null) {
-                count += langData.advancedEmails.Count;
-            }
 
             return count;
+        }
+        public void RefreshEmails() {
+            Transform contentRoot = workSpace.GetChild(0);
+            int currentEmailCount = contentRoot.childCount;
+
+            mainPreviewCanvas.DOFade(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
+                mailPreview.SetActive(false);
+            });
+
+            for (int i = 0; i < currentEmailCount; i++) {
+                Destroy(contentRoot.GetChild(i).gameObject);
+            }
+
+            var langData = resourcesData?.FirstOrDefault(x => x.lang == Settings.Language);
+
+            if (langData == null) {
+                Debug.LogError("Brak danych emaili dla języka: " + Settings.Language);
+                return;
+            }
+
+            List<Email> finalEmailPool;
+
+            if (Settings.Difficulty == 0) {
+                finalEmailPool = langData.newbieEmails
+                    .Where(e => !flaggedEmailIds.Contains(e.id))
+                    .OrderBy(e => generatedDates[e])
+                    .Take(maxDisplayedEmails)
+                    .ToList();
+            }
+            else {
+                var availableNewbies = langData.newbieEmails
+            .Where(e => !flaggedEmailIds.Contains(e.id) && !correctlyMarkedEmails.Contains(e.id))
+            .OrderBy(e => generatedDates[e])
+            .ToList();
+
+                var availableAdvanced = langData.advancedEmails
+            .Where(e => !flaggedEmailIds.Contains(e.id))
+            .OrderBy(e => generatedDates[e])
+            .ToList();
+
+                int totalToLoad = maxDisplayedEmails;
+
+                int minAdvanced = totalToLoad / 4;
+                int maxAdvanced = totalToLoad / 3 + 1;
+                int advancedCount = Random.Range(minAdvanced, maxAdvanced + 1);
+                int newbieCount = totalToLoad - advancedCount;
+
+                var chosenNewbies = availableNewbies.Take(newbieCount).ToList();
+                int remaining = totalToLoad - chosenNewbies.Count;
+
+                var chosenAdvanced = availableAdvanced.Take(remaining).ToList();
+
+                finalEmailPool = chosenNewbies.Concat(chosenAdvanced).ToList();
+            }
+
+            foreach (var email in finalEmailPool) {
+                GameObject mailItem = Instantiate(mailPrefab, contentRoot);
+
+                mailItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = email.sender;
+                mailItem.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = email.subject;
+                mailItem.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = generatedDates[email].ToString("dd.MM.yyyy HH:mm");
+                mailItem.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = email.body;
+
+                Email emailCopy = email;
+                mailItem.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => OpenEmail(emailCopy, mailItem));
+                mailItem.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => MarkEmailAsSafe(emailCopy, mailItem));
+                mailItem.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => MarkEmailAsPhishing(emailCopy, mailItem));
+            }
         }
     }
 }

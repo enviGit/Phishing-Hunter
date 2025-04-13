@@ -58,7 +58,10 @@ namespace ph.Core {
                 currentLevelProgress = 1f;
             }
 
-            progressSlider.DOFillAmount(currentLevelProgress, 1f).SetEase(Ease.OutSine);
+            progressGroup.DOFade(1f, 0.5f).OnComplete(() => {
+                progressSlider.DOFillAmount(currentLevelProgress, 1f).SetEase(Ease.OutSine);
+            });
+
             UpdateUI();
 
             progressGroup.DOFade(0.1f, 0.5f).SetDelay(2f).SetEase(Ease.InBack).OnComplete(() => {
@@ -74,11 +77,6 @@ namespace ph.Core {
             else if (level < 20) position = PlayerPosition.Analyst;
             else if (level < 40) position = PlayerPosition.SeniorAnalyst;
             else position = PlayerPosition.Expert;
-        }
-        private float EaseOutProgress(float t) {
-            t = Mathf.Clamp01(t);
-
-            return Mathf.Pow(t, 0.5f); // t ^ 0.6 – im mniejsza potęga, tym szybszy start i wolniejszy koniec
         }
         private void UpdateDifficulty() {
             Settings.Difficulty = level < 5 ? 0 : 1;

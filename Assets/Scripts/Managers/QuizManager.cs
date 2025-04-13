@@ -16,7 +16,7 @@ namespace ph.Managers {
         public string ansB;
         public string ansC;
         public string ansD;
-        public string correctAns;
+        public List<string> correctAns;
         public string tag;
     }
 
@@ -49,8 +49,9 @@ namespace ph.Managers {
         private List<int> displayedQuestionIds = new List<int>();
         private int correctAnswers = 0;
         private int totalQuestions = 0;
-        private Dictionary<int, string> userAnswers = new Dictionary<int, string>();
+        private Dictionary<int, List<string>> userAnswers = new();
         private List<int> incorrectQuestions = new List<int>();
+        private List<int> fullyCorrectQuestions = new();
         public static int TotalQuizCount { get; private set; }
         public static int CorrectQuizAnswers { get; private set; }
 
@@ -91,9 +92,9 @@ namespace ph.Managers {
         private void DisplayQuestions() {
             // Pytania, które jeszcze nie zostały wyświetlone oraz pytania, które zostały odpowiedziane błędnie.
             List<QuizQuestion> questionsToDisplay = questionList
-        .Where(q => !displayedQuestionIds.Contains(q.id) || incorrectQuestions.Contains(q.id))
-        .Where(q => !userAnswers.ContainsKey(q.id) || userAnswers[q.id] != q.correctAns)
-        .ToList();
+    .Where(q => !fullyCorrectQuestions.Contains(q.id)) // <-- odfiltrowujemy w pełni zaliczone
+    .Where(q => !displayedQuestionIds.Contains(q.id) || incorrectQuestions.Contains(q.id))
+    .ToList();
 
             foreach (var question in questionsToDisplay) {
                 GameObject questionItem = Instantiate(questionPrefab, workSpace.GetChild(0));
@@ -127,22 +128,35 @@ namespace ph.Managers {
         public void CheckAnswers() {
             checkButton.interactable = false;
 
-            foreach (var question in questionList.Where(q => displayedQuestionIds.Contains(q.id))) {
-                string selectedAnswer = GetSelectedAnswerForQuestion(question.id);
-                bool isCorrect = selectedAnswer == question.correctAns;
+            foreach (Transform questionItem in workSpace.GetChild(0)) {
+                TextMeshProUGUI questionText = questionItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+                QuizQuestion question = questionList.FirstOrDefault(q => questionText.text.Contains(q.question));
+                if (question == null) continue;
+
+                List<string> selectedAnswers = GetSelectedAnswersForQuestion(question.id);
+                List<string> correctAnswersList = question.correctAns;
+
+                bool isCorrect = selectedAnswers.Count == correctAnswersList.Count &&
+                     !selectedAnswers.Except(correctAnswersList).Any();
 
                 if (!isCorrect) {
                     incorrectQuestions.Add(question.id);
                 }
+                else {
+                    if (!fullyCorrectQuestions.Contains(question.id)) {
+                        fullyCorrectQuestions.Add(question.id);
+                    }
+                }
 
-                UpdateToggleColor(selectedAnswer, isCorrect);
+                UpdateToggleColor(questionItem, isCorrect);
 
                 if (isCorrect) {
                     correctAnswers++;
                     CorrectQuizAnswers++;
                 }
 
-                PlayerRatingSystem.Instance.UpdateProgress();
+                if (correctAnswers > 0)
+                    PlayerRatingSystem.Instance.UpdateProgress();
             }
 
             string result = $"{correctAnswers} / {totalQuestions} ({(correctAnswers / (float)totalQuestions * 100):0.0}%)";
@@ -162,70 +176,44 @@ namespace ph.Managers {
             displayedQuestionIds.Clear();
             correctAnswers = 0;
             totalQuestions = 0;
+            userAnswers.Clear();
             incorrectQuestions.Clear();
 
             DisplayQuestions();
             resultPanel.GetComponent<CanvasGroup>().DOFade(0, 0.5f);
         }
         private void SetAnswer(int questionId, bool isSelected, string answer) {
-            if (isSelected) {
-                if (userAnswers.ContainsKey(questionId)) {
-                    userAnswers[questionId] = answer;
-                }
-                else {
-                    userAnswers.Add(questionId, answer);
-                }
+            if (!userAnswers.ContainsKey(questionId)) {
+                userAnswers[questionId] = new List<string>();
             }
-            else {
-                if (userAnswers.ContainsKey(questionId) && userAnswers[questionId] == answer) {
-                    userAnswers.Remove(questionId);
-                }
+
+            if (isSelected && !userAnswers[questionId].Contains(answer)) {
+                userAnswers[questionId].Add(answer);
+            }
+            else if (!isSelected && userAnswers[questionId].Contains(answer)) {
+                userAnswers[questionId].Remove(answer);
             }
         }
-        private string GetSelectedAnswerForQuestion(int questionId) {
-            if (userAnswers.ContainsKey(questionId)) {
-                return userAnswers[questionId];
-            }
-            else {
-                return "";
-            }
+        private List<string> GetSelectedAnswersForQuestion(int questionId) {
+            return userAnswers.ContainsKey(questionId) ? userAnswers[questionId] : new List<string>();
         }
-        private void UpdateToggleColor(string selectedAnswer, bool isCorrect) {
-            foreach (Transform questionItem in workSpace.GetChild(0)) {
-                Toggle ansAToggle = questionItem.GetChild(3).GetChild(0).GetComponent<Toggle>();
-                Toggle ansBToggle = questionItem.GetChild(3).GetChild(1).GetComponent<Toggle>();
-                Toggle ansCToggle = questionItem.GetChild(3).GetChild(2).GetComponent<Toggle>();
-                Toggle ansDToggle = questionItem.GetChild(3).GetChild(3).GetComponent<Toggle>();
+        private void UpdateToggleColor(Transform questionItem, bool isCorrect) {
+            Toggle[] toggles = questionItem.GetChild(3).GetComponentsInChildren<Toggle>();
 
-                ColorBlock colorBlock = new ColorBlock
-                {
-                    normalColor = isCorrect ? Color.green : Color.red,
-                    highlightedColor = isCorrect ? Color.green : Color.red,
-                    pressedColor = isCorrect ? Color.green : Color.red,
-                    selectedColor = isCorrect ? Color.green : Color.red,
-                    disabledColor = isCorrect ? Color.green : Color.red,
-                    colorMultiplier = 1f
-                };
-
-                switch (selectedAnswer) {
-                    case "A":
-                        ansAToggle.colors = colorBlock;
-                        break;
-                    case "B":
-                        ansBToggle.colors = colorBlock;
-                        break;
-                    case "C":
-                        ansCToggle.colors = colorBlock;
-                        break;
-                    case "D":
-                        ansDToggle.colors = colorBlock;
-                        break;
+            foreach (Toggle toggle in toggles) {
+                if (toggle.isOn) {
+                    ColorBlock colorBlock = new ColorBlock {
+                        normalColor = isCorrect ? Color.green : Color.red,
+                        highlightedColor = isCorrect ? Color.green : Color.red,
+                        pressedColor = isCorrect ? Color.green : Color.red,
+                        selectedColor = isCorrect ? Color.green : Color.red,
+                        disabledColor = isCorrect ? Color.green : Color.red,
+                        colorMultiplier = 1f
+                    };
+                    toggle.colors = colorBlock;
                 }
 
-                ansAToggle.interactable = false;
-                ansBToggle.interactable = false;
-                ansCToggle.interactable = false;
-                ansDToggle.interactable = false;
+                toggle.interactable = false;
             }
         }
         private int LoadTotalQuizCount() {

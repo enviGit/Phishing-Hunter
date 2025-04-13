@@ -1,3 +1,4 @@
+using DG.Tweening;
 using ph.Managers;
 using TMPro;
 using UnityEngine;
@@ -12,71 +13,80 @@ namespace ph.Core {
             SeniorAnalyst,
             Expert
         }
-
-        [Header("Managers")]
-        public QuizManager quizManager;
-        public MailManager mailManager;
+        public static PlayerRatingSystem Instance;
 
         [Header("UI")]
-        public TextMeshProUGUI levelText;
-        public TextMeshProUGUI positionText;
-        public Image progressSlider;
+        [SerializeField] private TextMeshProUGUI levelText;
+        [SerializeField] private TextMeshProUGUI positionText;
+        [SerializeField] private Image progressSlider;
+        [SerializeField] private CanvasGroup progressGroup;
 
         [Header("Progress")]
-        public int level = 0;
-        public PlayerPosition position = PlayerPosition.Intern;
-        private int quizzesCompleted = 0;
-        private int mailsIdentified = 0;
+        [HideInInspector] public int level = 0;
+        [HideInInspector] public PlayerPosition position = PlayerPosition.Intern;
+        private float totalProgress;
 
+        private void Awake() {
+            Instance = this;
+        }
         private void Start() {
             UpdateUI();
             progressSlider.fillAmount = 0f;
         }
+        public void UpdateProgress() {
+            int correctMails = MailManager.CorrectMailAnswers;
+            int correctQuizzes = QuizManager.CorrectQuizAnswers;
+            int totalMails = MailManager.TotalMailCount;
+            int totalQuizzes = QuizManager.TotalQuizCount;
 
-        public void OnQuizCompleted() {
-            quizzesCompleted++;
-            UpdateProgress();
-        }
+            progressGroup.transform.SetSiblingIndex(progressGroup.transform.parent.childCount - 3);
+            progressGroup.DOFade(1f, 0.5f).SetEase(Ease.OutBack);
 
-        public void OnMailPhishingIdentified() {
-            mailsIdentified++;
-            UpdateProgress();
-        }
+            float rawProgress = (correctMails * 2f + correctQuizzes) / (totalMails * 2f + totalQuizzes);
+            totalProgress = rawProgress * MaxLevelCount(); // gdzie MaxLevelCount = ile poziomów przewidujesz
 
-        private void UpdateProgress() {
-            int totalProgress = quizzesCompleted + mailsIdentified;
-            int requiredForNextLevel = (level + 1) * 5;
+            int newLevel = Mathf.FloorToInt(totalProgress);
+            float currentLevelProgress = totalProgress - newLevel;
 
-            progressSlider.fillAmount = (float)totalProgress / requiredForNextLevel;
-
-            if (totalProgress >= requiredForNextLevel) {
-                level++;
-                quizzesCompleted = 0;
-                mailsIdentified = 0;
-                UpdatePosition();
+            if (newLevel > level && level < MaxLevelCount()) {
+                level = newLevel;
                 UpdateDifficulty();
-                UpdateUI();
-                progressSlider.fillAmount = 0f;
+                UpdatePosition();
             }
-        }
 
+            if (level >= MaxLevelCount()) {
+                currentLevelProgress = 1f;
+            }
+
+            progressSlider.DOFillAmount(currentLevelProgress, 1f).SetEase(Ease.OutSine);
+            UpdateUI();
+
+            progressGroup.DOFade(0.1f, 0.5f).SetDelay(2f).SetEase(Ease.InBack).OnComplete(() => {
+                progressGroup.transform.SetSiblingIndex(1);
+            });
+        }
+        private int MaxLevelCount() {
+            return 50;
+        }
         private void UpdatePosition() {
-            if (level < 3) position = PlayerPosition.Intern;
-            else if (level < 6) position = PlayerPosition.JuniorAnalyst;
-            else if (level < 9) position = PlayerPosition.Analyst;
-            else if (level < 12) position = PlayerPosition.SeniorAnalyst;
+            if (level < 5) position = PlayerPosition.Intern;
+            else if (level < 10) position = PlayerPosition.JuniorAnalyst;
+            else if (level < 20) position = PlayerPosition.Analyst;
+            else if (level < 40) position = PlayerPosition.SeniorAnalyst;
             else position = PlayerPosition.Expert;
         }
+        private float EaseOutProgress(float t) {
+            t = Mathf.Clamp01(t);
 
+            return Mathf.Pow(t, 0.5f); // t ^ 0.6 – im mniejsza potęga, tym szybszy start i wolniejszy koniec
+        }
         private void UpdateDifficulty() {
             Settings.Difficulty = level < 5 ? 0 : 1;
         }
-
         private void UpdateUI() {
             levelText.text = $"{level}";
             positionText.text = GetPositionDisplayName(position);
         }
-
         private string GetPositionDisplayName(PlayerPosition pos) {
             switch (pos) {
                 case PlayerPosition.Intern: return "Intern";

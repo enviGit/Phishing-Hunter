@@ -1,4 +1,5 @@
 using DG.Tweening;
+using ph.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,10 +45,15 @@ namespace ph.Managers {
         private List<int> flaggedEmailIds = new List<int>();
         private List<int> correctlyMarkedEmails = new List<int>();
         private int correctMarksCount = 0;
+        public static int TotalMailCount { get; private set; }
+        public static int CorrectMailAnswers { get; private set; }
 
         private void Start() {
             mainPreviewCanvas = mailPreview.GetComponent<CanvasGroup>();
+            CorrectMailAnswers = 0;
             LoadEmails();
+            TotalMailCount = LoadTotalMailCount();
+            Debug.Log($"Total Mail Count: {TotalMailCount}");
             AssignRandomDates();
             DisplayEmails();
         }
@@ -174,7 +180,7 @@ namespace ph.Managers {
             });
 
             mailItem.transform.DOScale(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
-                Destroy(mailItem);
+                if (mailItem != null) Destroy(mailItem);
             });
 
             if (email.isPhishing) {
@@ -182,7 +188,9 @@ namespace ph.Managers {
             }
 
             correctMarksCount++;
+            CorrectMailAnswers++;
             correctlyMarkedEmails.Add(email.id);
+            PlayerRatingSystem.Instance.UpdateProgress();
         }
         private void MarkEmailAsPhishing(Email email, GameObject mailItem) {
             flaggedEmailIds.Add(email.id);
@@ -200,7 +208,31 @@ namespace ph.Managers {
             }
 
             correctMarksCount++;
+            CorrectMailAnswers++;
             correctlyMarkedEmails.Add(email.id);
+            PlayerRatingSystem.Instance.UpdateProgress();
+        }
+        private int LoadTotalMailCount() {
+            if (resourcesData == null) {
+                return 0;
+            }
+
+            var langData = resourcesData.FirstOrDefault(x => x.lang == "en");
+
+            if (langData == null) {
+                Debug.LogError("Brak danych maili dla wybranego języka.");
+                return 0;
+            }
+
+            int count = 0;
+            if (langData.newbieEmails != null) {
+                count += langData.newbieEmails.Count;
+            }
+            if (langData.advancedEmails != null) {
+                count += langData.advancedEmails.Count;
+            }
+
+            return count;
         }
     }
 }

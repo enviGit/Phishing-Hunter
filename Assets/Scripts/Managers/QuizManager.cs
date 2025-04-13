@@ -1,4 +1,5 @@
 using DG.Tweening;
+using ph.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,9 +51,14 @@ namespace ph.Managers {
         private int totalQuestions = 0;
         private Dictionary<int, string> userAnswers = new Dictionary<int, string>();
         private List<int> incorrectQuestions = new List<int>();
+        public static int TotalQuizCount { get; private set; }
+        public static int CorrectQuizAnswers { get; private set; }
 
         private void Start() {
             resultText = resultPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            TotalQuizCount = LoadTotalQuizCount();
+            Debug.Log($"Total Quiz Count: {TotalQuizCount}");
+            CorrectQuizAnswers = 0;
             LoadQuestions();
             DisplayQuestions();
             resultPanel.GetComponent<CanvasGroup>().alpha = 0;
@@ -133,7 +139,10 @@ namespace ph.Managers {
 
                 if (isCorrect) {
                     correctAnswers++;
+                    CorrectQuizAnswers++;
                 }
+
+                PlayerRatingSystem.Instance.UpdateProgress();
             }
 
             string result = $"{correctAnswers} / {totalQuestions} ({(correctAnswers / (float)totalQuestions * 100):0.0}%)";
@@ -217,6 +226,31 @@ namespace ph.Managers {
                 ansBToggle.interactable = false;
                 ansCToggle.interactable = false;
                 ansDToggle.interactable = false;
+            }
+        }
+        private int LoadTotalQuizCount() {
+            List<LocalizedQuizData> resourcesData = null;
+
+            if (jsonFile != null) {
+                string wrappedJson = "{\"items\":" + jsonFile.text + "}";
+                resourcesData = JsonUtility.FromJson<LocalizedQuizDataList>(wrappedJson).items;
+            }
+            else {
+                Debug.LogError("Brak pliku questions.json w folderze Resources.");
+            }
+
+            string lang = Settings.Language.ToLower();
+
+            var resLangData = resourcesData?.FirstOrDefault(x => x.lang == lang);
+
+            if (resLangData != null) {
+                List<QuizQuestion> newbieQuestions = resLangData.newbieQuestions;
+                List<QuizQuestion> advancedQuestions = resLangData.advancedQuestions;
+                return newbieQuestions.Count + advancedQuestions.Count;
+            }
+            else {
+                Debug.LogError("Brak danych dla wybranego języka.");
+                return 0;
             }
         }
     }

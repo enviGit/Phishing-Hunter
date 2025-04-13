@@ -52,6 +52,7 @@ namespace ph.Managers {
         private Dictionary<int, List<string>> userAnswers = new();
         private List<int> incorrectQuestions = new List<int>();
         private List<int> fullyCorrectQuestions = new();
+        private LocalizedQuizData resLangData;
         public static int TotalQuizCount { get; private set; }
         public static int CorrectQuizAnswers { get; private set; }
 
@@ -78,12 +79,10 @@ namespace ph.Managers {
                 Debug.LogError("Brak pliku questions.json w folderze Resources.");
             }
 
-            string lang = Settings.Language.ToLower();
-
-            var resLangData = resourcesData?.FirstOrDefault(x => x.lang == lang);
+            resLangData = resourcesData?.FirstOrDefault(x => x.lang == Settings.Language);
 
             if (resLangData != null) {
-                questionList = Settings.Difficulty == 0 ? resLangData.newbieQuestions : resLangData.advancedQuestions;
+                questionList = resLangData.newbieQuestions;
             }
             else {
                 Debug.LogError("Brak danych dla wybranego języka.");
@@ -91,10 +90,26 @@ namespace ph.Managers {
         }
         private void DisplayQuestions() {
             // Pytania, które jeszcze nie zostały wyświetlone oraz pytania, które zostały odpowiedziane błędnie.
-            List<QuizQuestion> questionsToDisplay = questionList
+            List<QuizQuestion> questionsToDisplay;
+
+            if (Settings.Difficulty == 0) {
+                questionsToDisplay = questionList
     .Where(q => !fullyCorrectQuestions.Contains(q.id)) // <-- odfiltrowujemy w pełni zaliczone
     .Where(q => !displayedQuestionIds.Contains(q.id) || incorrectQuestions.Contains(q.id))
     .ToList();
+            }
+            else {
+                questionsToDisplay = questionList
+    .Where(q => !fullyCorrectQuestions.Contains(q.id))
+    .Where(q => !displayedQuestionIds.Contains(q.id) || incorrectQuestions.Contains(q.id))
+    .ToList();
+
+                questionsToDisplay.AddRange(resLangData.advancedQuestions.Where(q => !fullyCorrectQuestions.Contains(q.id))
+    .Where(q => !displayedQuestionIds.Contains(q.id) || incorrectQuestions.Contains(q.id))
+    .ToList());
+            }
+
+
 
             foreach (var question in questionsToDisplay) {
                 GameObject questionItem = Instantiate(questionPrefab, workSpace.GetChild(0));
@@ -130,7 +145,10 @@ namespace ph.Managers {
 
             foreach (Transform questionItem in workSpace.GetChild(0)) {
                 TextMeshProUGUI questionText = questionItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-                QuizQuestion question = questionList.FirstOrDefault(q => questionText.text.Contains(q.question));
+                QuizQuestion question = resLangData.newbieQuestions
+    .Concat(resLangData.advancedQuestions)
+    .FirstOrDefault(q => questionText.text == q.question);
+
                 if (question == null) continue;
 
                 List<string> selectedAnswers = GetSelectedAnswersForQuestion(question.id);

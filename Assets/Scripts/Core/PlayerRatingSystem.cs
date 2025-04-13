@@ -50,6 +50,7 @@ namespace ph.Core {
 
             if (newLevel > level && level < MaxLevelCount()) {
                 level = newLevel;
+                progressSlider.fillAmount = 0;
                 UpdateDifficulty();
                 UpdatePosition();
             }

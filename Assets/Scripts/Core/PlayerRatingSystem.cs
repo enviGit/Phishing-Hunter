@@ -1,5 +1,6 @@
 using DG.Tweening;
 using ph.Managers;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,78 @@ namespace ph.Core {
             SeniorAnalyst,
             Expert
         }
+        private readonly Dictionary<string, Dictionary<PlayerPosition, string>> positionTranslations = new Dictionary<string, Dictionary<PlayerPosition, string>> {
+    { "en", new Dictionary<PlayerPosition, string> {
+        { PlayerPosition.Intern, "Intern" },
+        { PlayerPosition.JuniorAnalyst, "Junior Cybersecurity Analyst" },
+        { PlayerPosition.Analyst, "Cybersecurity Analyst" },
+        { PlayerPosition.SeniorAnalyst, "Senior Cybersecurity Analyst" },
+        { PlayerPosition.Expert, "Cybersecurity Expert" }
+    }},
+    { "pl", new Dictionary<PlayerPosition, string> {
+        { PlayerPosition.Intern, "Stażysta" },
+        { PlayerPosition.JuniorAnalyst, "Junior Analityk Cyberbezpieczeństwa" },
+        { PlayerPosition.Analyst, "Analityk Cyberbezpieczeństwa" },
+        { PlayerPosition.SeniorAnalyst, "Starszy Analityk Cyberbezpieczeństwa" },
+        { PlayerPosition.Expert, "Ekspert ds. Cyberbezpieczeństwa" }
+    }},
+    { "es", new Dictionary<PlayerPosition, string> {
+        { PlayerPosition.Intern, "Pasantía" },
+        { PlayerPosition.JuniorAnalyst, "Analista Junior de Ciberseguridad" },
+        { PlayerPosition.Analyst, "Analista de Ciberseguridad" },
+        { PlayerPosition.SeniorAnalyst, "Analista Senior de Ciberseguridad" },
+        { PlayerPosition.Expert, "Experto en Ciberseguridad" }
+    }},
+    { "fr", new Dictionary<PlayerPosition, string> {
+        { PlayerPosition.Intern, "Stagiaire" },
+        { PlayerPosition.JuniorAnalyst, "Analyste Junior en Cybersécurité" },
+        { PlayerPosition.Analyst, "Analyste en Cybersécurité" },
+        { PlayerPosition.SeniorAnalyst, "Analyste Senior en Cybersécurité" },
+        { PlayerPosition.Expert, "Expert en Cybersécurité" }
+    }},
+    { "de", new Dictionary<PlayerPosition, string> {
+        { PlayerPosition.Intern, "Praktikant" },
+        { PlayerPosition.JuniorAnalyst, "Junior Analyst für Cybersicherheit" },
+        { PlayerPosition.Analyst, "Analyst für Cybersicherheit" },
+        { PlayerPosition.SeniorAnalyst, "Senior Analyst für Cybersicherheit" },
+        { PlayerPosition.Expert, "Cybersicherheitsexperte" }
+    }},
+    { "it", new Dictionary<PlayerPosition, string> {
+        { PlayerPosition.Intern, "Tirocinante" },
+        { PlayerPosition.JuniorAnalyst, "Analista Junior di Cybersecurity" },
+        { PlayerPosition.Analyst, "Analista di Cybersecurity" },
+        { PlayerPosition.SeniorAnalyst, "Analista Senior di Cybersecurity" },
+        { PlayerPosition.Expert, "Esperto di Cybersecurity" }
+    }},
+    { "ru", new Dictionary<PlayerPosition, string> {
+        { PlayerPosition.Intern, "Стажер" },
+        { PlayerPosition.JuniorAnalyst, "Младший аналитик по кибербезопасности" },
+        { PlayerPosition.Analyst, "Аналитик по кибербезопасности" },
+        { PlayerPosition.SeniorAnalyst, "Старший аналитик по кибербезопасности" },
+        { PlayerPosition.Expert, "Эксперт по кибербезопасности" }
+    }},
+    { "pt-BR", new Dictionary<PlayerPosition, string> {
+        { PlayerPosition.Intern, "Estagiário" },
+        { PlayerPosition.JuniorAnalyst, "Analista Júnior de Cibersegurança" },
+        { PlayerPosition.Analyst, "Analista de Cibersegurança" },
+        { PlayerPosition.SeniorAnalyst, "Analista Sênior de Cibersegurança" },
+        { PlayerPosition.Expert, "Especialista em Cibersegurança" }
+    }},
+    { "ko", new Dictionary<PlayerPosition, string> {
+        { PlayerPosition.Intern, "인턴" },
+        { PlayerPosition.JuniorAnalyst, "주니어 사이버 보안 분석가" },
+        { PlayerPosition.Analyst, "사이버 보안 분석가" },
+        { PlayerPosition.SeniorAnalyst, "선임 사이버 보안 분석가" },
+        { PlayerPosition.Expert, "사이버 보안 전문가" }
+    }},
+    { "zh-Hans", new Dictionary<PlayerPosition, string> {
+        { PlayerPosition.Intern, "实习生" },
+        { PlayerPosition.JuniorAnalyst, "初级网络安全分析师" },
+        { PlayerPosition.Analyst, "网络安全分析师" },
+        { PlayerPosition.SeniorAnalyst, "高级网络安全分析师" },
+        { PlayerPosition.Expert, "网络安全专家" }
+    }}
+};
         public static PlayerRatingSystem Instance;
 
         [Header("UI")]
@@ -87,14 +160,13 @@ namespace ph.Core {
             positionText.text = GetPositionDisplayName(position);
         }
         private string GetPositionDisplayName(PlayerPosition pos) {
-            switch (pos) {
-                case PlayerPosition.Intern: return "Intern";
-                case PlayerPosition.JuniorAnalyst: return "Junior Cybersecurity Analyst";
-                case PlayerPosition.Analyst: return "Cybersecurity Analyst";
-                case PlayerPosition.SeniorAnalyst: return "Senior Cybersecurity Analyst";
-                case PlayerPosition.Expert: return "Cybersecurity Expert";
-                default: return "Unknown";
+            string currentLanguage = Settings.Language;
+
+            if (positionTranslations.ContainsKey(currentLanguage) &&
+                positionTranslations[currentLanguage].ContainsKey(pos)) {
+                return positionTranslations[currentLanguage][pos];
             }
+            return positionTranslations["en"][pos];
         }
     }
 }

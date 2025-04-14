@@ -22,6 +22,13 @@ MonoBehaviour:
     - Locale-ru
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c946e54be5bd7344a2e7e6815031a0c
+    m_Address: OS Labels_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 77223f79ac640aa4689c8c391d28348e
     m_Address: Email Item Table_ru
     m_ReadOnly: 1

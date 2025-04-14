@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: OS Labels_it
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: it
+  m_SharedData: {fileID: 11400000, guid: 0738149b24bbdda4c9a98ad57418061b, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 39739580416
+    m_Localized: 'Tuo risultato: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1253676015616
+    m_Localized: Contatore FPS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3331102203904
+    m_Localized: Elimina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3803724767232
+    m_Localized: Seleziona tutto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4360384405504
+    m_Localized: Seleziona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755408150528
+    m_Localized: Crea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5132283142144
+    m_Localized: Elimina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5558957105152
+    m_Localized: Seleziona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5932334047232
+    m_Localized: Crea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9802086998016
+    m_Localized: Seleziona tutto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6267794481152
+    m_Localized: Imposta come sfondo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7199169044480
+    m_Localized: Annulla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7654456549376
+    m_Localized: Nuovo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9410678743040
+    m_Localized: Nuovo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8091901485056
+    m_Localized: Ricarica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8755402629120
+    m_Localized: Controlla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10188109766656
+    m_Localized: Spegnimento in corso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11956382195712
+    m_Localized: Ora in riproduzione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12721918173184
+    m_Localized: 'Tue canzoni:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14389552472064
+    m_Localized: Inserisci testo...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14807942684672
+    m_Localized: Inserisci "help" per ottenere i comandi attuali.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16174564368384
+    m_Localized: TESTO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16658524135424
+    m_Localized: 'Tuo testo:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17108791058432
+    m_Localized: 'Strumenti:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17754067951616
+    m_Localized: 'Dimensione del testo:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18267912134656
+    m_Localized: 'Colore del testo:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19034970644480
+    m_Localized: 'Caratteri:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19548823216128
+    m_Localized: 'Interlinea:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20026650910720
+    m_Localized: CYBER QUIZ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20605154484224
+    m_Localized: PAINT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21037817913344
+    m_Localized: Galleria
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22306271911936
+    m_Localized: Note
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22887837327360
+    m_Localized: Musica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24169914425344
+    m_Localized: CARTELLA DELLE NOTE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24963116032000
+    m_Localized: 'I tuoi file di testo:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26168487698432
+    m_Localized: Cyber Quiz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27219890659328
+    m_Localized: Terminale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27934595866624
+    m_Localized: CARTELLA IMMAGINI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28150531219456
+    m_Localized: 'Le tue immagini:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29463147044864
+    m_Localized: Posta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30520631746560
+    m_Localized: IMMAGINE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31130525491200
+    m_Localized: 'Zoom:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31970279677952
+    m_Localized: POSTA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32849082834944
+    m_Localized: Paint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33288524259328
+    m_Localized: Spazio di lavoro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33790288846848
+    m_Localized: TERMINALE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34189058105344
+    m_Localized: ANTEPRIMA EMAIL
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

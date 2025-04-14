@@ -22,6 +22,13 @@ MonoBehaviour:
     - Locale-pt-BR
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3680d2fd9e906f64ea5847684705f704
+    m_Address: OS Labels_pt-BR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pt-BR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c42d9137e391b3146a2def9faa491b61
     m_Address: Email Item Table_pt-BR
     m_ReadOnly: 1

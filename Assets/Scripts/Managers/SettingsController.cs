@@ -53,14 +53,14 @@ namespace ph.Managers {
     "Español",       // es
     "Français",      // fr
     "Deutsch",       // de
+    "Italiano",      // it
     "Русский",       // ru
     "Português",     // pt-BR
-    "日本語",         // ja
     "한국어",         // ko
     "简体中文"        // zh-Hans
 };
         private readonly string[] languageCodes = new string[] {
-    "en", "pl", "es", "fr", "de", "ru", "pt-BR", "ja", "ko", "zh-Hans"
+    "en", "pl", "es", "fr", "de", "it", "ru", "pt-BR", "ko", "zh-Hans"
 };
         private readonly Dictionary<string, List<string>> qualityTranslations = new Dictionary<string, List<string>> {
     { "en", new List<string> { "High", "Medium", "Low" } },
@@ -68,9 +68,9 @@ namespace ph.Managers {
     { "es", new List<string> { "Alta", "Media", "Baja" } },
     { "fr", new List<string> { "Élevée", "Moyenne", "Faible" } },
     { "de", new List<string> { "Hoch", "Mittel", "Niedrig" } },
+    { "it", new List<string> { "Alta", "Media", "Bassa" } },
     { "ru", new List<string> { "Высокое", "Среднее", "Низкое" } },
     { "pt-BR", new List<string> { "Alta", "Média", "Baixa" } },
-    { "ja", new List<string> { "高", "中", "低" } },
     { "ko", new List<string> { "높음", "중간", "낮음" } },
     { "zh-Hans", new List<string> { "高", "中", "低" } }
 };
@@ -319,7 +319,7 @@ namespace ph.Managers {
             string selectedLang = supportedLanguages[index];
             RectTransform textRect = languageText.GetComponent<RectTransform>();
 
-            if (selectedLang == "日本語" || selectedLang == "한국어" || selectedLang == "简体中文") {
+            if (selectedLang == "한국어" || selectedLang == "简体中文") {
                 textRect.anchoredPosition = new Vector2(textRect.anchoredPosition.x, 7f);
             }
             else {
@@ -354,12 +354,12 @@ namespace ph.Managers {
                     return LocalizationSettings.AvailableLocales.GetLocale("fr");
                 case "de":
                     return LocalizationSettings.AvailableLocales.GetLocale("de");
+                case "it":
+                    return LocalizationSettings.AvailableLocales.GetLocale("it");
                 case "ru":
                     return LocalizationSettings.AvailableLocales.GetLocale("ru");
                 case "pt-BR":
                     return LocalizationSettings.AvailableLocales.GetLocale("pt-BR");
-                case "ja":
-                    return LocalizationSettings.AvailableLocales.GetLocale("ja");
                 case "ko":
                     return LocalizationSettings.AvailableLocales.GetLocale("ko");
                 case "zh-Hans":

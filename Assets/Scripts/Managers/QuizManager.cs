@@ -60,9 +60,9 @@ namespace ph.Managers {
         { "es", ("(Opción única)", "(Opción múltiple)") },
         { "fr", ("(Choix unique)", "(Choix multiples)") },
         { "de", ("(Einzelauswahl)", "(Mehrfachauswahl)") },
+        { "it", ("(Scelta singola)", "(Scelta multipla)") },
         { "ru", ("(Один вариант)", "(Несколько вариантов)") },
         { "pt-BR", ("(Escolha única)", "(Escolha múltipla)") },
-        { "ja", ("（単一選択）", "（複数選択）") },
         { "ko", ("(단일 선택)", "(다중 선택)") },
         { "zh-Hans", ("（单选）", "（多选）") }
     };
@@ -100,7 +100,7 @@ namespace ph.Managers {
                 Debug.LogError("Brak danych dla wybranego języka.");
             }
         }
-        private void DisplayQuestions() {
+        public void DisplayQuestions() {
             // Pytania, które jeszcze nie zostały wyświetlone oraz pytania, które zostały odpowiedziane błędnie.
             List<QuizQuestion> questionsToDisplay;
 
@@ -191,8 +191,20 @@ namespace ph.Managers {
                     PlayerRatingSystem.Instance.UpdateProgress();
             }
 
-            string result = $"{correctAnswers} / {totalQuestions} ({(correctAnswers / (float)totalQuestions * 100):0.0}%)";
+            string result = $"{correctAnswers} / {totalQuestions} ({(correctAnswers / (float)totalQuestions * 100):0}%)";
             resultText.text = result;
+
+            float scorePercentage = (correctAnswers / (float)totalQuestions) * 100;
+
+            if (scorePercentage >= 80) {
+                resultText.color = Color.green;
+            }
+            else if (scorePercentage >= 50) {
+                resultText.color = Color.yellow;
+            }
+            else {
+                resultText.color = Color.red;
+            }
 
             resultPanel.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
             newButton.interactable = true;

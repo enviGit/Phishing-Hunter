@@ -19,15 +19,15 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 22287081472
-    m_Localized: "\xD6FFNEN"
+    m_Localized: "\xD6ffnen"
     m_Metadata:
       m_Items: []
   - m_Id: 56621654016
-    m_Localized: SICHER
+    m_Localized: Sicher
     m_Metadata:
       m_Items: []
   - m_Id: 89349808128
-    m_Localized: PHISHING
+    m_Localized: Phishing
     m_Metadata:
       m_Items: []
   references:

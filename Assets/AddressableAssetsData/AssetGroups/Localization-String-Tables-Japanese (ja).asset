@@ -15,6 +15,13 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-Japanese (ja)
   m_GUID: c4ceb78a5d2251640b045674e43376f5
   m_SerializeEntries:
+  - m_GUID: aea294bdecafe174481bfab640d6190f
+    m_Address: Email Item Table_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f4752e9f109702649b7b30438e0620cc
     m_Address: Main Menu Labels_ja
     m_ReadOnly: 1

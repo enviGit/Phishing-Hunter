@@ -53,6 +53,19 @@ namespace ph.Managers {
         private List<int> incorrectQuestions = new List<int>();
         private List<int> fullyCorrectQuestions = new();
         private LocalizedQuizData resLangData;
+        private Dictionary<string, (string SingleChoice, string MultipleChoice)> localization =
+    new() {
+        { "en", ("(Single choice)", "(Multiple choice)") },
+        { "pl", ("(Jednokrotny wybór)", "(Wielokrotny wybór)") },
+        { "es", ("(Opción única)", "(Opción múltiple)") },
+        { "fr", ("(Choix unique)", "(Choix multiples)") },
+        { "de", ("(Einzelauswahl)", "(Mehrfachauswahl)") },
+        { "ru", ("(Один вариант)", "(Несколько вариантов)") },
+        { "pt-BR", ("(Escolha única)", "(Escolha múltipla)") },
+        { "ja", ("（単一選択）", "（複数選択）") },
+        { "ko", ("(단일 선택)", "(다중 선택)") },
+        { "zh-Hans", ("（单选）", "（多选）") }
+    };
         public static int TotalQuizCount { get; private set; }
         public static int CorrectQuizAnswers { get; private set; }
 
@@ -67,7 +80,6 @@ namespace ph.Managers {
             checkButton.interactable = true;
             newButton.interactable = false;
         }
-
         private void LoadQuestions() {
             List<LocalizedQuizData> resourcesData = null;
 
@@ -109,8 +121,6 @@ namespace ph.Managers {
     .ToList());
             }
 
-
-
             foreach (var question in questionsToDisplay) {
                 GameObject questionItem = Instantiate(questionPrefab, workSpace.GetChild(0));
 
@@ -119,12 +129,16 @@ namespace ph.Managers {
                 TextMeshProUGUI ansBText = questionItem.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI ansCText = questionItem.transform.GetChild(2).GetChild(2).GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI ansDText = questionItem.transform.GetChild(2).GetChild(3).GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI questionType = questionItem.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
 
                 questionText.text = question.question;
                 ansAText.text = "A: " + question.ansA;
                 ansBText.text = "B: " + question.ansB;
                 ansCText.text = "C: " + question.ansC;
                 ansDText.text = "D: " + question.ansD;
+                questionType.text = localization.TryGetValue(Settings.Language, out var localizedTypes)
+    ? (question.correctAns.Count > 1 ? localizedTypes.MultipleChoice : localizedTypes.SingleChoice)
+    : (question.correctAns.Count > 1 ? "(Multiple choice)" : "(Single choice)");
 
                 Toggle ansAToggle = questionItem.transform.GetChild(3).GetChild(0).GetComponent<Toggle>();
                 Toggle ansBToggle = questionItem.transform.GetChild(3).GetChild(1).GetComponent<Toggle>();

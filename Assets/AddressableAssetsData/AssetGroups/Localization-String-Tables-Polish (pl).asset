@@ -15,6 +15,13 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-Polish (pl)
   m_GUID: 0c3a81dfcc95c2842a9d482b9db6cea3
   m_SerializeEntries:
+  - m_GUID: 20432dcee974b9448ad9047b626241e2
+    m_Address: Email Item Table_pl
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pl
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 50a3179592c77564fb5cd6359c2f317c
     m_Address: Main Menu Labels_pl
     m_ReadOnly: 1

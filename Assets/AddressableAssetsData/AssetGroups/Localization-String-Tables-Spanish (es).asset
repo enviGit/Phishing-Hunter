@@ -22,6 +22,13 @@ MonoBehaviour:
     - Locale-es
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f92690c42c3dd044688da9003b0fa384
+    m_Address: Email Item Table_es
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-es
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: b1754d7af82082143b3117a9d29301d8, type: 2}
   m_SchemaSet:

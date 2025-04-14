@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Main Menu Labels_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 8ad179044b377fe4d84034782a980c78, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 223030665216
+    m_Localized: Empezar desde cero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 366559748096
+    m_Localized: Cargar mi desastre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 401565409280
+    m_Localized: Retocar y curiosear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429944070144
+    m_Localized: Ya fue suficiente por hoy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 685582704640
+    m_Localized: "\xA1Tr\xE1eme de vuelta!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 791878950912
+    m_Localized: "Ll\xE9vame de vuelta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816629538816
+    m_Localized: "Resoluci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 956639600640
+    m_Localized: Pantalla completa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988038160384
+    m_Localized: Brillo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1057160290304
+    m_Localized: "Sincronizaci\xF3n vertical"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1084893028352
+    m_Localized: Calidad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1126353723392
+    m_Localized: Idioma de la interfaz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1304875884544
+    m_Localized: "Sensibilidad del rat\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1356545515520
+    m_Localized: "Volumen de la m\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1392306151424
+    m_Localized: Volumen de efectos sonoros
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1424820396032
+    m_Localized: Ejecutar en segundo plano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1473818255360
+    m_Localized: "\xA1Haz que suceda!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1520265977856
+    m_Localized: Ctrl+Z mis configuraciones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1538704138240
+    m_Localized: Uy, mejor no
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1712209911808
+    m_Localized: "Actualizaci\xF3n del sistema:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1827008012288
+    m_Localized: "Ajustamos unos cables y activamos unos interruptores. \xBFGuardar
+      la nueva config?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1862030450688
+    m_Localized: "\xA1Vamos a ello!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1917730807808
+    m_Localized: "Finjamos que esto nunca pas\xF3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1968918093824
+    m_Localized: "\xBFVolver a los tiempos m\xE1s seguros?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2036836458496
+    m_Localized: "Restaurando tu \xFAltima configuraci\xF3n estable"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2056667127808
+    m_Localized: "Volver a lo b\xE1sico"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2083854606336
+    m_Localized: No, me gusta mi caos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194185773056
+    m_Localized: "\xA1Amenaza cibern\xE9tica detectada!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2229480841216
+    m_Localized: "Cerrar sesi\xF3n ahora puede dejar tu sistema vulnerable a... el
+      aburrimiento."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2257997914112
+    m_Localized: "S\xE1quenme de esta mazmorras digital"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2481277493248
+    m_Localized: "\xBFAburrimiento? \xA1Adelante!"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

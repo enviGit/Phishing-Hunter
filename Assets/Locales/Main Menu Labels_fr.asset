@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Main Menu Labels_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: 8ad179044b377fe4d84034782a980c78, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 223030665216
+    m_Localized: "Recommencer \xE0 z\xE9ro"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 366559748096
+    m_Localized: Charger mon bazar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 401565409280
+    m_Localized: Ajuster et explorer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429944070144
+    m_Localized: "On s\u2019arr\xEAte l\xE0 pour aujourd\u2019hui"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 685582704640
+    m_Localized: "Ram\xE8ne-moi!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 791878950912
+    m_Localized: "Ram\xE8ne-moi en arri\xE8re"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816629538816
+    m_Localized: "R\xE9solution"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 956639600640
+    m_Localized: "Plein \xE9cran"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988038160384
+    m_Localized: "Luminosit\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1057160290304
+    m_Localized: Synchronisation verticale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1084893028352
+    m_Localized: "Qualit\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1126353723392
+    m_Localized: Langue de l'interface
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1304875884544
+    m_Localized: "Sensibilit\xE9 de la souris"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1356545515520
+    m_Localized: Volume de la musique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1392306151424
+    m_Localized: Volume des effets sonores
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1424820396032
+    m_Localized: "Ex\xE9cuter en arri\xE8re-plan"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1473818255360
+    m_Localized: Appliquer les changements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1520265977856
+    m_Localized: "Ctrl+Z mes param\xE8tres"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1538704138240
+    m_Localized: Oups, laisse tomber
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1712209911808
+    m_Localized: "Mise \xE0 jour du syst\xE8me:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1827008012288
+    m_Localized: "On a tripot\xE9 des c\xE2bles et jou\xE9 avec des boutons. Sauver
+      la config ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1862030450688
+    m_Localized: Allons-y
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1917730807808
+    m_Localized: "Faisons comme si rien ne s'\xE9tait pass\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1968918093824
+    m_Localized: "Retour aux jours plus s\xFBrs ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2036836458496
+    m_Localized: "R\xE9tablissement de votre derni\xE8re bonne configuration"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2056667127808
+    m_Localized: Retour aux bases
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2083854606336
+    m_Localized: "Non, j\u2019aime le chaos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194185773056
+    m_Localized: "Menace cybern\xE9tique d\xE9tect\xE9e !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2229480841216
+    m_Localized: "Se d\xE9connecter maintenant pourrait laisser votre syst\xE8me
+      vuln\xE9rable \xE0... l'ennui."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2257997914112
+    m_Localized: "Laissez-moi sortir de ce donjon num\xE9rique"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2481277493248
+    m_Localized: L'ennui ? Amenez-le !
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

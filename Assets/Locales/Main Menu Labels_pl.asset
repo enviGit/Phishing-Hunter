@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Main Menu Labels_pl
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pl
+  m_SharedData: {fileID: 11400000, guid: 8ad179044b377fe4d84034782a980c78, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 223030665216
+    m_Localized: Zacznij od zera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 366559748096
+    m_Localized: "Wczytaj m\xF3j bajzel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 401565409280
+    m_Localized: Pokombinuj i zajrzyj
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429944070144
+    m_Localized: "Na dzi\u015B wystarczy"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 685582704640
+    m_Localized: "Przywr\xF3\u0107 mnie!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 791878950912
+    m_Localized: Cofnij mnie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816629538816
+    m_Localized: "Rozdzielczo\u015B\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 956639600640
+    m_Localized: "Pe\u0142ny ekran"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988038160384
+    m_Localized: "Jasno\u015B\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1057160290304
+    m_Localized: VSync
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1084893028352
+    m_Localized: "Jako\u015B\u0107"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1126353723392
+    m_Localized: "J\u0119zyk interfejsu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1304875884544
+    m_Localized: "Czu\u0142o\u015B\u0107 myszy"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1356545515520
+    m_Localized: "G\u0142o\u015Bno\u015B\u0107 muzyki"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1392306151424
+    m_Localized: "G\u0142o\u015Bno\u015B\u0107 efekt\xF3w"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1424820396032
+    m_Localized: "Dzia\u0142aj w tle"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1473818255360
+    m_Localized: "Zr\xF3b to!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1520265977856
+    m_Localized: Cofnij ustawienia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1538704138240
+    m_Localized: "Ups, niewa\u017Cne"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1712209911808
+    m_Localized: 'Aktualizacja systemu:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1827008012288
+    m_Localized: "Pogrzebali\u015Bmy w kablach i prze\u0142\u0105czyli\u015Bmy kilka
+      prze\u0142\u0105cznik\xF3w. Zapisa\u0107 nowe ustawienia?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1862030450688
+    m_Localized: Robimy to
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1917730807808
+    m_Localized: "Udajmy, \u017Ce nic si\u0119 nie sta\u0142o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1968918093824
+    m_Localized: "Wr\xF3ci\u0107 do bezpieczniejszych czas\xF3w?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2036836458496
+    m_Localized: Przywracanie ostatniej znanej dobrej konfiguracji
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2056667127808
+    m_Localized: "Powr\xF3t do podstaw"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2083854606336
+    m_Localized: "Nie, lubi\u0119 m\xF3j chaos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194185773056
+    m_Localized: "Wykryto zagro\u017Cenie cybernetyczne!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2229480841216
+    m_Localized: "Wylogowanie teraz mo\u017Ce sprawi\u0107, \u017Ce tw\xF3j system
+      b\u0119dzie podatny na... nud\u0119."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2257997914112
+    m_Localized: "Wypu\u015B\u0107 mnie z tego cyfrowego lochu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2481277493248
+    m_Localized: "Nuda? Przyjmuj\u0119 to!"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

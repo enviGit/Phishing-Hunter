@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Main Menu Labels_pt-BR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pt-BR
+  m_SharedData: {fileID: 11400000, guid: 8ad179044b377fe4d84034782a980c78, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 223030665216
+    m_Localized: "Come\xE7ar do zero"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 366559748096
+    m_Localized: "Carregar minha bagun\xE7a"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 401565409280
+    m_Localized: Ajustar e espiar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429944070144
+    m_Localized: Por hoje chega
+    m_Metadata:
+      m_Items: []
+  - m_Id: 685582704640
+    m_Localized: Me traz de volta!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 791878950912
+    m_Localized: Leva-me de volta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 816629538816
+    m_Localized: "Resolu\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 956639600640
+    m_Localized: Tela cheia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 988038160384
+    m_Localized: Brilho
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1057160290304
+    m_Localized: "Sincroniza\xE7\xE3o Vertical"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1084893028352
+    m_Localized: Qualidade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1126353723392
+    m_Localized: Idioma da interface
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1304875884544
+    m_Localized: Sensibilidade do mouse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1356545515520
+    m_Localized: "Volume da m\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1392306151424
+    m_Localized: Volume dos efeitos sonoros
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1424820396032
+    m_Localized: Executar em segundo plano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1473818255360
+    m_Localized: Fazer acontecer!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1520265977856
+    m_Localized: "Desfazer configura\xE7\xF5es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1538704138240
+    m_Localized: "Ops, deixa pra l\xE1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1712209911808
+    m_Localized: "Atualiza\xE7\xE3o do sistema:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1827008012288
+    m_Localized: "Mexemos nos fios e apertamos alguns bot\xF5es. Salvar a nova config?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1862030450688
+    m_Localized: "Bora l\xE1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1917730807808
+    m_Localized: Vamos fingir que nada aconteceu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1968918093824
+    m_Localized: Voltar para os tempos mais seguros?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2036836458496
+    m_Localized: "Restaurando sua \xFAltima configura\xE7\xE3o funcional"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2056667127808
+    m_Localized: "Voltar ao b\xE1sico"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2083854606336
+    m_Localized: "N\xE3o, eu gosto do meu caos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194185773056
+    m_Localized: "Amea\xE7a cibern\xE9tica detectada!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2229480841216
+    m_Localized: "Fazer logout agora pode deixar seu sistema vulner\xE1vel a... t\xE9dio."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2257997914112
+    m_Localized: Me deixe sair desta masmorra digital
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2481277493248
+    m_Localized: "T\xE9dio? Pode vir!"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,8 +1,11 @@
 using DG.Tweening;
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
@@ -56,9 +59,20 @@ namespace ph.Managers {
     "한국어",         // ko
     "简体中文"        // zh-Hans
 };
-
         private readonly string[] languageCodes = new string[] {
     "en", "pl", "es", "fr", "de", "ru", "pt-BR", "ja", "ko", "zh-Hans"
+};
+        private readonly Dictionary<string, List<string>> qualityTranslations = new Dictionary<string, List<string>> {
+    { "en", new List<string> { "High", "Medium", "Low" } },
+    { "pl", new List<string> { "Wysoka", "Średnia", "Niska" } },
+    { "es", new List<string> { "Alta", "Media", "Baja" } },
+    { "fr", new List<string> { "Élevée", "Moyenne", "Faible" } },
+    { "de", new List<string> { "Hoch", "Mittel", "Niedrig" } },
+    { "ru", new List<string> { "Высокое", "Среднее", "Низкое" } },
+    { "pt-BR", new List<string> { "Alta", "Média", "Baixa" } },
+    { "ja", new List<string> { "高", "中", "低" } },
+    { "ko", new List<string> { "높음", "중간", "낮음" } },
+    { "zh-Hans", new List<string> { "高", "中", "低" } }
 };
         private TextMeshProUGUI languageText;
         private int currentLanguageIndex = 0;
@@ -277,6 +291,14 @@ namespace ph.Managers {
             originalQualityPreset = qualityDropdown.value;
             Settings.QualityPreset = originalQualityPreset;
         }
+        private void UpdateQualityDropdownLabels(string langCode) {
+            if (qualityTranslations.TryGetValue(langCode, out var labels)) {
+                qualityDropdown.ClearOptions();
+                qualityDropdown.AddOptions(labels);
+                qualityDropdown.value = Settings.QualityPreset;
+                qualityDropdown.RefreshShownValue();
+            }
+        }
         #endregion
 
         #region Interface Language
@@ -286,6 +308,10 @@ namespace ph.Managers {
             if (newIndex != currentLanguageIndex) {
                 currentLanguageIndex = newIndex;
                 UpdateLanguageText(currentLanguageIndex);
+                Settings.Language = languageCodes[currentLanguageIndex];
+                UpdateQualityDropdownLabels(languageCodes[currentLanguageIndex]);
+                var locale = GetLocaleFromLanguageCode(Settings.Language);
+                LocalizationSettings.SelectedLocale = locale;
             }
         }
         private void UpdateLanguageText(int index) {
@@ -294,7 +320,7 @@ namespace ph.Managers {
             RectTransform textRect = languageText.GetComponent<RectTransform>();
 
             if (selectedLang == "日本語" || selectedLang == "한국어" || selectedLang == "简体中文") {
-                textRect.anchoredPosition = new Vector2(textRect.anchoredPosition.x - 3f, 7f);
+                textRect.anchoredPosition = new Vector2(textRect.anchoredPosition.x, 7f);
             }
             else {
                 textRect.anchoredPosition = new Vector2(textRect.anchoredPosition.x, 0f);
@@ -304,11 +330,43 @@ namespace ph.Managers {
             currentLanguageIndex = originalLanguageIndex;
             languageSlider.value = originalLanguageIndex;
             UpdateLanguageText(currentLanguageIndex);
+            Settings.Language = languageCodes[originalLanguageIndex];
+            UpdateQualityDropdownLabels(languageCodes[originalLanguageIndex]);
+            var locale = GetLocaleFromLanguageCode(Settings.Language);
+            LocalizationSettings.SelectedLocale = locale;
         }
         private void ApplyLanguage() {
             Settings.Language = languageCodes[currentLanguageIndex];
             originalLanguageIndex = currentLanguageIndex;
-            // Tutaj można dodać reload sceny lub system do dynamicznej zmiany języka
+            UpdateQualityDropdownLabels(languageCodes[currentLanguageIndex]);
+            var locale = GetLocaleFromLanguageCode(Settings.Language);
+            LocalizationSettings.SelectedLocale = locale;
+        }
+        private Locale GetLocaleFromLanguageCode(string languageCode) {
+            switch (languageCode) {
+                case "en":
+                    return LocalizationSettings.AvailableLocales.GetLocale("en");
+                case "pl":
+                    return LocalizationSettings.AvailableLocales.GetLocale("pl");
+                case "es":
+                    return LocalizationSettings.AvailableLocales.GetLocale("es");
+                case "fr":
+                    return LocalizationSettings.AvailableLocales.GetLocale("fr");
+                case "de":
+                    return LocalizationSettings.AvailableLocales.GetLocale("de");
+                case "ru":
+                    return LocalizationSettings.AvailableLocales.GetLocale("ru");
+                case "pt-BR":
+                    return LocalizationSettings.AvailableLocales.GetLocale("pt-BR");
+                case "ja":
+                    return LocalizationSettings.AvailableLocales.GetLocale("ja");
+                case "ko":
+                    return LocalizationSettings.AvailableLocales.GetLocale("ko");
+                case "zh-Hans":
+                    return LocalizationSettings.AvailableLocales.GetLocale("zh-Hans");
+                default:
+                    return LocalizationSettings.AvailableLocales.GetLocale("en"); // Domyślnie English
+            }
         }
         #endregion
 

@@ -12,12 +12,13 @@ namespace ph.Core.OS {
         public Animator cmdAnim;
         public TMP_InputField cmdInput;
         [SerializeField] TextMeshProUGUI cmdFinalInput;
-        string[] validCommands = new string[]{"help", "exit", "showfps", "hidefps"};
+        string[] validCommands = new string[]{"help", "shutdown", "exit", "showfps", "hidefps", "clear"};
         public bool cmdisRunning;
         public GameObject cmdInTaskbar;
         public GameObject fpsCounter;
         public Animator fpsAnim;
         public GameObject fpsCounterInTaskbar;
+        public GameObject shutdownScreen;
         void Start() {
             selected.SetActive(false);
         }
@@ -29,6 +30,10 @@ namespace ph.Core.OS {
                     actualCMD.SetActive(true);
                     selectedAnim.SetTrigger("Clicked");
                     cmdFinalInput.text = string.Empty;
+
+                    EventSystem.current.SetSelectedGameObject(cmdInput.gameObject);
+                    cmdInput.ActivateInputField();
+                    cmdInput.caretPosition = cmdInput.text.Length;
                 }
             }
             else {
@@ -64,15 +69,23 @@ namespace ph.Core.OS {
             }
             if (cmdInput.text.Equals(validCommands[0])) {
                 if (cmdFinalInput.text == string.Empty) {
-                    cmdFinalInput.text = ">Current Commands : \n help, shutdown, exit, showfps, hidefps";
+                    cmdFinalInput.text = ">Current Commands : \n help, shutdown, exit, showfps, hidefps, clear";
                     cmdInput.text = "";
                 }
                 else {
-                    cmdFinalInput.text = cmdFinalInput.text + "\n" + ">Current Commands : \n help, shutdown, exit, showfps, hidefps";
+                    cmdFinalInput.text = cmdFinalInput.text + "\n" + ">Current Commands : \n help, shutdown, exit, showfps, hidefps, clear";
                     cmdInput.text = "";
                 }
             }
             if (cmdInput.text.Equals(validCommands[1])) {
+                cmdFinalInput.text = "";
+                cmdInput.text = "";
+                cmdFinalInput.text = "";
+                cmdInput.text = "";
+
+                shutdownScreen.SetActive(true);
+            }
+            if (cmdInput.text.Equals(validCommands[2])) {
                 if (cmdFinalInput.text == string.Empty) {
                     cmdFinalInput.text = ">...";
                     cmdInput.text = "";
@@ -86,7 +99,7 @@ namespace ph.Core.OS {
                     cmdisRunning = false;
                 }
             }
-            if (cmdInput.text.Equals(validCommands[2])) {
+            if (cmdInput.text.Equals(validCommands[3])) {
                 if (cmdFinalInput.text == string.Empty) {
                     cmdFinalInput.text = ">fpsCounter | On";
                     cmdInput.text = "";
@@ -100,7 +113,7 @@ namespace ph.Core.OS {
                     fpsCounterInTaskbar.SetActive(true);
                 }
             }
-            if (cmdInput.text.Equals(validCommands[3])) {
+            if (cmdInput.text.Equals(validCommands[4])) {
                 if (cmdFinalInput.text == string.Empty) {
                     cmdFinalInput.text = ">fpsCounter | Off";
                     cmdInput.text = "";
@@ -114,6 +127,13 @@ namespace ph.Core.OS {
                     fpsCounterInTaskbar.SetActive(false);
                 }
             }
+            if (cmdInput.text.Equals(validCommands[5])) {
+                cmdFinalInput.text = ">Console cleared.";
+                cmdInput.text = "";
+            }
+
+            cmdInput.ActivateInputField();
+            cmdInput.caretPosition = cmdInput.text.Length;
         }
     }
 }

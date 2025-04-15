@@ -235,28 +235,28 @@ namespace ph.Achievements {
     threshold = 10,
     icon = silverLaurel,
     titles = new Dictionary<string, string> {
-        { "en", "Certified Email Clicker" },
-        { "pl", "Certyfikowany klikacz maili" },
-        { "es", "Clickeador de correos certificado" },
-        { "fr", "Cliqueur d’emails certifié" },
-        { "de", "Zertifizierter Mail-Klicker" },
-        { "it", "Cliccatore di email certificato" },
-        { "ru", "Сертифицированный кликатель писем" },
-        { "pt-BR", "Clicador de e-mails certificado" },
-        { "ko", "인증된 이메일 클릭러" },
-        { "zh-Hans", "认证邮件点击师" }
+        { "en", "Office Rebel" },
+        { "pl", "Buntownik Biura" },
+        { "es", "Rebelde de Oficina" },
+        { "fr", "Rebelle du Bureau" },
+        { "de", "Büro-Rebell" },
+        { "it", "Ribelle da Ufficio" },
+        { "ru", "Офисный бунтарь" },
+        { "pt-BR", "Rebelde do Escritório" },
+        { "ko", "사무실의 반항아" },
+        { "zh-Hans", "办公室反叛者" }
     },
     descriptions = new Dictionary<string, string> {
-        { "en", "Reach level 10. HR is still unsure what your job actually is." },
-        { "pl", "Osiągnij poziom 10. HR wciąż nie wie, czym właściwie się zajmujesz." },
-        { "es", "Alcanza el nivel 10. Recursos Humanos aún no sabe qué haces exactamente." },
-        { "fr", "Atteins le niveau 10. Les RH ne savent toujours pas ce que tu fais." },
-        { "de", "Erreiche Level 10. Die Personalabteilung weiß immer noch nicht, was du genau machst." },
-        { "it", "Raggiungi il livello 10. Le risorse umane non hanno ancora capito cosa fai." },
-        { "ru", "Достигни уровня 10. Отдел кадров до сих пор не понял, чем ты занимаешься." },
-        { "pt-BR", "Chegue ao nível 10. O RH ainda não sabe qual é exatamente o seu trabalho." },
-        { "ko", "레벨 10에 도달하세요. 인사팀은 여전히 당신의 업무를 이해하지 못함." },
-        { "zh-Hans", "达到等级10. 人资部门仍然搞不清你到底是干啥的." }
+        { "en", "Reach level 10. You’ve mastered the art of silent resistance." },
+        { "pl", "Osiągnij poziom 10. Opanowałeś sztukę cichego oporu wobec systemu." },
+        { "es", "Alcanza el nivel 10. Has dominado el arte de resistir en silencio." },
+        { "fr", "Atteignez le niveau 10. Vous maîtrisez l’art de la résistance discrète." },
+        { "de", "Erreiche Level 10. Du beherrschst die Kunst des stillen Widerstands." },
+        { "it", "Raggiungi il livello 10. Hai perfezionato l’arte della resistenza silenziosa." },
+        { "ru", "Достигни уровня 10. Ты овладел искусством тихого сопротивления." },
+        { "pt-BR", "Alcance o nível 10. Você dominou a arte da resistência silenciosa." },
+        { "ko", "레벨 10에 도달하세요. 조용한 저항의 예술을 터득했습니다." },
+        { "zh-Hans", "达到10级. 你已掌握无声抗争的艺术." }
     }
 },
                 new Achievement {

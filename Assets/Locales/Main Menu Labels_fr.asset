@@ -35,7 +35,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 685582704640
-    m_Localized: "Ram\xE8ne-moi!"
+    m_Localized: "Ram\xE8ne-moi !"
     m_Metadata:
       m_Items: []
   - m_Id: 791878950912
@@ -95,7 +95,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1712209911808
-    m_Localized: "Mise \xE0 jour du syst\xE8me:"
+    m_Localized: "Mise \xE0 jour du syst\xE8me :"
     m_Metadata:
       m_Items: []
   - m_Id: 1827008012288

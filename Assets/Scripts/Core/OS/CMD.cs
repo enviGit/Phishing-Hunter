@@ -1,7 +1,10 @@
+using ph.Utils;
+using Random = UnityEngine.Random;
+using System;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
-using System.Linq;
 
 namespace ph.Core.OS {
     public class CMD : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
@@ -12,15 +15,18 @@ namespace ph.Core.OS {
         public Animator cmdAnim;
         public TMP_InputField cmdInput;
         [SerializeField] TextMeshProUGUI cmdFinalInput;
-        string[] validCommands = new string[]{"help", "shutdown", "exit", "showfps", "hidefps", "clear"};
+        string[] validCommands = new string[]{"help", "shutdown", "exit", "showfps", "hidefps", "clear", "echo", "whoami", "roll", "easteregg"};
         public bool cmdisRunning;
         public GameObject cmdInTaskbar;
         public GameObject fpsCounter;
         public Animator fpsAnim;
         public GameObject fpsCounterInTaskbar;
         public GameObject shutdownScreen;
+        private AudioSource audioSource;
+
         void Start() {
             selected.SetActive(false);
+            audioSource = GetComponent<AudioSource>();
         }
         void Update() {
             if (isSelected) {
@@ -69,11 +75,11 @@ namespace ph.Core.OS {
             }
             if (cmdInput.text.Equals(validCommands[0])) {
                 if (cmdFinalInput.text == string.Empty) {
-                    cmdFinalInput.text = ">Current Commands : \n help, shutdown, exit, showfps, hidefps, clear";
+                    cmdFinalInput.text = ">Current Commands : \n help, shutdown, exit, showfps, hidefps, clear, echo, whoami, roll";
                     cmdInput.text = "";
                 }
                 else {
-                    cmdFinalInput.text = cmdFinalInput.text + "\n" + ">Current Commands : \n help, shutdown, exit, showfps, hidefps, clear";
+                    cmdFinalInput.text = cmdFinalInput.text + "\n" + ">Current Commands : \n help, shutdown, exit, showfps, hidefps, clear, echo, whoami, roll";
                     cmdInput.text = "";
                 }
             }
@@ -130,6 +136,63 @@ namespace ph.Core.OS {
             if (cmdInput.text.Equals(validCommands[5])) {
                 cmdFinalInput.text = ">Console cleared.";
                 cmdInput.text = "";
+            }
+            if (cmdInput.text.StartsWith("echo ")) {
+                string echoText = cmdInput.text.Substring(5);
+
+                if (cmdFinalInput.text == string.Empty) {
+                    cmdFinalInput.text = $">{echoText}";
+                    cmdInput.text = "";
+                }
+                else {
+                    cmdFinalInput.text = cmdFinalInput.text + $"\n>{echoText}";
+                    cmdInput.text = "";
+                }
+            }
+            if (cmdInput.text.Equals(validCommands[7])) {
+                string userName = Environment.UserName;
+                string position = PlayerRatingSystem.Instance.position.ToString().AddSpacesBeforeUppercase();
+
+                if (cmdFinalInput.text == string.Empty) {
+                    cmdFinalInput.text = $">{userName} ({position})";
+                    cmdInput.text = "";
+                }
+                else {
+                    cmdFinalInput.text = cmdFinalInput.text + $"\n>{userName} ({position})";
+                    cmdInput.text = "";
+                }
+            }
+            if (cmdInput.text.Equals(validCommands[8])) {
+                int number = Random.Range(1, 101);
+
+                if (cmdFinalInput.text == string.Empty) {
+                    cmdFinalInput.text = $">You rolled: {number}";
+                    cmdInput.text = "";
+                }
+                else {
+                    cmdFinalInput.text = cmdFinalInput.text + $"\n>You rolled: {number}";
+                    cmdInput.text = "";
+                }
+            }
+            if (cmdInput.text.Equals(validCommands[9])) {
+                audioSource.Play();
+                string userName = Environment.UserName;
+                string[] messages = new string[] {
+                $"You're being watched {userName}.",
+                "Trust no one.",
+                "System breach detected.",
+                "You've triggered a hidden protocol."
+            };
+                string msg = messages[Random.Range(0, messages.Length)];
+
+                if (cmdFinalInput.text == string.Empty) {
+                    cmdFinalInput.text = $">{msg}";
+                    cmdInput.text = "";
+                }
+                else {
+                    cmdFinalInput.text = cmdFinalInput.text + $"\n>{msg}";
+                    cmdInput.text = "";
+                }
             }
 
             cmdInput.ActivateInputField();

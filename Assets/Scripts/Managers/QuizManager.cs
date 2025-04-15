@@ -64,7 +64,7 @@ namespace ph.Managers {
         { "ru", ("(Один вариант)", "(Несколько вариантов)") },
         { "pt-BR", ("(Escolha única)", "(Escolha múltipla)") },
         { "ko", ("(단일 선택)", "(다중 선택)") },
-        { "zh-Hans", ("（单选）", "（多选）") }
+        { "zh-Hans", ("(单选)", "(多选)") }
     };
         public static int TotalQuizCount { get; private set; }
         public static int CorrectQuizAnswers { get; private set; }

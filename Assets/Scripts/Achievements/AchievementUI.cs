@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 namespace ph.Achievements {
     public class AchievementUI : MonoBehaviour {
-        //public static AchievementUI Instance;
-
         [Header("UI")]
         private CanvasGroup panelGroup;
         [SerializeField] private Image icon;
@@ -25,8 +23,6 @@ namespace ph.Achievements {
             icon.sprite = achievement.icon;
             titleText.text = achievement.GetTitle(lang);
             descText.text = achievement.GetDescription(lang);
-
-            //transform.SetAsLastSibling();
 
             panelGroup.DOFade(1f, 0.5f)
                 .OnComplete(() => {

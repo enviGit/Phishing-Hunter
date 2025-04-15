@@ -5,9 +5,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ph.Core {
-    public class PlayerRatingSystem : MonoBehaviour {
-        public enum PlayerPosition {
+namespace ph.Core
+{
+    public class PlayerRatingSystem : MonoBehaviour
+    {
+        public enum PlayerPosition
+        {
             Intern,
             JuniorAnalyst,
             Analyst,
@@ -100,14 +103,17 @@ namespace ph.Core {
         [HideInInspector] public PlayerPosition position = PlayerPosition.Intern;
         private float totalProgress;
 
-        private void Awake() {
+        private void Awake()
+        {
             Instance = this;
         }
-        private void Start() {
+        private void Start()
+        {
             UpdateUI();
             progressSlider.fillAmount = 0f;
         }
-        public void UpdateProgress() {
+        public void UpdateProgress()
+        {
             int correctMails = MailManager.CorrectMailAnswers;
             int correctQuizzes = QuizManager.CorrectQuizAnswers;
             int totalMails = MailManager.TotalMailCount;
@@ -117,56 +123,66 @@ namespace ph.Core {
             progressGroup.DOFade(1f, 0.5f).SetEase(Ease.OutBack);
 
             float rawProgress = (correctMails * 2f + correctQuizzes) / (totalMails * 2f + totalQuizzes);
-            totalProgress = rawProgress * MaxLevelCount(); // gdzie MaxLevelCount = ile poziomów przewidujesz
+            totalProgress = rawProgress * MaxLevelCount();
 
             int newLevel = Mathf.FloorToInt(totalProgress);
             float currentLevelProgress = totalProgress - newLevel;
 
-            if (newLevel > level && level < MaxLevelCount()) {
+            if (newLevel > level && level < MaxLevelCount())
+            {
                 level = newLevel;
                 progressSlider.fillAmount = 0;
                 UpdateDifficulty();
                 UpdatePosition();
             }
 
-            if (level >= MaxLevelCount()) {
+            if (level >= MaxLevelCount())
+            {
                 currentLevelProgress = 1f;
             }
 
-            progressGroup.DOFade(1f, 0.5f).OnComplete(() => {
+            progressGroup.DOFade(1f, 0.5f).OnComplete(() =>
+            {
                 progressSlider.DOFillAmount(currentLevelProgress, 1f).SetEase(Ease.OutSine);
             });
 
             UpdateUI();
 
-            progressGroup.DOFade(0.1f, 0.5f).SetDelay(2f).SetEase(Ease.InBack).OnComplete(() => {
+            progressGroup.DOFade(0.1f, 0.5f).SetDelay(2f).SetEase(Ease.InBack).OnComplete(() =>
+            {
                 progressGroup.transform.SetSiblingIndex(1);
             });
 
             achievementManager.CheckAllAchievements();
         }
-        private int MaxLevelCount() {
+        private int MaxLevelCount()
+        {
             return 50;
         }
-        private void UpdatePosition() {
+        private void UpdatePosition()
+        {
             if (level < 5) position = PlayerPosition.Intern;
             else if (level < 10) position = PlayerPosition.JuniorAnalyst;
             else if (level < 20) position = PlayerPosition.Analyst;
             else if (level < 40) position = PlayerPosition.SeniorAnalyst;
             else position = PlayerPosition.Expert;
         }
-        private void UpdateDifficulty() {
+        private void UpdateDifficulty()
+        {
             Settings.Difficulty = level < 5 ? 0 : 1;
         }
-        private void UpdateUI() {
+        private void UpdateUI()
+        {
             levelText.text = $"{level}";
             positionText.text = GetPositionDisplayName(position);
         }
-        private string GetPositionDisplayName(PlayerPosition pos) {
+        private string GetPositionDisplayName(PlayerPosition pos)
+        {
             string currentLanguage = Settings.Language;
 
             if (positionTranslations.ContainsKey(currentLanguage) &&
-                positionTranslations[currentLanguage].ContainsKey(pos)) {
+                positionTranslations[currentLanguage].ContainsKey(pos))
+            {
                 return positionTranslations[currentLanguage][pos];
             }
             return positionTranslations["en"][pos];

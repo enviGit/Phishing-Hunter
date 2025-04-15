@@ -42,7 +42,7 @@ namespace ph.Achievements {
         { "ru", "Правильно ответьте на 10 вопросов викторины." },
         { "pt-BR", "Responda corretamente a 10 perguntas do quiz." },
         { "ko", "퀴즈 질문 10개를 정확히 답하세요." },
-        { "zh-Hans", "正确回答10个测验问题。" }
+        { "zh-Hans", "正确回答10个测验问题." }
     }
 },
                 new Achievement {
@@ -72,7 +72,7 @@ namespace ph.Achievements {
         { "ru", "Ответьте правильно на 100 вопросов. Любите страдать, да?" },
         { "pt-BR", "Responda corretamente a 100 perguntas. Gosta de sofrer, né?" },
         { "ko", "퀴즈 100문제를 맞히세요. 고통이 좋으신가요?" },
-        { "zh-Hans", "正确回答100个问题。你这是自找苦吃吧？" }
+        { "zh-Hans", "正确回答100个问题. 你这是自找苦吃吧?" }
     }
 },
                 new Achievement {
@@ -102,7 +102,7 @@ namespace ph.Achievements {
         { "ru", "Ответь на 500 вопросов. Без мемов. Забирай диплом." },
         { "pt-BR", "Responda corretamente 500 perguntas. Sem meme. Pegue seu diploma." },
         { "ko", "500문제를 맞히세요. 밈은 없습니다. 졸업장을 받으세요." },
-        { "zh-Hans", "正确回答500个问题。没有表情包，拿好你的文凭。" }
+        { "zh-Hans", "正确回答500个问题. 没有表情包, 拿好你的文凭." }
     }
 },
 
@@ -134,7 +134,7 @@ namespace ph.Achievements {
         { "ru", "Отметь 10 писем правильно. Просто разминка, самурай." },
         { "pt-BR", "Marque corretamente 10 e-mails. Só um aquecimento, samurai." },
         { "ko", "이메일 10개를 정확히 표시하세요. 준비운동이에요, 사무라이." },
-        { "zh-Hans", "正确标记10封邮件。只是热身，武士。" }
+        { "zh-Hans", "正确标记10封邮件. 只是热身, 武士." }
     }
 },
                 new Achievement {
@@ -164,7 +164,7 @@ namespace ph.Achievements {
         { "ru", "Отметь 100 писем правильно. Твоя мышка боится тебя." },
         { "pt-BR", "Marque corretamente 100 e-mails. Seu mouse já te respeita." },
         { "ko", "이메일 100개를 정확히 표시하세요. 마우스가 당신을 두려워합니다." },
-        { "zh-Hans", "正确标记100封邮件。你的鼠标开始害怕你了。" }
+        { "zh-Hans", "正确标记100封邮件. 你的鼠标开始害怕你了." }
     }
 },
                 new Achievement {
@@ -194,7 +194,7 @@ namespace ph.Achievements {
         { "ru", "Отметь 300 писем. Это не ты проверяешь почту — она проверяет тебя." },
         { "pt-BR", "Marque corretamente 300 e-mails. Você não confere a caixa de entrada – ela confere você." },
         { "ko", "이메일 300개를 정확히 표시하세요. 당신이 인박스를 확인하는 게 아닙니다 – 인박스가 당신을 확인하죠." },
-        { "zh-Hans", "正确标记300封邮件。不是你在查看收件箱，而是它在盯着你。" }
+        { "zh-Hans", "正确标记300封邮件. 不是你在查看收件箱, 而是它在盯着你." }
     }
 },
 
@@ -226,7 +226,7 @@ namespace ph.Achievements {
         { "ru", "Достигни уровня 5. Ты официально заслужил первую кружку офисного кофе." },
         { "pt-BR", "Chegue ao nível 5. Você oficialmente ganhou sua primeira caneca de café da firma." },
         { "ko", "레벨 5에 도달하세요. 이제 공식적으로 회사 커피 한 잔 받을 자격이 있습니다." },
-        { "zh-Hans", "达到等级5。你终于配得上你的第一杯公司咖啡了。" }
+        { "zh-Hans", "达到等级5. 你终于配得上你的第一杯公司咖啡了." }
     }
 },
                 new Achievement {
@@ -256,7 +256,7 @@ namespace ph.Achievements {
         { "ru", "Достигни уровня 10. Отдел кадров до сих пор не понял, чем ты занимаешься." },
         { "pt-BR", "Chegue ao nível 10. O RH ainda não sabe qual é exatamente o seu trabalho." },
         { "ko", "레벨 10에 도달하세요. 인사팀은 여전히 당신의 업무를 이해하지 못함." },
-        { "zh-Hans", "达到等级10。人资部门仍然搞不清你到底是干啥的。" }
+        { "zh-Hans", "达到等级10. 人资部门仍然搞不清你到底是干啥的." }
     }
 },
                 new Achievement {
@@ -286,7 +286,7 @@ namespace ph.Achievements {
         { "ru", "Достигни 40 уровня. Сервер теперь подчиняется твоему голосу." },
         { "pt-BR", "Chegue ao nível 40. O servidor agora obedece à sua voz." },
         { "ko", "레벨 40에 도달하세요. 서버가 이제 당신의 목소리에 따릅니다." },
-        { "zh-Hans", "达到等级40。服务器如今唯你马首是瞻。" }
+        { "zh-Hans", "达到等级40. 服务器如今唯你马首是瞻." }
     }
 }
             };

@@ -547,11 +547,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1647808504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 505.3, y: -271.8}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -4.030029, y: -9}
   m_SizeDelta: {x: 30, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &36474645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,19 +608,7 @@ MonoBehaviour:
           m_StringArgument: exit
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PaintDrawing, Assembly-CSharp
-        m_MethodName: EraseAll
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 395375641}
+      - m_Target: {fileID: 1729661097}
         m_TargetAssemblyTypeName: PaintDrawing, Assembly-CSharp
         m_MethodName: 
         m_Mode: 1
@@ -5529,7 +5517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 464.92004, y: 193.1}
+  m_AnchoredPosition: {x: 464.92004, y: 168.1}
   m_SizeDelta: {x: 95.58, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286835039
@@ -5836,11 +5824,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 197758786}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 505.3, y: -270.11}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -4.030029, y: -9}
   m_SizeDelta: {x: 30, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &304978154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7191,7 +7179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -74.95001, y: -28.170013}
+  m_AnchoredPosition: {x: -73.4, y: -58.17001}
   m_SizeDelta: {x: 123.87, y: 25.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &389253860
@@ -9108,7 +9096,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 464.92004, y: 160.3}
+  m_AnchoredPosition: {x: 464.92004, y: 135.3}
   m_SizeDelta: {x: 95.58, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &470318744
@@ -10234,7 +10222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 464.92, y: 126.20001}
+  m_AnchoredPosition: {x: 464.92, y: 101.2}
   m_SizeDelta: {x: 95.58, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542221826
@@ -10364,11 +10352,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 612929960}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 505.3, y: -270.11}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: 30, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &553819851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10425,19 +10413,7 @@ MonoBehaviour:
           m_StringArgument: exit
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PaintDrawing, Assembly-CSharp
-        m_MethodName: EraseAll
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 395375641}
+      - m_Target: {fileID: 1351789869}
         m_TargetAssemblyTypeName: PaintDrawing, Assembly-CSharp
         m_MethodName: 
         m_Mode: 1
@@ -13617,7 +13593,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 464.92, y: 92.000015}
+  m_AnchoredPosition: {x: 464.92, y: 67.00002}
   m_SizeDelta: {x: 95.585, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782661669
@@ -16872,7 +16848,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -25}
+  m_AnchoredPosition: {x: 0, y: -33}
   m_SizeDelta: {x: 516.4, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1026797871
@@ -20170,11 +20146,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2076401050}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 505.3, y: -271.8}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -4.0300293, y: -9}
   m_SizeDelta: {x: 30, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1176606485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20231,19 +20207,7 @@ MonoBehaviour:
           m_StringArgument: exit
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PaintDrawing, Assembly-CSharp
-        m_MethodName: EraseAll
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 395375641}
+      - m_Target: {fileID: 1417358997}
         m_TargetAssemblyTypeName: PaintDrawing, Assembly-CSharp
         m_MethodName: 
         m_Mode: 1
@@ -26502,11 +26466,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1916435847}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 163.5, y: -52.1}
-  m_SizeDelta: {x: 24.5, y: 22.28}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_SizeDelta: {x: 24.5, y: 22.279999}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1569683154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33442,7 +33406,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.000030517578, y: 0}
-  m_SizeDelta: {x: 25, y: 25}
+  m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1958261422
 MonoBehaviour:
@@ -36288,7 +36252,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 464.92004, y: 225.4}
+  m_AnchoredPosition: {x: 464.92004, y: 200.4}
   m_SizeDelta: {x: 95.58, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2092050316

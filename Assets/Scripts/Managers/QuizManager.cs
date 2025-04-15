@@ -121,6 +121,10 @@ namespace ph.Managers {
     .ToList());
             }
 
+            questionsToDisplay = questionsToDisplay
+    .Take(maxDisplayedQuestions)
+    .ToList();
+
             foreach (var question in questionsToDisplay) {
                 GameObject questionItem = Instantiate(questionPrefab, workSpace.GetChild(0));
 

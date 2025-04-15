@@ -30,7 +30,6 @@ namespace ph.Managers {
         [SerializeField] private TMP_Dropdown qualityDropdown;
         [SerializeField] private RenderPipelineAsset[] qualityLevels;
         private int originalQualityPreset;
-        private bool isAnimating = false;
 
         [Header("Post Processing")]
         [SerializeField] private Volume globalVolume;
@@ -481,10 +480,8 @@ namespace ph.Managers {
 
             // Animacja samego slidera
             float targetSliderValue = value ? 1f : 0f;
-            isAnimating = true;
             slider.DOValue(targetSliderValue, 0.3f)
-                .SetEase(Ease.InOutQuad)
-                .OnComplete(() => isAnimating = false);
+                .SetEase(Ease.InOutQuad);
         }
         #endregion
 

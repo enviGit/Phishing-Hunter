@@ -206,10 +206,6 @@ MonoBehaviour:
     m_Localized: "PR\xC9-VISUALIZA\xC7\xC3O DE E-MAIL"
     m_Metadata:
       m_Items: []
-  - m_Id: 271146711375872
-    m_Localized: Conquista desbloqueada!
-    m_Metadata:
-      m_Items: []
   references:
     version: 2
     RefIds: []

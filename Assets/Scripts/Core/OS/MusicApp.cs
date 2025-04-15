@@ -14,7 +14,7 @@ namespace ph.Core.OS {
         public Animator musicAppAnim;
         public bool musicAppIsRunning;
         public GameObject musicAppInTaskbar;
-        public TMPro.TMP_Dropdown songsDropdown;
+        public TMP_Dropdown songsDropdown;
         [SerializeField] Slider songSlider;
         [SerializeField] TextMeshProUGUI songTime;
         [SerializeField] TextMeshProUGUI songTitle;

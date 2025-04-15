@@ -59,7 +59,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7199169044480
-    m_Localized: "R\xFCckg\xE4ngig machen"
+    m_Localized: "R\xFCckg\xE4ngig"
     m_Metadata:
       m_Items: []
   - m_Id: 7654456549376
@@ -204,10 +204,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 34189058105344
     m_Localized: E-MAIL-VORSCHAU
-    m_Metadata:
-      m_Items: []
-  - m_Id: 271146711375872
-    m_Localized: Erfolg freigeschaltet!
     m_Metadata:
       m_Items: []
   references:

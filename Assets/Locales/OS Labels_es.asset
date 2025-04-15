@@ -206,6 +206,10 @@ MonoBehaviour:
     m_Localized: VISTA PREVIA DE CORREO
     m_Metadata:
       m_Items: []
+  - m_Id: 271146711375872
+    m_Localized: "\xA1Logro desbloqueado!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

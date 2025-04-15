@@ -206,6 +206,10 @@ MonoBehaviour:
     m_Localized: "APER\xC7U DE L'EMAIL"
     m_Metadata:
       m_Items: []
+  - m_Id: 271146711375872
+    m_Localized: "Succ\xE8s d\xE9verrouill\xE9 !"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

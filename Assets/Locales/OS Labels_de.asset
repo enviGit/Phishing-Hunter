@@ -206,6 +206,10 @@ MonoBehaviour:
     m_Localized: E-MAIL-VORSCHAU
     m_Metadata:
       m_Items: []
+  - m_Id: 271146711375872
+    m_Localized: Erfolg freigeschaltet!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

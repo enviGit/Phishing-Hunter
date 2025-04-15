@@ -206,6 +206,10 @@ MonoBehaviour:
     m_Localized: "PODGL\u0104D EMAILA"
     m_Metadata:
       m_Items: []
+  - m_Id: 271146711375872
+    m_Localized: "Osi\u0105gni\u0119cie odblokowane!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

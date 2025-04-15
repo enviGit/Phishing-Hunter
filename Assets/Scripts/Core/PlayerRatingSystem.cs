@@ -87,6 +87,7 @@ namespace ph.Core {
     }}
 };
         public static PlayerRatingSystem Instance;
+        [SerializeField] private AchievementManager achievementManager;
 
         [Header("UI")]
         [SerializeField] private TextMeshProUGUI levelText;
@@ -141,6 +142,8 @@ namespace ph.Core {
             progressGroup.DOFade(0.1f, 0.5f).SetDelay(2f).SetEase(Ease.InBack).OnComplete(() => {
                 progressGroup.transform.SetSiblingIndex(1);
             });
+
+            achievementManager.CheckAllAchievements();
         }
         private int MaxLevelCount() {
             return 50;

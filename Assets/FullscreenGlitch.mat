@@ -45,7 +45,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _HologramSpeed: 10.7
+    - _HologramSpeed: 0.5
     - _HologramValue: 0.04
     - _IsEnabled: 0
     - _IsReverted: 0

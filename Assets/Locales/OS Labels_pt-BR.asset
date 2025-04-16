@@ -206,6 +206,10 @@ MonoBehaviour:
     m_Localized: "PR\xC9-VISUALIZA\xC7\xC3O DE E-MAIL"
     m_Metadata:
       m_Items: []
+  - m_Id: 692299477147648
+    m_Localized: "PR\xC9-VISUALIZA\xC7\xC3O DE IMAGEM"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -206,6 +206,10 @@ MonoBehaviour:
     m_Localized: "PODGL\u0104D EMAILA"
     m_Metadata:
       m_Items: []
+  - m_Id: 692299477147648
+    m_Localized: "PODGL\u0104D OBRAZU"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -9,7 +9,11 @@
                 "body": "Dear Employee,\nPlease review the latest security policies attached. It's important to ensure your systems are in line with the company's updated security standards.",
                 "isPhishing": false,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": [
+                    "id1invoice1",
+                    "id1invoice2"
+                ]
             },
             {
                 "id": 2,
@@ -18,7 +22,8 @@
                 "body": "We've detected suspicious activity on your account. Please reset your password immediately to protect your data: http://secure-login.com/reset\nFailure to do so may lead to further security risks.",
                 "isPhishing": true,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": []
             },
             {
                 "id": 3,
@@ -27,7 +32,8 @@
                 "body": "We have updated our benefits package. Click here to see the full list of changes: http://company.com/benefits\nYou can also review the updated terms of our healthcare plan and retirement options.",
                 "isPhishing": false,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": []
             },
             {
                 "id": 4,
@@ -36,7 +42,8 @@
                 "body": "A new software update has been released for your system. Please update your software as soon as possible to avoid compatibility issues and enhance security features.",
                 "isPhishing": false,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": []
             },
             {
                 "id": 5,
@@ -45,7 +52,8 @@
                 "body": "The tax filing deadline is fast approaching. Please visit our tax filing system to submit your information and avoid late fees. Click here to file: http://company.com/tax-filing",
                 "isPhishing": false,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": []
             },
             {
                 "id": 6,
@@ -54,7 +62,8 @@
                 "body": "Our security team detected an unauthorized login attempt on your account from a new device. If this was not you, please reset your password immediately.",
                 "isPhishing": false,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": []
             },
             {
                 "id": 7,
@@ -63,7 +72,8 @@
                 "body": "Welcome to the team! Please review the following onboarding documents to get started with your new role. You can find the documents here: http://company.com/onboarding",
                 "isPhishing": false,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": []
             },
             {
                 "id": 8,
@@ -72,7 +82,8 @@
                 "body": "Reminder: A critical security patch has been released for your system. Please install it by the end of the week to ensure your system remains protected.",
                 "isPhishing": false,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": []
             },
             {
                 "id": 9,
@@ -81,7 +92,8 @@
                 "body": "Congratulations! You have won a special prize in our company raffle. Please click the link to claim your prize: http://company.com/claim-prize",
                 "isPhishing": true,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": []
             },
             {
                 "id": 10,
@@ -90,7 +102,8 @@
                 "body": "Your account requires verification before it can be activated. Please verify your details by clicking the link below: http://company.com/verify-account",
                 "isPhishing": true,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": []
             }
         ],
         "advancedEmails": [
@@ -101,7 +114,8 @@
                 "body": "We are considering a salary increase for you. Please confirm your bank details here: http://secure-finance.com/update\nThis information is confidential, please do not share.",
                 "isPhishing": true,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": []
             },
             {
                 "id": 12,
@@ -110,7 +124,8 @@
                 "body": "Our security policies have been updated for the upcoming quarter. Please review the changes and acknowledge receipt by following the link: http://company.com/security-policy\nFailure to do so may result in non-compliance penalties.",
                 "isPhishing": false,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": []
             },
             {
                 "id": 13,
@@ -119,7 +134,8 @@
                 "body": "A critical vulnerability has been detected in your system. Please download and install the latest patch immediately to mitigate any potential risks. The patch can be found here: http://company.com/patch",
                 "isPhishing": false,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": []
             },
             {
                 "id": 14,
@@ -128,7 +144,8 @@
                 "body": "We are conducting a routine security audit. Please grant access to the requested logs and systems to assist with the audit. Your cooperation is appreciated.\nThe request form can be found here: http://company.com/security-audit",
                 "isPhishing": false,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": []
             },
             {
                 "id": 15,
@@ -137,7 +154,8 @@
                 "body": "We have been alerted to a cybersecurity breach involving one of our critical systems. Please investigate and report back immediately. A full report can be found here: http://company.com/breach-report",
                 "isPhishing": true,
                 "dateTime": "",
-                "tag": ""
+                "tag": "",
+                "attachments": []
             }
         ]
     },

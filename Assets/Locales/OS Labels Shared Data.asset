@@ -203,6 +203,10 @@ MonoBehaviour:
     m_Key: os.emailPreview
     m_Metadata:
       m_Items: []
+  - m_Id: 692299477147648
+    m_Key: os.imagePreview
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

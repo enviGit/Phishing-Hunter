@@ -18,6 +18,7 @@ namespace ph.Managers {
         public bool isPhishing;
         public string dateTime;
         public string tag;
+        public List<string> attachments;
     }
     [Serializable]
     public class EmailData {
@@ -38,7 +39,9 @@ namespace ph.Managers {
         public Transform workSpace;
         public GameObject mailPrefab;
         public GameObject mailPreview;
+        public GameObject imagePreview;
         private CanvasGroup mainPreviewCanvas;
+        private CanvasGroup imagePreviewCanvas;
         public int maxDisplayedEmails = 10;
         private List<Email> emailList;
         private List<LocalizedEmailData> resourcesData = null;
@@ -51,6 +54,7 @@ namespace ph.Managers {
 
         private void Start() {
             mainPreviewCanvas = mailPreview.GetComponent<CanvasGroup>();
+            imagePreviewCanvas = imagePreview.GetComponent<CanvasGroup>();
             CorrectMailAnswers = 0;
             LoadEmails();
             TotalMailCount = LoadTotalMailCount();
@@ -150,6 +154,9 @@ namespace ph.Managers {
             if (!mailPreview.activeSelf) {
                 mailPreview.SetActive(true);
             }
+            if (mailPreview.activeSelf) {
+                imagePreview.SetActive(false); ;
+            }
 
             mainPreviewCanvas.alpha = 0;
             mailPreview.transform.localScale = Vector3.one * 0.8f;
@@ -170,12 +177,54 @@ namespace ph.Managers {
             Button phishingButton = mailPreview.transform.GetChild(1).GetChild(1).GetComponent<Button>();
             safeButton.onClick.AddListener(() => MarkEmailAsSafe(email, mailItem));
             phishingButton.onClick.AddListener(() => MarkEmailAsPhishing(email, mailItem));
+
+            Transform attachmentsParent = mailPreview.transform.GetChild(1).GetChild(6).GetChild(1);
+            int maxSlots = attachmentsParent.childCount;
+
+            // Resetuj wszystkie sloty
+            for (int i = 0; i < maxSlots; i++) {
+                Transform slot = attachmentsParent.GetChild(i);
+                slot.gameObject.SetActive(false);
+                slot.GetComponent<Image>().enabled = false;
+            }
+
+            // Załaduj załączniki jeśli istnieją
+            if (email.attachments != null) {
+                for (int i = 0; i < email.attachments.Count && i < maxSlots; i++) {
+                    string fileName = email.attachments[i];
+                    Sprite attachmentSprite = Resources.Load<Sprite>($"Images/Emails/{fileName}");
+
+                    if (attachmentSprite != null) {
+                        Transform slot = attachmentsParent.GetChild(i);
+                        Image imageComp = slot.GetComponent<Image>();
+                        imageComp.sprite = attachmentSprite;
+                        imageComp.enabled = true;
+                        slot.gameObject.SetActive(true);
+
+                        int capturedIndex = i; // closure fix
+                        slot.GetComponent<Button>().onClick.RemoveAllListeners();
+                        slot.GetComponent<Button>().onClick.AddListener(() => {
+                            if (!imagePreview.activeSelf) {
+                                imagePreview.SetActive(true);
+                            }
+
+                            imagePreviewCanvas.alpha = 0;
+                            imagePreview.transform.localScale = Vector3.one * 0.8f;
+                            imagePreviewCanvas.DOFade(1f, 0.25f).SetEase(Ease.OutQuad);
+                            imagePreview.transform.DOScale(0.65f, 0.25f).SetEase(Ease.OutBack);
+                            Image previewImage = imagePreview.transform.GetChild(2).GetComponent<Image>();
+                            previewImage.sprite = attachmentSprite;
+                        });
+                    }
+                }
+            }
         }
         private void MarkEmailAsSafe(Email email, GameObject mailItem) {
             flaggedEmailIds.Add(email.id);
 
             mainPreviewCanvas.DOFade(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
                 mailPreview.SetActive(false);
+                imagePreview.SetActive(false);
             });
 
             mailItem.transform.DOScale(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
@@ -196,6 +245,7 @@ namespace ph.Managers {
 
             mainPreviewCanvas.DOFade(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
                 mailPreview.SetActive(false);
+                imagePreview.SetActive(false);
             });
 
             mailItem.transform.DOScale(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
@@ -236,6 +286,7 @@ namespace ph.Managers {
 
             mainPreviewCanvas.DOFade(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
                 mailPreview.SetActive(false);
+                imagePreview.SetActive(false);
             });
 
             for (int i = 0; i < currentEmailCount; i++) {

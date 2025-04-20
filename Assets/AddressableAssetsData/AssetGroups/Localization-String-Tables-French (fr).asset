@@ -15,6 +15,13 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-French (fr)
   m_GUID: 8d969ddb3e43d4641af66b68edced15c
   m_SerializeEntries:
+  - m_GUID: 4091786322a450840a42365e3670e5c9
+    m_Address: Epilepsy Labels_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 84cfef896f752c148bdf3bdee736be67
     m_Address: Main Menu Labels_fr
     m_ReadOnly: 1

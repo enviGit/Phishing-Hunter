@@ -22,6 +22,13 @@ MonoBehaviour:
     - Locale-pl
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 320adbe1fb885ec48b123be79e17cd24
+    m_Address: Epilepsy Labels_pl
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pl
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 50a3179592c77564fb5cd6359c2f317c
     m_Address: Main Menu Labels_pl
     m_ReadOnly: 1

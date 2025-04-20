@@ -11,8 +11,11 @@
                 "dateTime": "",
                 "tag": "",
                 "attachments": [
-                    "id1invoice1",
-                    "id1invoice2"
+                    "exe.exe",
+                    "pdf.pdf",
+                    "id1invoice1.png",
+                    "id1invoice2.png",
+                    "id1invoice3.png"
                 ]
             },
             {

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Epilepsy Labels_pt-BR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pt-BR
+  m_SharedData: {fileID: 11400000, guid: f2ad3966fdffe694bab96eae35a2c355, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 22987530240
+    m_Localized: Aviso de Epilepsia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27454464000
+    m_Localized: "Este jogo cont\xE9m luzes piscantes, transi\xE7\xF5es visuais r\xE1pidas
+      e efeitos que podem causar desconforto ou convuls\xF5es em pessoas com epilepsia
+      fotossens\xEDvel.\r\n\r\nRecomenda-se cautela. Se voc\xEA ou algu\xE9m da sua
+      fam\xEDlia tem hist\xF3rico de epilepsia ou convuls\xF5es, consulte um profissional
+      de sa\xFAde antes de jogar.\r\n\r\nMesmo que voc\xEA nunca tenha tido uma convuls\xE3o,
+      certos est\xEDmulos visuais podem causar sintomas como tontura, n\xE1usea,
+      vis\xE3o turva, espasmos ou perda tempor\xE1ria de consci\xEAncia.\r\n\r\nSe
+      voc\xEA come\xE7ar a se sentir mal durante o jogo, pare imediatamente e procure
+      um profissional de sa\xFAde."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29941686272
+    m_Localized: "Recomenda\xE7\xF5es de seguran\xE7a adicionais:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32454074368
+    m_Localized: "- Jogue em um ambiente bem iluminado.\r\n- Sente-se a uma dist\xE2ncia
+      segura da tela.\r\n- Fa\xE7a pausas regulares durante o jogo.\r\n- Evite jogar
+      quando estiver cansado ou estressado."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

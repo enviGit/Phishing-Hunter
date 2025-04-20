@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Epilepsy Labels_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: f2ad3966fdffe694bab96eae35a2c355, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 22987530240
+    m_Localized: Advertencia de epilepsia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27454464000
+    m_Localized: "Este juego contiene luces intermitentes, transiciones visuales
+      r\xE1pidas y efectos que pueden causar molestias o convulsiones en personas
+      con epilepsia fotosensible.\r\n\r\nSe recomienda precauci\xF3n. Si t\xFA o
+      alguien en tu familia tiene antecedentes de epilepsia o convulsiones, consulta
+      a un profesional m\xE9dico antes de jugar.\r\n\r\nIncluso si nunca has experimentado
+      una convulsi\xF3n, ciertos est\xEDmulos visuales pueden causar s\xEDntomas
+      como mareos, n\xE1useas, visi\xF3n borrosa, espasmos o p\xE9rdida temporal
+      de la conciencia.\r\n\r\nSi en alg\xFAn momento durante el juego te sientes
+      mal, det\xE9n el juego inmediatamente y consulta a un profesional de la salud."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29941686272
+    m_Localized: 'Recomendaciones adicionales de seguridad:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32454074368
+    m_Localized: "- Juega en una habitaci\xF3n bien iluminada.\n- Si\xE9ntate a una
+      distancia segura de la pantalla.\n- Toma descansos regulares durante el juego.\n-
+      Evita jugar cuando est\xE9s cansado o estresado."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

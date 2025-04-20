@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Epilepsy Labels_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: f2ad3966fdffe694bab96eae35a2c355, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 22987530240
+    m_Localized: Epilepsy Warning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27454464000
+    m_Localized: 'This game contains flashing lights, rapid visual transitions, and
+      effects that may cause discomfort or seizures in individuals with photosensitive
+      epilepsy.
+
+
+      Player discretion is strongly advised. If you or someone
+      in your family has a history of epilepsy or seizures, please consult a medical
+      professional before playing.
+
+
+      Even if you have never experienced a seizure
+      before, certain visual stimuli may still cause symptoms such as dizziness,
+      nausea, blurred vision, twitching, or temporary loss of awareness.
+
+
+      If
+      at any point during gameplay you begin to feel unwell, immediately stop playing
+      and consult a healthcare provider.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29941686272
+    m_Localized: 'Additional Safety Recommendations:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32454074368
+    m_Localized: '- Play in a well-lit room.
+
+      - Sit at a safe distance from
+      the screen.
+
+      - Take regular breaks during gameplay.
+
+      - Avoid playing
+      when tired or under stress.'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Epilepsy Labels_pl
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pl
+  m_SharedData: {fileID: 11400000, guid: f2ad3966fdffe694bab96eae35a2c355, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 22987530240
+    m_Localized: "Ostrze\u017Cenie dla os\xF3b z epilepsj\u0105"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27454464000
+    m_Localized: "Ta gra zawiera migaj\u0105ce \u015Bwiat\u0142a, szybkie przej\u015Bcia
+      wizualne oraz efekty, kt\xF3re mog\u0105 powodowa\u0107 dyskomfort lub napady
+      padaczkowe u os\xF3b z fotosensytywn\u0105 epilepsj\u0105.\r\n\r\nZalecamy
+      zachowanie ostro\u017Cno\u015Bci. Je\u015Bli Ty lub kto\u015B z Twojej rodziny
+      ma histori\u0119 epilepsji lub napad\xF3w, skonsultuj si\u0119 z lekarzem przed
+      rozpocz\u0119ciem gry.\r\n\r\nNawet je\u015Bli nigdy wcze\u015Bniej nie do\u015Bwiadczy\u0142e\u015B
+      napadu, niekt\xF3re bod\u017Ace wizualne mog\u0105 powodowa\u0107 objawy takie
+      jak zawroty g\u0142owy, nudno\u015Bci, niewyra\u017Ane widzenie, dr\u017Cenie
+      lub chwilow\u0105 utrat\u0119 \u015Bwiadomo\u015Bci.\r\n\r\nJe\u015Bli w trakcie
+      gry poczujesz si\u0119 \u017Ale, natychmiast przerwij gr\u0119 i skonsultuj
+      si\u0119 z lekarzem."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29941686272
+    m_Localized: "Dodatkowe zalecenia dotycz\u0105ce bezpiecze\u0144stwa:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32454074368
+    m_Localized: "- Graj w dobrze o\u015Bwietlonym pomieszczeniu.\r\n- Sied\u017A
+      w bezpiecznej odleg\u0142o\u015Bci od ekranu.\r\n- R\xF3b regularne przerwy
+      podczas gry.\r\n- Unikaj grania, gdy jeste\u015B zm\u0119czony lub zestresowany."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

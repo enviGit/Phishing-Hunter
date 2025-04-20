@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Epilepsy Labels_de
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: f2ad3966fdffe694bab96eae35a2c355, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 22987530240
+    m_Localized: "Warnung f\xFCr Epileptiker"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27454464000
+    m_Localized: "Dieses Spiel enth\xE4lt blinkende Lichter, schnelle visuelle \xDCberg\xE4nge
+      und Effekte, die bei Personen mit fotosensitiver Epilepsie Unwohlsein oder
+      Anf\xE4lle ausl\xF6sen k\xF6nnen.\r\n\r\nVorsicht wird dringend empfohlen.
+      Wenn du oder jemand in deiner Familie eine Vorgeschichte mit Epilepsie oder
+      Anf\xE4llen hat, konsultiere bitte vor dem Spielen einen Arzt.\r\n\r\nSelbst
+      wenn du noch nie einen Anfall erlebt hast, k\xF6nnen bestimmte visuelle Reize
+      Symptome wie Schwindel, \xDCbelkeit, verschwommenes Sehen, Zuckungen oder vor\xFCbergehenden
+      Bewusstseinsverlust verursachen.\r\n\r\nWenn du dich w\xE4hrend des Spiels
+      unwohl f\xFChlst, beende das Spiel sofort und konsultiere einen Arzt."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29941686272
+    m_Localized: "Zus\xE4tzliche Sicherheitsempfehlungen:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32454074368
+    m_Localized: "- Spiele in einem gut beleuchteten Raum.\r\n- Sitze in sicherem
+      Abstand zum Bildschirm.\r\n- Mache regelm\xE4\xDFige Pausen w\xE4hrend des
+      Spiels.\r\n- Vermeide das Spielen, wenn du m\xFCde oder gestresst bist."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

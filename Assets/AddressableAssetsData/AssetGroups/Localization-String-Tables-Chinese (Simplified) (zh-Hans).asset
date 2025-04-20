@@ -36,6 +36,13 @@ MonoBehaviour:
     - Locale-zh-Hans
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff361b6dbe607d845aca6b5ee8a8f999
+    m_Address: Epilepsy Labels_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: b1754d7af82082143b3117a9d29301d8, type: 2}
   m_SchemaSet:

@@ -15,6 +15,13 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-Korean (ko)
   m_GUID: 6125a061970f2a94b87dd06fa9f35470
   m_SerializeEntries:
+  - m_GUID: 01cbf7a9315ee4748b7b286ca1f9e02c
+    m_Address: Epilepsy Labels_ko
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 225f251dbbcc5834596e8c2d7e1647f7
     m_Address: OS Labels_ko
     m_ReadOnly: 1

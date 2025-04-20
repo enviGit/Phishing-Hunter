@@ -3,8 +3,10 @@ using ph.Core;
 using Random = UnityEngine.Random;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
@@ -49,6 +51,7 @@ namespace ph.Managers {
         private List<int> flaggedEmailIds = new List<int>();
         private List<int> correctlyMarkedEmails = new List<int>();
         private int correctMarksCount = 0;
+        [SerializeField] private Sprite[] extensionSprites = new Sprite[3]; //0 - .png, 1 - .pdf, 2 - .exe
         public static int TotalMailCount { get; private set; }
         public static int CorrectMailAnswers { get; private set; }
 
@@ -192,31 +195,80 @@ namespace ph.Managers {
             if (email.attachments != null) {
                 for (int i = 0; i < email.attachments.Count && i < maxSlots; i++) {
                     string fileName = email.attachments[i];
-                    Sprite attachmentSprite = Resources.Load<Sprite>($"Images/Emails/{fileName}");
+                    string extension = Path.GetExtension(fileName).ToLowerInvariant();
+                    string baseName = Path.GetFileNameWithoutExtension(fileName);
 
-                    if (attachmentSprite != null) {
-                        Transform slot = attachmentsParent.GetChild(i);
-                        Image imageComp = slot.GetComponent<Image>();
-                        imageComp.sprite = attachmentSprite;
+                    Transform slot = attachmentsParent.GetChild(i);
+                    Button button = slot.GetComponent<Button>();
+                    Image imageComp = slot.GetComponent<Image>();
+                    Sprite displaySprite = Resources.Load<Sprite>($"Images/Emails/{baseName}");
+
+                    if (displaySprite != null) {
+                        imageComp.sprite = displaySprite;
                         imageComp.enabled = true;
+                        imageComp.preserveAspect = true;
                         slot.gameObject.SetActive(true);
 
-                        int capturedIndex = i; // closure fix
-                        slot.GetComponent<Button>().onClick.RemoveAllListeners();
-                        slot.GetComponent<Button>().onClick.AddListener(() => {
-                            if (!imagePreview.activeSelf) {
-                                imagePreview.SetActive(true);
-                            }
+                        Sprite highlightedSprite = extension switch {
+                            ".png" => extensionSprites[0],
+                            ".pdf" => extensionSprites[1],
+                            ".exe" => extensionSprites[2],
+                            _ => null
+                        };
 
-                            imagePreviewCanvas.alpha = 0;
-                            imagePreview.transform.localScale = Vector3.one * 0.8f;
-                            imagePreviewCanvas.DOFade(1f, 0.25f).SetEase(Ease.OutQuad);
-                            imagePreview.transform.DOScale(0.65f, 0.25f).SetEase(Ease.OutBack);
-                            Image previewImage = imagePreview.transform.GetChild(2).GetComponent<Image>();
-                            previewImage.sprite = attachmentSprite;
-                        });
+                        if (highlightedSprite != null) {
+                            SpriteState spriteState = button.spriteState;
+                            spriteState.highlightedSprite = highlightedSprite;
+                            button.spriteState = spriteState;
+                        }
+
+                        int capturedIndex = i;
+                        button.onClick.RemoveAllListeners();
+
+                        if (extension == ".png") {
+                            button.onClick.AddListener(() => {
+                                EventSystem.current.SetSelectedGameObject(null);
+
+                                if (!imagePreview.activeSelf)
+                                    imagePreview.SetActive(true);
+
+                                imagePreviewCanvas.alpha = 0;
+                                imagePreview.transform.localScale = Vector3.one * 0.8f;
+                                imagePreviewCanvas.DOFade(1f, 0.25f).SetEase(Ease.OutQuad);
+                                imagePreview.transform.DOScale(0.65f, 0.25f).SetEase(Ease.OutBack);
+                                Image previewImage = imagePreview.transform.GetChild(2).GetComponent<Image>();
+                                previewImage.sprite = displaySprite;
+                            });
+                        }
+                        else if (extension == ".pdf") {
+                            button.onClick.AddListener(() => {
+                                EventSystem.current.SetSelectedGameObject(null);
+
+                                // TODO: Canvas z PDF Readerem
+                                OpenFilePopup(fileName, extension);
+                            });
+                        }
+                        else {
+                            button.onClick.AddListener(() => {
+                                EventSystem.current.SetSelectedGameObject(null);
+
+                                // TODO: Obsłużenie .exe
+                                OpenFilePopup(fileName, extension);
+                            });
+                        }
                     }
                 }
+            }
+        }
+        private void OpenFilePopup(string fileName, string extension) {
+            Debug.Log($"Otwieram plik {fileName} o rozszerzeniu {extension}");
+
+            // Przykład: pokazanie popupu na podstawie rozszerzenia
+            if (extension == ".pdf") {
+                // TODO: pokaż okno z informacją, że otwierasz plik PDF
+            }
+            else if (extension == ".exe") {
+                // TODO: ostrzeżenie o potencjalnie niebezpiecznym pliku
             }
         }
         private void MarkEmailAsSafe(Email email, GameObject mailItem) {

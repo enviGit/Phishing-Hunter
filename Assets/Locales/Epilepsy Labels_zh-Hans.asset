@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Epilepsy Labels_zh-Hans
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: zh-Hans
+  m_SharedData: {fileID: 11400000, guid: f2ad3966fdffe694bab96eae35a2c355, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 22987530240
+    m_Localized: "\u766B\u75EB\u8B66\u544A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27454464000
+    m_Localized: "\u672C\u6E38\u620F\u5305\u542B\u95EA\u70C1\u7684\u706F\u5149, \u5FEB\u901F\u7684\u89C6\u89C9\u5207\u6362\u4EE5\u53CA\u53EF\u80FD\u5F15\u53D1\u5149\u654F\u6027\u766B\u75EB\u60A3\u8005\u4E0D\u9002\u6216\u766B\u75EB\u53D1\u4F5C\u7684\u6548\u679C.\r\n\r\n\u5F3A\u70C8\u5EFA\u8BAE\u73A9\u5BB6\u8C28\u614E\u5BF9\u5F85.
+      \u5982\u60A8\u6216\u60A8\u7684\u5BB6\u4EBA\u6709\u766B\u75EB\u6216\u766B\u75EB\u53D1\u4F5C\u53F2,
+      \u8BF7\u5728\u6E38\u73A9\u524D\u54A8\u8BE2\u533B\u751F.\r\n\r\n\u5373\u4F7F\u60A8\u4ECE\u672A\u51FA\u73B0\u8FC7\u766B\u75EB\u53D1\u4F5C,
+      \u67D0\u4E9B\u89C6\u89C9\u523A\u6FC0\u4ECD\u53EF\u80FD\u5BFC\u81F4\u5934\u6655,
+      \u6076\u5FC3, \u89C6\u529B\u6A21\u7CCA, \u62BD\u6410\u6216\u77ED\u6682\u5931\u53BB\u610F\u8BC6\u7B49\u75C7\u72B6.\r\n\r\n\u5982\u5728\u6E38\u620F\u8FC7\u7A0B\u4E2D\u611F\u5230\u4E0D\u9002,
+      \u8BF7\u7ACB\u5373\u505C\u6B62\u6E38\u620F\u5E76\u54A8\u8BE2\u533B\u7597\u4E13\u4E1A\u4EBA\u58EB."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29941686272
+    m_Localized: "\u5176\u4ED6\u5B89\u5168\u5EFA\u8BAE:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32454074368
+    m_Localized: "- \u5728\u5149\u7EBF\u5145\u8DB3\u7684\u623F\u95F4\u5185\u6E38\u620F.\r\n-
+      \u4E0E\u5C4F\u5E55\u4FDD\u6301\u5B89\u5168\u8DDD\u79BB.\r\n- \u6E38\u620F\u8FC7\u7A0B\u4E2D\u5B9A\u65F6\u4F11\u606F.\r\n-
+      \u907F\u514D\u5728\u75B2\u52B3\u6216\u7D27\u5F20\u65F6\u6E38\u73A9."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

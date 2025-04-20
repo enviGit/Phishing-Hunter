@@ -15,6 +15,13 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-Portuguese (Brazil) (pt-BR)
   m_GUID: c7668fbffd303bc469866f922c21cde3
   m_SerializeEntries:
+  - m_GUID: 12a26a069c95115499dee5a531c2ef7b
+    m_Address: Epilepsy Labels_pt-BR
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-pt-BR
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2f9990cecb335b547b773749d8c73115
     m_Address: Main Menu Labels_pt-BR
     m_ReadOnly: 1

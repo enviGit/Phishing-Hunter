@@ -194,8 +194,6 @@ namespace ph.Managers {
         private void RestoreResolution() {
             SetAndApplyResolution(originalResolutionIndex);
             resolutionSlider.value = originalResolutionIndex;
-
-            Debug.Log($"Resolution restored to: {filteredResolutions[originalResolutionIndex].width} x {filteredResolutions[originalResolutionIndex].height}");
         }
         private void ApplyResolution(Resolution resolution) {
             UpdateResolutionText(resolution);

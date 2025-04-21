@@ -11,6 +11,7 @@ TagManager:
   - NewImages
   - NewPanels
   - NewTextFiles
+  - Persistent
   layers:
   - Default
   - TransparentFX

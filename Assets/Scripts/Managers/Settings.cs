@@ -14,6 +14,7 @@ namespace ph.Managers {
         private static string vsyncCount = "vsyncCount";
         //private static string subtitlesEnabled = "subtitlesEnabled";
         private static string difficulty = "difficulty";
+        private static string isFirstLaunch = "isFirstLaunch";
         private static string language = "language";
         #endregion
 
@@ -92,6 +93,10 @@ namespace ph.Managers {
         public static int Difficulty {
             get => PlayerPrefs.GetInt(difficulty, 0); // 0 - Newbie, 1 - Cybersecurity Analyst
             set => PlayerPrefs.SetInt(difficulty, value);
+        }
+        public static bool IsFirstLaunch {
+            get => PlayerPrefs.GetInt(isFirstLaunch, 1) == 1;
+            set => PlayerPrefs.SetInt(isFirstLaunch, value ? 1 : 0);
         }
         #endregion
 

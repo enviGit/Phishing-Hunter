@@ -16,7 +16,7 @@ namespace ph.Core.OS {
         public TMP_FontAsset fontD;
         public TMP_FontAsset fontE;
         public TMP_FontAsset fontF;
-        public TMPro.TMP_Dropdown fontDropDown;
+        public TMP_Dropdown fontDropDown;
         [SerializeField] TextMeshProUGUI dropDownText;
 
         void Update() {

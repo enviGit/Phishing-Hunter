@@ -25862,7 +25862,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1841520680}
   m_OnClick:
     m_PersistentCalls:
@@ -30480,6 +30480,7 @@ SceneRoots:
   - {fileID: 1113525066}
   - {fileID: 911101090}
   - {fileID: 1987958791}
+  - {fileID: 81086152}
   - {fileID: 1660866527}
   - {fileID: 774564762}
   - {fileID: 903634082}
@@ -30499,4 +30500,3 @@ SceneRoots:
   - {fileID: 1256820652}
   - {fileID: 1080649289}
   - {fileID: 791470401}
-  - {fileID: 81086152}

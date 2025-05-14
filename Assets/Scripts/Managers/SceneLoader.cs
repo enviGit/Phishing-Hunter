@@ -44,7 +44,9 @@ namespace ph.Managers {
                 SceneManager.LoadScene(nextSceneIndex);
             }
         }
-
+	public void LoadSceneWithIndex(int index) {
+            SceneManager.LoadScene(index);
+        }
         private IEnumerator UnloadCurrentScene() {
             yield return new WaitUntil(() => preloadOperation.isDone);
 

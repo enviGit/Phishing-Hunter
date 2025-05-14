@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
 // using UnityEngine.Rendering.HighDefinition;
@@ -71,3 +71,4 @@ public class LightController : MonoBehaviour
         updateLights(lights);
     }
 }
+*/

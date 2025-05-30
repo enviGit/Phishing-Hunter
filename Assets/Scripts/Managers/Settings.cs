@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ph.Managers {
@@ -27,12 +28,12 @@ namespace ph.Managers {
 
         #region AudioSettings
         public static float SfxMixer {
-            get => PlayerPrefs.GetFloat(sfxMixer, 100);
+            get => PlayerPrefs.GetFloat(sfxMixer, 75);
             set => PlayerPrefs.SetFloat(sfxMixer, value);
         }
 
         public static float MusicMixer {
-            get => PlayerPrefs.GetFloat(musicMixer, 100);
+            get => PlayerPrefs.GetFloat(musicMixer, 15);
             set => PlayerPrefs.SetFloat(musicMixer, value);
         }
         #endregion
@@ -55,21 +56,23 @@ namespace ph.Managers {
             }
             set => PlayerPrefs.SetInt(resolutionIndex, value);
         }
-
         private static int GetDefaultResolutionIndex() {
+            // TODO: Ograniczyć dostępne rozdzielczości do proporcji 16:9
             Resolution[] resolutions = Screen.resolutions;
             int[] commonWidths = { 3840, 2560, 1920, 1366 };
             int[] commonHeights = { 2160, 1440, 1080, 768 };
 
             for (int i = 0; i < commonWidths.Length; i++) {
                 for (int j = 0; j < resolutions.Length; j++) {
-                    if (resolutions[j].width == commonWidths[i] && resolutions[j].height == commonHeights[i])
+                    if (resolutions[j].width == commonWidths[i] && resolutions[j].height == commonHeights[i]) {
                         return j;
+                    }
                 }
             }
 
             return resolutions.Length > 0 ? resolutions.Length - 1 : 0;
         }
+
         #endregion
 
         #region Performance

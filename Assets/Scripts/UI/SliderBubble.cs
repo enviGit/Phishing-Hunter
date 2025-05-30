@@ -12,6 +12,7 @@ namespace ph.UI {
         private CanvasGroup bubbleCanvasGroup;
         private bool isAnimating = false;
         private TextMeshProUGUI bubbleText;
+        [SerializeField] private TextMeshProUGUI resolutionText;
         private readonly Color[] gradientColors = new Color[] {
     new Color(1f, 0.2f, 0.2f),     // Red
     new Color(1f, 0.5f, 0.1f),     // Orange
@@ -50,8 +51,10 @@ namespace ph.UI {
         private void OnSliderValueChanged(float value) {
             int intValue = Mathf.RoundToInt(value);
 
-            if (bubbleText != null)
+            if (bubbleText != null && resolutionText == null)
                 bubbleText.text = intValue.ToString();
+            else if (bubbleText != null && resolutionText != null)
+                bubbleText.text = resolutionText.text;
 
             float normalized = Mathf.InverseLerp(slider.minValue, slider.maxValue, value);
             Color color = GetSmoothColor(normalized);

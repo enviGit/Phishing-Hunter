@@ -12,6 +12,7 @@ TagManager:
   - NewPanels
   - NewTextFiles
   - Persistent
+  - Manager
   layers:
   - Default
   - TransparentFX

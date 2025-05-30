@@ -24,7 +24,7 @@ namespace ph.UI {
         public List<LogoCube> cubes;
         public float launchForce = 6f;
         public float chaosTime = 2f;
-        public float settleDuration = 1.5f;
+        public float settleDuration = 50f;
         public float overshootDistance = 0.5f;
         public float targetOffsetFactor = 0.2f;
         public Vector2 spawnArea = new Vector2(10f, 6f);
@@ -36,7 +36,7 @@ namespace ph.UI {
         public float fadeDuration = 1f;
         public float hoverJumpAmount = 10f;
         public float hoverDuration = 0.25f;
-        public float epilepsyWaitTime = 8f;
+        public float epilepsyWaitTime = 9f;
         private Scene currentScene;
         private IEnumerable<GameObject> persistentObjects;
 

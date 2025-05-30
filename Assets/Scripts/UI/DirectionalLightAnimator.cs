@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 namespace ph.UI {
     public class DirectionalLightAnimator : MonoBehaviour {
@@ -14,13 +15,17 @@ namespace ph.UI {
 
             AnimateLight();
         }
-
         private void AnimateLight() {
             DOTween.To(() => 0f, x => {
                 float xAngle = initialRotation.x + Mathf.Sin(x * Mathf.PI * 2f) * rotationAmplitude.x;
                 float yAngle = initialRotation.y + Mathf.Cos(x * Mathf.PI * 2f) * rotationAmplitude.y;
-                transform.rotation = Quaternion.Euler(xAngle, yAngle, initialRotation.z);
-            }, 1f, cycleDuration).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+                if (transform != null) transform.rotation = Quaternion.Euler(xAngle, yAngle, initialRotation.z);
+                else return;
+            }, 1f, cycleDuration)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutSine)
+            .SetTarget(this)
+            .SetAutoKill(true);;
         }
     }
 }

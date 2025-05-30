@@ -350,10 +350,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1981684511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &280119210
 MonoBehaviour:
@@ -1604,7 +1604,7 @@ GameObject:
   - component: {fileID: 1395961784}
   m_Layer: 0
   m_Name: SceneManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9352,7 +9352,7 @@ MonoBehaviour:
     rb: {fileID: 0}
   launchForce: 5
   chaosTime: 3
-  settleDuration: 150
+  settleDuration: 100
   overshootDistance: 10
   targetOffsetFactor: 0.2
   spawnArea: {x: 10, y: 10}
@@ -9377,7 +9377,7 @@ AudioSource:
   m_Resource: {fileID: 8300000, guid: 0b42190b714692045abd2e906e72897f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0.75
+  m_Pitch: 0.6
   Loop: 0
   Mute: 0
   Spatialize: 0

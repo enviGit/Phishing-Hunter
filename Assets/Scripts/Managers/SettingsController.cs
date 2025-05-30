@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -45,7 +46,7 @@ namespace ph.Managers {
         private float originalSfxVolume;
 
         [Header("Accesibility")]
-        [SerializeField] private Slider languageSlider;
+        [SerializeField] private TMP_Dropdown languageDropdown;
         private readonly string[] supportedLanguages = new string[] {
     "English",       // en
     "Polski",        // pl
@@ -73,7 +74,6 @@ namespace ph.Managers {
     { "ko", new List<string> { "높음", "중간", "낮음" } },
     { "zh-Hans", new List<string> { "高", "中", "低" } }
 };
-        private TextMeshProUGUI languageText;
         private int currentLanguageIndex = 0;
         private int originalLanguageIndex = 0;
         [SerializeField] private Slider sensitivitySlider;
@@ -91,7 +91,6 @@ namespace ph.Managers {
         }
         private void Start() {
             resolutionText = resolutionSlider.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            languageText = languageSlider.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             fullscreenToggle = fullscreenSlider.transform.GetChild(0).GetComponent<Toggle>();
 
             LoadSettingsOnStart();
@@ -99,6 +98,7 @@ namespace ph.Managers {
 
         #region Loading Settings
         private void LoadSettingsOnStart() {
+            // TODO: Ograniczyć dostępne rozdzielczości do proporcji 16:9
             filteredResolutions = Array.FindAll(Screen.resolutions, resolution => resolution.width >= 800 && resolution.height >= 600);
             resolutionSlider.maxValue = filteredResolutions.Length - 1;
             originalResolutionIndex = Settings.ResolutionIndex;
@@ -128,9 +128,8 @@ namespace ph.Managers {
             SetSensitivity(originalSensitivity);
             originalLanguageIndex = Mathf.Clamp(Array.IndexOf(languageCodes, Settings.Language), 0, supportedLanguages.Length - 1);
             currentLanguageIndex = originalLanguageIndex;
-            languageSlider.value = originalLanguageIndex;
-            languageSlider.onValueChanged.AddListener(OnLanguageSliderChanged);
-            UpdateLanguageText(currentLanguageIndex);
+            languageDropdown.value = originalLanguageIndex;
+            languageDropdown.onValueChanged.AddListener(OnLanguageDropdownChanged);
             originalMusicVolume = Settings.MusicMixer;
             originalSfxVolume = Settings.SfxMixer;
             SetMusicVolume(originalMusicVolume);
@@ -217,8 +216,6 @@ namespace ph.Managers {
             if (newIndex != currentResolutionIndex) {
                 SetResolution(newIndex);
             }
-
-            Debug.Log($"Resolution changed to: {filteredResolutions[newIndex].width} x {filteredResolutions[newIndex].height}");
         }
         #endregion
 
@@ -299,34 +296,16 @@ namespace ph.Managers {
         #endregion
 
         #region Interface Language
-        public void OnLanguageSliderChanged(float value) {
-            int newIndex = Mathf.RoundToInt(value);
-
-            if (newIndex != currentLanguageIndex) {
-                currentLanguageIndex = newIndex;
-                UpdateLanguageText(currentLanguageIndex);
-                Settings.Language = languageCodes[currentLanguageIndex];
-                UpdateQualityDropdownLabels(languageCodes[currentLanguageIndex]);
-                var locale = GetLocaleFromLanguageCode(Settings.Language);
-                LocalizationSettings.SelectedLocale = locale;
-            }
-        }
-        private void UpdateLanguageText(int index) {
-            languageText.text = supportedLanguages[index];
-            string selectedLang = supportedLanguages[index];
-            RectTransform textRect = languageText.GetComponent<RectTransform>();
-
-            if (selectedLang == "한국어" || selectedLang == "简体中文") {
-                textRect.anchoredPosition = new Vector2(textRect.anchoredPosition.x, 7f);
-            }
-            else {
-                textRect.anchoredPosition = new Vector2(textRect.anchoredPosition.x, 0f);
-            }
+        public void OnLanguageDropdownChanged(int value) {
+            currentLanguageIndex = Mathf.Clamp(value, 0, supportedLanguages.Length - 1);
+            Settings.Language = languageCodes[currentLanguageIndex];
+            UpdateQualityDropdownLabels(languageCodes[currentLanguageIndex]);
+            var locale = GetLocaleFromLanguageCode(Settings.Language);
+            LocalizationSettings.SelectedLocale = locale;
         }
         private void RestoreLanguage() {
             currentLanguageIndex = originalLanguageIndex;
-            languageSlider.value = originalLanguageIndex;
-            UpdateLanguageText(currentLanguageIndex);
+            languageDropdown.value = originalLanguageIndex;
             Settings.Language = languageCodes[originalLanguageIndex];
             UpdateQualityDropdownLabels(languageCodes[originalLanguageIndex]);
             var locale = GetLocaleFromLanguageCode(Settings.Language);

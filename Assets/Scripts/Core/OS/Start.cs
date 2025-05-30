@@ -1,11 +1,15 @@
 using DG.Tweening;
+using ph.Managers;
+using System.Collections;
 using UnityEngine;
 
 namespace ph.Core.OS {
     public class Start : MonoBehaviour {
         public GameObject shutDownCanvas;
         [SerializeField] private CanvasGroup buttonCanvasGroup;
-        public void StartMenu() {
+        [SerializeField] private float shutdownDelay = 3f;
+
+		public void StartMenu() {
             if (buttonCanvasGroup.alpha <= 0.9f) {
                 buttonCanvasGroup.DOFade(1, 0.5f);
                 buttonCanvasGroup.blocksRaycasts = true;
@@ -17,8 +21,18 @@ namespace ph.Core.OS {
 
         }
         public void ShutDown() {
+            if (SceneLoader.Instance != null)
+                SceneLoader.Instance.PreloadPreviousScene();
+
             shutDownCanvas.SetActive(true);
-            // Add your custom shutdown logic here.
+            StartCoroutine(WaitAndActivatePreviousScene());
+        }
+        private IEnumerator WaitAndActivatePreviousScene()
+        {
+            yield return new WaitForSeconds(shutdownDelay);
+
+            if (SceneLoader.Instance != null)
+                SceneLoader.Instance.ActivatePreviousScene();
         }
 
         // Add code related to the start menu buttons or any other relevant functionality.

@@ -9,6 +9,8 @@ namespace ph.Managers {
 
         private AsyncOperation preloadOperation;
         private int nextSceneIndex;
+        private AsyncOperation preloadPreviousOperation;
+        private int previousSceneIndex;
 
         private void Awake() {
             if (Instance != null && Instance != this) {
@@ -44,14 +46,45 @@ namespace ph.Managers {
                 SceneManager.LoadScene(nextSceneIndex);
             }
         }
-	public void LoadSceneWithIndex(int index) {
-            SceneManager.LoadScene(index);
-        }
         private IEnumerator UnloadCurrentScene() {
             yield return new WaitUntil(() => preloadOperation.isDone);
 
             int currentScene = SceneManager.GetActiveScene().buildIndex;
             yield return SceneManager.UnloadSceneAsync(currentScene);
+        }
+        public void PreloadPreviousScene()
+        {
+            previousSceneIndex = SceneManager.GetActiveScene().buildIndex - 1;
+
+            if (previousSceneIndex >= 0)
+            {
+                StartCoroutine(PreloadPreviousCoroutine());
+            }
+            else
+            {
+                Debug.LogWarning("No previous scene to preload.");
+            }
+        }
+        private IEnumerator PreloadPreviousCoroutine()
+        {
+            preloadPreviousOperation = SceneManager.LoadSceneAsync(previousSceneIndex, LoadSceneMode.Additive);
+            preloadPreviousOperation.allowSceneActivation = false;
+
+            yield return null;
+            yield return Resources.UnloadUnusedAssets();
+            GC.Collect();
+        }
+        public void ActivatePreviousScene()
+        {
+            if (preloadPreviousOperation != null)
+            {
+                preloadPreviousOperation.allowSceneActivation = true;
+                StartCoroutine(UnloadCurrentScene());
+            }
+            else
+            {
+                SceneManager.LoadScene(previousSceneIndex);
+            }
         }
     }
 }

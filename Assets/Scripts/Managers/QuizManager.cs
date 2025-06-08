@@ -73,7 +73,7 @@ namespace ph.Managers {
         private void LoadQuestions() {
             string lang = Settings.Language;
             string fileName = $"{languageFileName}_{lang}";
-            TextAsset json = Resources.Load<TextAsset>(fileName);
+            TextAsset json = Resources.Load<TextAsset>($"Data/{fileName}");
 
             if (json == null) {
                 Debug.LogError($"Brak pliku JSON: {fileName} w folderze Resources.");
@@ -192,7 +192,7 @@ namespace ph.Managers {
         private int LoadTotalQuizCount() {
             string lang = Settings.Language;
             string fileName = $"{languageFileName}_{lang}";
-            TextAsset json = Resources.Load<TextAsset>(fileName);
+            TextAsset json = Resources.Load<TextAsset>($"Data/{fileName}");
 
             if (json == null) {
                 Debug.LogError($"Brak pliku JSON: {fileName} w folderze Resources.");

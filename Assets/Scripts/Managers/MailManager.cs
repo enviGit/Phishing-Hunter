@@ -27,17 +27,9 @@ namespace ph.Managers {
         public List<Email> newbieEmails;
         public List<Email> advancedEmails;
     }
-    [Serializable]
-    public class LocalizedEmailData : EmailData {
-        public string lang;
-    }
-    [Serializable]
-    public class LocalizedEmailDataList {
-        public List<LocalizedEmailData> items;
-    }
 
     public class MailManager : MonoBehaviour {
-        public TextAsset jsonFile;
+        private string languageFileName = "emails";
         public Transform workSpace;
         public GameObject mailPrefab;
         public GameObject mailPreview;
@@ -46,7 +38,7 @@ namespace ph.Managers {
         private CanvasGroup imagePreviewCanvas;
         public int maxDisplayedEmails = 10;
         private List<Email> emailList;
-        private List<LocalizedEmailData> resourcesData = null;
+        private EmailData emailData;
         private Dictionary<Email, DateTime> generatedDates = new Dictionary<Email, DateTime>();
         private List<int> flaggedEmailIds = new List<int>();
         private List<int> correctlyMarkedEmails = new List<int>();
@@ -66,24 +58,24 @@ namespace ph.Managers {
             DisplayEmails();
         }
         private void LoadEmails() {
-            if (jsonFile != null) {
-                string wrappedJson = "{\"items\":" + jsonFile.text + "}";
-                resourcesData = JsonUtility.FromJson<LocalizedEmailDataList>(wrappedJson).items;
-            }
-            else {
-                Debug.LogError("Brak pliku emails.json w folderze Resources.");
+            string lang = Settings.Language;
+            string fileName = $"{languageFileName}_{lang}";
+            TextAsset json = Resources.Load<TextAsset>(fileName);
+
+            if (json == null) {
+                Debug.LogError($"Brak pliku JSON: {fileName} w folderze Resources.");
                 return;
             }
 
-            var resLangData = resourcesData?.FirstOrDefault(x => x.lang == Settings.Language);
+            emailData = JsonUtility.FromJson<EmailData>(json.text);
 
-            if (resLangData == null) {
+            if (emailData == null) {
                 Debug.LogError("Brak danych e-maili dla wybranego języka.");
                 return;
             }
 
-            emailList = resLangData.newbieEmails
-    .Concat(resLangData.advancedEmails)
+            emailList = emailData.newbieEmails
+    .Concat(emailData.advancedEmails)
     .GroupBy(e => e.id)
     .Select(g => g.First())
     .ToList();
@@ -111,11 +103,6 @@ namespace ph.Managers {
             }
         }
         private void DisplayEmails() {
-            string selectedLanguage = Settings.Language;
-
-            var emailData = resourcesData
-                .FirstOrDefault(e => e.lang == selectedLanguage);
-
             if (emailData != null) {
                 List<Email> filteredEmails = (Settings.Difficulty == 0)
                     ? emailData.newbieEmails
@@ -314,23 +301,23 @@ namespace ph.Managers {
             PlayerRatingSystem.Instance.UpdateProgress();
         }
         private int LoadTotalMailCount() {
-            if (resourcesData == null) {
+            string lang = Settings.Language;
+            string fileName = $"{languageFileName}_{lang}";
+            TextAsset json = Resources.Load<TextAsset>(fileName);
+
+            if (json == null) {
+                Debug.LogError($"Brak pliku JSON: {fileName} w folderze Resources.");
                 return 0;
             }
 
-            var langData = resourcesData.FirstOrDefault(x => x.lang == Settings.Language);
+            EmailData data = JsonUtility.FromJson<EmailData>(json.text);
 
-            if (langData == null) {
-                Debug.LogError("Brak danych maili dla wybranego języka.");
+            if (data == null) {
+                Debug.LogError("Nie udało się zdeserializować danych quizu.");
                 return 0;
             }
 
-            int count = 0;
-            if (langData.newbieEmails != null) {
-                count += langData.newbieEmails.Count;
-            }
-
-            return count;
+            return data.newbieEmails.Count + data.advancedEmails.Count;
         }
         public void RefreshEmails() {
             Transform contentRoot = workSpace.GetChild(0);
@@ -345,9 +332,7 @@ namespace ph.Managers {
                 Destroy(contentRoot.GetChild(i).gameObject);
             }
 
-            var langData = resourcesData?.FirstOrDefault(x => x.lang == Settings.Language);
-
-            if (langData == null) {
+            if (emailData == null) {
                 Debug.LogError("Brak danych emaili dla języka: " + Settings.Language);
                 return;
             }
@@ -355,19 +340,19 @@ namespace ph.Managers {
             List<Email> finalEmailPool;
 
             if (Settings.Difficulty == 0) {
-                finalEmailPool = langData.newbieEmails
+                finalEmailPool = emailData.newbieEmails
                     .Where(e => !flaggedEmailIds.Contains(e.id))
                     .OrderBy(e => generatedDates[e])
                     .Take(maxDisplayedEmails)
                     .ToList();
             }
             else {
-                var availableNewbies = langData.newbieEmails
+                var availableNewbies = emailData.newbieEmails
             .Where(e => !flaggedEmailIds.Contains(e.id) && !correctlyMarkedEmails.Contains(e.id))
             .OrderBy(e => generatedDates[e])
             .ToList();
 
-                var availableAdvanced = langData.advancedEmails
+                var availableAdvanced = emailData.advancedEmails
             .Where(e => !flaggedEmailIds.Contains(e.id))
             .OrderBy(e => generatedDates[e])
             .ToList();

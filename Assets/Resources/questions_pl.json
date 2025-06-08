@@ -1,0 +1,117 @@
+{
+    "lang": "pl",
+    "newbieQuestions": [
+        {
+            "id": 1,
+            "question": "Jaki jest główny cel zapory sieciowej (firewalla)?",
+            "ansA": "Przyspieszenie połączenia internetowego",
+            "ansB": "Blokowanie nieautoryzowanego dostępu",
+            "ansC": "Przechowywanie zaszyfrowanych haseł",
+            "ansD": "Optymalizacja wydajności komputera",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 2,
+            "question": "Co oznacza skrót VPN?",
+            "ansA": "Wirtualna Sieć Prywatna",
+            "ansB": "Bardzo Prywatna Sieć",
+            "ansC": "Zweryfikowana Chroniona Sieć",
+            "ansD": "Wirtualna Publiczna Sieć",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 3,
+            "question": "Czym jest phishing?",
+            "ansA": "Rodzaj złośliwego oprogramowania",
+            "ansB": "Atak socjotechniczny mający na celu zdobycie poufnych informacji",
+            "ansC": "Konfiguracja zapory sieciowej",
+            "ansD": "Metoda szyfrowania danych",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 4,
+            "question": "Które z poniższych haseł jest silne?",
+            "ansA": "haslo123",
+            "ansB": "123456",
+            "ansC": "QwErTy",
+            "ansD": "5fG#9kL!2z",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 5,
+            "question": "Jaki jest cel uwierzytelniania dwuskładnikowego (2FA)?",
+            "ansA": "Przyspieszenie procesu logowania",
+            "ansB": "Zapewnienie dodatkowej warstwy bezpieczeństwa",
+            "ansC": "Przechowywanie haseł",
+            "ansD": "Tworzenie kopii zapasowych danych",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 6,
+            "question": "Czym jest phishing?",
+            "ansA": "Metoda testowania prędkości sieci",
+            "ansB": "Technika łowienia ryb online",
+            "ansC": "Fałszywa próba uzyskania poufnych informacji",
+            "ansD": "Rodzaj zapory sieciowej",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 7,
+            "question": "Które z poniższych jest typowym znakiem e-maila phishingowego?",
+            "ansA": "Nieoczekiwane załączniki",
+            "ansB": "Spersonalizowane powitania",
+            "ansC": "Błędy gramatyczne",
+            "ansD": "Wszystkie powyższe",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 8,
+            "question": "Które z poniższych to przykłady złośliwego oprogramowania?",
+            "ansA": "Koń trojański",
+            "ansB": "Zapora sieciowa",
+            "ansC": "Robak",
+            "ansD": "Oprogramowanie szpiegujące",
+            "correctAns": [
+                "A",
+                "C",
+                "D"
+            ],
+            "tag": "general_security"
+        }
+    ],
+    "advancedQuestions": [
+        {
+            "id": 10001,
+            "question": "Który algorytm kryptograficzny jest używany do podpisów cyfrowych?",
+            "ansA": "AES",
+            "ansB": "RSA",
+            "ansC": "SHA-256",
+            "ansD": "Blowfish",
+            "correctAns": [
+                "B"
+            ],
+            "tag": ""
+        }
+    ]
+}

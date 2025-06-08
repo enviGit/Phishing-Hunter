@@ -1,0 +1,104 @@
+{
+    "lang": "pt-BR",
+    "newbieQuestions": [
+        {
+            "id": 1,
+            "question": "Qual é o principal objetivo de um firewall?",
+            "ansA": "Acelerar conexões com a internet",
+            "ansB": "Bloquear acesso não autorizado",
+            "ansC": "Armazenar senhas criptografadas",
+            "ansD": "Otimizar o desempenho do computador",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 2,
+            "question": "O que significa VPN?",
+            "ansA": "Rede Privada Virtual",
+            "ansB": "Rede Muito Pessoal",
+            "ansC": "Rede Protegida Verificada",
+            "ansD": "Rede Pública Virtual",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 3,
+            "question": "O que é phishing?",
+            "ansA": "Um tipo de malware",
+            "ansB": "Um ataque de engenharia social para obter informações sensíveis",
+            "ansC": "Uma configuração de firewall",
+            "ansD": "Um método de criptografia de dados",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 4,
+            "question": "Qual das seguintes é uma senha forte?",
+            "ansA": "senha123",
+            "ansB": "123456",
+            "ansC": "QwErTy",
+            "ansD": "5fG#9kL!2z",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 5,
+            "question": "Qual é o objetivo da autenticação de dois fatores (2FA)?",
+            "ansA": "Acelerar o processo de login",
+            "ansB": "Fornecer uma camada extra de segurança",
+            "ansC": "Armazenar senhas",
+            "ansD": "Fazer backup de dados",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 6,
+            "question": "O que é phishing?",
+            "ansA": "Um método para testar a velocidade da rede",
+            "ansB": "Uma técnica para pescar online",
+            "ansC": "Uma tentativa fraudulenta de obter informações sensíveis",
+            "ansD": "Um tipo de firewall",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 7,
+            "question": "Qual dos seguintes é um sinal comum de um e-mail de phishing?",
+            "ansA": "Anexos inesperados",
+            "ansB": "Saudações personalizadas",
+            "ansC": "Erros gramaticais",
+            "ansD": "Todas as anteriores",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 8,
+            "question": "Quais dos seguintes são exemplos de malware?",
+            "ansA": "Cavalo de Troia",
+            "ansB": "Firewall",
+            "ansC": "Worm",
+            "ansD": "Spyware",
+            "correctAns": [
+                "A",
+                "C",
+                "D"
+            ],
+            "tag": "general_security"
+        }
+    ],
+    "advancedQuestions": []
+}

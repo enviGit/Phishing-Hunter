@@ -1,0 +1,104 @@
+{
+    "lang": "fr",
+    "newbieQuestions": [
+        {
+            "id": 1,
+            "question": "Quel est le but principal d'un pare-feu ?",
+            "ansA": "Accélérer les connexions Internet",
+            "ansB": "Bloquer les accès non autorisés",
+            "ansC": "Stocker des mots de passe chiffrés",
+            "ansD": "Optimiser les performances de l'ordinateur",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 2,
+            "question": "Que signifie VPN ?",
+            "ansA": "Réseau Privé Virtuel",
+            "ansB": "Réseau Très Personnel",
+            "ansC": "Réseau Protégé Vérifié",
+            "ansD": "Réseau Public Virtuel",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 3,
+            "question": "Qu'est-ce que le phishing ?",
+            "ansA": "Un type de malware",
+            "ansB": "Une attaque d'ingénierie sociale visant à obtenir des informations sensibles",
+            "ansC": "Une configuration de pare-feu",
+            "ansD": "Une méthode de chiffrement des données",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 4,
+            "question": "Lequel des mots de passe suivants est fort ?",
+            "ansA": "motdepasse123",
+            "ansB": "123456",
+            "ansC": "QwErTy",
+            "ansD": "5fG#9kL!2z",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 5,
+            "question": "Quel est le but de l'authentification à deux facteurs (2FA) ?",
+            "ansA": "Accélérer les processus de connexion",
+            "ansB": "Fournir une couche de sécurité supplémentaire",
+            "ansC": "Stocker des mots de passe",
+            "ansD": "Sauvegarder des données",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 6,
+            "question": "Qu'est-ce que le phishing ?",
+            "ansA": "Une méthode pour tester la vitesse du réseau",
+            "ansB": "Une technique de pêche en ligne",
+            "ansC": "Une tentative frauduleuse d'obtenir des informations sensibles",
+            "ansD": "Un type de pare-feu",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 7,
+            "question": "Lequel des éléments suivants est un signe courant de phishing ?",
+            "ansA": "Pièces jointes inattendues",
+            "ansB": "Salutation personnalisée",
+            "ansC": "Fautes de grammaire",
+            "ansD": "Toutes les réponses ci-dessus",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 8,
+            "question": "Lesquels des éléments suivants sont des types de logiciels malveillants ?",
+            "ansA": "Cheval de Troie",
+            "ansB": "Pare-feu",
+            "ansC": "Ver",
+            "ansD": "Logiciel espion",
+            "correctAns": [
+                "A",
+                "C",
+                "D"
+            ],
+            "tag": "general_security"
+        }
+    ],
+    "advancedQuestions": []
+}

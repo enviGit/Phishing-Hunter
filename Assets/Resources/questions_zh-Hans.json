@@ -1,0 +1,104 @@
+{
+    "lang": "zh-Hans",
+    "newbieQuestions": [
+        {
+            "id": 1,
+            "question": "防火墙的主要目的是什么?",
+            "ansA": "加快互联网连接速度",
+            "ansB": "阻止未经授权的访问",
+            "ansC": "存储加密密码",
+            "ansD": "优化计算机性能",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 2,
+            "question": "VPN代表什么?",
+            "ansA": "虚拟专用网络",
+            "ansB": "非常个人化的网络",
+            "ansC": "验证的安全网络",
+            "ansD": "虚拟公共网络",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 3,
+            "question": "什么是网络钓鱼?",
+            "ansA": "一种恶意软件",
+            "ansB": "获取敏感信息的社会工程攻击",
+            "ansC": "防火墙配置",
+            "ansD": "数据加密方法",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 4,
+            "question": "以下哪个是强密码?",
+            "ansA": "密码123",
+            "ansB": "123456",
+            "ansC": "QwErTy",
+            "ansD": "5fG#9kL!2z",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 5,
+            "question": "双因素认证(2FA) 的目的是什么?",
+            "ansA": "加快登录过程",
+            "ansB": "提供额外的安全层",
+            "ansC": "存储密码",
+            "ansD": "备份数据",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 6,
+            "question": "什么是网络钓鱼 (phishing)?",
+            "ansA": "测试网络速度的方法",
+            "ansB": "在线捕鱼的技术",
+            "ansC": "试图欺诈性获取敏感信息的行为",
+            "ansD": "一种防火墙",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 7,
+            "question": "以下哪项是网络钓鱼邮件的常见迹象?",
+            "ansA": "意外的附件",
+            "ansB": "个性化问候",
+            "ansC": "语法错误",
+            "ansD": "以上全部",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 8,
+            "question": "以下哪些是恶意软件的例子?",
+            "ansA": "木马",
+            "ansB": "防火墙",
+            "ansC": "蠕虫",
+            "ansD": "间谍软件",
+            "correctAns": [
+                "A",
+                "C",
+                "D"
+            ],
+            "tag": "general_security"
+        }
+    ],
+    "advancedQuestions": []
+}

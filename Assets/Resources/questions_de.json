@@ -1,0 +1,104 @@
+{
+    "lang": "de",
+    "newbieQuestions": [
+        {
+            "id": 1,
+            "question": "Was ist der Hauptzweck einer Firewall?",
+            "ansA": "Beschleunigung von Internetverbindungen",
+            "ansB": "Blockierung unbefugten Zugriffs",
+            "ansC": "Speicherung verschlüsselter Passwörter",
+            "ansD": "Optimierung der Computerleistung",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 2,
+            "question": "Wofür steht VPN?",
+            "ansA": "Virtuelles Privates Netzwerk",
+            "ansB": "Sehr Persönliches Netzwerk",
+            "ansC": "Verifiziertes Geschütztes Netzwerk",
+            "ansD": "Virtuelles Öffentliches Netzwerk",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 3,
+            "question": "Was ist Phishing?",
+            "ansA": "Eine Art von Malware",
+            "ansB": "Ein Social-Engineering-Angriff zur Erlangung sensibler Informationen",
+            "ansC": "Eine Firewall-Konfiguration",
+            "ansD": "Eine Methode zur Datenverschlüsselung",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 4,
+            "question": "Welches der folgenden Passwörter ist stark?",
+            "ansA": "passwort123",
+            "ansB": "123456",
+            "ansC": "QwErTy",
+            "ansD": "5fG#9kL!2z",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 5,
+            "question": "Was ist der Zweck der Zwei-Faktor-Authentifizierung (2FA)?",
+            "ansA": "Beschleunigung von Anmeldevorgängen",
+            "ansB": "Bereitstellung einer zusätzlichen Sicherheitsebene",
+            "ansC": "Speicherung von Passwörtern",
+            "ansD": "Datensicherung",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 6,
+            "question": "Was ist Phishing?",
+            "ansA": "Eine Methode zur Messung der Netzwerkgeschwindigkeit",
+            "ansB": "Eine Technik zum Online-Fischen",
+            "ansC": "Ein betrügerischer Versuch, vertrauliche Informationen zu erhalten",
+            "ansD": "Eine Art Firewall",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 7,
+            "question": "Welches der folgenden ist ein häufiges Zeichen einer Phishing-E-Mail?",
+            "ansA": "Unerwartete Anhänge",
+            "ansB": "Personalisierte Grüße",
+            "ansC": "Grammatikfehler",
+            "ansD": "Alle oben genannten",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 8,
+            "question": "Welche der folgenden sind Beispiele für Malware?",
+            "ansA": "Trojanisches Pferd",
+            "ansB": "Firewall",
+            "ansC": "Wurm",
+            "ansD": "Spyware",
+            "correctAns": [
+                "A",
+                "C",
+                "D"
+            ],
+            "tag": "general_security"
+        }
+    ],
+    "advancedQuestions": []
+}

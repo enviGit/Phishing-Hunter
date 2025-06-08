@@ -1,0 +1,104 @@
+{
+    "lang": "ko",
+    "newbieQuestions": [
+        {
+            "id": 1,
+            "question": "방화벽의 주요 목적은 무엇입니까?",
+            "ansA": "인터넷 연결 속도 향상",
+            "ansB": "무단 액세스 차단",
+            "ansC": "암호화된 비밀번호 저장",
+            "ansD": "컴퓨터 성능 최적화",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 2,
+            "question": "VPN은 무엇의 약자입니까?",
+            "ansA": "가상 사설망",
+            "ansB": "매우 개인적인 네트워크",
+            "ansC": "검증된 보호 네트워크",
+            "ansD": "가상 공용 네트워크",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 3,
+            "question": "피싱이란 무엇입니까?",
+            "ansA": "악성 소프트웨어의 한 종류",
+            "ansB": "민감한 정보를 얻기 위한 사회공학적 공격",
+            "ansC": "방화벽 설정",
+            "ansD": "데이터 암호화 방법",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 4,
+            "question": "다음 중 강력한 비밀번호는 무엇입니까?",
+            "ansA": "비밀번호123",
+            "ansB": "123456",
+            "ansC": "QwErTy",
+            "ansD": "5fG#9kL!2z",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 5,
+            "question": "이중 인증(2FA)의 목적은 무엇입니까?",
+            "ansA": "로그인 프로세스 속도 향상",
+            "ansB": "추가 보안 계층 제공",
+            "ansC": "비밀번호 저장",
+            "ansD": "데이터 백업 수행",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 6,
+            "question": "피싱(phishing)이란 무엇인가요?",
+            "ansA": "네트워크 속도 테스트 방법",
+            "ansB": "온라인에서 낚시하는 기술",
+            "ansC": "민감한 정보를 사기적으로 얻으려는 시도",
+            "ansD": "방화벽의 한 종류",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 7,
+            "question": "다음 중 피싱 이메일의 일반적인 징후는 무엇인가요?",
+            "ansA": "예상치 못한 첨부파일",
+            "ansB": "개인화된 인사말",
+            "ansC": "문법 오류",
+            "ansD": "위의 모든 항목",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 8,
+            "question": "다음 중 악성 소프트웨어(malware)의 예는 무엇인가요?",
+            "ansA": "트로이 목마",
+            "ansB": "방화벽",
+            "ansC": "웜",
+            "ansD": "스파이웨어",
+            "correctAns": [
+                "A",
+                "C",
+                "D"
+            ],
+            "tag": "general_security"
+        }
+    ],
+    "advancedQuestions": []
+}

@@ -26,18 +26,8 @@ namespace ph.Managers {
         public List<QuizQuestion> advancedQuestions;
     }
 
-    [Serializable]
-    public class LocalizedQuizData : QuizData {
-        public string lang;
-    }
-
-    [Serializable]
-    public class LocalizedQuizDataList {
-        public List<LocalizedQuizData> items;
-    }
-
     public class QuizManager : MonoBehaviour {
-        [SerializeField] private TextAsset jsonFile;
+        private string languageFileName = "questions";
         [SerializeField] private Transform workSpace;
         [SerializeField] private GameObject questionPrefab;
         [SerializeField] private int maxDisplayedQuestions = 7;
@@ -52,7 +42,7 @@ namespace ph.Managers {
         private Dictionary<int, List<string>> userAnswers = new();
         private List<int> incorrectQuestions = new List<int>();
         private List<int> fullyCorrectQuestions = new();
-        private LocalizedQuizData resLangData;
+        private QuizData quizData;
         private Dictionary<string, (string SingleChoice, string MultipleChoice)> localization =
     new() {
         { "en", ("(Single choice)", "(Multiple choice)") },
@@ -81,146 +71,94 @@ namespace ph.Managers {
             newButton.interactable = false;
         }
         private void LoadQuestions() {
-            List<LocalizedQuizData> resourcesData = null;
+            string lang = Settings.Language;
+            string fileName = $"{languageFileName}_{lang}";
+            TextAsset json = Resources.Load<TextAsset>(fileName);
 
-            if (jsonFile != null) {
-                string wrappedJson = "{\"items\":" + jsonFile.text + "}";
-                resourcesData = JsonUtility.FromJson<LocalizedQuizDataList>(wrappedJson).items;
-            }
-            else {
-                Debug.LogError("Brak pliku questions.json w folderze Resources.");
+            if (json == null) {
+                Debug.LogError($"Brak pliku JSON: {fileName} w folderze Resources.");
+                return;
             }
 
-            resLangData = resourcesData?.FirstOrDefault(x => x.lang == Settings.Language);
+            quizData = JsonUtility.FromJson<QuizData>(json.text);
 
-            if (resLangData != null) {
-                questionList = resLangData.newbieQuestions;
-            }
-            else {
-                Debug.LogError("Brak danych dla wybranego języka.");
-            }
+            questionList = Settings.Difficulty == 0
+                ? quizData.newbieQuestions
+                : quizData.newbieQuestions.Concat(quizData.advancedQuestions).ToList();
         }
         public void DisplayQuestions() {
-            // Pytania, które jeszcze nie zostały wyświetlone oraz pytania, które zostały odpowiedziane błędnie.
-            List<QuizQuestion> questionsToDisplay;
+            List<QuizQuestion> questionsToDisplay = questionList
+                .Where(q => !fullyCorrectQuestions.Contains(q.id))
+                .Where(q => !displayedQuestionIds.Contains(q.id) || incorrectQuestions.Contains(q.id))
+                .Take(maxDisplayedQuestions)
+                .ToList();
 
-            if (Settings.Difficulty == 0) {
-                questionsToDisplay = questionList
-    .Where(q => !fullyCorrectQuestions.Contains(q.id)) // <-- odfiltrowujemy w pełni zaliczone
-    .Where(q => !displayedQuestionIds.Contains(q.id) || incorrectQuestions.Contains(q.id))
-    .ToList();
-            }
-            else {
-                questionsToDisplay = questionList
-    .Where(q => !fullyCorrectQuestions.Contains(q.id))
-    .Where(q => !displayedQuestionIds.Contains(q.id) || incorrectQuestions.Contains(q.id))
-    .ToList();
-
-                questionsToDisplay.AddRange(resLangData.advancedQuestions.Where(q => !fullyCorrectQuestions.Contains(q.id))
-    .Where(q => !displayedQuestionIds.Contains(q.id) || incorrectQuestions.Contains(q.id))
-    .ToList());
-            }
-
-            questionsToDisplay = questionsToDisplay
-    .Take(maxDisplayedQuestions)
-    .ToList();
-
-            foreach (var question in questionsToDisplay) {
-                GameObject questionItem = Instantiate(questionPrefab, workSpace.GetChild(0));
-
-                TextMeshProUGUI questionText = questionItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI ansAText = questionItem.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI ansBText = questionItem.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI ansCText = questionItem.transform.GetChild(2).GetChild(2).GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI ansDText = questionItem.transform.GetChild(2).GetChild(3).GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI questionType = questionItem.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
-
-                questionText.text = question.question;
-                ansAText.text = "A: " + question.ansA;
-                ansBText.text = "B: " + question.ansB;
-                ansCText.text = "C: " + question.ansC;
-                ansDText.text = "D: " + question.ansD;
-                questionType.text = localization.TryGetValue(Settings.Language, out var localizedTypes)
-    ? (question.correctAns.Count > 1 ? localizedTypes.MultipleChoice : localizedTypes.SingleChoice)
-    : (question.correctAns.Count > 1 ? "(Multiple choice)" : "(Single choice)");
-
-                Toggle ansAToggle = questionItem.transform.GetChild(3).GetChild(0).GetComponent<Toggle>();
-                Toggle ansBToggle = questionItem.transform.GetChild(3).GetChild(1).GetComponent<Toggle>();
-                Toggle ansCToggle = questionItem.transform.GetChild(3).GetChild(2).GetComponent<Toggle>();
-                Toggle ansDToggle = questionItem.transform.GetChild(3).GetChild(3).GetComponent<Toggle>();
-
-                ansAToggle.onValueChanged.AddListener((isSelected) => SetAnswer(question.id, isSelected, "A"));
-                ansBToggle.onValueChanged.AddListener((isSelected) => SetAnswer(question.id, isSelected, "B"));
-                ansCToggle.onValueChanged.AddListener((isSelected) => SetAnswer(question.id, isSelected, "C"));
-                ansDToggle.onValueChanged.AddListener((isSelected) => SetAnswer(question.id, isSelected, "D"));
-
-                displayedQuestionIds.Add(question.id);
+            foreach (var q in questionsToDisplay) {
+                GameObject item = Instantiate(questionPrefab, workSpace.GetChild(0));
+                SetupQuestionUI(item, q);
+                displayedQuestionIds.Add(q.id);
                 totalQuestions++;
             }
+        }
+        private void SetupQuestionUI(GameObject item, QuizQuestion q) {
+            item.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = q.question;
+            item.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = "A: " + q.ansA;
+            item.transform.GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = "B: " + q.ansB;
+            item.transform.GetChild(2).GetChild(2).GetComponent<TextMeshProUGUI>().text = "C: " + q.ansC;
+            item.transform.GetChild(2).GetChild(3).GetComponent<TextMeshProUGUI>().text = "D: " + q.ansD;
+
+            var qType = item.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
+            if (localization.TryGetValue(Settings.Language, out var labels)) {
+                qType.text = q.correctAns.Count > 1 ? labels.MultipleChoice : labels.SingleChoice;
+            }
+
+            SetupToggle(item.transform.GetChild(3).GetChild(0).GetComponent<Toggle>(), q.id, "A");
+            SetupToggle(item.transform.GetChild(3).GetChild(1).GetComponent<Toggle>(), q.id, "B");
+            SetupToggle(item.transform.GetChild(3).GetChild(2).GetComponent<Toggle>(), q.id, "C");
+            SetupToggle(item.transform.GetChild(3).GetChild(3).GetComponent<Toggle>(), q.id, "D");
+        }
+        private void SetupToggle(Toggle toggle, int questionId, string answer) {
+            toggle.onValueChanged.AddListener((isOn) => SetAnswer(questionId, isOn, answer));
         }
         public void CheckAnswers() {
             checkButton.interactable = false;
 
             foreach (Transform questionItem in workSpace.GetChild(0)) {
-                TextMeshProUGUI questionText = questionItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-                QuizQuestion question = resLangData.newbieQuestions
-    .Concat(resLangData.advancedQuestions)
-    .FirstOrDefault(q => questionText.text == q.question);
-
+                var questionText = questionItem.GetChild(1).GetComponent<TextMeshProUGUI>().text;
+                var question = questionList.FirstOrDefault(q => q.question == questionText);
                 if (question == null) continue;
 
-                List<string> selectedAnswers = GetSelectedAnswersForQuestion(question.id);
-                List<string> correctAnswersList = question.correctAns;
-
-                bool isCorrect = selectedAnswers.Count == correctAnswersList.Count &&
-                     !selectedAnswers.Except(correctAnswersList).Any();
-
-                if (!isCorrect) {
-                    incorrectQuestions.Add(question.id);
-                }
-                else {
-                    if (!fullyCorrectQuestions.Contains(question.id)) {
-                        fullyCorrectQuestions.Add(question.id);
-                    }
-                }
-
-                UpdateToggleColor(questionItem, isCorrect);
+                var selected = GetSelectedAnswersForQuestion(question.id);
+                var isCorrect = selected.Count == question.correctAns.Count &&
+                                !selected.Except(question.correctAns).Any();
 
                 if (isCorrect) {
                     correctAnswers++;
                     CorrectQuizAnswers++;
+                    fullyCorrectQuestions.Add(question.id);
+                }
+                else {
+                    incorrectQuestions.Add(question.id);
                 }
 
-                if (correctAnswers > 0)
-                    PlayerRatingSystem.Instance.UpdateProgress();
+                UpdateToggleColor(questionItem, isCorrect);
             }
 
-            string result = $"{correctAnswers} / {totalQuestions} ({(correctAnswers / (float)totalQuestions * 100):0}%)";
-            resultText.text = result;
+            PlayerRatingSystem.Instance.UpdateProgress();
 
-            float scorePercentage = (correctAnswers / (float)totalQuestions) * 100;
-
-            if (scorePercentage >= 80) {
-                resultText.color = Color.green;
-            }
-            else if (scorePercentage >= 50) {
-                resultText.color = Color.yellow;
-            }
-            else {
-                resultText.color = Color.red;
-            }
+            float percentage = (float)correctAnswers / totalQuestions * 100f;
+            resultText.text = $"{correctAnswers} / {totalQuestions} ({percentage:0}%)";
+            resultText.color = percentage switch {
+                >= 80 => Color.green,
+                >= 50 => Color.yellow,
+                _ => Color.red
+            };
 
             resultPanel.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
             newButton.interactable = true;
         }
         public void LoadNewQuestions() {
-            newButton.interactable = false;
-            checkButton.interactable = true;
-
-            foreach (Transform child in workSpace.GetChild(0)) {
-                Destroy(child.gameObject);
-            }
-
+            foreach (Transform child in workSpace.GetChild(0)) Destroy(child.gameObject);
             displayedQuestionIds.Clear();
             correctAnswers = 0;
             totalQuestions = 0;
@@ -229,65 +167,46 @@ namespace ph.Managers {
 
             DisplayQuestions();
             resultPanel.GetComponent<CanvasGroup>().DOFade(0, 0.5f);
+            newButton.interactable = false;
+            checkButton.interactable = true;
         }
         private void SetAnswer(int questionId, bool isSelected, string answer) {
-            if (!userAnswers.ContainsKey(questionId)) {
-                userAnswers[questionId] = new List<string>();
-            }
-
-            if (isSelected && !userAnswers[questionId].Contains(answer)) {
-                userAnswers[questionId].Add(answer);
-            }
-            else if (!isSelected && userAnswers[questionId].Contains(answer)) {
-                userAnswers[questionId].Remove(answer);
-            }
+            if (!userAnswers.ContainsKey(questionId)) userAnswers[questionId] = new();
+            if (isSelected && !userAnswers[questionId].Contains(answer)) userAnswers[questionId].Add(answer);
+            else if (!isSelected) userAnswers[questionId].Remove(answer);
         }
-        private List<string> GetSelectedAnswersForQuestion(int questionId) {
-            return userAnswers.ContainsKey(questionId) ? userAnswers[questionId] : new List<string>();
-        }
+        private List<string> GetSelectedAnswersForQuestion(int questionId) =>
+            userAnswers.TryGetValue(questionId, out var answers) ? answers : new();
         private void UpdateToggleColor(Transform questionItem, bool isCorrect) {
-            Toggle[] toggles = questionItem.GetChild(3).GetComponentsInChildren<Toggle>();
-
-            foreach (Toggle toggle in toggles) {
+            foreach (var toggle in questionItem.GetChild(3).GetComponentsInChildren<Toggle>()) {
                 if (toggle.isOn) {
-                    ColorBlock colorBlock = new ColorBlock {
-                        normalColor = isCorrect ? Color.green : Color.red,
-                        highlightedColor = isCorrect ? Color.green : Color.red,
-                        pressedColor = isCorrect ? Color.green : Color.red,
-                        selectedColor = isCorrect ? Color.green : Color.red,
-                        disabledColor = isCorrect ? Color.green : Color.red,
-                        colorMultiplier = 1f
-                    };
-                    toggle.colors = colorBlock;
+                    var color = isCorrect ? Color.green : Color.red;
+                    var block = toggle.colors;
+                    block.normalColor = block.highlightedColor = block.pressedColor =
+                        block.selectedColor = block.disabledColor = color;
+                    toggle.colors = block;
                 }
-
                 toggle.interactable = false;
             }
         }
         private int LoadTotalQuizCount() {
-            List<LocalizedQuizData> resourcesData = null;
+            string lang = Settings.Language;
+            string fileName = $"{languageFileName}_{lang}";
+            TextAsset json = Resources.Load<TextAsset>(fileName);
 
-            if (jsonFile != null) {
-                string wrappedJson = "{\"items\":" + jsonFile.text + "}";
-                resourcesData = JsonUtility.FromJson<LocalizedQuizDataList>(wrappedJson).items;
-            }
-            else {
-                Debug.LogError("Brak pliku questions.json w folderze Resources.");
-            }
-
-            string lang = Settings.Language.ToLower();
-
-            var resLangData = resourcesData?.FirstOrDefault(x => x.lang == lang);
-
-            if (resLangData != null) {
-                List<QuizQuestion> newbieQuestions = resLangData.newbieQuestions;
-                List<QuizQuestion> advancedQuestions = resLangData.advancedQuestions;
-                return newbieQuestions.Count + advancedQuestions.Count;
-            }
-            else {
-                Debug.LogError("Brak danych dla wybranego języka.");
+            if (json == null) {
+                Debug.LogError($"Brak pliku JSON: {fileName} w folderze Resources.");
                 return 0;
             }
+
+            QuizData data = JsonUtility.FromJson<QuizData>(json.text);
+
+            if (data == null) {
+                Debug.LogError("Nie udało się zdeserializować danych quizu.");
+                return 0;
+            }
+
+            return data.newbieQuestions.Count + data.advancedQuestions.Count;
         }
     }
 }

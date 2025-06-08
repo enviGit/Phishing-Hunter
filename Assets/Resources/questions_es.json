@@ -1,0 +1,104 @@
+{
+    "lang": "es",
+    "newbieQuestions": [
+        {
+            "id": 1,
+            "question": "¿Cuál es el propósito principal de un firewall?",
+            "ansA": "Acelerar las conexiones a Internet",
+            "ansB": "Bloquear el acceso no autorizado",
+            "ansC": "Almacenar contraseñas cifradas",
+            "ansD": "Optimizar el rendimiento del ordenador",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 2,
+            "question": "¿Qué significa VPN?",
+            "ansA": "Red Privada Virtual",
+            "ansB": "Red Muy Personal",
+            "ansC": "Red Protegida Verificada",
+            "ansD": "Red Pública Virtual",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 3,
+            "question": "¿Qué es el phishing?",
+            "ansA": "Un tipo de malware",
+            "ansB": "Un ataque de ingeniería social para obtener información sensible",
+            "ansC": "Una configuración de firewall",
+            "ansD": "Un método de cifrado de datos",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 4,
+            "question": "¿Cuál de las siguientes es una contraseña segura?",
+            "ansA": "contraseña123",
+            "ansB": "123456",
+            "ansC": "QwErTy",
+            "ansD": "5fG#9kL!2z",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 5,
+            "question": "¿Cuál es el propósito de la autenticación de dos factores (2FA)?",
+            "ansA": "Acelerar los procesos de inicio de sesión",
+            "ansB": "Proporcionar una capa adicional de seguridad",
+            "ansC": "Almacenar contraseñas",
+            "ansD": "Hacer copias de seguridad de los datos",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 6,
+            "question": "¿Qué es el phishing?",
+            "ansA": "Un método para medir la velocidad de red",
+            "ansB": "Una técnica para pescar en línea",
+            "ansC": "Un intento fraudulento de obtener información confidencial",
+            "ansD": "Un tipo de cortafuegos",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 7,
+            "question": "¿Cuál de los siguientes es un signo común de un correo phishing?",
+            "ansA": "Archivos adjuntos inesperados",
+            "ansB": "Saludo personalizado",
+            "ansC": "Errores gramaticales",
+            "ansD": "Todos los anteriores",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 8,
+            "question": "¿Cuáles de los siguientes son tipos de malware?",
+            "ansA": "Troyano",
+            "ansB": "Cortafuegos",
+            "ansC": "Gusano",
+            "ansD": "Spyware",
+            "correctAns": [
+                "A",
+                "C",
+                "D"
+            ],
+            "tag": "general_security"
+        }
+    ],
+    "advancedQuestions": []
+}

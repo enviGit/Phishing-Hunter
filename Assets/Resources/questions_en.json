@@ -1,0 +1,116 @@
+{
+    "newbieQuestions": [
+        {
+            "id": 1,
+            "question": "What is the primary purpose of a firewall?",
+            "ansA": "To speed up internet connections",
+            "ansB": "To block unauthorized access",
+            "ansC": "To store encrypted passwords",
+            "ansD": "To optimize computer performance",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 2,
+            "question": "What does VPN stand for?",
+            "ansA": "Virtual Private Network",
+            "ansB": "Very Personal Network",
+            "ansC": "Verified Protected Network",
+            "ansD": "Virtual Public Network",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 3,
+            "question": "What is phishing?",
+            "ansA": "A type of malware",
+            "ansB": "A social engineering attack to obtain sensitive information",
+            "ansC": "A firewall configuration",
+            "ansD": "A method of data encryption",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 4,
+            "question": "Which of the following is a strong password?",
+            "ansA": "password123",
+            "ansB": "123456",
+            "ansC": "QwErTy",
+            "ansD": "5fG#9kL!2z",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 5,
+            "question": "What is the purpose of two-factor authentication (2FA)?",
+            "ansA": "To speed up login processes",
+            "ansB": "To provide an extra layer of security",
+            "ansC": "To store passwords",
+            "ansD": "To backup data",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 6,
+            "question": "What is phishing?",
+            "ansA": "A method to test network speed",
+            "ansB": "A technique to catch fish online",
+            "ansC": "A fraudulent attempt to obtain sensitive information",
+            "ansD": "A type of firewall",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 7,
+            "question": "Which of the following is a common sign of a phishing email?",
+            "ansA": "Unexpected attachments",
+            "ansB": "Personalized greetings",
+            "ansC": "Grammatical errors",
+            "ansD": "All of the above",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 8,
+            "question": "Which of the following are examples of malware?",
+            "ansA": "Trojan horse",
+            "ansB": "Firewall",
+            "ansC": "Worm",
+            "ansD": "Spyware",
+            "correctAns": [
+                "A",
+                "C",
+                "D"
+            ],
+            "tag": "general_security"
+        }
+    ],
+    "advancedQuestions": [
+        {
+            "id": 10001,
+            "question": "Which cryptographic algorithm is commonly used for digital signatures?",
+            "ansA": "AES",
+            "ansB": "RSA",
+            "ansC": "SHA-256",
+            "ansD": "Blowfish",
+            "correctAns": [
+                "B"
+            ],
+            "tag": ""
+        }
+    ]
+}

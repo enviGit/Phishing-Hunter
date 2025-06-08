@@ -1,0 +1,66 @@
+{
+    "lang": "it",
+    "newbieQuestions": [
+        {
+            "id": 1,
+            "question": "Qual è lo scopo principale di un firewall?",
+            "ansA": "Accelerare le connessioni Internet",
+            "ansB": "Bloccare l'accesso non autorizzato",
+            "ansC": "Memorizzare password crittografate",
+            "ansD": "Ottimizzare le prestazioni del computer",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 2,
+            "question": "Cosa significa VPN?",
+            "ansA": "Rete Privata Virtuale",
+            "ansB": "Rete Molto Personale",
+            "ansC": "Rete Protetta Verificata",
+            "ansD": "Rete Pubblica Virtuale",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 3,
+            "question": "Cos'è il phishing?",
+            "ansA": "Un tipo di malware",
+            "ansB": "Un attacco di ingegneria sociale per ottenere informazioni sensibili",
+            "ansC": "Una configurazione del firewall",
+            "ansD": "Un metodo di crittografia dei dati",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 4,
+            "question": "Quale delle seguenti è una password sicura?",
+            "ansA": "password123",
+            "ansB": "123456",
+            "ansC": "QwErTy",
+            "ansD": "5fG#9kL!2z",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 5,
+            "question": "Qual è lo scopo dell'autenticazione a due fattori (2FA)?",
+            "ansA": "Accelerare i processi di accesso",
+            "ansB": "Fornire un ulteriore livello di sicurezza",
+            "ansC": "Memorizzare le password",
+            "ansD": "Eseguire il backup dei dati",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        }
+    ],
+    "advancedQuestions": []
+}

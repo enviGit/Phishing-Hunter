@@ -4,10 +4,10 @@
         {
             "id": 1,
             "question": "Jaki jest główny cel zapory sieciowej (firewalla)?",
-            "ansA": "Przyspieszenie połączenia internetowego",
-            "ansB": "Blokowanie nieautoryzowanego dostępu",
-            "ansC": "Przechowywanie zaszyfrowanych haseł",
-            "ansD": "Optymalizacja wydajności komputera",
+            "ansA": "Przyspieszyć połączenia internetowe",
+            "ansB": "Zablokować nieautoryzowany dostęp",
+            "ansC": "Przechowywać zaszyfrowane hasła",
+            "ansD": "Optymalizować wydajność komputera",
             "correctAns": [
                 "B"
             ],
@@ -17,9 +17,9 @@
             "id": 2,
             "question": "Co oznacza skrót VPN?",
             "ansA": "Wirtualna Sieć Prywatna",
-            "ansB": "Bardzo Prywatna Sieć",
-            "ansC": "Zweryfikowana Chroniona Sieć",
-            "ansD": "Wirtualna Publiczna Sieć",
+            "ansB": "Bardzo Osobista Sieć",
+            "ansC": "Zweryfikowana Sieć Chroniona",
+            "ansD": "Wirtualna Sieć Publiczna",
             "correctAns": [
                 "A"
             ],
@@ -28,10 +28,10 @@
         {
             "id": 3,
             "question": "Czym jest phishing?",
-            "ansA": "Rodzaj złośliwego oprogramowania",
-            "ansB": "Atak socjotechniczny mający na celu zdobycie poufnych informacji",
-            "ansC": "Konfiguracja zapory sieciowej",
-            "ansD": "Metoda szyfrowania danych",
+            "ansA": "Rodzajem złośliwego oprogramowania",
+            "ansB": "Atakiem socjotechnicznym mającym na celu zdobycie poufnych informacji",
+            "ansC": "Konfiguracją zapory sieciowej",
+            "ansD": "Metodą szyfrowania danych",
             "correctAns": [
                 "B"
             ],
@@ -39,8 +39,8 @@
         },
         {
             "id": 4,
-            "question": "Które z poniższych haseł jest silne?",
-            "ansA": "haslo123",
+            "question": "Które z poniższych to silne hasło?",
+            "ansA": "password123",
             "ansB": "123456",
             "ansC": "QwErTy",
             "ansD": "5fG#9kL!2z",
@@ -51,11 +51,11 @@
         },
         {
             "id": 5,
-            "question": "Jaki jest cel uwierzytelniania dwuskładnikowego (2FA)?",
-            "ansA": "Przyspieszenie procesu logowania",
-            "ansB": "Zapewnienie dodatkowej warstwy bezpieczeństwa",
-            "ansC": "Przechowywanie haseł",
-            "ansD": "Tworzenie kopii zapasowych danych",
+            "question": "Jaki jest cel uwierzytelniania dwuetapowego (2FA)?",
+            "ansA": "Przyspieszyć proces logowania",
+            "ansB": "Zapewnić dodatkową warstwę bezpieczeństwa",
+            "ansC": "Przechowywać hasła",
+            "ansD": "Wykonać kopię zapasową danych",
             "correctAns": [
                 "B"
             ],
@@ -63,11 +63,11 @@
         },
         {
             "id": 6,
-            "question": "Czym jest phishing?",
-            "ansA": "Metoda testowania prędkości sieci",
-            "ansB": "Technika łowienia ryb online",
-            "ansC": "Fałszywa próba uzyskania poufnych informacji",
-            "ansD": "Rodzaj zapory sieciowej",
+            "question": "Co powinieneś zrobić, jeśli otrzymasz podejrzany e-mail z linkiem?",
+            "ansA": "Kliknąć w link, żeby sprawdzić, gdzie prowadzi",
+            "ansB": "Odpowiedzieć i poprosić o więcej informacji",
+            "ansC": "Zignorować go lub zgłosić do działu IT",
+            "ansD": "Przesłać go znajomym",
             "correctAns": [
                 "C"
             ],
@@ -75,7 +75,7 @@
         },
         {
             "id": 7,
-            "question": "Które z poniższych jest typowym znakiem e-maila phishingowego?",
+            "question": "Które z poniższych to częste oznaki phishingowego maila?",
             "ansA": "Nieoczekiwane załączniki",
             "ansB": "Spersonalizowane powitania",
             "ansC": "Błędy gramatyczne",
@@ -98,20 +98,3514 @@
                 "D"
             ],
             "tag": "general_security"
+        },
+        {
+            "id": 9,
+            "question": "Które z poniższych to powszechne metody uwierzytelniania użytkownika?",
+            "ansA": "Hasło",
+            "ansB": "Odcisk palca",
+            "ansC": "Nazwa użytkownika",
+            "ansD": "Jednorazowy kod (OTP)",
+            "correctAns": [
+                "A",
+                "B",
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10,
+            "question": "Które urządzenie pomaga chronić sieć, filtrując ruch?",
+            "ansA": "Monitor",
+            "ansB": "Zapora sieciowa",
+            "ansC": "Drukarka",
+            "ansD": "Router z kontrolą rodzicielską",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 11,
+            "question": "Które działania pomagają chronić Twoje konta osobiste?",
+            "ansA": "Używanie tego samego hasła wszędzie",
+            "ansB": "Włączanie uwierzytelniania dwuetapowego",
+            "ansC": "Udostępnianie haseł znajomym",
+            "ansD": "Używanie silnych, unikalnych haseł",
+            "correctAns": [
+                "B",
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 12,
+            "question": "Jaki jest najlepszy sposób na stworzenie silnego hasła?",
+            "ansA": "Używanie daty urodzenia",
+            "ansB": "Używanie losowych słów i cyfr",
+            "ansC": "Używanie 'password123'",
+            "ansD": "Używanie imienia zwierzaka",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 13,
+            "question": "Która z poniższych to podstawowa zasada bezpieczeństwa online?",
+            "ansA": "Klikaj we wszystkie linki w mailach",
+            "ansB": "Unikaj aktualizacji oprogramowania",
+            "ansC": "Nie udostępniaj danych osobowych na publicznych platformach",
+            "ansD": "Używaj tego samego hasła do wszystkiego",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 14,
+            "question": "Czym jest inżynieria społeczna (social engineering)?",
+            "ansA": "Sposobem projektowania stron internetowych",
+            "ansB": "Metodą manipulacji ludźmi, by wyciągnąć poufne informacje",
+            "ansC": "Nowym językiem programowania",
+            "ansD": "Rodzajem złośliwego oprogramowania",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 15,
+            "question": "Jak rozpoznać bezpieczną stronę internetową?",
+            "ansA": "Ma zielone tło",
+            "ansB": "Używa HTTP",
+            "ansC": "Ma ikonę kłódki i używa HTTPS",
+            "ansD": "Ładuje się bardzo szybko",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 16,
+            "question": "Co pomaga zapobiec nieautoryzowanemu dostępowi do Twoich urządzeń?",
+            "ansA": "Pozostawienie ich odblokowanych",
+            "ansB": "Używanie blokady ekranu lub hasła",
+            "ansC": "Udostępnianie kodów dostępu znajomym",
+            "ansD": "Wyłączanie antywirusa",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 17,
+            "question": "Jakie są typowe cele ataków phishingowych?",
+            "ansA": "Konta e-mail",
+            "ansB": "Dane logowania do banku",
+            "ansC": "Hasła do mediów społecznościowych",
+            "ansD": "Wszystkie powyższe",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 18,
+            "question": "Co oznacza HTTPS w adresie strony internetowej?",
+            "ansA": "Że strona jest hostowana na bezpiecznym serwerze",
+            "ansB": "Że strona używa niebezpiecznego protokołu",
+            "ansC": "Że strona ładuje się wolno",
+            "ansD": "Że strona jest niedostępna",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 19,
+            "question": "Czego powinieneś unikać podczas korzystania z publicznego Wi-Fi?",
+            "ansA": "Przeglądania mediów społecznościowych",
+            "ansB": "Sprawdzania pogody",
+            "ansC": "Dostępu do konta bankowego",
+            "ansD": "Słuchania muzyki online",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 20,
+            "question": "Które praktyki pomagają chronić przed inżynierią społeczną?",
+            "ansA": "Ostrożność wobec maili od nieznanych nadawców",
+            "ansB": "Instalowanie silnego antywirusa",
+            "ansC": "Nieudostępnianie danych osobowych nieznajomym",
+            "ansD": "Regularne restartowanie komputera",
+            "correctAns": [
+                "A",
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 21,
+            "question": "Dlaczego ważne jest wylogowanie się z kont na publicznych komputerach?",
+            "ansA": "Aby komputer działał szybciej dla następnego użytkownika",
+            "ansB": "Aby uniknąć dostępu innych osób do twoich danych",
+            "ansC": "Aby oszczędzać baterię",
+            "ansD": "To nie jest konieczne",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 22,
+            "question": "Które z poniższych są przykładami czynników uwierzytelniania?",
+            "ansA": "Hasło",
+            "ansB": "Odcisk palca",
+            "ansC": "Odpowiedź na pytanie zabezpieczające",
+            "ansD": "Wygląd strony internetowej",
+            "correctAns": [
+                "A",
+                "B",
+                "C"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 23,
+            "question": "Jaki jest najbezpieczniejszy sposób przechowywania haseł?",
+            "ansA": "Zapisanie ich na kartce i trzymanie na biurku",
+            "ansB": "Przechowywanie ich w bezpiecznym menedżerze haseł",
+            "ansC": "Zapamiętanie jednego prostego hasła do wszystkich kont",
+            "ansD": "Korzystanie tylko z autouzupełniania w przeglądarce",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 24,
+            "question": "Która z poniższych sytuacji może wskazywać na próbę socjotechniki?",
+            "ansA": "Telefon od osoby podającej się za wsparcie techniczne z prośbą o hasło",
+            "ansB": "Przyjaciel pomagający zresetować twoje konto",
+            "ansC": "Technik IT aktualizujący oprogramowanie osobiście",
+            "ansD": "Reklama online nowej gry",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 25,
+            "question": "Co jest silnym wskaźnikiem, że e-mail jest fałszywy?",
+            "ansA": "Zawiera literówki i błędy gramatyczne",
+            "ansB": "Jest od twojego przełożonego",
+            "ansC": "Używa firmowego brandingu",
+            "ansD": "Zaczyna się od 'Cześć [Twoje Imię]'",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 26,
+            "question": "Co robi zapora sieciowa (firewall)?",
+            "ansA": "Łączy cię z internetem",
+            "ansB": "Monitoruje i kontroluje ruch sieciowy",
+            "ansC": "Przechowuje pliki w bezpieczny sposób",
+            "ansD": "Przyspiesza pobieranie plików",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 27,
+            "question": "Dlaczego korzystanie z publicznego Wi-Fi jest ryzykowne?",
+            "ansA": "Jest zawsze wolniejsze",
+            "ansB": "Może pozwolić atakującym przechwycić twoje dane",
+            "ansC": "Zużywa więcej baterii",
+            "ansD": "Blokuje niektóre strony internetowe",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 28,
+            "question": "Które kroki pomagają chronić twoje konta online?",
+            "ansA": "Używanie różnych haseł dla każdego konta",
+            "ansC": "Włączanie uwierzytelniania wieloskładnikowego",
+            "ansB": "Wyłączanie aktualizacji oprogramowania",
+            "ansD": "Logowanie się z nieznanych urządzeń",
+            "correctAns": [
+                "A",
+                "C"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 29,
+            "question": "Kiedy powinieneś aktualizować oprogramowanie?",
+            "ansA": "Tylko gdy jesteś do tego zmuszony",
+            "ansB": "Zawsze, gdy dostępne są aktualizacje",
+            "ansC": "Raz w roku",
+            "ansD": "Nigdy, żeby uniknąć błędów",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 30,
+            "question": "Co jest uważane za dobrą praktykę w zakresie cyberhigieny?",
+            "ansA": "Używanie hasła 'password123'",
+            "ansB": "Ignorowanie powiadomień o aktualizacjach",
+            "ansC": "Korzystanie z menedżera haseł",
+            "ansD": "Klikanie we wszystkie linki, aby sprawdzić czy są bezpieczne",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 31,
+            "question": "Które z poniższych to typowe metody, jakimi atakujący zdobywają twoje hasło?",
+            "ansA": "Odgadywanie",
+            "ansB": "E-maile phishingowe",
+            "ansC": "Socjotechnika",
+            "ansD": "Korzystanie z trybu ciemnego",
+            "correctAns": [
+                "A",
+                "B",
+                "C"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 32,
+            "question": "Jak rozpoznać, że strona internetowa używa szyfrowania?",
+            "ansA": "Ma ikonę kłódki w pasku adresu",
+            "ansB": "Ładuje się szybko",
+            "ansC": "Ma domenę .com",
+            "ansD": "Wyświetla reklamy",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 33,
+            "question": "Jaki jest jeden z celów uwierzytelniania wieloskładnikowego?",
+            "ansA": "Przyspieszenie logowania",
+            "ansB": "Dodanie dodatkowej warstwy bezpieczeństwa",
+            "ansC": "Usunięcie potrzeby używania haseł",
+            "ansD": "Zmiana twojego adresu IP",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 34,
+            "question": "Która z poniższych wskazówek jest dobra przy tworzeniu silnego hasła?",
+            "ansA": "Użyj imienia swojego zwierzaka",
+            "ansB": "Użyj mieszanki liter, cyfr i symboli",
+            "ansC": "Użyj '123456'",
+            "ansD": "Używaj starych haseł ponownie",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 35,
+            "question": "Które z poniższych to oznaki bezpiecznej strony internetowej?",
+            "ansA": "HTTPS w URL",
+            "ansB": "Ikona kłódki w przeglądarce",
+            "ansC": "Prośba o dane logowania na stronie głównej bez SSL",
+            "ansD": "HTTPS i zweryfikowany certyfikat",
+            "correctAns": [
+                "A",
+                "B",
+                "D"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 36,
+            "question": "Jak socjotechnicy mogą cię oszukać?",
+            "ansA": "Prosząc o poufne dane, podszywając się pod kogoś zaufanego",
+            "ansB": "Rozwiązując twoje problemy techniczne",
+            "ansC": "Pomagając w instalacji oprogramowania",
+            "ansD": "Dając nagrodę za dobre nawyki bezpieczeństwa",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 37,
+            "question": "Co powinieneś zrobić przed kliknięciem w link w e-mailu?",
+            "ansA": "Sprawdzić adres nadawcy",
+            "ansB": "Najedź kursorem na link, żeby zobaczyć, dokąd prowadzi",
+            "ansC": "Natychmiast go otworzyć, żeby nie przegapić informacji",
+            "ansD": "Zarówno A, jak i B",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 38,
+            "question": "Dlaczego ponowne używanie haseł jest niebezpieczne?",
+            "ansA": "Może spowolnić logowanie",
+            "ansB": "Jeśli jedno konto zostanie zhakowane, inne też mogą być dostępne",
+            "ansC": "Wcale nie jest niebezpieczne",
+            "ansD": "Pomaga lepiej zapamiętać hasła",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 39,
+            "question": "Które zachowania pomagają zapobiegać atakom cybernetycznym?",
+            "ansA": "Klikanie reklam tylko na zaufanych stronach",
+            "ansB": "Unikanie publicznego Wi-Fi przy wrażliwych zadaniach",
+            "ansC": "Używanie prostych haseł",
+            "ansD": "Odwiedzanie tylko stron HTTPS",
+            "correctAns": [
+                "B",
+                "D"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 40,
+            "question": "Jak najlepiej postąpić, gdy otrzymasz niespodziewany plik od kolegi?",
+            "ansA": "Otwórz go od razu, żeby sprawdzić zawartość",
+            "ansB": "Najpierw przeskanuj go programem antywirusowym",
+            "ansC": "Prześlij go na swój prywatny e-mail",
+            "ansD": "Wgraj go na media społecznościowe",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 41,
+            "question": "Co oznacza 'https' w adresie strony internetowej?",
+            "ansA": "Strona ładuje się szybciej",
+            "ansB": "Strona używa bezpiecznego szyfrowania",
+            "ansC": "Strona jest fałszywa",
+            "ansD": "Zawiera treści w wysokiej rozdzielczości",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 42,
+            "question": "Które z poniższych to dobre praktyki zarządzania hasłami?",
+            "ansA": "Regularna zmiana haseł",
+            "ansB": "Używanie tego samego hasła na wszystkich kontach",
+            "ansC": "Przechowywanie haseł w pliku tekstowym na pulpicie",
+            "ansD": "Korzystanie z menedżera haseł",
+            "correctAns": [
+                "A",
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 43,
+            "question": "Jak atakujący mogą wykorzystać socjotechnikę?",
+            "ansA": "Wysyłając prawdziwe e-maile od twojego zespołu IT",
+            "ansB": "Oszukując cię, byś ujawnił dane osobowe",
+            "ansC": "Losowo zgadując adresy IP",
+            "ansD": "Poprawiając wydajność twojego komputera",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 44,
+            "question": "Dlaczego powinieneś unikać publicznego Wi-Fi podczas bankowości online?",
+            "ansA": "Bo jest zbyt wolne dla aplikacji bankowych",
+            "ansB": "Bo szybciej rozładowuje baterię",
+            "ansC": "Bo publiczne Wi-Fi jest często niebezpieczne",
+            "ansD": "Bo banki blokują połączenia publiczne",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 45,
+            "question": "Które z poniższych to typowe taktyki socjotechniczne?",
+            "ansA": "Tworzenie poczucia pilności",
+            "ansB": "Oferowanie niespodziewanych nagród",
+            "ansC": "Wysyłanie e-maili z pilnymi prośbami",
+            "ansD": "Wysyłanie aktualizacji systemu przez oficjalne kanały",
+            "correctAns": [
+                "A",
+                "B",
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 46,
+            "question": "Jaka jest jedna z korzyści z wylogowywania się z kont po użyciu?",
+            "ansA": "Oszczędza pamięć",
+            "ansB": "Zapobiega nieautoryzowanemu dostępowi",
+            "ansC": "Sprawia, że wyglądasz profesjonalnie",
+            "ansD": "Poprawia jasność ekranu",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 47,
+            "question": "Jakich danych nigdy nie powinno się udostępniać publicznie?",
+            "ansA": "Ulubiony kolor",
+            "ansB": "Imię zwierzaka",
+            "ansC": "Dane logowania",
+            "ansD": "Wynik w grze",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 48,
+            "question": "Dlaczego uwierzytelnianie dwuskładnikowe jest bezpieczniejsze niż samo hasło?",
+            "ansA": "Zajmuje więcej czasu",
+            "ansB": "Zawiera dodatkowy krok weryfikacji",
+            "ansC": "Wymaga CAPTCHA",
+            "ansD": "Ogranicza dostęp tylko do e-maila",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 49,
+            "question": "Jakie zachowania zmniejszają ryzyko nabrania się na phishing?",
+            "ansA": "Dokładne sprawdzanie adresu e-mail nadawcy",
+            "ansB": "Szybkie klikanie linków, by niczego nie przegapić",
+            "ansC": "Unikanie e-maili wywołujących panikę lub presję",
+            "ansD": "Odpowiadanie, by sprawdzić, czy e-mail jest prawdziwy",
+            "correctAns": [
+                "A",
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 50,
+            "question": "Z jakich metod często korzystają atakujący, by oszukać użytkowników?",
+            "ansA": "Wysyłanie faktur z zainfekowanymi załącznikami",
+            "ansB": "Dzwonienie z ofertą pomocy technicznej",
+            "ansC": "Publikowanie pomocnych porad na forach",
+            "ansD": "Zarówno A, jak i B",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 51,
+            "question": "Dlaczego używanie tego samego hasła na różnych stronach jest niebezpieczne?",
+            "ansA": "Można je łatwo zapomnieć",
+            "ansB": "Jeśli jedna strona zostanie zhakowana, wszystkie konta są zagrożone",
+            "ansC": "Spowalnia komputer",
+            "ansD": "Zwiększa prędkość internetu",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 52,
+            "question": "Co może pomóc w zabezpieczeniu domowej sieci Wi-Fi?",
+            "ansA": "Zmiana domyślnego hasła do routera",
+            "ansB": "Korzystanie z szyfrowania WEP",
+            "ansC": "Pozostawienie sieci otwartej dla gości",
+            "ansD": "Umieszczenie routera przy oknie",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 53,
+            "question": "Jaki jest główny cel oprogramowania antywirusowego?",
+            "ansA": "Bezpieczne odtwarzanie muzyki",
+            "ansB": "Ochrona przed złośliwym oprogramowaniem",
+            "ansC": "Blokowanie mediów społecznościowych",
+            "ansD": "Zarządzanie spamem w e-mailu",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 54,
+            "question": "Co powinieneś zrobić przed kliknięciem podejrzanego linku?",
+            "ansA": "Najechać kursorem na link, aby sprawdzić adres URL",
+            "ansB": "Kliknąć szybko, żeby zobaczyć co to",
+            "ansC": "Przesłać go znajomym",
+            "ansD": "Zignorować instynkt",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 55,
+            "question": "Które z poniższych to bezpieczne sposoby przechowywania haseł?",
+            "ansA": "Na karteczce pod klawiaturą",
+            "ansB": "W zaszyfrowanym menedżerze haseł",
+            "ansC": "W niezabezpieczonym pliku tekstowym",
+            "ansD": "Zapamiętując je wszystkie",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 56,
+            "question": "Jakie cechy ma bezpieczne hasło?",
+            "ansA": "Jest długie i zawiera symbole",
+            "ansB": "Łatwe do odgadnięcia",
+            "ansC": "Twoje imię i data urodzenia",
+            "ansD": "Ma mniej niż 6 znaków",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 57,
+            "question": "Do czego służy zapora sieciowa (firewall)?",
+            "ansA": "Zwiększa prędkość pobierania",
+            "ansB": "Chroni przed nieautoryzowanym dostępem",
+            "ansC": "Usuwa pliki",
+            "ansD": "Naprawia problemy ze sprzętem",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 58,
+            "question": "Jak cyberprzestępcy często nakłaniają użytkowników do ujawnienia danych logowania?",
+            "ansA": "Wysyłają groźby",
+            "ansB": "Podszywają się pod zaufane źródła",
+            "ansC": "Obiecują nagrody lub pieniądze",
+            "ansD": "Wszystkie powyższe",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 59,
+            "question": "Dlaczego logowanie się przez publiczne Wi-Fi bez VPN jest ryzykowne?",
+            "ansA": "Możesz szybciej rozładować baterię",
+            "ansB": "Twoje dane mogą zostać przechwycone",
+            "ansC": "Zużywa za dużo transferu",
+            "ansD": "Strony się nie ładują",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 60,
+            "question": "Które z poniższych są przykładami bezpiecznych metod uwierzytelniania?",
+            "ansA": "Weryfikacja biometryczna",
+            "ansB": "Uwierzytelnianie dwuskładnikowe",
+            "ansC": "Logowanie przez Facebooka na wszystkich stronach",
+            "ansD": "Używanie hasła „123456”",
+            "correctAns": [
+                "A",
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 61,
+            "question": "Co daje 'uwierzytelnianie dwuskładnikowe' w kontekście bezpieczeństwa konta?",
+            "ansA": "Dodatkowy krok weryfikacji tożsamości",
+            "ansB": "Szybsze logowanie",
+            "ansC": "Nieograniczone resetowanie hasła",
+            "ansD": "Automatyczną zmianę hasła",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 62,
+            "question": "Która z poniższych praktyk jest bezpieczna przy tworzeniu hasła?",
+            "ansA": "Użycie losowych słów i cyfr",
+            "ansB": "Użycie imienia zwierzaka",
+            "ansC": "Użycie daty urodzenia",
+            "ansD": "Użycie hasła „password123”",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 63,
+            "question": "Jaki rodzaj ataku polega na podszywaniu się pod zaufaną osobę w celu wyłudzenia poufnych informacji?",
+            "ansA": "Phishing",
+            "ansB": "Brute force",
+            "ansC": "Złośliwe oprogramowanie (malware)",
+            "ansD": "DDoS",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 64,
+            "question": "Jaki jest najlepszy sposób ochrony sieci Wi-Fi w domu?",
+            "ansA": "Wyłączenie szyfrowania Wi-Fi",
+            "ansB": "Użycie silnego hasła i szyfrowania WPA3",
+            "ansC": "Publiczne nadawanie nazwy sieci",
+            "ansD": "Pozostawienie sieci otwartej dla gości",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 65,
+            "question": "Które z działań pomaga uniknąć ataków socjotechnicznych?",
+            "ansA": "Udostępnianie hasła współpracownikom",
+            "ansB": "Ignorowanie podejrzanych próśb o dane wrażliwe",
+            "ansC": "Klikanie we wszystkie linki w e-mailach",
+            "ansD": "Swobodne podawanie numeru telefonu",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 66,
+            "question": "Co robi VPN (Wirtualna Sieć Prywatna)?",
+            "ansA": "Przyspiesza połączenie internetowe",
+            "ansB": "Szyfruje ruch internetowy dla zachowania prywatności",
+            "ansC": "Blokuje wszystkie e-maile",
+            "ansD": "Automatycznie usuwa ciasteczka",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 67,
+            "question": "Które z poniższych to przykład silnego hasła?",
+            "ansA": "P@ssw0rd!",
+            "ansB": "12345678",
+            "ansC": "MyBirthday",
+            "ansD": "qwerty",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 68,
+            "question": "Co zrobić, gdy ktoś dzwoni i prosi o twoje hasło?",
+            "ansA": "Podać je, jeśli rozmówca brzmi uprzejmie",
+            "ansB": "Odmówić i zgłosić sprawę",
+            "ansC": "Poprosić o numer, by oddzwonić",
+            "ansD": "Zapisać hasło, żeby nie zapomnieć",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 69,
+            "question": "Do czego głównie służy zapora sieciowa (firewall)?",
+            "ansA": "Chroni sieć, kontrolując ruch przychodzący i wychodzący",
+            "ansB": "Poprawia żywotność baterii urządzenia",
+            "ansC": "Automatycznie aktualizuje oprogramowanie",
+            "ansD": "Tworzy kopie zapasowe w chmurze",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 70,
+            "question": "Co może pomóc w rozpoznaniu podejrzanego e-maila?",
+            "ansA": "Nieoczekiwane załączniki lub linki",
+            "ansB": "Wiadomość od znanego kontaktu",
+            "ansC": "Profesjonalny wygląd i poprawna gramatyka",
+            "ansD": "Poprawnie wpisane imię i nazwisko",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 71,
+            "question": "Które zabezpieczenie ogranicza dostęp tylko do autoryzowanych użytkowników?",
+            "ansA": "Uwierzytelnianie",
+            "ansB": "Publiczna sieć Wi-Fi",
+            "ansC": "Złośliwe oprogramowanie",
+            "ansD": "Filtr antyspamowy",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 72,
+            "question": "Która z poniższych cech wskazuje na podejrzany e-mail?",
+            "ansA": "Jest napisany poprawną gramatyką",
+            "ansB": "Wymaga pilnego działania i podania danych osobowych",
+            "ansC": "Pochodzi od znanego współpracownika",
+            "ansD": "Zawiera poprawnie zapisane imię w nagłówku",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 73,
+            "question": "Jaki jest powszechny objaw infekcji złośliwym oprogramowaniem?",
+            "ansA": "Uruchamia się szybciej niż zwykle",
+            "ansB": "Częste wyskakujące okna i nieznane programy",
+            "ansC": "Dłuższy czas pracy na baterii",
+            "ansD": "Prośba o aktualizację zabezpieczeń",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 74,
+            "question": "Jak bezpiecznie korzystać z publicznej sieci Wi-Fi?",
+            "ansA": "Korzystając z VPN",
+            "ansB": "Wyłączając zaporę sieciową",
+            "ansC": "Udostępniając połączenie innym",
+            "ansD": "Odwiedzając tylko nieznane strony",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 75,
+            "question": "Czym jest menedżer haseł?",
+            "ansA": "Narzędziem do bezpiecznego przechowywania haseł",
+            "ansB": "Osobą zarządzającą hasłami w pracy",
+            "ansC": "Stroną z listą popularnych haseł",
+            "ansD": "Programem do łamania haseł",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 76,
+            "question": "Które z tych haseł jest najbezpieczniejsze?",
+            "ansA": "123456",
+            "ansB": "qwerty",
+            "ansC": "MyDog2020",
+            "ansD": "vB9$kL@!4hR",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 77,
+            "question": "Jaki jest bezpieczny sposób na pozbycie się starego dysku twardego?",
+            "ansA": "Oddaj go znajomemu",
+            "ansB": "Wyrzuć do śmieci",
+            "ansC": "Szybko sformatuj",
+            "ansD": "Zniszcz fizycznie lub użyj narzędzi do bezpiecznego usuwania danych",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 78,
+            "question": "Dlaczego powinieneś zablokować komputer, gdy odchodzisz od biurka?",
+            "ansA": "Aby oszczędzać baterię",
+            "ansB": "Aby zapobiec dostępowi innych do twoich danych",
+            "ansC": "Aby zmniejszyć użycie internetu",
+            "ansD": "Aby uniknąć aktualizacji w tle",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 79,
+            "question": "Co powinieneś zrobić przed kliknięciem linku w niespodziewanym mailu?",
+            "ansA": "Kliknąć, żeby zobaczyć dokąd prowadzi",
+            "ansB": "Odpowiedzieć i zapytać, czy jest bezpieczny",
+            "ansC": "Dokładnie sprawdzić adres linku",
+            "ansD": "Przesłać znajomym, żeby się wypowiedzieli",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 80,
+            "question": "Dlaczego ryzykowne jest logowanie się na konta osobiste z publicznych komputerów?",
+            "ansA": "Są zwykle za wolne",
+            "ansB": "Mogą mieć keyloggery lub malware",
+            "ansC": "Ekran może być za mały",
+            "ansD": "Wylogowują zbyt szybko",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 81,
+            "question": "Które działanie poprawia bezpieczeństwo twojego konta?",
+            "ansA": "Używanie tego samego hasła do wszystkiego",
+            "ansB": "Zmiana haseł co 10 lat",
+            "ansC": "Włączenie uwierzytelniania dwuskładnikowego",
+            "ansD": "Udostępnianie haseł zaufanym współpracownikom",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 82,
+            "question": "Która z poniższych metod jest bezpieczna do przechowywania haseł?",
+            "ansA": "W notesie na biurku",
+            "ansB": "W szkicach maili",
+            "ansC": "Używanie zaufanego menedżera haseł",
+            "ansD": "Jako notatki w telefonie bez hasła",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 83,
+            "question": "Jakie jest główne ryzyko pobierania plików z nieznanych stron?",
+            "ansA": "Zwykle są zbyt duże",
+            "ansB": "Mogą spowalniać internet",
+            "ansC": "Mogą zawierać malware",
+            "ansD": "Wymagają dostępu administratora",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 84,
+            "question": "Które zachowanie może wskazywać na próbę socjotechniki?",
+            "ansA": "Ktoś prosi o pomoc z drukarką",
+            "ansB": "Nieznajomy prosi o dane logowania, aby 'naprawić' twoje konto",
+            "ansC": "Współpracownik zapomniał hasła",
+            "ansD": "Ktoś wysłał zaproszenie do kalendarza",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 85,
+            "question": "Co powinieneś zrobić, jeśli twoje konto zostało przejęte?",
+            "ansA": "Ignorować i mieć nadzieję, że się zatrzyma",
+            "ansB": "Poprosić znajomego o sprawdzenie",
+            "ansC": "Natychmiast zmienić hasło i powiadomić wsparcie",
+            "ansD": "Wylogować się i zalogować ponownie",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 86,
+            "question": "Jaki jest częsty znak, że strona może być phishingiem?",
+            "ansA": "Ma ciemne kolory",
+            "ansB": "Logo jest animowane",
+            "ansC": "Prosi o dane logowania na lekko przekręconej domenie",
+            "ansD": "Ładuje się szybko",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 87,
+            "question": "Jaką technikę mogą używać atakujący, by potajemnie przechwytywać ruch w niezabezpieczonej sieci Wi-Fi?",
+            "ansA": "Fałszowanie ARP",
+            "ansB": "Kodowanie URL",
+            "ansC": "Ping flood",
+            "ansD": "Skanowanie portów",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 88,
+            "question": "Jak phishingowe maile zwykle oszukują użytkowników?",
+            "ansA": "Pokazując prognozę pogody",
+            "ansB": "Oferując aktualizacje systemu",
+            "ansC": "Naśladując legalne usługi i prosząc o dane logowania",
+            "ansD": "Linkując do śmiesznych filmów",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 89,
+            "question": "Dlaczego ryzykowne jest używanie tego samego hasła na wielu stronach?",
+            "ansA": "Zajmuje więcej czasu na wpisanie",
+            "ansB": "Strony mogą blokować to hasło",
+            "ansC": "Jeśli jedna strona zostanie zhakowana, wszystkie konta są zagrożone",
+            "ansD": "Myli przeglądarkę",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 90,
+            "question": "Jakiego rodzaju dane atakujący często szukają w atakach socjotechnicznych?",
+            "ansA": "Tylko twojego podpisu mailowego",
+            "ansB": "Losowych memów",
+            "ansC": "Wrażliwych informacji osobistych lub służbowych",
+            "ansD": "Ikon aplikacji",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 91,
+            "question": "Jak możesz zweryfikować wiarygodność e-maila z alertem bezpieczeństwa?",
+            "ansA": "Kliknij od razu w link",
+            "ansB": "Odpowiedz, pytając czy to prawda",
+            "ansC": "Zignoruj go całkowicie",
+            "ansD": "Sprawdź adres nadawcy i zweryfikuj przez oficjalne wsparcie",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 92,
+            "question": "Co powinieneś zrobić przed podłączeniem nieznanego pendrive’a?",
+            "ansA": "Użyj go od razu, żeby zobaczyć, co jest na nim",
+            "ansB": "Podłącz go do komputera służbowego",
+            "ansC": "Zapytaj dział IT lub przeskanuj w bezpiecznym środowisku",
+            "ansD": "Podziel się nim z kolegami z pracy",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 93,
+            "question": "Który z poniższych jest przykładem silnego czynnika uwierzytelniania?",
+            "ansA": "Twoje urodziny",
+            "ansB": "Twój ulubiony kolor",
+            "ansC": "Skan linii papilarnych",
+            "ansD": "Słowo 'password'",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 94,
+            "question": "Co oznacza termin 'malware'?",
+            "ansA": "Rodzaj bezpiecznego programu",
+            "ansB": "Narzędzie do tworzenia kopii zapasowej",
+            "ansC": "Złośliwe oprogramowanie",
+            "ansD": "Funkcja zapory sieciowej",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 95,
+            "question": "Co może zrobić oszust, by nakłonić cię do ujawnienia danych osobowych?",
+            "ansA": "Wysłać legalną ofertę biznesową",
+            "ansB": "Podszyć się pod kogoś, komu ufasz",
+            "ansC": "Dać ci darmowy antywirus",
+            "ansD": "Zaoferować wsparcie techniczne",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 96,
+            "question": "Która z poniższych praktyk e-mailowych jest bezpieczna?",
+            "ansA": "Klikanie w linki od nieznanych nadawców",
+            "ansB": "Otwieranie wszystkich załączników, żeby je sprawdzić",
+            "ansC": "Oznaczanie podejrzanych wiadomości jako phishing",
+            "ansD": "Odpowiadanie, by potwierdzić swoje dane",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 97,
+            "question": "Które narzędzie jest powszechnie używane do monitorowania ruchu sieciowego?",
+            "ansA": "Zapora sieciowa (Firewall)",
+            "ansB": "Menadżer zadań (Task Manager)",
+            "ansC": "Wireshark",
+            "ansD": "Paint",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 98,
+            "question": "Dlaczego powinieneś być ostrożny z rozszerzeniami przeglądarki?",
+            "ansA": "Mogą zmieniać jasność ekranu",
+            "ansB": "Mogą spowalniać pisanie",
+            "ansC": "Mogą mieć dostęp do wrażliwych informacji",
+            "ansD": "Usuwają historię przeglądania",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 99,
+            "question": "Która z poniższych jest formą uwierzytelniania biometrycznego?",
+            "ansA": "Kod PIN",
+            "ansB": "Pytanie zabezpieczające",
+            "ansC": "Hasło",
+            "ansD": "Skan siatkówki oka",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 100,
+            "question": "Kolega prosi cię o hasło. Co powinieneś zrobić?",
+            "ansA": "Szybko mu je podać, żeby pomóc",
+            "ansB": "Zignorować i zgłosić prośbę",
+            "ansC": "Zapisać i zostawić na jego biurku",
+            "ansD": "Zmienić hasło i powiedzieć mu nowe",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 101,
+            "question": "Co phishingowy e-mail często stara się wywołać?",
+            "ansA": "Poczucie pilności lub strachu",
+            "ansB": "Relaksującą atmosferę",
+            "ansC": "Ciekawość techniczną",
+            "ansD": "Chęć wypisania się",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 102,
+            "question": "Jaki jest jeden ze sposobów ochrony sieci domowej?",
+            "ansA": "Używanie otwartej sieci Wi-Fi",
+            "ansB": "Wyłączenie zapory sieciowej",
+            "ansC": "Ustawienie silnego hasła do Wi-Fi",
+            "ansD": "Udostępnianie sieci sąsiadom",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 103,
+            "question": "Która z poniższych rzeczy jest sygnałem ostrzegawczym phishingu?",
+            "ansA": "E-mail z pilnością i klikalnymi linkami",
+            "ansB": "E-mail bez tematu",
+            "ansC": "E-mail od twojego menadżera",
+            "ansD": "Cotygodniowy e-mail z aktualizacją zespołu",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 104,
+            "question": "Co to jest 'shoulder surfing' w cyberbezpieczeństwie?",
+            "ansA": "Podglądanie czyjegoś ekranu zza ramienia",
+            "ansB": "Używanie myszy na czyimś biurku",
+            "ansC": "Monitorowanie ruchu internetowego",
+            "ansD": "Głośne pisanie na klawiaturze",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 105,
+            "question": "Dlaczego powinieneś utrzymywać oprogramowanie w najnowszej wersji?",
+            "ansA": "Aby zmienić kolory interfejsu",
+            "ansB": "Aby spowolnić urządzenie",
+            "ansC": "Aby załatać luki bezpieczeństwa",
+            "ansD": "Aby oszczędzać transfer danych",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 106,
+            "question": "Jak szyfrowanie chroni dane?",
+            "ansA": "Usuwając stare dane",
+            "ansB": "Mieszając dane tak, by tylko upoważnieni mogli je odczytać",
+            "ansC": "Przenosząc dane do chmury",
+            "ansD": "Trwale blokując twoje pliki",
+            "correctAns": [
+                "B"
+            ]
+        },
+        {
+            "id": 107,
+            "question": "Jaki jest cel karty bezpieczeństwa w miejscu pracy?",
+            "ansA": "Śledzenie wynagrodzeń pracowników",
+            "ansB": "Kontrola dostępu do zabezpieczonych obszarów",
+            "ansC": "Monitorowanie przerw",
+            "ansD": "Włączanie komputerów",
+            "correctAns": [
+                "B"
+            ]
+        },
+        {
+            "id": 108,
+            "question": "Co jest przykładem fizycznej socjotechniki?",
+            "ansA": "Podążanie za pracownikiem, by wejść do zabezpieczonego miejsca",
+            "ansB": "Phishingowy mail od wsparcia IT",
+            "ansC": "Złośliwe oprogramowanie ukryte w grze",
+            "ansD": "Odgadywanie hasła",
+            "correctAns": [
+                "A"
+            ]
+        },
+        {
+            "id": 109,
+            "question": "Dlaczego ryzykowne jest zapisywanie haseł w przeglądarce?",
+            "ansA": "Mogą zniknąć po restarcie",
+            "ansB": "Mogą zostać przejęte przez malware",
+            "ansC": "Spowalniają przeglądarkę",
+            "ansD": "Synchronizują się z telewizorami smart",
+            "correctAns": [
+                "B"
+            ]
+        },
+        {
+            "id": 110,
+            "question": "Jak atakujący mogą wykorzystać media społecznościowe?",
+            "ansA": "Do kradzieży zdjęć profilowych",
+            "ansB": "Do dzielenia się memami",
+            "ansC": "Do zbierania danych osobowych do phishingu",
+            "ansD": "Do zwiększania liczby lajków",
+            "correctAns": [
+                "C"
+            ]
+        },
+        {
+            "id": 111,
+            "question": "Z którą nazwą sieci powinieneś unikać łączenia się?",
+            "ansA": "OfficeGuest",
+            "ansB": "CoffeeShopFreeWiFi",
+            "ansC": "HomeWiFi_5G",
+            "ansD": "MyRouter123",
+            "correctAns": [
+                "B"
+            ]
+        },
+        {
+            "id": 112,
+            "question": "Jak uniknąć przypadkowej instalacji malware?",
+            "ansA": "Otwierać załączniki tylko od znajomych",
+            "ansB": "Unikać klikania w niespodziewane reklamy popup",
+            "ansC": "Instalować każdą znalezioną wtyczkę do przeglądarki",
+            "ansD": "Zmieniać nazwy podejrzanych plików",
+            "correctAns": [
+                "B"
+            ]
+        },
+        {
+            "id": 113,
+            "question": "Kiedy powinieneś zaktualizować swój e-mail do odzyskiwania konta?",
+            "ansA": "Tylko podczas tworzenia konta",
+            "ansB": "Jeśli przestajesz korzystać ze starego maila",
+            "ansC": "Kiedy sobie przypomnisz",
+            "ansD": "Nigdy, to nie jest konieczne",
+            "correctAns": [
+                "B"
+            ]
+        },
+        {
+            "id": 114,
+            "question": "Jak rozpoznać podejrzany załącznik w mailu?",
+            "ansA": "Ma ogólną nazwę pliku jak 'document.exe'",
+            "ansB": "Jest jasno oznaczony twoim imieniem",
+            "ansC": "Zawsze jest to plik PDF",
+            "ansD": "Ma ikonę nadawcy",
+            "correctAns": [
+                "A"
+            ]
+        },
+        {
+            "id": 115,
+            "question": "Co to jest shoulder surfing?",
+            "ansA": "Podglądanie czyjegoś ekranu przez ramię",
+            "ansB": "Oglądanie tutoriali online",
+            "ansC": "Korzystanie z czyjegoś krzesła",
+            "ansD": "Pożyczanie telefonu innej osoby",
+            "correctAns": [
+                "A"
+            ]
+        },
+        {
+            "id": 116,
+            "question": "Jaka jest korzyść z wylogowywania się z kont po użyciu?",
+            "ansA": "Oszczędza transfer danych",
+            "ansB": "Aktualizuje pliki cookie",
+            "ansC": "Zapobiega nieautoryzowanemu dostępowi",
+            "ansD": "Zwiększa rozdzielczość ekranu",
+            "correctAns": [
+                "C"
+            ]
+        },
+        {
+            "id": 117,
+            "question": "Na czym najbardziej opiera się phishing?",
+            "ansA": "Na lukach w oprogramowaniu",
+            "ansB": "Na zaufaniu i błędach ludzi",
+            "ansC": "Na błędnych konfiguracjach zapory",
+            "ansD": "Na silnych hasłach",
+            "correctAns": [
+                "B"
+            ]
+        },
+        {
+            "id": 118,
+            "question": "Jaką rolę pełni DNS w komunikacji internetowej?",
+            "ansA": "Szyfruje pliki na twoim urządzeniu",
+            "ansB": "Filtruje spam w mailach",
+            "ansC": "Tłumaczy nazwy domen na adresy IP",
+            "ansD": "Blokuje wirusy",
+            "correctAns": [
+                "C"
+            ]
+        },
+        {
+            "id": 119,
+            "question": "Co pomaga zabezpieczyć domową sieć Wi-Fi?",
+            "ansA": "Wyłączenie zapory",
+            "ansB": "Pozostawienie domyślnego hasła do routera",
+            "ansC": "Zmiana nazwy sieci i ustawienie silnego hasła",
+            "ansD": "Utrzymywanie otwartego Wi-Fi dla gości",
+            "correctAns": [
+                "C"
+            ]
+        },
+        {
+            "id": 120,
+            "question": "Która technika jest powszechnie używana w pretextingu?",
+            "ansA": "Odgadywanie haseł",
+            "ansB": "Używanie fałszywych scenariuszy do wyciągania danych",
+            "ansC": "Instalowanie keyloggerów",
+            "ansD": "Szyfrowanie plików",
+            "correctAns": [
+                "B"
+            ]
+        },
+        {
+            "id": 121,
+            "question": "Jaki jest najlepszy sposób na zabezpieczenie oprogramowania?",
+            "ansA": "Zainstalować je tylko raz",
+            "ansB": "Wyłączyć automatyczne aktualizacje",
+            "ansC": "Zawsze aktualizować do najnowszej wersji",
+            "ansD": "Wyłączać urządzenie, gdy się go nie używa",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 122,
+            "question": "Co ransomware zazwyczaj robi z twoimi danymi?",
+            "ansA": "Usuwa je na stałe",
+            "ansB": "Szyfruje je i żąda okupu za dostęp",
+            "ansC": "Kopiuje je na pendrive",
+            "ansD": "Wysyła je do drukarki",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 123,
+            "question": "Który załącznik w mailu służbowym jest najbardziej podejrzany?",
+            "ansA": "invoice.pdf",
+            "ansB": "notes.txt",
+            "ansC": "report.docx",
+            "ansD": "urgent_payment.exe",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 124,
+            "question": "Które działanie pomaga szybko wykryć infekcję ransomware?",
+            "ansA": "Monitorowanie nagłych zmian rozszerzeń plików",
+            "ansB": "Wyłączanie zapory sieciowej",
+            "ansC": "Ignorowanie powiadomień systemowych",
+            "ansD": "Zamykanie nieużywanych aplikacji",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 125,
+            "question": "Co to jest scareware?",
+            "ansA": "Oprogramowanie proszące o aktualizacje",
+            "ansB": "Okienko twierdzące, że komputer jest zainfekowany i żądające zapłaty",
+            "ansC": "Darmowy, otwarty antywirus",
+            "ansD": "Mail od działu IT",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 126,
+            "question": "Dlaczego należy unikać pobierania pirackiego oprogramowania?",
+            "ansA": "Jest zwykle przestarzałe",
+            "ansB": "Działa wolno",
+            "ansC": "Może zawierać malware lub spyware",
+            "ansD": "Nie obsługuje wielu języków",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 127,
+            "question": "Jak cyberprzestępcy najczęściej rozpowszechniają ransomware?",
+            "ansA": "Zakładki w przeglądarce",
+            "ansB": "Fałszywe programy antywirusowe",
+            "ansC": "Szyfrowane komunikatory",
+            "ansD": "Strony informacyjne",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 128,
+            "question": "Dlaczego podłączanie nieznanych urządzeń USB do komputera jest ryzykowne?",
+            "ansA": "Mogą przegrzać komputer",
+            "ansB": "Mogą zainfekować urządzenie malware",
+            "ansC": "Zużywają więcej energii",
+            "ansD": "Usuwają kopie zapasowe",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 129,
+            "question": "Co pomaga zapobiegać infekcjom ransomware?",
+            "ansA": "Używanie przestarzałych systemów operacyjnych",
+            "ansB": "Szybkie klikanie w popupy",
+            "ansC": "Regularne tworzenie kopii zapasowych i aktualizacja oprogramowania",
+            "ansD": "Wyłączanie zapory sieciowej",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 130,
+            "question": "Co zrobić, gdy pojawi się ekran ransomware?",
+            "ansA": "Zapłać natychmiast",
+            "ansB": "Odłącz się od sieci i poinformuj dział IT",
+            "ansC": "Próbuj losowych haseł",
+            "ansD": "Restartuj urządzenie wielokrotnie",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 131,
+            "question": "Co to jest 'koń trojański' w cyberbezpieczeństwie?",
+            "ansA": "Narzędzie do szyfrowania kopii zapasowych",
+            "ansB": "Malware udający legalne oprogramowanie",
+            "ansC": "Menadżer haseł",
+            "ansD": "Skaner antywirusowy",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 132,
+            "question": "Które zachowanie zwiększa ryzyko infekcji malware?",
+            "ansA": "Korzystanie z oficjalnych sklepów z aplikacjami",
+            "ansB": "Otwieranie nieznanych linków w mailach",
+            "ansC": "Instalowanie aktualizacji systemu",
+            "ansD": "Korzystanie z menadżerów haseł",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 133,
+            "question": "Jaki jest dobry wskaźnik, że aplikacja mobilna może być złośliwa?",
+            "ansA": "Jest darmowa",
+            "ansB": "Żąda niepotrzebnych uprawnień",
+            "ansC": "Zawiera reklamy",
+            "ansD": "Działa offline",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 134,
+            "question": "Dlaczego ważne jest regularne tworzenie kopii zapasowych?",
+            "ansA": "By łatwiej znaleźć pliki",
+            "ansB": "By zaoszczędzić miejsce na dysku",
+            "ansC": "By odzyskać dane po atakach malware lub ransomware",
+            "ansD": "By szybciej udostępniać pliki",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 135,
+            "question": "Co robi spyware?",
+            "ansA": "Czyszczenie miejsca na dysku",
+            "ansB": "Monitoruje aktywność i kradnie informacje",
+            "ansC": "Blokuje podejrzane strony",
+            "ansD": "Przyspiesza przeglądanie internetu",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 136,
+            "question": "Jaka jest kluczowa różnica między wirusem a robakiem?",
+            "ansA": "Robaki potrzebują działania użytkownika, by się rozprzestrzeniać",
+            "ansB": "Wirusy występują tylko na urządzeniach mobilnych",
+            "ansC": "Robaki mogą same się rozprzestrzeniać przez sieci",
+            "ansD": "Wirusy są nieszkodliwe",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 137,
+            "question": "Jaka jest główna metoda atakujących w kampaniach ransomware?",
+            "ansA": "Szyfrowanie plików i żądanie okupu za odszyfrowanie",
+            "ansB": "Zmiana tapet pulpitu",
+            "ansC": "Automatyczna aktualizacja oprogramowania",
+            "ansD": "Instalowanie blokad reklam",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 138,
+            "question": "Jaki znak świadczy, że wyskakujące okienko może być złośliwe?",
+            "ansA": "Grozi konsekwencjami prawnymi, jeśli nie zapłacisz",
+            "ansB": "Prosi o ocenę twojego doświadczenia",
+            "ansC": "Pokazuje nieszkodliwe powiadomienie o ciasteczkach",
+            "ansD": "Informuje, że system jest zainfekowany i oferuje naprawę",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 139,
+            "question": "Dlaczego należy unikać pobierania pirackiego oprogramowania?",
+            "ansA": "Często zawiera ukryte malware lub spyware",
+            "ansB": "Może zajmować mniej miejsca",
+            "ansC": "Spowalnia kartę graficzną",
+            "ansD": "Mniej prawdopodobne, że działa na Windows",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 140,
+            "question": "Który scenariusz najlepiej ilustruje atak socjotechniczny?",
+            "ansA": "Atakujący podszywa się pod wsparcie IT, by zdobyć dane logowania",
+            "ansB": "Pracownik zapomina się wylogować",
+            "ansC": "Serwer przestaje działać",
+            "ansD": "Ktoś wyłudza hasło poprzez e-mail",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 141,
+            "question": "Jaki powinien być pierwszy krok po zauważeniu ransomware?",
+            "ansA": "Natychmiast odłączyć się od sieci",
+            "ansB": "Restartować urządzenie",
+            "ansC": "Wysłać plik do znajomego",
+            "ansD": "Jak najszybciej zapłacić okup",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 142,
+            "question": "Jak ransomware może rozprzestrzeniać się przez e-maile?",
+            "ansA": "Poprzez zainfekowane załączniki lub linki",
+            "ansB": "Używając bardzo dużych rozmiarów czcionki",
+            "ansC": "Wysyłając tylko pliki PDF",
+            "ansD": "Podszywając się pod faktury lub powiadomienia o wysyłce",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 143,
+            "question": "Która taktyka jest powszechnie stosowana w scareware?",
+            "ansA": "Fałszywe alerty antywirusowe, by przestraszyć użytkowników i nakłonić do pobrania malware",
+            "ansB": "Oferowanie kodów rabatowych",
+            "ansC": "Prośby o recenzje oprogramowania",
+            "ansD": "Przekierowywanie do oficjalnych stron rządowych",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 144,
+            "question": "Dlaczego ważne jest wykonywanie kopii zapasowych offline w zapobieganiu ransomware?",
+            "ansA": "Nie mogą być dostępne ani zaszyfrowane przez zagrożenia online",
+            "ansB": "Oszczędza pieniądze na przechowywaniu w chmurze",
+            "ansC": "Poprawia wydajność myszy",
+            "ansD": "Pozwala na szybkie ponowne uruchomienia",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 145,
+            "question": "Co jest wskaźnikiem fałszywego alertu bezpieczeństwa na stronie internetowej?",
+            "ansA": "Agresywne wyskakujące okienka wymagające natychmiastowego działania",
+            "ansB": "Strona prosi o szybką ankietę",
+            "ansC": "Wolne ładowanie strony",
+            "ansD": "Twierdzenie, że komputer ma natychmiast 547 wirusów",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 146,
+            "question": "Jak bezpiecznie zweryfikować podejrzany link?",
+            "ansA": "Użyj zaufanej strony do skanowania linków",
+            "ansB": "Całkowicie go ignoruj",
+            "ansC": "Kliknij prawym i skopiuj bez sprawdzania",
+            "ansD": "Sprawdź, czy link pasuje do oficjalnej domeny",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 147,
+            "question": "Który typ pliku najczęściej może zawierać ukryte malware?",
+            "ansA": "Pliki wykonywalne (.exe)",
+            "ansB": "Pliki audio (.mp3)",
+            "ansC": "Obrazy (.png)",
+            "ansD": "Arkusze kalkulacyjne z makrami (.xlsm)",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 148,
+            "question": "Jaki jest częsty cel ataku phishingowego?",
+            "ansA": "Kradzież danych logowania lub wrażliwych informacji",
+            "ansB": "Pomoc wsparcia IT",
+            "ansC": "Zgłaszanie błędów",
+            "ansD": "Testowanie przepustowości łącza",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 149,
+            "question": "Jakie jest powszechne zagrożenie związane z podłączaniem nieznanych pendrive'ów?",
+            "ansA": "Mogą zawierać malware instalujące się automatycznie",
+            "ansB": "Zawsze formatują twój dysk",
+            "ansC": "Zwiększają prędkość internetu",
+            "ansD": "Mogą działać jako keylogger po podłączeniu",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 150,
+            "question": "Jaką technikę stosują atakujący, by uniknąć wykrycia przez antywirusy?",
+            "ansA": "Zamazywanie kodu (code obfuscation)",
+            "ansB": "Błędy ortograficzne w wyskakujących okienkach",
+            "ansC": "Głośne dźwięki wentylatora",
+            "ansD": "Stosowanie malware bez plików (fileless malware)",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "general_security"
         }
     ],
     "advancedQuestions": [
         {
             "id": 10001,
-            "question": "Który algorytm kryptograficzny jest używany do podpisów cyfrowych?",
-            "ansA": "AES",
-            "ansB": "RSA",
-            "ansC": "SHA-256",
-            "ansD": "Blowfish",
+            "question": "Jaki jest główny cel systemu SIEM w środowisku cyberbezpieczeństwa?",
+            "ansA": "Przechowywanie zaszyfrowanych kopii zapasowych",
+            "ansB": "Zarządzanie dostępem użytkowników",
+            "ansC": "Zbieranie i analiza logów bezpieczeństwa",
+            "ansD": "Automatyczne skanowanie podatności",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10002,
+            "question": "Który protokół służy do zabezpieczenia przesyłania e-maili przez internet?",
+            "ansA": "SMTP",
+            "ansB": "IMAP",
+            "ansC": "POP3",
+            "ansD": "STARTTLS",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10003,
+            "question": "Atakujący przechwytuje komunikację między dwoma stronami, by zmienić przesyłane dane. Jaki to typ ataku?",
+            "ansA": "Podszywanie się (Spoofing)",
+            "ansB": "Atak typu Man-in-the-Middle (MitM)",
+            "ansC": "Phishing",
+            "ansD": "Denial of Service",
             "correctAns": [
                 "B"
             ],
-            "tag": ""
+            "tag": "network_security"
+        },
+        {
+            "id": 10004,
+            "question": "Która metoda pomaga zapobiegać atakom brute-force na formularze logowania?",
+            "ansA": "Wyłączenie kopiowania i wklejania w formularzu logowania",
+            "ansB": "Stosowanie CAPTCHA i blokady konta",
+            "ansC": "Wyświetlanie podpowiedzi do hasła",
+            "ansD": "Zezwalanie tylko na małe litery w hasłach",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10005,
+            "question": "Jaki jest cel Kerberosa w bezpiecznej sieci?",
+            "ansA": "Udostępnianie plików",
+            "ansB": "Szyfrowanie danych",
+            "ansC": "Uwierzytelnianie za pomocą biletów (ticketów)",
+            "ansD": "Zarządzanie zaporą sieciową (firewallem)",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10006,
+            "question": "Który typ złośliwego oprogramowania szyfruje pliki i żąda okupu za klucz deszyfrujący?",
+            "ansA": "Spyware",
+            "ansB": "Ransomware",
+            "ansC": "Rootkit",
+            "ansD": "Koń trojański",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10007,
+            "question": "Która technika jest używana przez zaawansowane ataki phishingowe do tworzenia niemal identycznych stron internetowych?",
+            "ansA": "Atak watering hole",
+            "ansB": "Typosquatting (podszywanie pod literówki)",
+            "ansC": "Drive-by downloads",
+            "ansD": "Podszywanie się pod subdomeny",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 10008,
+            "question": "Czym charakteryzuje się luka zero-day?",
+            "ansA": "Brak znanego exploit'u",
+            "ansB": "Dostępna poprawka (patch)",
+            "ansC": "Aktywne wykorzystywanie przed dostępnością poprawki",
+            "ansD": "Atakuje tylko urządzenia mobilne",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10009,
+            "question": "Który atak wykorzystuje zaufanie użytkownika do już uwierzytelnionej sesji?",
+            "ansA": "Cross-Site Request Forgery (CSRF)",
+            "ansB": "SQL Injection",
+            "ansC": "DNS Spoofing",
+            "ansD": "ARP Poisoning",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10010,
+            "question": "Jaka jest najbezpieczniejsza metoda przechowywania haseł użytkowników we współczesnej aplikacji webowej?",
+            "ansA": "W czystym tekście z SSL",
+            "ansB": "Szyfrowanie AES",
+            "ansC": "Hashowanie silnym algorytmem z dodaniem soli",
+            "ansD": "Kodowanie Base64",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10011,
+            "question": "Która z poniższych cech jest charakterystyczna dla ransomware?",
+            "ansA": "Szyfruje pliki i żąda okupu",
+            "ansB": "Cicho rejestruje naciśnięcia klawiszy",
+            "ansC": "Natychmiast usuwa pliki systemowe",
+            "ansD": "Podszywa się pod oprogramowanie antywirusowe",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10012,
+            "question": "Co pomaga zapobiegać przejęciu sesji (session hijacking)?",
+            "ansA": "Używanie HTTPS i bezpiecznych tokenów sesji",
+            "ansB": "Częsta zmiana haseł",
+            "ansC": "Zezwalanie na dostęp gości",
+            "ansD": "Wyłączanie ciasteczek (cookies)",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10013,
+            "question": "Która technika jest często używana w atakach socjotechnicznych?",
+            "ansA": "Wykorzystywanie zaufania użytkownika do wyciągania informacji",
+            "ansB": "Skanowanie otwartych portów",
+            "ansC": "Wstrzykiwanie złośliwych skryptów na strony",
+            "ansD": "Zalewanie serwera ruchem (DDoS)",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 10014,
+            "question": "Który z poniższych sposobów jest bezpiecznym uwierzytelnianiem zdalnym użytkowników?",
+            "ansA": "Używanie haseł w czystym tekście przez VPN",
+            "ansB": "Wysyłanie haseł e-mailem",
+            "ansC": "Wyłączanie uwierzytelniania dwuskładnikowego",
+            "ansD": "Używanie uwierzytelniania wieloskładnikowego (MFA)",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10015,
+            "question": "Jakie jest główne ryzyko, gdy protokół pulpitu zdalnego (RDP) jest wystawiony do internetu?",
+            "ansA": "Ataki brute-force na logowanie",
+            "ansB": "Ataki typu man-in-the-middle",
+            "ansC": "E-maile phishingowe",
+            "ansD": "Dostarczanie ransomware",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10016,
+            "question": "Co rootkit zazwyczaj pozwala zrobić atakującemu?",
+            "ansA": "Uzyskać uprzywilejowany dostęp, pozostając niewykrytym",
+            "ansB": "Automatycznie wysyłać phishingowe e-maile",
+            "ansC": "Wyłączyć zaporę systemową",
+            "ansD": "Szyfrować pliki użytkownika dla okupu",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10017,
+            "question": "Jak często można zidentyfikować phishingowe e-maile?",
+            "ansA": "Poprzez dokładne sprawdzanie domeny nadawcy i docelowych linków",
+            "ansB": "Nigdy nie zawierają załączników",
+            "ansC": "Zawsze są wykrywane przez oprogramowanie antywirusowe",
+            "ansD": "Tylko przez administratorów IT",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 10018,
+            "question": "Jakie zagrożenie wiąże się z łączeniem do nielegalnego hotspotu Wi-Fi?",
+            "ansA": "Automatyczne aktualizacje systemu operacyjnego",
+            "ansB": "Ataki typu Man-in-the-Middle",
+            "ansC": "Przegrzewanie się urządzenia",
+            "ansD": "Nieumyślne ataki DoS",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10019,
+            "question": "Jaki jest cel eskalacji uprawnień w cyberataku?",
+            "ansA": "Uzyskanie wyższych uprawnień na systemie",
+            "ansB": "Wyciągnięcie kluczy szyfrujących z pamięci RAM",
+            "ansC": "Uruchomienie ataków DDoS",
+            "ansD": "Eksfiltracja danych przez DNS",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10020,
+            "question": "Co może zmniejszyć ryzyko ataków credential stuffing?",
+            "ansA": "Wymuszanie polityk ponownego użycia silnych haseł",
+            "ansB": "Korzystanie z publicznych serwerów DNS",
+            "ansC": "Unikanie CAPTCHA",
+            "ansD": "Włączenie uwierzytelniania wieloskładnikowego",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10021,
+            "question": "Jaki jest typowy wskaźnik serwera Command and Control (C2) w malware?",
+            "ansA": "Nienaturalny ruch wychodzący do rzadkich domen",
+            "ansB": "Wysokie użycie CPU",
+            "ansC": "Wyłączona kamera internetowa",
+            "ansD": "Rozłączanie Bluetooth",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10022,
+            "question": "Co pomaga chronić przed DNS spoofingiem?",
+            "ansA": "Używanie DNSSEC (rozszerzeń bezpieczeństwa systemu nazw domen)",
+            "ansB": "Wyłączanie oprogramowania antywirusowego",
+            "ansC": "Instalowanie wtyczek do przeglądarki",
+            "ansD": "Unikanie HTTPS",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10023,
+            "question": "Jaka jest korzyść z używania menedżerów haseł?",
+            "ansA": "Generują i przechowują silne, unikalne hasła",
+            "ansB": "Całkowicie zapobiegają atakom phishingowym",
+            "ansC": "Działają jak zapory dla haseł",
+            "ansD": "Ujawniają hasła wszystkim użytkownikom",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10024,
+            "question": "Co skutecznie zmniejsza skuteczność phishingu?",
+            "ansA": "Szkolenia użytkowników i symulowane kampanie phishingowe",
+            "ansB": "Zezwalanie na wyskakujące okienka w systemach firmowych",
+            "ansC": "Zakaz przekazywania e-maili dalej",
+            "ansD": "Wyłączanie filtrów antyspamowych",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 10025,
+            "question": "Który scenariusz najlepiej opisuje atak watering hole?",
+            "ansA": "Haker wykorzystuje publiczny hotspot Wi-Fi",
+            "ansB": "Użytkownik odwiedza skompromitowaną stronę często używaną przez jego organizację",
+            "ansC": "E-mail zawiera zainfekowany załącznik",
+            "ansD": "Konto w mediach społecznościowych zostaje przejęte dla spamu",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10026,
+            "question": "Jaki jest główny cel ataku typu buffer overflow?",
+            "ansA": "Nadpisanie pamięci i wykonanie dowolnego kodu",
+            "ansB": "Opóźnienie dostarczenia pakietów",
+            "ansC": "Zapełnienie miejsca na dysku logami",
+            "ansD": "Przekierowanie zapytań DNS",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10027,
+            "question": "Które narzędzie jest powszechnie używane do przechwytywania pakietów w sieci lokalnej?",
+            "ansA": "Wireshark",
+            "ansB": "Nmap",
+            "ansC": "Hashcat",
+            "ansD": "KeePass",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10028,
+            "question": "Czym jest SQL injection?",
+            "ansA": "Metodą wstrzykiwania złośliwych zapytań SQL do pól wejściowych",
+            "ansB": "Techniką przeciążania pamięci RAM",
+            "ansC": "Sposobem na brutalne łamanie haseł administratora",
+            "ansD": "Formą phishingu wykorzystującą linki do baz danych",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10029,
+            "question": "Który z nich jest przykładem luki zero-day?",
+            "ansA": "Błąd nieznany jeszcze dostawcy i bez dostępnej poprawki",
+            "ansB": "Przestarzała wersja TLS",
+            "ansC": "Nieaktualna sygnatura antywirusa",
+            "ansD": "Znany exploit z wydaną poprawką",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10030,
+            "question": "Jaki jest główny cel honeypota w cyberbezpieczeństwie?",
+            "ansA": "Wykrywać i badać wzorce ataków",
+            "ansB": "Szyfrować dane wewnętrzne",
+            "ansC": "Działać jako zapora sieciowa",
+            "ansD": "Automatycznie aktualizować oprogramowanie",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10031,
+            "question": "Co oznacza 'zasada najmniejszych uprawnień'?",
+            "ansA": "Użytkownicy powinni mieć tylko dostęp niezbędny do wykonywania swoich ról",
+            "ansB": "Użytkownicy muszą resetować hasła co miesiąc",
+            "ansC": "Systemy powinny blokować wszystkie nieznane adresy IP",
+            "ansD": "Administratorzy muszą wyłączyć dostęp do chmury",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10032,
+            "question": "Jakie jest główne ryzyko używania przestarzałych protokołów SSL/TLS?",
+            "ansA": "Mogą być podatne na ataki typu downgrade lub podsłuch",
+            "ansB": "Spowalniają zapytania DNS",
+            "ansC": "Blokują wewnętrzną pocztę",
+            "ansD": "Umożliwiają obejście uwierzytelniania wieloskładnikowego",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10033,
+            "question": "Które z poniższych najlepiej definiuje 'ruch lateralny' w ataku cybernetycznym?",
+            "ansA": "Przemieszczanie się z jednego zainfekowanego systemu do innych w tej samej sieci",
+            "ansB": "Eksfiltracja danych przez USB",
+            "ansC": "Przejęcie bezprzewodowych drukarek",
+            "ansD": "Wykonywanie zewnętrznych ataków typu denial-of-service",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10034,
+            "question": "Dlaczego wyłączanie makr jest ważne w cyberbezpieczeństwie?",
+            "ansA": "Makra mogą być użyte do automatycznego wykonywania złośliwych skryptów",
+            "ansB": "Makra zużywają nadmiernie pamięć systemową",
+            "ansC": "Makra usuwają pliki tymczasowe",
+            "ansD": "Makra pozwalają na skanowanie portów",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10035,
+            "question": "Co mierzy wskaźnik CVSS?",
+            "ansA": "Stopień powagi podatności oprogramowania",
+            "ansB": "Opóźnienie sieci podczas skanowania",
+            "ansC": "Wydajność procesora pod obciążeniem",
+            "ansD": "Siłę szyfrowania hasła",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10036,
+            "question": "Jaka jest kluczowa cecha zaawansowanego, trwałego zagrożenia (APT)?",
+            "ansA": "Polega na długotrwałych, ukierunkowanych atakach często przez dobrze finansowanych aktorów",
+            "ansB": "Zawsze opiera się na ransomware",
+            "ansC": "Jest łatwe do wykrycia i usunięcia",
+            "ansD": "Celuje tylko w urządzenia IoT",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10037,
+            "question": "Który typ ataku polega na przechwytywaniu i modyfikowaniu komunikacji między dwiema stronami?",
+            "ansA": "Atak typu Man-in-the-Middle (MITM)",
+            "ansB": "Cross-Site Request Forgery",
+            "ansC": "Smishing",
+            "ansD": "Keylogging",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10038,
+            "question": "Którego z tych narzędzi najprawdopodobniej użyjesz do ataków typu brute-force na hasła?",
+            "ansA": "Hydra",
+            "ansB": "Nessus",
+            "ansC": "Netcat",
+            "ansD": "Burp Suite",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10039,
+            "question": "Jaki jest jeden ze sposobów na złagodzenie podatności Cross-Site Scripting (XSS)?",
+            "ansA": "Sanityzacja i walidacja wszystkich danych wejściowych od użytkownika",
+            "ansB": "Używanie silnych haseł do Wi-Fi",
+            "ansC": "Wyłączenie przekazywania poczty",
+            "ansD": "Unikanie używania JavaScript w aplikacjach webowych",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10040,
+            "question": "Dlaczego logi są ważne w reagowaniu na incydenty?",
+            "ansA": "Pomagają odtworzyć przebieg i charakter naruszenia",
+            "ansB": "Automatycznie przywracają utracone pliki",
+            "ansC": "Zastępują zapory sieciowe",
+            "ansD": "Generują dane do VPN",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10041,
+            "question": "Które z poniższych najlepiej opisuje atak timingowy?",
+            "ansA": "Atak wykorzystujący różnice w czasie działania operacji kryptograficznych",
+            "ansB": "Atak polegający na zalewaniu sieci ruchem",
+            "ansC": "Atak z użyciem fałszywych odpowiedzi DNS",
+            "ansD": "Atak na uwierzytelnianie wieloskładnikowe",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10042,
+            "question": "Jaka jest główna słabość szyfrowania symetrycznego w porównaniu do asymetrycznego?",
+            "ansA": "Wolniejsza wydajność",
+            "ansB": "Problem z dystrybucją klucza",
+            "ansC": "Nie może szyfrować dużych plików",
+            "ansD": "Wymaga certyfikatów cyfrowych",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10043,
+            "question": "Jaką rolę pełni Urząd Certyfikacji (CA) w Infrastrukturze Klucza Publicznego (PKI)?",
+            "ansA": "Generowanie prywatnych kluczy dla użytkowników",
+            "ansB": "Wydawanie i weryfikację certyfikatów cyfrowych",
+            "ansC": "Szyfrowanie danych użytkownika",
+            "ansD": "Wykrywanie włamań",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10044,
+            "question": "Jaką podatność wykorzystuje SQL injection?",
+            "ansA": "Słabe polityki haseł",
+            "ansB": "Nieprawidłową walidację danych wejściowych",
+            "ansC": "Niezaszyfrowaną transmisję danych",
+            "ansD": "Niewystarczające reguły zapory",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10045,
+            "question": "Który z tych protokołów jest podatny na ataki typu man-in-the-middle bez dodatkowej ochrony?",
+            "ansA": "HTTPS",
+            "ansB": "SSL/TLS",
+            "ansC": "SSH",
+            "ansD": "HTTP",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10046,
+            "question": "Jaka jest główna różnica między wirusem a robakiem?",
+            "ansA": "Wirusy wymagają działania użytkownika do rozprzestrzeniania się, robaki nie",
+            "ansB": "Robaki wymagają działania użytkownika do rozprzestrzeniania się, wirusy nie",
+            "ansC": "Wirusy są zawsze nieszkodliwe",
+            "ansD": "Robaki atakują tylko sprzęt",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10047,
+            "question": "Który algorytm kryptograficzny jest obecnie uważany za odporny na ataki kwantowe?",
+            "ansA": "RSA",
+            "ansB": "AES",
+            "ansC": "Kryptografia oparta na kratownicach",
+            "ansD": "DSA",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10048,
+            "question": "Jaki jest cel 'refresh token' w OAuth 2.0?",
+            "ansA": "Do uwierzytelniania aplikacji klienckiej",
+            "ansB": "Do uzyskiwania nowych tokenów dostępu bez ponownego logowania użytkownika",
+            "ansC": "Do szyfrowania danych między klientem a serwerem",
+            "ansD": "Do weryfikacji siły hasła użytkownika",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10049,
+            "question": "Która technika ataku polega na przechwytywaniu i modyfikowaniu komunikacji między dwiema stronami bez ich wiedzy?",
+            "ansA": "Denial of Service",
+            "ansB": "Man-in-the-Middle (MITM)",
+            "ansC": "Cross-site Scripting (XSS)",
+            "ansD": "Phishing",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10050,
+            "question": "Co oznacza luka 'zero-day'?",
+            "ansA": "Luka znana producentowi oprogramowania, ale niezałatana",
+            "ansB": "Luka nieznana producentowi i niezałatana",
+            "ansC": "Luka załatana w dniu odkrycia",
+            "ansD": "Luka spowodowana błędem użytkownika",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10051,
+            "question": "Jaka jest główna funkcja protokołu Secure Shell (SSH)?",
+            "ansA": "Bezpieczne zdalne logowanie i wykonywanie poleceń",
+            "ansB": "Szyfrowanie plików lokalnie",
+            "ansC": "Blokowanie ataków sieciowych",
+            "ansD": "Zapewnianie bezpieczeństwa poczty elektronicznej",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10052,
+            "question": "Który z poniższych przykładów to eskalacja uprawnień?",
+            "ansA": "Użytkownik zdobywa prawa administratora poprzez wykorzystanie luki",
+            "ansB": "Logowanie z użyciem poprawnych danych",
+            "ansC": "Instalowanie oprogramowania antywirusowego",
+            "ansD": "Aktualizacja reguł zapory",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10053,
+            "question": "Co wymusza zasada najmniejszych uprawnień?",
+            "ansA": "Użytkownicy mają minimalne uprawnienia potrzebne do wykonywania swoich zadań",
+            "ansB": "Użytkownicy mają pełny dostęp administratora",
+            "ansC": "Wszyscy użytkownicy mają takie same uprawnienia",
+            "ansD": "Uprawnienia są przyznawane na żądanie bez kontroli",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10054,
+            "question": "W kryptosystemie klucza publicznego, którym kluczem szyfruje się dane wysyłane do właściciela?",
+            "ansA": "Kluczem prywatnym",
+            "ansB": "Kluczem publicznym",
+            "ansC": "Kluczem sesyjnym",
+            "ansD": "Kluczem symetrycznym",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10055,
+            "question": "Który z poniższych ataków wykorzystuje słabości systemu DNS?",
+            "ansA": "DNS spoofing",
+            "ansB": "Cross-site request forgery",
+            "ansC": "SQL injection",
+            "ansD": "Brute force",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10056,
+            "question": "Jaki jest typowy objaw infekcji ransomware?",
+            "ansA": "Pliki są zaszyfrowane i niedostępne",
+            "ansB": "System działa szybciej niż zwykle",
+            "ansC": "Zapora jest wyłączona",
+            "ansD": "Oprogramowanie antywirusowe zostało odinstalowane",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10057,
+            "question": "Które z poniższych najlepiej opisuje honeypot?",
+            "ansA": "System pułapka mający przyciągnąć atakujących",
+            "ansB": "Rodzaj złośliwego oprogramowania kradnącego dane uwierzytelniające",
+            "ansC": "Metoda szyfrowania danych wrażliwych",
+            "ansD": "Reguła konfiguracji zapory",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10058,
+            "question": "Który protokół jest głównie używany do bezpiecznego przesyłania plików przez sieć?",
+            "ansA": "FTP",
+            "ansB": "SFTP",
+            "ansC": "HTTP",
+            "ansD": "SMTP",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10059,
+            "question": "Jaki jest główny cel systemu Security Information and Event Management (SIEM)?",
+            "ansA": "Centralizacja i analiza logów bezpieczeństwa",
+            "ansB": "Szyfrowanie wrażliwych maili",
+            "ansC": "Zapewnianie ochrony zapory",
+            "ansD": "Przeprowadzanie skanów podatności",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10060,
+            "question": "Który atak polega na wstrzykiwaniu złośliwych skryptów do zaufanych stron internetowych?",
+            "ansA": "Cross-site scripting (XSS)",
+            "ansB": "Phishing",
+            "ansC": "Man-in-the-middle",
+            "ansD": "Denial of Service",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10061,
+            "question": "What does the term 'pharming' refer to in cybersecurity?",
+            "ansA": "Redirecting users to fraudulent websites without their knowledge",
+            "ansB": "Sending phishing emails",
+            "ansC": "Stealing credentials through social engineering",
+            "ansD": "Installing ransomware",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 10062,
+            "question": "Which of the following is an example of multifactor authentication (MFA)?",
+            "ansA": "Password and security token",
+            "ansB": "Username and password",
+            "ansC": "Password and CAPTCHA",
+            "ansD": "Biometric scan only",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10063,
+            "question": "What does the principle of defense in depth emphasize?",
+            "ansA": "Multiple layers of security controls",
+            "ansB": "Only perimeter security is needed",
+            "ansC": "Using a single antivirus software",
+            "ansD": "Disabling unnecessary logs",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10064,
+            "question": "Which malware specifically encrypts files and demands payment for decryption?",
+            "ansA": "Ransomware",
+            "ansB": "Spyware",
+            "ansC": "Adware",
+            "ansD": "Rootkit",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10065,
+            "question": "In network security, what does a 'botnet' consist of?",
+            "ansA": "A group of compromised computers controlled by an attacker",
+            "ansB": "A single powerful server",
+            "ansC": "A type of firewall",
+            "ansD": "An antivirus software suite",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10066,
+            "question": "What is a key characteristic of a Distributed Denial of Service (DDoS) attack?",
+            "ansA": "Using multiple systems to overwhelm a target",
+            "ansB": "Stealing user credentials",
+            "ansC": "Injecting malicious code into applications",
+            "ansD": "Encrypting user files",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10067,
+            "question": "Which technique can be used to prevent replay attacks in authentication protocols?",
+            "ansA": "Using nonces or timestamps",
+            "ansB": "Using weak passwords",
+            "ansC": "Disabling two-factor authentication",
+            "ansD": "Reusing session keys",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10068,
+            "question": "What type of attack tries to exploit software vulnerabilities to execute arbitrary code?",
+            "ansA": "Buffer overflow attack",
+            "ansB": "Phishing attack",
+            "ansC": "Denial of Service",
+            "ansD": "SQL injection",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10069,
+            "question": "What does 'social engineering' typically exploit?",
+            "ansA": "Human trust and error",
+            "ansB": "Network protocol flaws",
+            "ansC": "Weak encryption",
+            "ansD": "Hardware vulnerabilities",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 10070,
+            "question": "Which of the following is a secure way to manage passwords?",
+            "ansA": "Using a password manager",
+            "ansB": "Writing them on a sticky note",
+            "ansC": "Using the same password everywhere",
+            "ansD": "Sharing passwords via email",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10071,
+            "question": "What is the role of the Diffie-Hellman algorithm in the TLS protocol?",
+            "ansA": "Encrypting data during transmission",
+            "ansB": "Authenticating the server",
+            "ansC": "Secure key exchange",
+            "ansD": "Verifying message integrity",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10072,
+            "question": "What is the main threat posed by a Side Channel Attack?",
+            "ansA": "Directly breaking the cryptographic key",
+            "ansB": "Obtaining information from unintended system emissions",
+            "ansC": "Injecting malicious code",
+            "ansD": "Impersonating a user",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10073,
+            "question": "What characterizes a 'Pass the Hash' attack in Windows environments?",
+            "ansA": "Capturing and using encrypted password",
+            "ansB": "Using a hashed password to authenticate without cracking it",
+            "ansC": "Impersonating a network administrator",
+            "ansD": "SQL injection in databases",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10074,
+            "question": "What is a typical feature of RSA key generation?",
+            "ansA": "Uses symmetric key for encryption",
+            "ansB": "Based on factoring large prime numbers",
+            "ansC": "Quantum-resistant",
+            "ansD": "Encrypts data in blocks",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10075,
+            "question": "What does 'Salting' mean in password security?",
+            "ansA": "Adding a unique value to a password before hashing",
+            "ansB": "Encrypting a password with a public key",
+            "ansC": "Reusing the same password across systems",
+            "ansD": "Storing passwords in plain text",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10076,
+            "question": "How does a DNS Spoofing attack work?",
+            "ansA": "Hijacking user sessions via packet sniffing",
+            "ansB": "Replacing DNS response with a fake IP address",
+            "ansC": "Sending many DNS queries to overload a server",
+            "ansD": "Scanning DNS server ports",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10077,
+            "question": "What is the biggest challenge quantum computing poses to traditional asymmetric algorithms?",
+            "ansA": "Faster key generation",
+            "ansB": "Ability to break keys using quantum computers",
+            "ansC": "Higher energy consumption",
+            "ansD": "Limited compatibility with TLS protocols",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10078,
+            "question": "What does 'Sandboxing' mean in application security?",
+            "ansA": "Creating backups of an application",
+            "ansB": "Running an application in an isolated environment",
+            "ansC": "Encrypting outgoing data",
+            "ansD": "Monitoring network traffic",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10079,
+            "question": "Which tool is primarily used to detect network vulnerabilities?",
+            "ansA": "Wireshark",
+            "ansB": "Nmap",
+            "ansC": "Metasploit",
+            "ansD": "John the Ripper",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10080,
+            "question": "What characterizes an SQL Injection attack?",
+            "ansA": "Session hijacking via cookie theft",
+            "ansB": "Injecting malicious SQL queries into databases",
+            "ansC": "Impersonating a system administrator",
+            "ansD": "Spreading network worms",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10081,
+            "question": "How does Cross-Site Request Forgery (CSRF) work?",
+            "ansA": "Sending malicious HTTP requests on behalf of a logged-in user",
+            "ansB": "Stealing authentication credentials",
+            "ansC": "DNS spoofing to redirect traffic",
+            "ansD": "Data exfiltration through malicious scripts",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10082,
+            "question": "Which type of attack involves exploiting software vulnerabilities to gain higher privileges?",
+            "ansA": "Phishing",
+            "ansB": "Privilege escalation",
+            "ansC": "DDoS",
+            "ansD": "Man-in-the-middle",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10083,
+            "question": "What is 'Certificate Pinning' used for?",
+            "ansA": "Using the same certificate on all servers",
+            "ansB": "Binding a specific certificate to an app to prevent MITM attacks",
+            "ansC": "Encrypting SSL certificates",
+            "ansD": "Automatically renewing certificates",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10084,
+            "question": "What is the difference between symmetric and asymmetric encryption?",
+            "ansA": "Symmetric uses two keys; asymmetric uses one",
+            "ansB": "Symmetric uses one key; asymmetric uses key pairs",
+            "ansC": "Symmetric is slower than asymmetric",
+            "ansD": "Symmetric doesn’t require a key to decrypt",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10085,
+            "question": "Which protocol is used for secure key exchange in WPA3?",
+            "ansA": "WEP",
+            "ansB": "Diffie-Hellman",
+            "ansC": "SAE (Simultaneous Authentication of Equals)",
+            "ansD": "TLS 1.2",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10086,
+            "question": "Which cryptographic attack exploits the reuse of a nonce in the AES-GCM encryption?",
+            "ansA": "Replay attack",
+            "ansB": "Birthday attack",
+            "ansC": "Nonce reuse attack",
+            "ansD": "Side channel attack",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10087,
+            "question": "What is the main purpose of a Hardware Security Module (HSM)?",
+            "ansA": "To store encryption keys securely",
+            "ansB": "To perform distributed denial of service attacks",
+            "ansC": "To encrypt all network traffic automatically",
+            "ansD": "To scan for vulnerabilities in web applications",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10088,
+            "question": "Which of the following best describes a Zero-Day vulnerability?",
+            "ansA": "A vulnerability that has been publicly disclosed but not yet patched",
+            "ansB": "A vulnerability known only to attackers and not to software vendors",
+            "ansC": "A vulnerability that only affects zero-day-old software",
+            "ansD": "A vulnerability that occurs only during system startup",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10089,
+            "question": "What is the key difference between TLS 1.2 and TLS 1.3?",
+            "ansA": "TLS 1.3 removes support for older insecure algorithms and reduces handshake steps",
+            "ansB": "TLS 1.3 uses symmetric keys instead of asymmetric keys",
+            "ansC": "TLS 1.3 eliminates the use of certificates",
+            "ansD": "TLS 1.3 allows plaintext transmission of data",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10090,
+            "question": "In an OAuth 2.0 authorization code flow, what is the role of the 'authorization code'?",
+            "ansA": "It acts as a permanent access token",
+            "ansB": "It is exchanged for an access token",
+            "ansC": "It authenticates the client application",
+            "ansD": "It grants refresh token permissions",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10091,
+            "question": "Jaka jest najlepsza obrona przed atakiem typu Buffer Overflow?",
+            "ansA": "Walidacja danych wejściowych i sprawdzanie granic",
+            "ansB": "Używanie dłuższych haseł",
+            "ansC": "Szyfrowanie danych w trakcie transmisji",
+            "ansD": "Wyłączanie nieużywanych usług",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10092,
+            "question": "Jaki rodzaj złośliwego oprogramowania szyfruje dane ofiary i żąda okupu za klucz deszyfrujący?",
+            "ansA": "Spyware",
+            "ansB": "Trojan",
+            "ansC": "Ransomware",
+            "ansD": "Adware",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10093,
+            "question": "Która metoda jest najskuteczniejsza w zapobieganiu atakom Man-in-the-Middle (MITM) na publicznym Wi-Fi?",
+            "ansA": "Korzystanie z VPN",
+            "ansB": "Wyłączanie zapór sieciowych",
+            "ansC": "Używanie słabego szyfrowania",
+            "ansD": "Wyłączanie 2FA",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10094,
+            "question": "Jak najlepiej opisać cel działania zapory aplikacyjnej (Web Application Firewall, WAF)?",
+            "ansA": "Monitorowanie i filtrowanie ruchu HTTP do i z aplikacji webowej",
+            "ansB": "Skanowanie punktów końcowych pod kątem malware",
+            "ansC": "Szyfrowanie rekordów baz danych",
+            "ansD": "Zapobieganie awariom sprzętowym",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10095,
+            "question": "Co zapewnia zasada 'najmniejszego przywileju' w cyberbezpieczeństwie?",
+            "ansA": "Użytkownicy mają dostęp tylko do zasobów niezbędnych do ich roli",
+            "ansB": "Użytkownicy domyślnie mają prawa administratora",
+            "ansC": "Wszystkie dane są domyślnie szyfrowane",
+            "ansD": "Hasła nigdy nie wygasają",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10096,
+            "question": "Który protokół został stworzony specjalnie do zabezpieczania komunikacji e-mailowej?",
+            "ansA": "SMTP",
+            "ansB": "IMAP",
+            "ansC": "S/MIME",
+            "ansD": "FTP",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10097,
+            "question": "Jaka jest główna cecha wirusa polimorficznego?",
+            "ansA": "Potrafi zmieniać swój kod, by uniknąć wykrycia",
+            "ansB": "Atakuje tylko podczas uruchamiania systemu",
+            "ansC": "Infekuje tylko określone typy plików",
+            "ansD": "Jest łatwo wykrywalny przez antywirusy",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10098,
+            "question": "Co oznacza skrót 'CSP' w kontekście bezpieczeństwa sieciowego?",
+            "ansA": "Content Security Policy",
+            "ansB": "Cyber Security Protocol",
+            "ansC": "Certificate Signing Process",
+            "ansD": "Cross Site Processing",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10099,
+            "question": "Jaki jest główny cel Secure Development Lifecycle (SDL)?",
+            "ansA": "Integracja bezpieczeństwa na każdym etapie tworzenia oprogramowania",
+            "ansB": "Przeprowadzanie testów penetracyjnych po wdrożeniu",
+            "ansC": "Pisanie całego kodu w asemblerze",
+            "ansD": "Unikanie używania bibliotek open-source",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10100,
+            "question": "Który z poniższych objawów jest typowy dla działań Advanced Persistent Threat (APT)?",
+            "ansA": "Długotrwała, niezauważona infiltracja sieci",
+            "ansB": "Częste próby logowania metodą brute-force",
+            "ansC": "Natychmiastowe szyfrowanie przez ransomware",
+            "ansD": "Stałe ataki typu denial-of-service",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10101,
+            "question": "Która technika jest często używana do obejścia systemów wykrywania włamań sieciowych (NIDS)?",
+            "ansA": "Fragmentacja pakietów",
+            "ansB": "Silne polityki haseł",
+            "ansC": "Szyfrowanie danych",
+            "ansD": "Uwierzytelnianie wieloskładnikowe",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10102,
+            "question": "Czemu 'solenie' hasła pomaga zapobiegać?",
+            "ansA": "Atakom z użyciem tęczowych tabel (rainbow tables)",
+            "ansB": "Atakom phishingowym",
+            "ansC": "Atakom Man-in-the-Middle",
+            "ansD": "SQL Injection",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10103,
+            "question": "Który z poniższych jest atakiem side-channel?",
+            "ansA": "Atak timingowy",
+            "ansB": "Cross-site scripting",
+            "ansC": "SQL Injection",
+            "ansD": "Phishing",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10104,
+            "question": "Który protokół zabezpiecza komunikację VoIP?",
+            "ansA": "SRTP",
+            "ansB": "HTTPS",
+            "ansC": "SSL",
+            "ansD": "IPSec",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10105,
+            "question": "Jaka jest główna słabość szyfrowania WEP w sieciach Wi-Fi?",
+            "ansA": "Użycie statycznych wektorów inicjalizacyjnych",
+            "ansB": "Brak haseł",
+            "ansC": "Krótkie długości kluczy",
+            "ansD": "Niekompatybilność z nowoczesnymi routerami",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10106,
+            "question": "Co najlepiej opisuje 'credential stuffing'?",
+            "ansA": "Używanie wykradzionych par login/hasło do nieautoryzowanego dostępu",
+            "ansB": "Phishing, czyli wyłudzanie danych logowania",
+            "ansC": "Łamanie haseł metodą brute force",
+            "ansD": "Wstrzykiwanie złośliwych skryptów na strony internetowe",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10107,
+            "question": "Jaki jest główny cel DMZ (Strefy Zdemilitaryzowanej) w architekturze sieci?",
+            "ansA": "Izolowanie serwerów dostępnych publicznie od sieci wewnętrznej",
+            "ansB": "Przechowywanie wrażliwych danych wewnętrznych",
+            "ansC": "Zapewnienie dostępu VPN dla pracowników",
+            "ansD": "Szyfrowanie komunikacji wewnętrznej",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10108,
+            "question": "Jaki rodzaj ataku wykonuje DNS spoofing?",
+            "ansA": "Przekierowuje użytkowników na złośliwe adresy IP",
+            "ansB": "Odszyfrowuje ruch SSL",
+            "ansC": "Uniemożliwia rozwiązywanie nazw DNS",
+            "ansD": "Przeciąża serwery DNS",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10109,
+            "question": "Które z poniższych jest przykładem uwierzytelniania wieloskładnikowego?",
+            "ansA": "Hasło i odcisk palca",
+            "ansB": "Dwa hasła",
+            "ansC": "Nazwa użytkownika i hasło",
+            "ansD": "Hasło i pytanie zabezpieczające",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10110,
+            "question": "Co oznacza zasada 'obrony w głąb' (defense in depth)?",
+            "ansA": "Wielowarstwowe zabezpieczenia",
+            "ansB": "Poleganie wyłącznie na firewallu",
+            "ansC": "Używanie tylko szyfrowania",
+            "ansD": "Natychmiastowe blokowanie kont użytkowników",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10111,
+            "question": "Jaki typ malware próbuje ukryć się podszywając pod legalne oprogramowanie?",
+            "ansA": "Koń trojański (Trojan)",
+            "ansB": "Ransomware",
+            "ansC": "Robak (Worm)",
+            "ansD": "Adware",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10112,
+            "question": "Co charakteryzuje 'bombę logiczną'?",
+            "ansA": "Aktywuje się po spełnieniu określonego warunku lub zdarzenia",
+            "ansB": "Szybko się replikuje w systemach",
+            "ansC": "Szyfruje dane i żąda okupu",
+            "ansD": "Przechwytuje dane wpisywane przez użytkownika",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10113,
+            "question": "Który algorytm kryptograficzny jest obecnie uważany za najbezpieczniejszy do podpisów cyfrowych?",
+            "ansA": "ECDSA",
+            "ansB": "MD5",
+            "ansC": "SHA-1",
+            "ansD": "DES",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10114,
+            "question": "Co oznacza termin 'pharming' w cyberbezpieczeństwie?",
+            "ansA": "Przekierowywanie użytkowników z legalnych stron na fałszywe",
+            "ansB": "Wysyłanie masowych spamu",
+            "ansC": "Kradzież danych logowania za pomocą keyloggerów",
+            "ansD": "Przechwytywanie pakietów sieciowych",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 10115,
+            "question": "Jaką funkcję bezpieczeństwa zapewnia HMAC?",
+            "ansA": "Integralność danych i uwierzytelnianie",
+            "ansB": "Szyfrowanie danych w spoczynku",
+            "ansC": "Anonimowość użytkownika",
+            "ansD": "Ochronę przez firewall",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10116,
+            "question": "Która z poniższych metod jest powszechnie stosowana do zapobiegania atakom SQL injection?",
+            "ansA": "Używanie zapytań parametryzowanych",
+            "ansB": "Wyłączanie zapór sieciowych",
+            "ansC": "Instalowanie oprogramowania antywirusowego",
+            "ansD": "Stosowanie słabych haseł",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10117,
+            "question": "Jaki rodzaj ataku polega na zasypaniu celu ruchem, by przerwać usługę?",
+            "ansA": "Phishing",
+            "ansB": "Atak typu Denial of Service (DoS)",
+            "ansC": "Man-in-the-Middle",
+            "ansD": "Cross-site scripting",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10118,
+            "question": "Co oznacza termin 'zero-day exploit'?",
+            "ansA": "Luka znana tylko atakującemu i niezałatana",
+            "ansB": "Atakująca stara wersja oprogramowania",
+            "ansC": "Funkcja bezpieczeństwa w systemach operacyjnych",
+            "ansD": "Metoda szyfrowania danych",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10119,
+            "question": "Która metoda szyfrowania używa pary kluczy (publiczny i prywatny)?",
+            "ansA": "Szyfrowanie symetryczne",
+            "ansB": "Szyfrowanie asymetryczne",
+            "ansC": "Hashowanie",
+            "ansD": "Steganografia",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10120,
+            "question": "Jaki typ malware jest zaprojektowany do rozprzestrzeniania się na inne komputery?",
+            "ansA": "Spyware",
+            "ansB": "Ransomware",
+            "ansC": "Robak (Worm)",
+            "ansD": "Koń trojański (Trojan)",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10121,
+            "question": "Który protokół jest powszechnie używany do bezpiecznego przesyłania plików przez internet?",
+            "ansA": "FTP",
+            "ansB": "SFTP",
+            "ansC": "HTTP",
+            "ansD": "SMTP",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10122,
+            "question": "Jaka metoda jest najlepsza do zabezpieczenia wrażliwych danych przechowywanych na laptopie?",
+            "ansA": "Szyfrowanie całego dysku",
+            "ansB": "Wyłączanie portów USB",
+            "ansC": "Instalacja antywirusa",
+            "ansD": "Używanie silnego hasła",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10123,
+            "question": "Która z tych zasad NIE jest prawidłową zasadą bezpieczeństwa?",
+            "ansA": "Najmniejsze uprawnienia",
+            "ansB": "Obrona wielowarstwowa",
+            "ansC": "Domyślnie otwarte",
+            "ansD": "Bezpieczne awarie",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10124,
+            "question": "W inżynierii społecznej, czym jest 'pretekstowanie'?",
+            "ansA": "Podszywanie się pod kogoś, by uzyskać informacje",
+            "ansB": "Wysyłanie fałszywych maili do użytkowników",
+            "ansC": "Fizyczna kradzież sprzętu",
+            "ansD": "Używanie złośliwego oprogramowania do kradzieży danych",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 10125,
+            "question": "Jaki jest główny cel zapory sieciowej (firewalla)?",
+            "ansA": "Przechowywanie kopii zapasowych danych",
+            "ansB": "Przyspieszenie ruchu internetowego",
+            "ansC": "Uwierzytelnianie użytkowników",
+            "ansD": "Monitorowanie i kontrola ruchu sieciowego przychodzącego i wychodzącego",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10126,
+            "question": "Który rodzaj ataku wykorzystuje lukę w oprogramowaniu wysyłając niepoprawne dane?",
+            "ansA": "Przepełnienie bufora",
+            "ansB": "Phishing",
+            "ansC": "Podszywanie się pod DNS",
+            "ansD": "Atak siłowy (brute force)",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10127,
+            "question": "Jaka cecha jest kluczową korzyścią z używania VPN?",
+            "ansA": "Blokowanie reklam na stronach internetowych",
+            "ansB": "Skanowanie plików pod kątem złośliwego oprogramowania",
+            "ansC": "Bezpieczne zarządzanie hasłami",
+            "ansD": "Szyfrowanie połączenia internetowego i ukrywanie adresu IP",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10128,
+            "question": "Który atak manipuluje użytkownikami aplikacji webowych do wykonania niezamierzonych akcji?",
+            "ansA": "Cross-Site Request Forgery (CSRF)",
+            "ansB": "SQL Injection",
+            "ansC": "Man-in-the-Middle",
+            "ansD": "Phishing",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10129,
+            "question": "Które z poniższych jest formą dwuskładnikowego uwierzytelniania?",
+            "ansA": "Hasło i jednorazowy kod z aplikacji",
+            "ansB": "Tylko hasło",
+            "ansC": "Nazwa użytkownika i hasło",
+            "ansD": "Tylko weryfikacja mailowa",
+            "correctAns": [
+                "A"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10130,
+            "question": "Co opisuje typową cechę ataków ransomware?",
+            "ansA": "Kradzież numerów kart kredytowych bez wykrycia",
+            "ansB": "Phishing użytkowników za pomocą załączników mailowych",
+            "ansC": "Przejęcie stron internetowych dla celów defacementu",
+            "ansD": "Szyfrowanie plików ofiary i żądanie okupu",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10131,
+            "question": "Która metoda kryptograficzna zapewnia jednocześnie integralność i autentyczność danych?",
+            "ansA": "Szyfrowanie symetryczne",
+            "ansB": "Samo haszowanie",
+            "ansC": "Podpisy cyfrowe",
+            "ansD": "Kody uwierzytelniania wiadomości (MAC)",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10132,
+            "question": "Jaką główną zaletę ma stosowanie strefy zdemilitaryzowanej (DMZ) w bezpieczeństwie sieci?",
+            "ansA": "Poprawia szybkość sieci wewnętrznej",
+            "ansB": "Uproszcza trasowanie wewnętrzne",
+            "ansC": "Zapewnia izolowaną strefę buforową dla usług publicznych",
+            "ansD": "Chroni sieć wewnętrzną, ograniczając bezpośredni dostęp z zewnątrz",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10133,
+            "question": "Która cecha najlepiej opisuje malware polimorficzne?",
+            "ansA": "Jest zawsze widoczne dla oprogramowania antywirusowego",
+            "ansB": "Wykorzystuje jednocześnie wiele wektorów infekcji",
+            "ansC": "Zmienia swoją sygnaturę kodu, by uniknąć wykrycia",
+            "ansD": "Celuje tylko w zaszyfrowane pliki",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10134,
+            "question": "Który atak wykorzystuje słabości protokołu SSL/TLS do przechwytywania lub zmiany komunikacji?",
+            "ansA": "Man-in-the-Middle (MITM)",
+            "ansB": "SQL Injection",
+            "ansC": "Atak BEAST",
+            "ansD": "Cross-site Scripting (XSS)",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10135,
+            "question": "W kontekście uwierzytelniania, co głównie zapewnia OAuth?",
+            "ansA": "Przechowywanie haseł",
+            "ansB": "Szyfrowanie e-maili",
+            "ansC": "Autoryzację dostępu delegowanego",
+            "ansD": "Konfigurację zapory sieciowej",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10136,
+            "question": "Jaka jest główna funkcja systemu Security Information and Event Management (SIEM)?",
+            "ansA": "Wykonywanie szyfrowania danych",
+            "ansB": "Zarządzanie tożsamościami użytkowników",
+            "ansC": "Wykrywanie, analizowanie i reagowanie na incydenty bezpieczeństwa w czasie rzeczywistym",
+            "ansD": "Tworzenie kopii zapasowych krytycznych danych",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10137,
+            "question": "Która z tych technik pomaga zapobiegać atakom typu replay?",
+            "ansA": "Filtrowanie statycznych adresów IP",
+            "ansB": "Używanie silnych haseł",
+            "ansC": "Wprowadzanie znaczników czasu lub liczb losowych (nonce) w komunikacji",
+            "ansD": "Korzystanie z publicznego Wi-Fi",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10138,
+            "question": "Jakie jest największe ryzyko związane z infrastrukturą klucza publicznego (PKI), jeśli urząd certyfikacji (CA) zostanie przejęty?",
+            "ansA": "Utrata fizycznych zasobów",
+            "ansB": "Kradzież danych z zaszyfrowanych e-maili",
+            "ansC": "Fałszowanie certyfikatów cyfrowych i podszywanie się pod inne podmioty",
+            "ansD": "Zwiększenie opóźnień sieciowych",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10139,
+            "question": "Która warstwa modelu OSI jest głównie odpowiedzialna za szyfrowanie i odszyfrowywanie danych?",
+            "ansA": "Warstwa sieciowa",
+            "ansB": "Warstwa sesji",
+            "ansC": "Warstwa prezentacji",
+            "ansD": "Warstwa łącza danych",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10140,
+            "question": "Która luka pozwala atakującym wstrzykiwać złośliwy kod SQL do aplikacji?",
+            "ansA": "Cross-Site Request Forgery (CSRF)",
+            "ansB": "Przepełnienie bufora",
+            "ansC": "SQL Injection",
+            "ansD": "Escalacja uprawnień",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10141,
+            "question": "Jaki rodzaj ataku polega na wysyłaniu nadmiernego ruchu do zasobu sieciowego, aby go unieruchomić?",
+            "ansA": "Phishing",
+            "ansB": "SQL Injection",
+            "ansC": "Man-in-the-Middle",
+            "ansD": "Denial of Service (DoS)",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10142,
+            "question": "Która technika inżynierii społecznej polega na udawaniu zaufanego podmiotu w celu zdobycia informacji?",
+            "ansA": "Phishing",
+            "ansB": "Spear phishing",
+            "ansC": "Pretexting",
+            "ansD": "Przeszukiwanie śmietników (dumpster diving)",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 10143,
+            "question": "Jaka jest kluczowa zaleta bezpieczeństwa korzystania z modułów sprzętowych bezpieczeństwa (HSM)?",
+            "ansA": "Mogą zastąpić zapory sieciowe",
+            "ansB": "Przyspieszają pakiety sieciowe",
+            "ansC": "Zapewniają bezpieczne przechowywanie kluczy i operacje kryptograficzne",
+            "ansD": "Uproszczają uwierzytelnianie użytkowników",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10144,
+            "question": "Co wymusza zasada najmniejszego uprzywilejowania?",
+            "ansA": "Przyznawanie pełnego dostępu wszystkim użytkownikom",
+            "ansB": "Ograniczanie dostępu tylko do niezbędnych zasobów",
+            "ansC": "Pozwalanie wielu użytkownikom na współdzielenie haseł",
+            "ansD": "Eliminowanie potrzeby uwierzytelniania użytkowników",
+            "correctAns": [
+                "B"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10145,
+            "question": "Jaki jest główny cel notatki z żądaniem okupu w kontekście ransomware?",
+            "ansA": "Podanie technicznych szczegółów algorytmu szyfrowania",
+            "ansB": "Grożenie ofiarom działaniami prawnymi",
+            "ansC": "Instrukcje dla ofiar dotyczące płatności i odzyskiwania danych",
+            "ansD": "Wyłączanie oprogramowania antywirusowego",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10146,
+            "question": "Który protokół jest zaprojektowany do zapewnienia bezpiecznej zdalnej administracji przez niezabezpieczoną sieć?",
+            "ansA": "FTP",
+            "ansB": "Telnet",
+            "ansC": "RDP",
+            "ansD": "SSH",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10147,
+            "question": "Która metoda skutecznie przeciwdziała atakom DNS spoofing?",
+            "ansA": "Używanie statycznych adresów IP",
+            "ansB": "Szyfrowanie e-maili",
+            "ansC": "Implementacja DNSSEC",
+            "ansD": "Wyłączanie zapór sieciowych",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "network_security"
+        },
+        {
+            "id": 10148,
+            "question": "Która z poniższych metod jest najsilniejszą formą uwierzytelniania użytkownika?",
+            "ansA": "Uwierzytelnianie jednofazowe",
+            "ansB": "Uwierzytelnianie dwuskładnikowe",
+            "ansC": "Uwierzytelnianie biometryczne połączone z hasłem",
+            "ansD": "Uwierzytelnianie wieloskładnikowe z wykorzystaniem biometrii, tokena i hasła",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "authentication"
+        },
+        {
+            "id": 10149,
+            "question": "Który z poniższych jest przykładem proaktywnej kontroli bezpieczeństwa?",
+            "ansA": "Reagowanie na incydenty",
+            "ansB": "Regularne łatanie systemu",
+            "ansC": "Monitorowanie zapory sieciowej",
+            "ansD": "Szkolenie pracowników z zakresu bezpieczeństwa",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "general_security"
+        },
+        {
+            "id": 10150,
+            "question": "Do czego służy 'salt' w kryptografii?",
+            "ansA": "Przyspiesza szyfrowanie",
+            "ansB": "Przechowuje hasła",
+            "ansC": "Dodaje losowość do hashy haseł",
+            "ansD": "Skraca długość haseł",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "general_security"
         }
     ]
 }

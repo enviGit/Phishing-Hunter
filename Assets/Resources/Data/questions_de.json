@@ -63,11 +63,11 @@
         },
         {
             "id": 6,
-            "question": "Was ist Phishing?",
-            "ansA": "Eine Methode zur Messung der Netzwerkgeschwindigkeit",
-            "ansB": "Eine Technik zum Online-Fischen",
-            "ansC": "Ein betrügerischer Versuch, vertrauliche Informationen zu erhalten",
-            "ansD": "Eine Art Firewall",
+            "question": "Was sollten Sie tun, wenn Sie eine verdächtige E-Mail mit einem Link erhalten?",
+            "ansA": "Auf den Link klicken, um zu sehen, wohin er führt",
+            "ansB": "Antworten und nach weiteren Informationen fragen",
+            "ansC": "Ignorieren oder an die IT-Abteilung melden",
+            "ansD": "An Freunde weiterleiten",
             "correctAns": [
                 "C"
             ],

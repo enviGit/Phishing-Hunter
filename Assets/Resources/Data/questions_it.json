@@ -60,6 +60,44 @@
                 "B"
             ],
             "tag": "authentication"
+        },
+        {
+            "id": 6,
+            "question": "Cosa dovresti fare se ricevi un’e-mail sospetta con un link?",
+            "ansA": "Cliccare sul link per vedere dove porta",
+            "ansB": "Rispondere e chiedere maggiori informazioni",
+            "ansC": "Ignorarla o segnalarla al reparto IT",
+            "ansD": "Inviarla ai tuoi amici",
+            "correctAns": [
+                "C"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 7,
+            "question": "Quale dei seguenti è un segnale comune di una e-mail di phishing?",
+            "ansA": "Allegati inaspettati",
+            "ansB": "Saluti personalizzati",
+            "ansC": "Errori grammaticali",
+            "ansD": "Tutte le precedenti",
+            "correctAns": [
+                "D"
+            ],
+            "tag": "social_engineering"
+        },
+        {
+            "id": 8,
+            "question": "Quali dei seguenti sono esempi di malware?",
+            "ansA": "Cavallo di Troia",
+            "ansB": "Firewall",
+            "ansC": "Worm",
+            "ansD": "Spyware",
+            "correctAns": [
+                "A",
+                "C",
+                "D"
+            ],
+            "tag": "general_security"
         }
     ],
     "advancedQuestions": []

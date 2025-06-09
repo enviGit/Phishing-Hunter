@@ -63,11 +63,11 @@
         },
         {
             "id": 6,
-            "question": "O que é phishing?",
-            "ansA": "Um método para testar a velocidade da rede",
-            "ansB": "Uma técnica para pescar online",
-            "ansC": "Uma tentativa fraudulenta de obter informações sensíveis",
-            "ansD": "Um tipo de firewall",
+            "question": "O que você deve fazer se receber um e-mail suspeito com um link?",
+            "ansA": "Clicar no link para ver para onde ele leva",
+            "ansB": "Responder e pedir mais informações",
+            "ansC": "Ignorar ou reportar ao departamento de TI",
+            "ansD": "Encaminhar para os amigos",
             "correctAns": [
                 "C"
             ],

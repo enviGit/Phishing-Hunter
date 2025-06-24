@@ -203,6 +203,17 @@ namespace ph.Managers {
                             _ => null
                         };
 
+                        /// <summary>
+                        /// List of attachment filenames related to the email.
+                        /// </summary>
+                        /// <remarks>
+                        /// "attachments": [
+                        ///     "exe.exe",         // Executable file (potentially malicious)
+                        ///     "pdf.pdf",         // PDF document (e.g. fake report)
+                        ///     "id1invoice1.png"  // Image file (e.g. fake invoice screenshot)
+                        /// ]
+                        /// </remarks>
+
                         if (highlightedSprite != null) {
                             SpriteState spriteState = button.spriteState;
                             spriteState.highlightedSprite = highlightedSprite;

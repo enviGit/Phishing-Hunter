@@ -342,7 +342,7 @@ namespace ph.Managers {
             float timeNow = Time.time;
             float secondsPassed = timeNow - lastRefreshTime;
             lastRefreshTime = timeNow;
-            float mailInterval = 2f; // co 45 sekund nowa szansa na kolejne maile
+            float mailInterval = 10f; // co x sekund nowa szansa na kolejne maile
             int maxToAddInOneRefresh = 5; // hard limit na jedną rundę
             int intervals = Mathf.FloorToInt(secondsPassed / mailInterval);
             int newMails = 0;

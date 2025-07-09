@@ -3,14 +3,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ph.UI
-{
-    public class NewGameButton : MonoBehaviour
-    {
+namespace ph.UI {
+    public class NewGameButton : MonoBehaviour {
         [SerializeField] private float preloadDelay = 0.5f;
 
-        private void Start()
-        {
+        private void Start() {
             StartCoroutine(DelayedPreload());
 
             GetComponent<Button>().onClick.AddListener(() => {

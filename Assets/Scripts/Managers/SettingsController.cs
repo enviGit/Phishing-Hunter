@@ -89,11 +89,12 @@ namespace ph.Managers {
 
             LoadSettingsOnAwake();
         }
-        private void Start() {
+        private IEnumerator Start() {
             resolutionText = resolutionSlider.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             fullscreenToggle = fullscreenSlider.transform.GetChild(0).GetComponent<Toggle>();
-
             LoadSettingsOnStart();
+            yield return LocalizationSettings.InitializationOperation;
+            UpdateQualityDropdownLabels(Settings.Language);
         }
 
         #region Loading Settings
@@ -301,7 +302,7 @@ namespace ph.Managers {
             Settings.Language = languageCodes[currentLanguageIndex];
             UpdateQualityDropdownLabels(languageCodes[currentLanguageIndex]);
             var locale = GetLocaleFromLanguageCode(Settings.Language);
-            LocalizationSettings.SelectedLocale = locale;
+            StartCoroutine(SetLocaleCoroutine(locale));
         }
         private void RestoreLanguage() {
             currentLanguageIndex = originalLanguageIndex;
@@ -309,14 +310,21 @@ namespace ph.Managers {
             Settings.Language = languageCodes[originalLanguageIndex];
             UpdateQualityDropdownLabels(languageCodes[originalLanguageIndex]);
             var locale = GetLocaleFromLanguageCode(Settings.Language);
-            LocalizationSettings.SelectedLocale = locale;
+            StartCoroutine(SetLocaleCoroutine(locale));
         }
         private void ApplyLanguage() {
             Settings.Language = languageCodes[currentLanguageIndex];
             originalLanguageIndex = currentLanguageIndex;
             UpdateQualityDropdownLabels(languageCodes[currentLanguageIndex]);
             var locale = GetLocaleFromLanguageCode(Settings.Language);
-            LocalizationSettings.SelectedLocale = locale;
+            StartCoroutine(SetLocaleCoroutine(locale));
+        }
+        private IEnumerator SetLocaleCoroutine(Locale locale) {
+            var op = LocalizationSettings.InitializationOperation;
+            yield return op;
+
+            yield return LocalizationSettings.SelectedLocale = locale;
+            UpdateQualityDropdownLabels(locale.Identifier.Code);
         }
         private Locale GetLocaleFromLanguageCode(string languageCode) {
             switch (languageCode) {

@@ -36,7 +36,11 @@ namespace ph.Managers {
         public GameObject imagePreview;
         private CanvasGroup mainPreviewCanvas;
         private CanvasGroup imagePreviewCanvas;
-        public int maxDisplayedEmails = 10;
+        private int maxDisplayedEmails = 0;
+        private int minInitialDisplayedEmails = 3;
+        private int maxInitialDisplayedEmails = 7;
+        public int maxPossibleDisplayedEmails = 22;
+        private float lastRefreshTime = 0f;
         private List<Email> emailList;
         private EmailData emailData;
         private Dictionary<Email, DateTime> generatedDates = new Dictionary<Email, DateTime>();
@@ -51,6 +55,8 @@ namespace ph.Managers {
             mainPreviewCanvas = mailPreview.GetComponent<CanvasGroup>();
             imagePreviewCanvas = imagePreview.GetComponent<CanvasGroup>();
             CorrectMailAnswers = 0;
+            maxDisplayedEmails = Random.Range(minInitialDisplayedEmails, maxInitialDisplayedEmails + 1);
+            lastRefreshTime = Time.time;
             LoadEmails();
             TotalMailCount = LoadTotalMailCount();
             Debug.Log($"Total Mail Count: {TotalMailCount}");
@@ -333,6 +339,27 @@ namespace ph.Managers {
         public void RefreshEmails() {
             Transform contentRoot = workSpace.GetChild(0);
             int currentEmailCount = contentRoot.childCount;
+            float timeNow = Time.time;
+            float secondsPassed = timeNow - lastRefreshTime;
+            lastRefreshTime = timeNow;
+            float mailInterval = 2f; // co 45 sekund nowa szansa na kolejne maile
+            int maxToAddInOneRefresh = 5; // hard limit na jedną rundę
+            int intervals = Mathf.FloorToInt(secondsPassed / mailInterval);
+            int newMails = 0;
+
+            if (intervals > 0) {
+                for (int i = 1; i <= intervals; i++) {
+                    // Im wyższy numer slota, tym większa szansa: np. 1-3, 1-4, 2-4 maile:
+                    int minMail = Mathf.Clamp(i, 1, 3);
+                    int maxMail = Mathf.Clamp(2 + i, minMail+1, maxToAddInOneRefresh);
+                    newMails += Random.Range(minMail, maxMail + 1);
+                }
+                // Ogranicz ile może wejść naraz (np. 8):
+                newMails = Mathf.Clamp(newMails, 0, maxToAddInOneRefresh);
+            }
+            maxDisplayedEmails = Mathf.Min(maxDisplayedEmails + newMails, maxPossibleDisplayedEmails);
+
+            if (maxDisplayedEmails != 22) Debug.Log($"Upłynęło {secondsPassed:0}s, dorzucam {newMails} maili, razem: {maxDisplayedEmails}");
 
             mainPreviewCanvas.DOFade(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
                 mailPreview.SetActive(false);

@@ -144,7 +144,7 @@ namespace ph.Managers {
                 UpdateToggleColor(questionItem, isCorrect);
             }
 
-            PlayerRatingSystem.Instance.UpdateProgress();
+            if (correctAnswers > 0) PlayerRatingSystem.Instance.UpdateProgress();
 
             float percentage = (float)correctAnswers / totalQuestions * 100f;
             resultText.text = $"{correctAnswers} / {totalQuestions} ({percentage:0}%)";

@@ -1,6 +1,5 @@
 using UnityEngine;
 using DG.Tweening;
-using Unity.VisualScripting;
 
 namespace ph.UI {
     public class DirectionalLightAnimator : MonoBehaviour {
@@ -25,7 +24,7 @@ namespace ph.UI {
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(Ease.InOutSine)
             .SetTarget(this)
-            .SetAutoKill(true);;
+            .SetAutoKill(true); ;
         }
     }
 }

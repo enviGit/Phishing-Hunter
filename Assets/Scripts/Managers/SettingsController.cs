@@ -76,8 +76,6 @@ namespace ph.Managers {
 };
         private int currentLanguageIndex = 0;
         private int originalLanguageIndex = 0;
-        [SerializeField] private Slider sensitivitySlider;
-        private float originalSensitivity;
         [SerializeField] private Slider runInBgSlider;
         private Toggle runInBgToggle;
         private bool originalRunInBg;
@@ -125,8 +123,6 @@ namespace ph.Managers {
 
             originalQualityPreset = Settings.QualityPreset;
             qualityDropdown.value = originalQualityPreset;
-            originalSensitivity = Settings.Sensitivity;
-            SetSensitivity(originalSensitivity);
             originalLanguageIndex = Mathf.Clamp(Array.IndexOf(languageCodes, Settings.Language), 0, supportedLanguages.Length - 1);
             currentLanguageIndex = originalLanguageIndex;
             languageDropdown.value = originalLanguageIndex;
@@ -158,7 +154,6 @@ namespace ph.Managers {
             ApplyVsync();
             ApplyQuality();
             ApplyLanguage();
-            ApplySensitivity();
             ApplyVolume();
             ApplyRunInBg();
             PlayerPrefs.Save();
@@ -170,7 +165,6 @@ namespace ph.Managers {
             RestoreVsync();
             RestoreQuality();
             RestoreLanguage();
-            RestoreSensitivity();
             RestoreVolume();
             RestoreRunInBg();
             PlayerPrefs.Save();
@@ -349,28 +343,8 @@ namespace ph.Managers {
                 case "zh-Hans":
                     return LocalizationSettings.AvailableLocales.GetLocale("zh-Hans");
                 default:
-                    return LocalizationSettings.AvailableLocales.GetLocale("en"); // Domyślnie English
+                    return LocalizationSettings.AvailableLocales.GetLocale("en");
             }
-        }
-        #endregion
-
-        #region Mouse Sensitivity
-        private void SetSensitivity(float _value) {
-            RefreshSensitivitySlider(_value);
-        }
-        public void SetFromSensitivitySlider() {
-            SetSensitivity(sensitivitySlider.value);
-        }
-        private void RefreshSensitivitySlider(float _value) {
-            sensitivitySlider.value = _value;
-        }
-        private void RestoreSensitivity() {
-            SetSensitivity(originalSensitivity);
-            Settings.Sensitivity = originalSensitivity;
-        }
-        private void ApplySensitivity() {
-            originalSensitivity = sensitivitySlider.value;
-            Settings.Sensitivity = originalSensitivity;
         }
         #endregion
 

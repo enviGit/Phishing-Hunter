@@ -4,7 +4,6 @@ using UnityEngine;
 namespace ph.Managers {
     public class Settings {
         #region PlayerPrefs_Keys
-        private static string mouseSens = "mouseSens";
         private static string sfxMixer = "sfxMixer";
         private static string musicMixer = "musicMixer";
         private static string brightness = "brightness";
@@ -16,13 +15,6 @@ namespace ph.Managers {
         private static string difficulty = "difficulty";
         private static string isFirstLaunch = "isFirstLaunch";
         private static string language = "language";
-        #endregion
-
-        #region MouseSettings
-        public static float Sensitivity {
-            get => PlayerPrefs.GetFloat(mouseSens, 5);
-            set => PlayerPrefs.SetFloat(mouseSens, value);
-        }
         #endregion
 
         #region AudioSettings

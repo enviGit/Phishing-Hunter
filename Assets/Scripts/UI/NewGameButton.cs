@@ -14,7 +14,6 @@ namespace ph.UI {
         [SerializeField] private float cameraTransitionDuration = 1.0f;
 
         private void Start() {
-            StartCoroutine(DelayedPreload());
             GetComponent<Button>().onClick.AddListener(OnNewGameClicked);
         }
         private void OnNewGameClicked() {
@@ -37,21 +36,8 @@ namespace ph.UI {
         }
         private IEnumerator WaitForCameraTransitionAndLoad() {
             yield return new WaitForSeconds(cameraTransitionDuration);
-            if (SceneLoader.Instance != null) {
-                SceneLoader.Instance.ActivateNextScene();
-            }
-            else {
-                Debug.LogError("SceneLoader.Instance is null!");
-            }
-        }
-        private IEnumerator DelayedPreload() {
-            yield return new WaitForSeconds(preloadDelay);
-            if (SceneLoader.Instance != null) {
-                SceneLoader.Instance.PreloadNextScene();
-            }
-            else {
-                Debug.LogError("SceneLoader.Instance is null!");
-            }
+
+            GlobalSceneManager.Instance.SwitchToScene("Desktop");
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ph.Core.OS {
         [SerializeField] private CanvasGroup buttonCanvasGroup;
         [SerializeField] private float shutdownDelay = 3f;
 
-		public void StartMenu() {
+        public void StartMenu() {
             if (buttonCanvasGroup.alpha <= 0.9f) {
                 buttonCanvasGroup.DOFade(1, 0.5f);
                 buttonCanvasGroup.blocksRaycasts = true;
@@ -21,20 +21,13 @@ namespace ph.Core.OS {
 
         }
         public void ShutDown() {
-            if (SceneLoader.Instance != null)
-                SceneLoader.Instance.PreloadPreviousScene();
-
             shutDownCanvas.SetActive(true);
             StartCoroutine(WaitAndActivatePreviousScene());
         }
-        private IEnumerator WaitAndActivatePreviousScene()
-        {
+        private IEnumerator WaitAndActivatePreviousScene() {
             yield return new WaitForSeconds(shutdownDelay);
 
-            if (SceneLoader.Instance != null)
-                SceneLoader.Instance.ActivatePreviousScene();
+            GlobalSceneManager.Instance.SwitchToScene("MainMenu");
         }
-
-        // Add code related to the start menu buttons or any other relevant functionality.
     }
 }

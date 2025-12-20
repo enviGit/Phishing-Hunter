@@ -1,0 +1,10 @@
+﻿<Solution>
+  <Project Path="Nobi.UiRoundedCorners.csproj" />
+  <Project Path="Whinarn.UnityMeshSimplifier.Editor.csproj" />
+  <Project Path="Envi.VibrantIcons.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Whinarn.UnityMeshSimplifier.Runtime.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
+  <Project Path="Nobi.UiRoundedCorners.Editor.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+</Solution>

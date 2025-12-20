@@ -1,5 +1,6 @@
 using DG.Tweening;
 using ph.Core;
+using ph.Managers.Save;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace ph.Managers {
         public List<QuizQuestion> advancedQuestions;
     }
 
-    public class QuizManager : MonoBehaviour {
+    public class QuizManager : MonoBehaviour, IDataPersistence {
         private string languageFileName = "questions";
         [SerializeField] private Transform workSpace;
         [SerializeField] private GameObject questionPrefab;
@@ -63,13 +64,25 @@ namespace ph.Managers {
             resultText = resultPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             TotalQuizCount = LoadTotalQuizCount();
             Debug.Log($"Total Quiz Count: {TotalQuizCount}");
-            CorrectQuizAnswers = 0;
             LoadQuestions();
             DisplayQuestions();
             resultPanel.GetComponent<CanvasGroup>().alpha = 0;
             checkButton.interactable = true;
             newButton.interactable = false;
         }
+        private void OnEnable() {
+            DataPersistence.instance.LoadDataOnObject(this);
+        }
+        public void LoadData(GameData data) {
+            this.fullyCorrectQuestions = data.solvedQuizIds;
+            CorrectQuizAnswers = data.correctQuizCount;
+        }
+
+        public void SaveData(ref GameData data) {
+            data.solvedQuizIds = this.fullyCorrectQuestions;
+            data.correctQuizCount = CorrectQuizAnswers;
+        }
+
         private void LoadQuestions() {
             string lang = Settings.Language;
             string fileName = $"{languageFileName}_{lang}";
@@ -123,6 +136,8 @@ namespace ph.Managers {
         public void CheckAnswers() {
             checkButton.interactable = false;
 
+            correctAnswers = 0;
+
             foreach (Transform questionItem in workSpace.GetChild(0)) {
                 var questionText = questionItem.GetChild(1).GetComponent<TextMeshProUGUI>().text;
                 var question = questionList.FirstOrDefault(q => q.question == questionText);
@@ -134,8 +149,11 @@ namespace ph.Managers {
 
                 if (isCorrect) {
                     correctAnswers++;
-                    CorrectQuizAnswers++;
-                    fullyCorrectQuestions.Add(question.id);
+
+                    if (!fullyCorrectQuestions.Contains(question.id)) {
+                        CorrectQuizAnswers++;
+                        fullyCorrectQuestions.Add(question.id);
+                    }
                 }
                 else {
                     incorrectQuestions.Add(question.id);

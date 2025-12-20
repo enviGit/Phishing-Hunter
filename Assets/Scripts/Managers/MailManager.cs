@@ -1,5 +1,6 @@
 using DG.Tweening;
 using ph.Core;
+using ph.Managers.Save;
 using Random = UnityEngine.Random;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace ph.Managers {
         public List<Email> advancedEmails;
     }
 
-    public class MailManager : MonoBehaviour {
+    public class MailManager : MonoBehaviour, IDataPersistence {
         private string languageFileName = "emails";
         public Transform workSpace;
         public GameObject mailPrefab;
@@ -54,7 +55,6 @@ namespace ph.Managers {
         private void Start() {
             mainPreviewCanvas = mailPreview.GetComponent<CanvasGroup>();
             imagePreviewCanvas = imagePreview.GetComponent<CanvasGroup>();
-            CorrectMailAnswers = 0;
             maxDisplayedEmails = Random.Range(minInitialDisplayedEmails, maxInitialDisplayedEmails + 1);
             lastRefreshTime = Time.time;
             LoadEmails();
@@ -62,6 +62,19 @@ namespace ph.Managers {
             Debug.Log($"Total Mail Count: {TotalMailCount}");
             AssignRandomDates();
             DisplayEmails();
+        }
+        private void OnEnable() {
+            DataPersistence.instance.LoadDataOnObject(this);
+        }
+        public void LoadData(GameData data) {
+            this.flaggedEmailIds = data.flaggedMailIds;
+            CorrectMailAnswers = data.correctMailsCount;
+            this.correctMarksCount = data.correctMailsCount;
+        }
+
+        public void SaveData(ref GameData data) {
+            data.flaggedMailIds = this.flaggedEmailIds;
+            data.correctMailsCount = CorrectMailAnswers;
         }
         private void LoadEmails() {
             string lang = Settings.Language;
@@ -177,14 +190,12 @@ namespace ph.Managers {
             Transform attachmentsParent = mailPreview.transform.GetChild(1).GetChild(6).GetChild(1);
             int maxSlots = attachmentsParent.childCount;
 
-            // Resetuj wszystkie sloty
             for (int i = 0; i < maxSlots; i++) {
                 Transform slot = attachmentsParent.GetChild(i);
                 slot.gameObject.SetActive(false);
                 slot.GetComponent<Image>().enabled = false;
             }
 
-            // Załaduj załączniki jeśli istnieją
             if (email.attachments != null) {
                 for (int i = 0; i < email.attachments.Count && i < maxSlots; i++) {
                     string fileName = email.attachments[i];
@@ -267,7 +278,6 @@ namespace ph.Managers {
         private void OpenFilePopup(string fileName, string extension) {
             Debug.Log($"Otwieram plik {fileName} o rozszerzeniu {extension}");
 
-            // Przykład: pokazanie popupu na podstawie rozszerzenia
             if (extension == ".pdf") {
                 // TODO: pokaż okno z informacją, że otwierasz plik PDF
             }

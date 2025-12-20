@@ -1,10 +1,12 @@
 using ph.Achievements;
 using ph.Core;
+using ph.Managers.Save;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace ph.Managers {
-    public class AchievementManager : MonoBehaviour {
+    public class AchievementManager : MonoBehaviour, IDataPersistence {
         public static AchievementManager Instance;
         [SerializeField] private AchievementUI achievementUI;
 
@@ -13,6 +15,20 @@ namespace ph.Managers {
         private void Awake() {
             if (Instance == null) Instance = this;
             else Destroy(gameObject);
+        }
+        private void OnEnable() {
+            DataPersistence.instance.LoadDataOnObject(this);
+        }
+        public void LoadData(GameData data) {
+            unlocked.Clear();
+            foreach (string id in data.unlockedAchievements) {
+                unlocked.Add(id);
+            }
+            Debug.Log($"Wczytano {unlocked.Count} osiągnięć.");
+        }
+
+        public void SaveData(ref GameData data) {
+            data.unlockedAchievements = unlocked.ToList();
         }
         public void CheckAllAchievements() {
             int quizCorrect = QuizManager.CorrectQuizAnswers;
@@ -34,7 +50,10 @@ namespace ph.Managers {
         }
         private void UnlockAchievement(Achievement achievement) {
             unlocked.Add(achievement.id);
-            achievementUI.Show(achievement);
+
+            if (achievementUI != null) achievementUI.Show(achievement);
+
+            DataPersistence.instance.SaveGame();
         }
     }
 }

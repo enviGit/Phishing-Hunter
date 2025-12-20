@@ -1,12 +1,13 @@
 using DG.Tweening;
 using ph.Managers;
+using ph.Managers.Save;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace ph.Core {
-    public class PlayerRatingSystem : MonoBehaviour {
+    public class PlayerRatingSystem : MonoBehaviour, IDataPersistence {
         public enum PlayerPosition {
             Intern,
             JuniorCybersecurityAnalyst,
@@ -101,17 +102,34 @@ namespace ph.Core {
         private float totalProgress;
 
         private void Awake() {
-            Instance = this;
+            if (Instance == null) Instance = this;
+            else Destroy(gameObject);
         }
         private void Start() {
             UpdateUI();
             progressSlider.fillAmount = 0f;
+        }
+        private void OnEnable() {
+            DataPersistence.instance.LoadDataOnObject(this);
+        }
+        public void LoadData(GameData data) {
+            this.level = data.currentLevel;
+            this.position = (PlayerPosition)data.playerPosition;
+
+            UpdateUI();
+        }
+
+        public void SaveData(ref GameData data) {
+            data.currentLevel = this.level;
+            data.playerPosition = (int)this.position;
         }
         public void UpdateProgress() {
             int correctMails = MailManager.CorrectMailAnswers;
             int correctQuizzes = QuizManager.CorrectQuizAnswers;
             int totalMails = MailManager.TotalMailCount;
             int totalQuizzes = QuizManager.TotalQuizCount;
+
+            if (totalMails == 0 && totalQuizzes == 0) return;
 
             progressGroup.transform.SetSiblingIndex(progressGroup.transform.parent.childCount - 3);
             progressGroup.DOFade(1f, 0.5f).SetEase(Ease.OutBack);
@@ -144,6 +162,7 @@ namespace ph.Core {
             });
 
             achievementManager.CheckAllAchievements();
+            DataPersistence.instance.SaveGame();
         }
         private int MaxLevelCount() {
             return 50;

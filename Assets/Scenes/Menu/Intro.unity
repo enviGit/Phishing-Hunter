@@ -9350,269 +9350,394 @@ MonoBehaviour:
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 7134375064569055767}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 1548292905964753795}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 3835615222493472858}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 1742269300103488085}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 6948389947620654795}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 4132204687379177595}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 664705990147213399}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 5242474708149968418}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 7419811383880566522}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 3357293639138838082}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 388860253001414269}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 5463711771105449466}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 8327380338136513659}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 6915396570101620898}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 7139355586124676982}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 4771464729375150747}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 5275266547246007513}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 7126832607265027827}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 6018597018550465856}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 2320147035662275437}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 124609289327638932}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 145135534101524753}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 1235646431734483377}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 7304961182818901982}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 3252227567554304499}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 672600167987104605}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 3439329892133730177}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 2083470072242200151}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 5778763930413138283}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 7389325347968566469}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 1322801335444718669}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 6006207038267246950}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 1598442457044277926}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 2146762588947799901}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 3860547558765231817}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 6153572809973555296}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 5334127887833554575}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 315881565821317188}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 6117220322276356965}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 4845076136582658258}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 5115902935690251840}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 906392671649548526}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 7059340895489124618}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 5951099707790555035}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 8175924520475564328}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 6573295112062405628}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 3214372995848551609}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 8645857279866832544}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 8162109594270383481}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 3334988849229119871}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 5928646601863061631}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 8515182232615680451}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 8588820438190478704}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 3215617332957821494}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 2013952462184832306}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 5746386876375710924}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 6835439545457073436}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 7238862700542113698}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 6581615251432636329}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 7747632283979231144}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 344164622080852695}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 2430730972755076362}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   - cube: {fileID: 1866981563020729354}
     targetPosition: {x: 0, y: 0, z: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
     rb: {fileID: 0}
+    startSettlePosition: {x: 0, y: 0, z: 0}
+    startSettleRotation: {x: 0, y: 0, z: 0, w: 0}
   launchForce: 5
   chaosTime: 3
-  settleDuration: 100
+  finishBuffer: 4
   overshootDistance: 10
-  targetOffsetFactor: 0.2
   spawnArea: {x: 10, y: 10}
   epilepsyPanel: {fileID: 1981684512}
   continueButton: {fileID: 756979381}
   fadeDuration: 1
-  hoverJumpAmount: 10
-  hoverDuration: 0.25
   epilepsyWaitTime: 8
   inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!82 &6639255306250368083

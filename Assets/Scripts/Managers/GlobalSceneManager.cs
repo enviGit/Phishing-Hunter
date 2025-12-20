@@ -12,18 +12,23 @@ namespace ph.Managers {
         public List<string> gameScenes = new List<string>();
 
         [Header("Referencje Bootstrap")]
-        [Tooltip("Kamera w scenie ładowania - zostanie wyłączona po załadowaniu gry")]
         public Camera bootstrapCamera;
 
         [Header("UI Loading Screenu")]
         public GameObject loadingScreenCanvas;
         public Slider progressBar;
 
-        [Tooltip("Minimalny czas trwania ekranu ładowania")]
-        public float minLoadingTime = 2.0f;
+        [Header("Styling")]
+        [Tooltip("Czy kolorować pasek dynamicznie?")]
+        public bool useDynamicColor = true;
+        public Gradient progressGradient;
+        private Image fillImage;
 
-        [Tooltip("Prędkość wizualna paska")]
-        public float visualFillSpeed = 5.0f;
+        [Header("Ustawienia Płynności")]
+        public float minLoadingTime = 2.0f;
+        [Tooltip("Minimalny czas poświęcony na wizualizację ładowania JEDNEJ sceny (zapobiega skokom przy lekkich scenach)")]
+        public float minTimePerScene = 0.5f;
+        public float visualFillSpeed = 2.0f;
 
         private Dictionary<string, HashSet<int>> sceneActiveStates = new Dictionary<string, HashSet<int>>();
         private List<string> loadedScenes = new List<string>();
@@ -43,10 +48,14 @@ namespace ph.Managers {
         private void Start() {
             var myListener = GetComponent<AudioListener>();
             if (myListener != null) Destroy(myListener);
-
             if (bootstrapCamera != null) {
                 var camListener = bootstrapCamera.GetComponent<AudioListener>();
                 if (camListener != null) Destroy(camListener);
+            }
+
+            if (progressBar != null) {
+                if (progressBar.fillRect != null)
+                    fillImage = progressBar.fillRect.GetComponent<Image>();
             }
 
             StartCoroutine(BootSequence());
@@ -55,32 +64,46 @@ namespace ph.Managers {
         private void Update() {
             if (loadingScreenCanvas.activeSelf && progressBar != null) {
                 progressBar.value = Mathf.Lerp(progressBar.value, targetProgress, Time.deltaTime * visualFillSpeed);
+
+                if (useDynamicColor && fillImage != null) {
+                    fillImage.color = progressGradient.Evaluate(progressBar.value);
+                }
             }
         }
 
         private IEnumerator BootSequence() {
             Application.backgroundLoadingPriority = ThreadPriority.Low;
-
             loadingScreenCanvas.SetActive(true);
+
             progressBar.value = 0f;
+            targetProgress = 0f;
 
-            targetProgress = 0.1f;
-
-            float startTime = Time.time;
+            float totalStartTime = Time.time;
             List<string> allScenesToLoad = new List<string>(gameScenes);
 
             int totalScenes = allScenesToLoad.Count;
             int scenesLoadedCount = 0;
 
             foreach (string sceneName in allScenesToLoad) {
+                float sceneStartTime = Time.time;
+
                 AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
                 while (!operation.isDone) {
-                    float currentSceneProgress = Mathf.Clamp01(operation.progress / 0.9f);
+                    float currentSceneRawProgress = Mathf.Clamp01(operation.progress / 0.9f);
 
-                    float globalProgress = 0.1f + (0.9f * ((scenesLoadedCount + currentSceneProgress) / totalScenes));
+                    float globalMathProgress = (scenesLoadedCount + currentSceneRawProgress) / totalScenes;
 
-                    targetProgress = Mathf.Max(targetProgress, globalProgress);
+                    targetProgress = Mathf.Max(targetProgress, globalMathProgress);
+
+                    yield return null;
+                }
+
+                while (Time.time - sceneStartTime < minTimePerScene) {
+                    float fakeProgress = (Time.time - sceneStartTime) / minTimePerScene;
+                    float globalFakeProgress = (scenesLoadedCount + fakeProgress) / totalScenes;
+
+                    targetProgress = Mathf.Max(targetProgress, globalFakeProgress);
 
                     yield return null;
                 }
@@ -96,21 +119,17 @@ namespace ph.Managers {
 
             targetProgress = 1.0f;
 
-            while (Time.time - startTime < minLoadingTime || progressBar.value < 0.99f) {
+            while (Time.time - totalStartTime < minLoadingTime || progressBar.value < 0.99f) {
                 yield return null;
             }
 
             Application.backgroundLoadingPriority = ThreadPriority.Normal;
-
             isGameLoaded = true;
             loadingScreenCanvas.SetActive(false);
 
-            if (bootstrapCamera != null) {
-                bootstrapCamera.gameObject.SetActive(false);
-            }
+            if (bootstrapCamera != null) bootstrapCamera.gameObject.SetActive(false);
 
-            if (allScenesToLoad.Count > 0)
-                SwitchToScene(allScenesToLoad[0]);
+            if (allScenesToLoad.Count > 0) SwitchToScene(allScenesToLoad[0]);
         }
 
         public void SwitchToScene(string targetSceneName) {
@@ -149,18 +168,13 @@ namespace ph.Managers {
 
         private void HideSceneContent(Scene scene) {
             bool isFirstSnapshot = !sceneActiveStates.ContainsKey(scene.name);
-
             HashSet<int> activeObjectIds = new HashSet<int>();
-
             GameObject[] roots = scene.GetRootGameObjects();
 
             foreach (GameObject obj in roots) {
                 if (isFirstSnapshot) {
-                    if (obj.activeSelf) {
-                        activeObjectIds.Add(obj.GetInstanceID());
-                    }
+                    if (obj.activeSelf) activeObjectIds.Add(obj.GetInstanceID());
                 }
-
                 obj.SetActive(false);
             }
 
@@ -171,7 +185,6 @@ namespace ph.Managers {
 
         private void ShowSceneContent(Scene scene) {
             GameObject[] roots = scene.GetRootGameObjects();
-
             HashSet<int> objectsToActivate = null;
             if (sceneActiveStates.ContainsKey(scene.name)) {
                 objectsToActivate = sceneActiveStates[scene.name];

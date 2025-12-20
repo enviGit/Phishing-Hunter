@@ -16,13 +16,18 @@ namespace ph.UI {
             [HideInInspector] public Vector3 targetPosition;
             [HideInInspector] public Quaternion targetRotation;
             [HideInInspector] public Rigidbody rb;
+            [HideInInspector] public Vector3 startSettlePosition;
+            [HideInInspector] public Quaternion startSettleRotation;
         }
 
         [Header("Logo")]
         public List<LogoCube> cubes;
         public float launchForce = 6f;
         public float chaosTime = 2f;
-        public float settleDuration = 50f;
+
+        [Tooltip("Ile czasu przed końcem muzyki klocki mają być już idealnie ułożone (bufor bezpieczeństwa)")]
+        public float finishBuffer = 4f;
+
         public float overshootDistance = 0.5f;
         public Vector2 spawnArea = new Vector2(10f, 6f);
         private AudioSource audioSource;
@@ -31,15 +36,18 @@ namespace ph.UI {
         public CanvasGroup epilepsyPanel;
         public Button continueButton;
         public float fadeDuration = 1f;
+
+        [Tooltip("Czas po jakim pojawi się ostrzeżenie (tylko przy First Launch)")]
         public float epilepsyWaitTime = 9f;
 
         [Header("Input")]
         public InputActionAsset inputActions;
         private InputAction submitAction;
 
+        private bool hasTriggeredLoad = false;
+
         private void Awake() {
             audioSource = GetComponent<AudioSource>();
-
             submitAction = inputActions.FindAction("Submit", true);
 
             foreach (var c in cubes) {
@@ -53,22 +61,20 @@ namespace ph.UI {
             epilepsyPanel.alpha = 0f;
             epilepsyPanel.interactable = false;
             epilepsyPanel.blocksRaycasts = false;
+            hasTriggeredLoad = false;
 
             submitAction.Enable();
             submitAction.performed += OnSubmit;
 
             SetInitialLocale();
-
             InitLogoPhysics();
 
             StopAllCoroutines();
-            StartCoroutine(SettleAfterChaos());
+
+            StartCoroutine(SettleAndFinishSequence());
 
             if (Settings.IsFirstLaunch) {
                 StartCoroutine(ShowEpilepsyWarningEarly());
-            }
-            else {
-                StartCoroutine(AutoSkipEpilepsyScreen());
             }
         }
 
@@ -109,42 +115,53 @@ namespace ph.UI {
             }
         }
 
-        private IEnumerator SettleAfterChaos() {
+        private IEnumerator SettleAndFinishSequence() {
             yield return new WaitForSeconds(chaosTime);
 
             if (!gameObject.activeInHierarchy) yield break;
 
             audioSource.Play();
 
+            float audioLength = audioSource.clip != null ? audioSource.clip.length : 5.0f;
+
+            float animationDuration = Mathf.Max(0.5f, audioLength - finishBuffer);
+
             foreach (var c in cubes) {
                 c.rb.linearVelocity = Vector3.zero;
                 c.rb.angularVelocity = Vector3.zero;
                 c.rb.isKinematic = true;
+                c.startSettlePosition = c.cube.localPosition;
+                c.startSettleRotation = c.cube.localRotation;
             }
 
-            float t = 0f;
-            while (t < settleDuration) {
-                t += Time.deltaTime;
-                float lerpT = t / settleDuration;
-
-                float smoothT = Mathf.SmoothStep(0, 1, lerpT);
+            float elapsedTime = 0f;
+            while (elapsedTime < animationDuration) {
+                elapsedTime += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsedTime / animationDuration);
+                float smoothT = Mathf.SmoothStep(0, 1, t);
 
                 foreach (var c in cubes) {
-                    c.cube.localPosition = Vector3.Lerp(c.cube.localPosition, c.targetPosition, smoothT);
-                    c.cube.localRotation = Quaternion.Slerp(c.cube.localRotation, c.targetRotation, smoothT);
+                    c.cube.localPosition = Vector3.Lerp(c.startSettlePosition, c.targetPosition, smoothT);
+                    c.cube.localRotation = Quaternion.Slerp(c.startSettleRotation, c.targetRotation, smoothT);
                 }
                 yield return null;
+            }
+
+            foreach (var c in cubes) {
+                c.cube.localPosition = c.targetPosition;
+                c.cube.localRotation = c.targetRotation;
+            }
+
+            yield return new WaitForSeconds(finishBuffer);
+
+            if (!Settings.IsFirstLaunch) {
+                LoadNextScene();
             }
         }
 
         private IEnumerator ShowEpilepsyWarningEarly() {
             yield return new WaitForSeconds(epilepsyWaitTime);
             ShowEpilepsyWarning();
-        }
-
-        private IEnumerator AutoSkipEpilepsyScreen() {
-            yield return new WaitForSeconds(epilepsyWaitTime);
-            LoadNextScene();
         }
 
         private void ShowEpilepsyWarning() {
@@ -155,9 +172,13 @@ namespace ph.UI {
         }
 
         public void LoadNextScene() {
+            if (hasTriggeredLoad) return;
+            hasTriggeredLoad = true;
+
             if (Settings.IsFirstLaunch) {
                 AudioSource buttonAudio = continueButton.GetComponent<AudioSource>();
-                buttonAudio.Play();
+                if (buttonAudio != null) buttonAudio.Play();
+
                 Settings.IsFirstLaunch = false;
                 StartCoroutine(WaitForAudioAndLoad(buttonAudio));
             }
@@ -167,12 +188,19 @@ namespace ph.UI {
         }
 
         private IEnumerator WaitForAudioAndLoad(AudioSource audio) {
-            yield return new WaitWhile(() => audio.isPlaying);
+            if (audio != null) {
+                yield return new WaitWhile(() => audio.isPlaying);
+            }
             GlobalSceneManager.Instance.SwitchToScene("MainMenu");
         }
 
         private void OnSubmit(InputAction.CallbackContext ctx) {
-            if (epilepsyPanel.alpha >= 0.9f) {
+            if (Settings.IsFirstLaunch) {
+                if (epilepsyPanel.alpha >= 0.9f) {
+                    LoadNextScene();
+                }
+            }
+            else {
                 LoadNextScene();
             }
         }

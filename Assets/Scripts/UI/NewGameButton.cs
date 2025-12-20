@@ -38,6 +38,7 @@ namespace ph.UI {
             yield return new WaitForSeconds(cameraTransitionDuration);
 
             GlobalSceneManager.Instance.SwitchToScene("Desktop");
+            newGameCam.Priority = 5;
         }
     }
 }

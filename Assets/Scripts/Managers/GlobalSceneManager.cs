@@ -9,7 +9,11 @@ namespace ph.Managers {
         public static GlobalSceneManager Instance { get; private set; }
 
         [Header("Konfiguracja Scen")]
+        [Tooltip("Sceny, które będą potrzebne w pętli gry")]
         public List<string> gameScenes = new List<string>();
+
+        [Tooltip("Sceny jednorazowe, do usunięcia po wejściu do Menu Głównego")]
+        public List<string> startupOnlyScenes = new List<string>();
 
         [Header("Referencje Bootstrap")]
         public Camera bootstrapCamera;
@@ -18,15 +22,8 @@ namespace ph.Managers {
         public GameObject loadingScreenCanvas;
         public Slider progressBar;
 
-        [Header("Styling")]
-        [Tooltip("Czy kolorować pasek dynamicznie?")]
-        public bool useDynamicColor = true;
-        public Gradient progressGradient;
-        private Image fillImage;
-
         [Header("Ustawienia Płynności")]
         public float minLoadingTime = 2.0f;
-        [Tooltip("Minimalny czas poświęcony na wizualizację ładowania JEDNEJ sceny (zapobiega skokom przy lekkich scenach)")]
         public float minTimePerScene = 0.5f;
         public float visualFillSpeed = 2.0f;
 
@@ -35,6 +32,8 @@ namespace ph.Managers {
 
         private float targetProgress = 0f;
         private bool isGameLoaded = false;
+
+        private bool hasFreedStartupMemory = false;
 
         private void Awake() {
             if (Instance != null && Instance != this) {
@@ -53,72 +52,61 @@ namespace ph.Managers {
                 if (camListener != null) Destroy(camListener);
             }
 
-            if (progressBar != null) {
-                if (progressBar.fillRect != null)
-                    fillImage = progressBar.fillRect.GetComponent<Image>();
-            }
-
             StartCoroutine(BootSequence());
         }
 
         private void Update() {
+            if (loadingScreenCanvas == null || progressBar == null) return;
+
             if (loadingScreenCanvas.activeSelf && progressBar != null) {
                 progressBar.value = Mathf.Lerp(progressBar.value, targetProgress, Time.deltaTime * visualFillSpeed);
-
-                if (useDynamicColor && fillImage != null) {
-                    fillImage.color = progressGradient.Evaluate(progressBar.value);
-                }
             }
         }
 
         private IEnumerator BootSequence() {
             Application.backgroundLoadingPriority = ThreadPriority.Low;
             loadingScreenCanvas.SetActive(true);
-
             progressBar.value = 0f;
             targetProgress = 0f;
 
             float totalStartTime = Time.time;
-            List<string> allScenesToLoad = new List<string>(gameScenes);
+
+            List<string> allScenesToLoad = new List<string>();
+            allScenesToLoad.AddRange(startupOnlyScenes);
+            allScenesToLoad.AddRange(gameScenes);
 
             int totalScenes = allScenesToLoad.Count;
             int scenesLoadedCount = 0;
 
             foreach (string sceneName in allScenesToLoad) {
                 float sceneStartTime = Time.time;
-
                 AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
                 while (!operation.isDone) {
-                    float currentSceneRawProgress = Mathf.Clamp01(operation.progress / 0.9f);
-
-                    float globalMathProgress = (scenesLoadedCount + currentSceneRawProgress) / totalScenes;
-
-                    targetProgress = Mathf.Max(targetProgress, globalMathProgress);
-
+                    float currentRaw = Mathf.Clamp01(operation.progress / 0.9f);
+                    float globalProgress = (scenesLoadedCount + currentRaw) / totalScenes;
+                    targetProgress = Mathf.Max(targetProgress, globalProgress);
                     yield return null;
                 }
 
                 while (Time.time - sceneStartTime < minTimePerScene) {
-                    float fakeProgress = (Time.time - sceneStartTime) / minTimePerScene;
-                    float globalFakeProgress = (scenesLoadedCount + fakeProgress) / totalScenes;
-
-                    targetProgress = Mathf.Max(targetProgress, globalFakeProgress);
-
+                    float fakeP = (Time.time - sceneStartTime) / minTimePerScene;
+                    float globalFake = (scenesLoadedCount + fakeP) / totalScenes;
+                    targetProgress = Mathf.Max(targetProgress, globalFake);
                     yield return null;
                 }
 
                 Scene loadedScene = SceneManager.GetSceneByName(sceneName);
                 if (loadedScene.IsValid()) {
                     HideSceneContent(loadedScene);
-                    loadedScenes.Add(sceneName);
+                    if (!loadedScenes.Contains(sceneName)) {
+                        loadedScenes.Add(sceneName);
+                    }
                 }
-
                 scenesLoadedCount++;
             }
 
             targetProgress = 1.0f;
-
             while (Time.time - totalStartTime < minLoadingTime || progressBar.value < 0.99f) {
                 yield return null;
             }
@@ -129,14 +117,19 @@ namespace ph.Managers {
 
             if (bootstrapCamera != null) bootstrapCamera.gameObject.SetActive(false);
 
-            if (allScenesToLoad.Count > 0) SwitchToScene(allScenesToLoad[0]);
+            string firstScene = startupOnlyScenes.Count > 0 ? startupOnlyScenes[0] : gameScenes[0];
+            SwitchToScene(firstScene);
         }
 
         public void SwitchToScene(string targetSceneName) {
             if (!isGameLoaded) return;
 
+            if (targetSceneName == "MainMenu" && !hasFreedStartupMemory) {
+                StartCoroutine(FreeUpStartupMemory());
+            }
+
             if (!loadedScenes.Contains(targetSceneName)) {
-                Debug.LogError($"Scena {targetSceneName} nie została załadowana!");
+                Debug.LogError($"Scena {targetSceneName} nie jest załadowana/dostępna!");
                 return;
             }
 
@@ -154,6 +147,30 @@ namespace ph.Managers {
                     ManageAudioListeners(s, false);
                 }
             }
+        }
+
+        private IEnumerator FreeUpStartupMemory() {
+            hasFreedStartupMemory = true;
+
+            foreach (string sceneToRemove in startupOnlyScenes) {
+                if (loadedScenes.Contains(sceneToRemove)) {
+                    yield return SceneManager.UnloadSceneAsync(sceneToRemove);
+                    loadedScenes.Remove(sceneToRemove);
+
+                    if (sceneActiveStates.ContainsKey(sceneToRemove))
+                        sceneActiveStates.Remove(sceneToRemove);
+                }
+            }
+
+            Scene bootstrapScene = SceneManager.GetSceneByBuildIndex(0);
+            if (bootstrapScene.IsValid() && bootstrapScene.isLoaded) {
+                yield return SceneManager.UnloadSceneAsync(bootstrapScene);
+            }
+
+            bootstrapCamera = null;
+
+            yield return Resources.UnloadUnusedAssets();
+            System.GC.Collect();
         }
 
         private void ManageAudioListeners(Scene s, bool state) {

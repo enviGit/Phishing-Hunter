@@ -16,6 +16,18 @@ namespace ph.UI {
             }
         }
 
+        private void OnEnable() {
+            MoveToMainMenu();
+
+            if (canvases.Length > 0) {
+                SetActiveCanvas(canvases[0]);
+                CanvasGroup group = canvases[0].GetComponent<CanvasGroup>();
+                group.alpha = 1f;
+                group.interactable = true;
+                group.blocksRaycasts = true;
+            }
+        }
+
         private void SetActiveCamera(CinemachineCamera activeCam) {
             mainMenuCam.Priority = (activeCam == mainMenuCam) ? 10 : 5;
             settingsCam.Priority = (activeCam == settingsCam) ? 10 : 5;

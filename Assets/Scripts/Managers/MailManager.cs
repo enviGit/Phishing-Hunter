@@ -51,32 +51,51 @@ namespace ph.Managers {
         [SerializeField] private Sprite[] extensionSprites = new Sprite[3]; //0 - .png, 1 - .pdf, 2 - .exe
         public static int TotalMailCount { get; private set; }
         public static int CorrectMailAnswers { get; private set; }
+        private bool isInitialized = false;
 
+
+        private void Awake() {
+            if (mailPreview) mainPreviewCanvas = mailPreview.GetComponent<CanvasGroup>();
+            if (imagePreview) imagePreviewCanvas = imagePreview.GetComponent<CanvasGroup>();
+        }
         private void Start() {
-            mainPreviewCanvas = mailPreview.GetComponent<CanvasGroup>();
-            imagePreviewCanvas = imagePreview.GetComponent<CanvasGroup>();
-            maxDisplayedEmails = Random.Range(minInitialDisplayedEmails, maxInitialDisplayedEmails + 1);
-            lastRefreshTime = Time.time;
-            LoadEmails();
-            TotalMailCount = LoadTotalMailCount();
-            Debug.Log($"Total Mail Count: {TotalMailCount}");
-            AssignRandomDates();
-            DisplayEmails();
+            if (DataPersistence.instance == null) {
+                InitializeManager();
+            }
         }
         private void OnEnable() {
-            DataPersistence.instance.LoadDataOnObject(this);
+            if (DataPersistence.instance != null) {
+                DataPersistence.instance.LoadDataOnObject(this);
+            }
         }
         public void LoadData(GameData data) {
             this.flaggedEmailIds = data.flaggedMailIds;
             CorrectMailAnswers = data.correctMailsCount;
             this.correctMarksCount = data.correctMailsCount;
+
+            InitializeManager();
         }
 
         public void SaveData(ref GameData data) {
             data.flaggedMailIds = this.flaggedEmailIds;
             data.correctMailsCount = CorrectMailAnswers;
         }
-        private void LoadEmails() {
+        private void InitializeManager() {
+            if (isInitialized) return;
+
+            maxDisplayedEmails = Random.Range(minInitialDisplayedEmails, maxInitialDisplayedEmails + 1);
+            lastRefreshTime = Time.time;
+
+            LoadEmailsFromFile();
+            TotalMailCount = CountTotalEmails();
+            Debug.Log($"Total Mail Count: {TotalMailCount}");
+
+            AssignRandomDates();
+            RefreshDisplay();
+
+            isInitialized = true;
+        }
+        private void LoadEmailsFromFile() {
             string lang = Settings.Language;
             string fileName = $"{languageFileName}_{lang}";
             TextAsset json = Resources.Load<TextAsset>($"Data/{fileName}");
@@ -105,6 +124,130 @@ namespace ph.Managers {
                 }
             }
         }
+        private int CountTotalEmails() {
+            if (emailData == null) return 0;
+            return emailData.newbieEmails.Count + emailData.advancedEmails.Count;
+        }
+        private List<Email> GetEmailsToDisplay(int count) {
+            if (emailData == null) return new List<Email>();
+
+            var availableNewbies = emailData.newbieEmails
+                .Where(e => !flaggedEmailIds.Contains(e.id))
+                .OrderBy(e => generatedDates[e])
+                .ToList();
+
+            var availableAdvanced = emailData.advancedEmails
+                .Where(e => !flaggedEmailIds.Contains(e.id))
+                .OrderBy(e => generatedDates[e])
+                .ToList();
+
+            if (Settings.Difficulty == 0) {
+                return availableNewbies.Take(count).ToList();
+            }
+            else {
+                int totalToLoad = count;
+                int minAdvanced = totalToLoad / 4;
+                int maxAdvanced = totalToLoad / 3 + 1;
+                int advancedCount = Random.Range(minAdvanced, maxAdvanced + 1);
+
+                advancedCount = Mathf.Min(advancedCount, availableAdvanced.Count);
+                int newbieCount = totalToLoad - advancedCount;
+                newbieCount = Mathf.Min(newbieCount, availableNewbies.Count);
+
+                var chosenNewbies = availableNewbies.Take(newbieCount).ToList();
+                var chosenAdvanced = availableAdvanced.Take(advancedCount).ToList();
+
+                return chosenNewbies.Concat(chosenAdvanced)
+                    .OrderBy(e => generatedDates[e])
+                    .ToList();
+            }
+        }
+        public void RefreshEmails() {
+            float timeNow = Time.time;
+            float secondsPassed = timeNow - lastRefreshTime;
+            float mailInterval = 10f;
+            int maxToAddInOneRefresh = 5;
+
+            int intervals = Mathf.FloorToInt(secondsPassed / mailInterval);
+
+            if (intervals > 0) {
+                lastRefreshTime = timeNow;
+                int newMails = 0;
+                for (int i = 1; i <= intervals; i++) {
+                    int minMail = Mathf.Clamp(i, 1, 3);
+                    int maxMail = Mathf.Clamp(2 + i, minMail + 1, maxToAddInOneRefresh);
+                    newMails += Random.Range(minMail, maxMail + 1);
+                }
+                newMails = Mathf.Clamp(newMails, 0, maxToAddInOneRefresh);
+
+                maxDisplayedEmails = Mathf.Min(maxDisplayedEmails + newMails, maxPossibleDisplayedEmails);
+
+                if (maxDisplayedEmails < maxPossibleDisplayedEmails)
+                    Debug.Log($"Dodano {newMails} nowych maili.");
+
+                RefreshDisplay();
+            }
+        }
+        private void RefreshDisplay() {
+            Transform contentRoot = workSpace.GetChild(0);
+            foreach (Transform child in contentRoot) {
+                Destroy(child.gameObject);
+            }
+
+            List<Email> finalPool = GetEmailsToDisplay(maxDisplayedEmails);
+
+            foreach (var email in finalPool) {
+                CreateMailObject(email, contentRoot);
+            }
+        }
+        private void CreateMailObject(Email email, Transform parent) {
+            GameObject mailItem = Instantiate(mailPrefab, parent);
+
+            mailItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = email.sender;
+            mailItem.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = email.subject;
+            mailItem.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = generatedDates[email].ToString("dd.MM.yyyy HH:mm");
+            mailItem.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = email.body;
+
+            Email emailCopy = email;
+            GameObject itemRef = mailItem;
+
+            mailItem.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => OpenEmail(emailCopy, itemRef));
+            mailItem.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => MarkEmailAsSafe(emailCopy, itemRef));
+            mailItem.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => MarkEmailAsPhishing(emailCopy, itemRef));
+        }
+        private void MarkEmailAsSafe(Email email, GameObject mailItem) {
+            ProcessEmailDecision(email, mailItem, false);
+        }
+
+        private void MarkEmailAsPhishing(Email email, GameObject mailItem) {
+            ProcessEmailDecision(email, mailItem, true);
+        }
+
+        private void ProcessEmailDecision(Email email, GameObject mailItem, bool markedAsPhishing) {
+            flaggedEmailIds.Add(email.id);
+
+            mailItem.transform.DOScale(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
+                if (mailItem != null) Destroy(mailItem);
+            });
+
+            ClosePreviews();
+
+            bool isCorrect = (markedAsPhishing == email.isPhishing);
+
+            if (isCorrect) {
+                correctMarksCount++;
+                CorrectMailAnswers++;
+                PlayerRatingSystem.Instance.UpdateProgress();
+            }
+        }
+        private void ClosePreviews() {
+            if (mainPreviewCanvas != null && mainPreviewCanvas.alpha > 0) {
+                mainPreviewCanvas.DOFade(0f, 0.25f).OnKill(() => {
+                    if (mailPreview) mailPreview.SetActive(false);
+                    if (imagePreview) imagePreview.SetActive(false);
+                });
+            }
+        }
         private DateTime GenerateRandomDate() {
             DateTime now = DateTime.Now;
             return now.AddDays(Random.Range(-30, 0))
@@ -121,51 +264,10 @@ namespace ph.Managers {
                 }
             }
         }
-        private void DisplayEmails() {
-            if (emailData != null) {
-                List<Email> filteredEmails = (Settings.Difficulty == 0)
-                    ? emailData.newbieEmails
-                    : emailData.advancedEmails;
 
-                filteredEmails = filteredEmails
-            .Where(email => !flaggedEmailIds.Contains(email.id))
-            .OrderBy(email => generatedDates[email])
-            .ToList();
-
-                List<Email> displayedEmails = filteredEmails.Take(maxDisplayedEmails).ToList();
-
-                for (int i = displayedEmails.Count - 1; i >= 0; i--) {
-                    GameObject mailItem = Instantiate(mailPrefab, workSpace.GetChild(0));
-
-                    TextMeshProUGUI senderText = mailItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI subjectText = mailItem.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI dateTimeText = mailItem.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI messageText = mailItem.transform.GetChild(6).GetComponent<TextMeshProUGUI>();
-                    Button openButton = mailItem.transform.GetChild(0).GetComponent<Button>();
-
-                    Email emailCopy = displayedEmails[i];
-
-                    senderText.text = displayedEmails[i].sender;
-                    subjectText.text = displayedEmails[i].subject;
-                    dateTimeText.text = generatedDates[displayedEmails[i]].ToString("dd.MM.yyyy HH:mm");
-                    messageText.text = displayedEmails[i].body;
-
-                    openButton.onClick.AddListener(() => OpenEmail(emailCopy, mailItem));
-
-                    Button safeButton = mailItem.transform.GetChild(1).GetComponent<Button>();
-                    Button phishingButton = mailItem.transform.GetChild(2).GetComponent<Button>();
-                    safeButton.onClick.AddListener(() => MarkEmailAsSafe(emailCopy, mailItem));
-                    phishingButton.onClick.AddListener(() => MarkEmailAsPhishing(emailCopy, mailItem));
-                }
-            }
-        }
         private void OpenEmail(Email email, GameObject mailItem) {
-            if (!mailPreview.activeSelf) {
-                mailPreview.SetActive(true);
-            }
-            if (mailPreview.activeSelf) {
-                imagePreview.SetActive(false); ;
-            }
+            if (!mailPreview.activeSelf) mailPreview.SetActive(true);
+            if (mailPreview.activeSelf) imagePreview.SetActive(false);
 
             mainPreviewCanvas.alpha = 0;
             mailPreview.transform.localScale = Vector3.one * 0.8f;
@@ -283,155 +385,6 @@ namespace ph.Managers {
             }
             else if (extension == ".exe") {
                 // TODO: ostrzeżenie o potencjalnie niebezpiecznym pliku
-            }
-        }
-        private void MarkEmailAsSafe(Email email, GameObject mailItem) {
-            flaggedEmailIds.Add(email.id);
-
-            mainPreviewCanvas.DOFade(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
-                mailPreview.SetActive(false);
-                imagePreview.SetActive(false);
-            });
-
-            mailItem.transform.DOScale(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
-                if (mailItem != null) Destroy(mailItem);
-            });
-
-            if (email.isPhishing) {
-                return;
-            }
-
-            correctMarksCount++;
-            CorrectMailAnswers++;
-            correctlyMarkedEmails.Add(email.id);
-            PlayerRatingSystem.Instance.UpdateProgress();
-        }
-        private void MarkEmailAsPhishing(Email email, GameObject mailItem) {
-            flaggedEmailIds.Add(email.id);
-
-            mainPreviewCanvas.DOFade(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
-                mailPreview.SetActive(false);
-                imagePreview.SetActive(false);
-            });
-
-            mailItem.transform.DOScale(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
-                if (mailItem != null) Destroy(mailItem);
-            });
-
-            if (!email.isPhishing) {
-                return;
-            }
-
-            correctMarksCount++;
-            CorrectMailAnswers++;
-            correctlyMarkedEmails.Add(email.id);
-            PlayerRatingSystem.Instance.UpdateProgress();
-        }
-        private int LoadTotalMailCount() {
-            string lang = Settings.Language;
-            string fileName = $"{languageFileName}_{lang}";
-            TextAsset json = Resources.Load<TextAsset>($"Data/{fileName}");
-
-            if (json == null) {
-                Debug.LogError($"Brak pliku JSON: {fileName} w folderze Resources.");
-                return 0;
-            }
-
-            EmailData data = JsonUtility.FromJson<EmailData>(json.text);
-
-            if (data == null) {
-                Debug.LogError("Nie udało się zdeserializować danych quizu.");
-                return 0;
-            }
-
-            return data.newbieEmails.Count + data.advancedEmails.Count;
-        }
-        public void RefreshEmails() {
-            Transform contentRoot = workSpace.GetChild(0);
-            int currentEmailCount = contentRoot.childCount;
-            float timeNow = Time.time;
-            float secondsPassed = timeNow - lastRefreshTime;
-            lastRefreshTime = timeNow;
-            float mailInterval = 10f; // co x sekund nowa szansa na kolejne maile
-            int maxToAddInOneRefresh = 5; // hard limit na jedną rundę
-            int intervals = Mathf.FloorToInt(secondsPassed / mailInterval);
-            int newMails = 0;
-
-            if (intervals > 0) {
-                for (int i = 1; i <= intervals; i++) {
-                    // Im wyższy numer slota, tym większa szansa: np. 1-3, 1-4, 2-4 maile:
-                    int minMail = Mathf.Clamp(i, 1, 3);
-                    int maxMail = Mathf.Clamp(2 + i, minMail+1, maxToAddInOneRefresh);
-                    newMails += Random.Range(minMail, maxMail + 1);
-                }
-                // Ogranicz ile może wejść naraz (np. 8):
-                newMails = Mathf.Clamp(newMails, 0, maxToAddInOneRefresh);
-            }
-            maxDisplayedEmails = Mathf.Min(maxDisplayedEmails + newMails, maxPossibleDisplayedEmails);
-
-            if (maxDisplayedEmails != 22) Debug.Log($"Upłynęło {secondsPassed:0}s, dorzucam {newMails} maili, razem: {maxDisplayedEmails}");
-
-            mainPreviewCanvas.DOFade(0f, 0.25f).SetEase(Ease.OutQuad).OnKill(() => {
-                mailPreview.SetActive(false);
-                imagePreview.SetActive(false);
-            });
-
-            for (int i = 0; i < currentEmailCount; i++) {
-                Destroy(contentRoot.GetChild(i).gameObject);
-            }
-
-            if (emailData == null) {
-                Debug.LogError("Brak danych emaili dla języka: " + Settings.Language);
-                return;
-            }
-
-            List<Email> finalEmailPool;
-
-            if (Settings.Difficulty == 0) {
-                finalEmailPool = emailData.newbieEmails
-                    .Where(e => !flaggedEmailIds.Contains(e.id))
-                    .OrderBy(e => generatedDates[e])
-                    .Take(maxDisplayedEmails)
-                    .ToList();
-            }
-            else {
-                var availableNewbies = emailData.newbieEmails
-            .Where(e => !flaggedEmailIds.Contains(e.id) && !correctlyMarkedEmails.Contains(e.id))
-            .OrderBy(e => generatedDates[e])
-            .ToList();
-
-                var availableAdvanced = emailData.advancedEmails
-            .Where(e => !flaggedEmailIds.Contains(e.id))
-            .OrderBy(e => generatedDates[e])
-            .ToList();
-
-                int totalToLoad = maxDisplayedEmails;
-
-                int minAdvanced = totalToLoad / 4;
-                int maxAdvanced = totalToLoad / 3 + 1;
-                int advancedCount = Random.Range(minAdvanced, maxAdvanced + 1);
-                int newbieCount = totalToLoad - advancedCount;
-
-                var chosenNewbies = availableNewbies.Take(newbieCount).ToList();
-                int remaining = totalToLoad - chosenNewbies.Count;
-
-                var chosenAdvanced = availableAdvanced.Take(remaining).ToList();
-
-                finalEmailPool = chosenNewbies.Concat(chosenAdvanced).ToList();
-            }
-
-            foreach (var email in finalEmailPool) {
-                GameObject mailItem = Instantiate(mailPrefab, contentRoot);
-
-                mailItem.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = email.sender;
-                mailItem.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = email.subject;
-                mailItem.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = generatedDates[email].ToString("dd.MM.yyyy HH:mm");
-                mailItem.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = email.body;
-
-                Email emailCopy = email;
-                mailItem.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => OpenEmail(emailCopy, mailItem));
-                mailItem.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => MarkEmailAsSafe(emailCopy, mailItem));
-                mailItem.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => MarkEmailAsPhishing(emailCopy, mailItem));
             }
         }
     }

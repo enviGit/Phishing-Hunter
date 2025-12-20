@@ -4,33 +4,41 @@ using UnityEngine.UI;
 using DG.Tweening;
 
 namespace ph.UI {
-    public class ButtonIntroAnimation : MonoBehaviour {
+    public class MainMenuUI : MonoBehaviour {
+        [Header("References")]
+        [SerializeField] private MenuCam menuCam;
         [SerializeField] private RectTransform[] buttons;
-        private Button newGameButton, loadGameButton;
+        [SerializeField] private Button newGameButton, loadGameButton;
         [SerializeField] private float animationDuration = 1.5f;
         [SerializeField] private float delayBetweenButtons = 0.25f;
         [SerializeField] private Vector2 startOffset = new Vector2(0, -50f);
 
         private void Start() {
-            AnimateButtons();
-
             if (DataPersistence.instance == null) {
                 Debug.LogError("Brak DataPersistence Managera!");
                 return;
             }
 
-            newGameButton = buttons[0].GetComponent<Button>();
-            loadGameButton = buttons[1].GetComponent<Button>();
-            bool hasSave = DataPersistence.instance.HasSaveFile();
-            loadGameButton.interactable = hasSave;
-
             newGameButton.onClick.AddListener(() => {
-                DataPersistence.instance.OnNewGameClicked();
+                menuCam.ZoomInAndStartGame(() => {
+                    DataPersistence.instance.OnNewGameClicked();
+                });
             });
 
             loadGameButton.onClick.AddListener(() => {
-                DataPersistence.instance.OnLoadGameClicked();
+                menuCam.ZoomInAndStartGame(() => {
+                    DataPersistence.instance.OnLoadGameClicked();
+                });
             });
+        }
+
+        private void OnEnable() {
+            if (DataPersistence.instance != null) {
+                bool hasSave = DataPersistence.instance.HasSaveFile();
+                loadGameButton.interactable = hasSave;
+            }
+
+            AnimateButtons();
         }
 
         private void AnimateButtons() {

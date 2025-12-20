@@ -12052,11 +12052,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7f08fddf5cec64fa2bb6ab3de8f172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuCam: {fileID: 2118211592}
   buttons:
   - {fileID: 2110514231}
   - {fileID: 1841520676}
   - {fileID: 2114900600}
   - {fileID: 1346746753}
+  newGameButton: {fileID: 2110514232}
+  loadGameButton: {fileID: 1841520679}
   animationDuration: 1.5
   delayBetweenButtons: 0.25
   startOffset: {x: 0, y: -50}
@@ -32592,8 +32595,10 @@ MonoBehaviour:
   mainMenuCam: {fileID: 1401864367}
   settingsCam: {fileID: 792410966}
   confirmationCam: {fileID: 1737808486}
+  laptopCam: {fileID: 2102314029}
   cinemachineBrain: {fileID: 2118211591}
   transitionDuration: 1
+  mainMenuCanvasGroup: {fileID: 830234777}
   canvases:
   - {fileID: 830234771}
   - {fileID: 1217534908}

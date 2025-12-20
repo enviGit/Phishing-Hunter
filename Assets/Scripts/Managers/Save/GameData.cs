@@ -6,6 +6,7 @@ namespace ph.Managers.Save {
     public class GameData {
         public int currentLevel;
         public int playerPosition;
+        public float currentProgress;
 
         public int correctMailsCount;
         public int correctQuizCount;
@@ -18,6 +19,7 @@ namespace ph.Managers.Save {
         public GameData() {
             this.currentLevel = 0;
             this.playerPosition = 0;
+            this.currentProgress = 0f;
             this.correctMailsCount = 0;
             this.correctQuizCount = 0;
 

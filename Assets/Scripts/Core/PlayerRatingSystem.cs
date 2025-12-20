@@ -107,7 +107,6 @@ namespace ph.Core {
         }
         private void Start() {
             UpdateUI();
-            progressSlider.fillAmount = 0f;
         }
         private void OnEnable() {
             DataPersistence.instance.LoadDataOnObject(this);
@@ -116,12 +115,18 @@ namespace ph.Core {
             this.level = data.currentLevel;
             this.position = (PlayerPosition)data.playerPosition;
 
+            if (progressSlider != null)
+                progressSlider.fillAmount = data.currentProgress;
+
             UpdateUI();
         }
 
         public void SaveData(ref GameData data) {
             data.currentLevel = this.level;
             data.playerPosition = (int)this.position;
+
+            if (progressSlider != null)
+                data.currentProgress = progressSlider.fillAmount;
         }
         public void UpdateProgress() {
             int correctMails = MailManager.CorrectMailAnswers;

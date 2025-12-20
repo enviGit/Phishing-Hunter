@@ -1,7 +1,8 @@
+using DG.Tweening;
 using ph.Managers.Save;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
 namespace ph.UI {
     public class MainMenuUI : MonoBehaviour {
@@ -9,9 +10,34 @@ namespace ph.UI {
         [SerializeField] private MenuCam menuCam;
         [SerializeField] private RectTransform[] buttons;
         [SerializeField] private Button newGameButton, loadGameButton;
-        [SerializeField] private float animationDuration = 1.5f;
-        [SerializeField] private float delayBetweenButtons = 0.25f;
-        [SerializeField] private Vector2 startOffset = new Vector2(0, -50f);
+        private float animationDuration = 0.6f;
+        private float delayBetweenButtons = 0.1f;
+        private Vector2 startOffset = new Vector2(0, -50f);
+        private Ease animationEase = Ease.OutBack;
+
+        private class CachedButton {
+            public RectTransform rect;
+            public CanvasGroup group;
+            public Vector2 originalPosition;
+        }
+
+        private List<CachedButton> cachedButtons = new List<CachedButton>();
+        private Sequence currentSequence;
+
+        private void Awake() {
+            foreach (var btnRect in buttons) {
+                if (btnRect == null) continue;
+
+                var cg = btnRect.GetComponent<CanvasGroup>();
+                if (cg == null) cg = btnRect.gameObject.AddComponent<CanvasGroup>();
+
+                cachedButtons.Add(new CachedButton {
+                    rect = btnRect,
+                    group = cg,
+                    originalPosition = btnRect.anchoredPosition
+                });
+            }
+        }
 
         private void Start() {
             if (DataPersistence.instance == null) {
@@ -42,20 +68,28 @@ namespace ph.UI {
         }
 
         private void AnimateButtons() {
-            for (int i = 0; i < buttons.Length; i++) {
-                RectTransform button = buttons[i];
+            if (currentSequence != null) currentSequence.Kill();
 
-                button.gameObject.SetActive(true);
-                button.anchoredPosition += startOffset;
-                button.GetComponent<CanvasGroup>().alpha = 0f;
+            currentSequence = DOTween.Sequence();
 
-                button.DOAnchorPosY(button.anchoredPosition.y - startOffset.y, animationDuration)
-                    .SetEase(Ease.OutBack)
-                    .SetDelay(i * delayBetweenButtons);
+            foreach (var btn in cachedButtons) {
+                btn.rect.gameObject.SetActive(true);
+                btn.group.alpha = 0f;
+                btn.rect.anchoredPosition = btn.originalPosition + startOffset;
 
-                button.GetComponent<CanvasGroup>().DOFade(1f, animationDuration)
-                    .SetDelay(i * delayBetweenButtons);
+                float delay = cachedButtons.IndexOf(btn) * delayBetweenButtons;
+
+                currentSequence.Insert(delay,
+                    btn.rect.DOAnchorPos(btn.originalPosition, animationDuration).SetEase(animationEase)
+                );
+
+                currentSequence.Insert(delay,
+                    btn.group.DOFade(1f, animationDuration)
+                );
             }
+        }
+        private void OnDisable() {
+            if (currentSequence != null) currentSequence.Kill();
         }
     }
 }

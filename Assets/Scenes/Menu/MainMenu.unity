@@ -519,8 +519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f5173fccad18e44a17370f3c1c15fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
-  scaleFactor: 1.15
+  animationDuration: 0.3
+  scaleFactor: 1.1
   originalScale: {x: 1, y: 1, z: 1}
 --- !u!225 &10616338
 CanvasGroup:
@@ -2707,8 +2707,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f5173fccad18e44a17370f3c1c15fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
-  scaleFactor: 1.15
+  animationDuration: 0.3
+  scaleFactor: 1.1
   originalScale: {x: 1, y: 1, z: 1}
 --- !u!225 &225290064
 CanvasGroup:
@@ -4020,8 +4020,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f5173fccad18e44a17370f3c1c15fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
-  scaleFactor: 1.15
+  animationDuration: 0.3
+  scaleFactor: 1.1
   originalScale: {x: 1, y: 1, z: 1}
 --- !u!225 &307260212
 CanvasGroup:
@@ -4829,8 +4829,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f5173fccad18e44a17370f3c1c15fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
-  scaleFactor: 1.15
+  animationDuration: 0.3
+  scaleFactor: 1.1
   originalScale: {x: 1, y: 1, z: 1}
 --- !u!225 &347492334
 CanvasGroup:
@@ -5843,8 +5843,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f5173fccad18e44a17370f3c1c15fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
-  scaleFactor: 1.15
+  animationDuration: 0.3
+  scaleFactor: 1.1
   originalScale: {x: 1, y: 1, z: 1}
 --- !u!225 &398970967
 CanvasGroup:
@@ -13394,8 +13394,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f5173fccad18e44a17370f3c1c15fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
-  scaleFactor: 1.15
+  animationDuration: 0.3
+  scaleFactor: 1.1
   originalScale: {x: 1, y: 1, z: 1}
 --- !u!225 &918750705
 CanvasGroup:
@@ -20487,8 +20487,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f5173fccad18e44a17370f3c1c15fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
-  scaleFactor: 1.15
+  animationDuration: 0.3
+  scaleFactor: 1.1
   originalScale: {x: 1, y: 1, z: 1}
 --- !u!82 &1346746759
 AudioSource:
@@ -21562,8 +21562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f5173fccad18e44a17370f3c1c15fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
-  scaleFactor: 1.15
+  animationDuration: 0.3
+  scaleFactor: 1.1
   originalScale: {x: 1, y: 1, z: 1}
 --- !u!225 &1412999057
 CanvasGroup:
@@ -28533,8 +28533,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f5173fccad18e44a17370f3c1c15fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
-  scaleFactor: 1.15
+  animationDuration: 0.3
+  scaleFactor: 1.1
   originalScale: {x: 1, y: 1, z: 1}
 --- !u!225 &1819637935
 CanvasGroup:
@@ -28884,8 +28884,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f5173fccad18e44a17370f3c1c15fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
-  scaleFactor: 1.15
+  animationDuration: 0.3
+  scaleFactor: 1.1
   originalScale: {x: 1, y: 1, z: 1}
 --- !u!225 &1841520678
 CanvasGroup:
@@ -29727,8 +29727,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f5173fccad18e44a17370f3c1c15fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
-  scaleFactor: 1.15
+  animationDuration: 0.3
+  scaleFactor: 1.1
   originalScale: {x: 1, y: 1, z: 1}
 --- !u!225 &1926040610
 CanvasGroup:
@@ -32205,8 +32205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f5173fccad18e44a17370f3c1c15fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
-  scaleFactor: 1.15
+  animationDuration: 0.3
+  scaleFactor: 1.1
   originalScale: {x: 1, y: 1, z: 1}
 --- !u!82 &2110514237
 AudioSource:
@@ -32659,8 +32659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f5173fccad18e44a17370f3c1c15fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.5
-  scaleFactor: 1.15
+  animationDuration: 0.3
+  scaleFactor: 1.1
   originalScale: {x: 1, y: 1, z: 1}
 --- !u!82 &2114900606
 AudioSource:

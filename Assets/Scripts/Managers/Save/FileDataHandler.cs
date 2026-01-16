@@ -9,7 +9,7 @@ namespace ph.Managers.Save
         private string dataDirPath = "";
         private string dataFileName = "";
         private bool useEncryption = false;
-        private readonly string encryptionCodeWord = "2137PhishingHunter2137";
+        private readonly string encryptionCodeWord = "5f4dcc3b5aa765d61d8327deb882cf99";
 
         public FileDataHandler(string dataDirPath, string dataFileName, bool useEncryption)
         {

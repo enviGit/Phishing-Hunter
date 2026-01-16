@@ -8,21 +8,14 @@ namespace ph.Managers {
     public class GlobalSceneManager : MonoBehaviour {
         public static GlobalSceneManager Instance { get; private set; }
 
-        [Header("Konfiguracja Scen")]
-        [Tooltip("Sceny, które będą potrzebne w pętli gry")]
         public List<string> gameScenes = new List<string>();
 
-        [Tooltip("Sceny jednorazowe, do usunięcia po wejściu do Menu Głównego")]
         public List<string> startupOnlyScenes = new List<string>();
 
-        [Header("Referencje Bootstrap")]
         public Camera bootstrapCamera;
-
-        [Header("UI Loading Screenu")]
         public GameObject loadingScreenCanvas;
         public Slider progressBar;
 
-        [Header("Ustawienia Płynności")]
         public float minLoadingTime = 2.0f;
         public float minTimePerScene = 0.5f;
         public float visualFillSpeed = 2.0f;

@@ -1,423 +1,249 @@
 #if UNITY_EDITOR
-using Object = UnityEngine.Object;
 using System;
 using System.IO;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEditor.UIElements;
+using UnityEngine.UIElements;
 
 namespace Envi.VibrantIcons
 {
     /// <summary>
-    /// Custom Editor Window for customizing script icons in the Unity Editor.
+    /// Main Editor Window for the Vibrant Icons tool.
+    /// Handles the tabs navigation (Auto vs Manual) and initialization of the settings file.
     /// </summary>
     public class VibrantIconsWindow : EditorWindow
     {
-        #region Private Variables
+        #region Fields
 
-        private TargetList targetList;
-        private IconManager iconManager;
-        private TextureLoader textureLoader;
-        private float textureScrollbarWidth = 16f;
-        private Vector2 scrollPosition;
-        private int displayedObjectsCount = 0;
-        private const int MinDisplayedObjects = 0;
-        private const string EditorPrefsKey = "VibrantIconsPrefs";
+        private VibrantIconsSettings _settings;
+        private VisualElement _contentContainer;
+        private VibrantIconsManualView _manualView;
+        private ToolbarToggle _btnAuto;
+        private ToolbarToggle _btnManual;
 
         #endregion
 
-        #region Properties
+        #region Window Lifecycle
 
-        private int DisplayedObjectsCount
+        [MenuItem("Window/Vibrant Icons")]
+        public static void ShowWindow()
         {
-            get => displayedObjectsCount;
-            set
-            {
-                displayedObjectsCount = value;
-                targetList.UpdateDisplayedObjectsCount(displayedObjectsCount);
-            }
+            var wnd = GetWindow<VibrantIconsWindow>();
+            wnd.titleContent = new GUIContent("Vibrant Icons");
+            wnd.minSize = new Vector2(475, 550);
         }
 
-        #endregion
-
-        #region MenuItem
-
-        /// <summary>
-        /// MenuItem attribute to create the window from the Unity Editor menu.
-        /// </summary>
-        [MenuItem("Tools/Envi/Vibrant Icons")]
-        private static void GetWindow()
+        public void CreateGUI()
         {
-            VibrantIconsWindow window = GetWindow<VibrantIconsWindow>();
-            window.position = new Rect(Screen.width / 2F, Screen.height / 2F, 425F, 335F);
-            window.titleContent = new GUIContent("Customize Your Script Icons");
-            window.ShowUtility();
-        }
+            _settings = VibrantIconsSettings.GetOrCreateSettings();
+            _manualView = new VibrantIconsManualView();
 
-        #endregion
+            VisualElement root = rootVisualElement;
+            root.Clear();
 
-        #region Unity Callbacks
+            var toolbarContainer = new VisualElement();
+            toolbarContainer.style.paddingTop = 5;
+            toolbarContainer.style.paddingBottom = 5;
+            toolbarContainer.style.paddingLeft = 5;
+            toolbarContainer.style.paddingRight = 5;
+            toolbarContainer.style.backgroundColor = new Color(0, 0, 0, 0.1f);
 
-        /// <summary>
-        /// Called when the window is enabled.
-        /// </summary>
-        private void OnEnable()
-        {
-            targetList = new TargetList();
-            iconManager = new IconManager();
-            iconManager.ColorChanged += OnColorChanged;
-            textureLoader = new TextureLoader();
-            minSize = new Vector2(425f, 335f);
-            string savedColor = EditorPrefs.GetString(EditorPrefsKey + "_SelectedColor", IconColor.All.ToString());
-            iconManager.SelectedColor = (IconColor)Enum.Parse(typeof(IconColor), savedColor);
+            var toolbar = new Toolbar();
+            toolbar.style.height = 30;
+            toolbar.style.backgroundColor = Color.clear;
 
-            LoadPreferences();
-            RefreshAvailableTextures();
-        }
+            _btnAuto = new ToolbarToggle() { text = "Auto Rules", value = true };
+            _btnAuto.style.flexGrow = 1;
+            _btnAuto.style.unityTextAlign = TextAnchor.MiddleCenter;
+            _btnAuto.style.unityFontStyleAndWeight = FontStyle.Bold;
 
-        /// <summary>
-        /// Called when the window is disabled.
-        /// </summary>
-        private void OnDisable()
-        {
-            iconManager.ColorChanged -= OnColorChanged;
-        }
+            _btnManual = new ToolbarToggle() { text = "Manual Mode" };
+            _btnManual.style.flexGrow = 1;
+            _btnManual.style.unityTextAlign = TextAnchor.MiddleCenter;
+            _btnManual.style.unityFontStyleAndWeight = FontStyle.Bold;
 
-        #endregion
+            _btnAuto.RegisterValueChangedCallback(evt => {
+                if (evt.newValue) {
+                    _btnManual.value = false;
+                    ShowAutoView();
+                } else if (!_btnManual.value) _btnAuto.value = true;
+            });
 
-        #region Event Handlers
+            _btnManual.RegisterValueChangedCallback(evt => {
+                if (evt.newValue) {
+                    _btnAuto.value = false;
+                    ShowManualView();
+                } else if (!_btnAuto.value) _btnManual.value = true;
+            });
 
-        /// <summary>
-        /// Handles the color change event and refreshes available textures.
-        /// </summary>
-        /// <param name="newColor">The new selected color.</param>
-        private void OnColorChanged(IconColor newColor)
-        {
-            RefreshAvailableTextures();
-            EditorPrefs.SetString(EditorPrefsKey + "_SelectedColor", newColor.ToString());
-        }
+            toolbar.Add(_btnAuto);
+            toolbar.Add(_btnManual);
 
-        /// <summary>
-        /// Handles drag-and-drop functionality for adding targets.
-        /// </summary>
-        /// <param name="evt">The current event.</param>
-        private void HandleDragAndDrop(Event evt)
-        {
-            if (evt.type == EventType.DragUpdated || evt.type == EventType.DragPerform)
-            {
-                DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+            toolbarContainer.Add(toolbar);
+            root.Add(toolbarContainer);
 
-                if (evt.type == EventType.DragPerform)
-                {
-                    DragAndDrop.AcceptDrag();
+            _contentContainer = new VisualElement();
+            _contentContainer.style.flexGrow = 1;
+            _contentContainer.style.paddingTop = 15;
+            _contentContainer.style.paddingBottom = 15;
+            _contentContainer.style.paddingLeft = 15;
+            _contentContainer.style.paddingRight = 15;
+            root.Add(_contentContainer);
 
-                    Object[] draggedObjects = DragAndDrop.objectReferences;
-
-                    // Filter out non-accepted files and folders
-                    draggedObjects = draggedObjects
-                        .Where(obj => obj != null && (textureLoader.IsAcceptedFile(obj) || Directory.Exists(AssetDatabase.GetAssetPath(obj))))
-                        .ToArray();
-
-                    foreach (Object obj in draggedObjects)
-                    {
-                        if (obj is DefaultAsset folder)
-                        {
-                            string folderPath = AssetDatabase.GetAssetPath(folder);
-                            Object[] csFiles = Directory.GetFiles(folderPath, "*.cs", SearchOption.TopDirectoryOnly)
-                                .Select(filePath => AssetDatabase.LoadAssetAtPath<MonoScript>(filePath))
-                                .Where(monoScript => monoScript != null)
-                                .Distinct()
-                                .Where(script => !targetList.Contains(script))
-                                .ToArray();
-
-                            targetList.AddTargets(csFiles);
-                        }
-                        else if (textureLoader.IsAcceptedFile(obj) && !targetList.Contains(obj))
-                        {
-                            // If a file is dropped, add it to the list
-                            targetList.AddTargets(new Object[] { obj });
-                        }
-                    }
-
-                    evt.Use();
-                }
-
-            }
+            ShowAutoView();
         }
 
         #endregion
 
-        #region GUI
+        #region View Logic
 
-        /// <summary>
-        /// Draws the GUI for the window.
-        /// </summary>
-        private void OnGUI()
+        private void ShowAutoView()
         {
-            Event evt = Event.current;
+            _contentContainer.Clear();
 
-            HandleDragAndDrop(evt);
+            var titleLabel = new Label("Auto Rules Manager");
+            titleLabel.style.fontSize = 20;
+            titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+            titleLabel.style.marginBottom = 5;
+            titleLabel.style.color = new Color(0.9f, 0.9f, 0.9f);
+            titleLabel.style.alignSelf = Align.Center;
+            _contentContainer.Add(titleLabel);
 
-            EditorGUI.BeginChangeCheck();
+            var separator = new VisualElement();
+            separator.style.height = 1;
+            separator.style.backgroundColor = new Color(0.5f, 0.5f, 0.5f, 0.3f);
+            separator.style.marginBottom = 15;
+            separator.style.marginLeft = 5;
+            separator.style.marginRight = 5;
+            _contentContainer.Add(separator);
 
-            DrawSelectedObjectsSection();
-            DrawClearListAndRestoreDefaultIconsButtons();
-            DrawAvailableIconsSection();
+            if (_settings == null)
+            {
+                var helpBox = new HelpBox("Settings file not found (VibrantIconsSettings).", HelpBoxMessageType.Warning);
+                _contentContainer.Add(helpBox);
 
-            EditorGUI.EndChangeCheck();
+                var createBtn = new Button(() =>
+                {
+                    CreateSettingsFile();
+                    _settings = VibrantIconsSettings.GetOrCreateSettings();
+                    ShowAutoView();
+                })
+                { text = "Create Settings File" };
 
-            SavePreferences();
+                createBtn.style.marginTop = 10;
+                createBtn.style.height = 30;
+                _contentContainer.Add(createBtn);
+                return;
+            }
+
+            var scanButton = new Button(() => { VibrantIconsProcessor.ApplyIconsToAllScripts(); })
+            { text = "APPLY RULES" };
+
+            scanButton.style.height = 45;
+            scanButton.style.marginBottom = 20;
+            scanButton.style.backgroundColor = new Color(0.25f, 0.7f, 0.3f);
+            scanButton.style.color = Color.white;
+            scanButton.style.fontSize = 14;
+            scanButton.style.unityFontStyleAndWeight = FontStyle.Bold;
+            scanButton.style.borderTopLeftRadius = 6; scanButton.style.borderTopRightRadius = 6;
+            scanButton.style.borderBottomLeftRadius = 6; scanButton.style.borderBottomRightRadius = 6;
+
+            _contentContainer.Add(scanButton);
+
+            var settingsLabel = new Label("Configuration");
+            settingsLabel.style.fontSize = 12;
+            settingsLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+            settingsLabel.style.marginBottom = 5;
+            settingsLabel.style.opacity = 0.7f;
+            _contentContainer.Add(settingsLabel);
+
+            var settingsContainer = new VisualElement();
+
+            Color borderColor = new Color(0, 0, 0, 0.3f);
+            settingsContainer.style.borderTopColor = borderColor; settingsContainer.style.borderBottomColor = borderColor;
+            settingsContainer.style.borderLeftColor = borderColor; settingsContainer.style.borderRightColor = borderColor;
+            settingsContainer.style.borderTopWidth = 1; settingsContainer.style.borderBottomWidth = 1;
+            settingsContainer.style.borderLeftWidth = 1; settingsContainer.style.borderRightWidth = 1;
+            settingsContainer.style.borderTopLeftRadius = 10; settingsContainer.style.borderTopRightRadius = 10;
+            settingsContainer.style.borderBottomLeftRadius = 10; settingsContainer.style.borderBottomRightRadius = 10;
+
+            settingsContainer.style.paddingTop = 15; settingsContainer.style.paddingBottom = 15;
+            settingsContainer.style.paddingLeft = 10; settingsContainer.style.paddingRight = 10;
+            settingsContainer.style.backgroundColor = new Color(0, 0, 0, 0.15f);
+
+            var inspector = new InspectorElement(_settings);
+            settingsContainer.Add(inspector);
+
+            var scrollView = new ScrollView();
+            scrollView.Add(settingsContainer);
+            _contentContainer.Add(scrollView);
+        }
+
+        private void ShowManualView()
+        {
+            _contentContainer.Clear();
+
+            var titleLabel = new Label("Manual Override");
+            titleLabel.style.fontSize = 20;
+            titleLabel.style.unityFontStyleAndWeight = FontStyle.Bold;
+            titleLabel.style.marginBottom = 5;
+            titleLabel.style.alignSelf = Align.Center;
+            _contentContainer.Add(titleLabel);
+
+            var separator = new VisualElement();
+            separator.style.height = 1;
+            separator.style.backgroundColor = new Color(0.5f, 0.5f, 0.5f, 0.3f);
+            separator.style.marginBottom = 15;
+            separator.style.marginLeft = 5;
+            separator.style.marginRight = 5;
+            _contentContainer.Add(separator);
+
+            var infoLabel = new Label("Drag scripts to manually override their icons.");
+            infoLabel.style.fontSize = 12;
+            infoLabel.style.opacity = 0.7f;
+            infoLabel.style.marginBottom = 15;
+            infoLabel.style.alignSelf = Align.Center;
+            _contentContainer.Add(infoLabel);
+
+            _contentContainer.Add(_manualView.CreateView());
         }
 
         #endregion
 
-        #region Methods
+        #region IO Operations
 
-        /// <summary>
-        /// Refreshes the available textures based on dark or light mode.
-        /// </summary>
-        private void RefreshAvailableTextures()
+        private void CreateSettingsFile()
         {
-            iconManager.ClearAvailableTextures();
-            string scriptFolderPath = Path.GetDirectoryName(AssetDatabase.GetAssetPath(MonoScript.FromScriptableObject(this)));
-            string parentFolder = Directory.GetParent(scriptFolderPath).FullName;
-            int index = parentFolder.IndexOf("Assets", StringComparison.OrdinalIgnoreCase);
+            var asset = ScriptableObject.CreateInstance<VibrantIconsSettings>();
+            string path = "Assets/VibrantIconsSettings.asset";
 
-            if (index >= 0)
-                parentFolder = parentFolder.Substring(index);
-
-            string texturesFolder = Path.Combine(parentFolder, "Textures");
-            string darkFolder = Path.Combine(texturesFolder, "Dark");
-            string lightFolder = Path.Combine(texturesFolder, "Light");
-
-            if (textureLoader.IsFolderAvailable(darkFolder) && textureLoader.IsFolderAvailable(lightFolder))
+            var scriptGuids = AssetDatabase.FindAssets("VibrantIconsWindow t:MonoScript");
+            if (scriptGuids.Length > 0)
             {
-                string modeFolder = iconManager.IsDarkMode ? darkFolder : lightFolder;
-                textureLoader.LoadTexturesFromFolder(modeFolder, iconManager.SelectedColor, iconManager.AddTexture);
-            }
-            else
-                textureLoader.LoadTexturesFromFolder(texturesFolder, iconManager.SelectedColor, iconManager.AddTexture);
-        }
+                string scriptPath = AssetDatabase.GUIDToAssetPath(scriptGuids[0]);
+                string editorDir = Path.GetDirectoryName(scriptPath);
+                string packageRoot = Path.GetDirectoryName(editorDir);
+                packageRoot = packageRoot.Replace("\\", "/");
 
-        /// <summary>
-        /// Draws the section for selected objects.
-        /// </summary>
-        private void DrawSelectedObjectsSection()
-        {
-            EditorGUILayout.BeginHorizontal();
+                string targetDir = packageRoot + "/Scriptable Objects";
 
-            // Label for displaying the total number of objects
-            EditorGUILayout.LabelField($"Total: {targetList.Count}               Displayed Objects: ", Styles.BoldLabel);
-
-            // Slider for selecting the number of displayed objects
-            int totalObjectsCount = targetList.Count;
-            int newDisplayedObjectsCount = EditorGUILayout.IntSlider(displayedObjectsCount, MinDisplayedObjects, totalObjectsCount, GUILayout.ExpandWidth(true));
-
-            if (newDisplayedObjectsCount != displayedObjectsCount)
-            {
-                displayedObjectsCount = newDisplayedObjectsCount;
-                targetList.UpdateDisplayedObjectsCount(displayedObjectsCount);
-            }
-
-            GUILayout.FlexibleSpace();
-
-            if (GUILayout.Button("+", GUILayout.Width(20)))
-            {
-                string folderPath = EditorUtility.OpenFolderPanel("Select Folder Containing Script Files", "Assets", "");
-
-                if (!string.IsNullOrEmpty(folderPath))
+                if (!AssetDatabase.IsValidFolder(targetDir))
                 {
-                    string[] csFiles = Directory.GetFiles(folderPath, "*.cs");
-
-                    targetList.AddTargets(csFiles.Select(filePath => textureLoader.FindMonoScriptAtPath(filePath)).Where(script => script != null));
+                    Directory.CreateDirectory(targetDir);
+                    AssetDatabase.Refresh();
                 }
+                path = targetDir + "/VibrantIconsSettings.asset";
             }
+            path = AssetDatabase.GenerateUniqueAssetPath(path);
 
-            if (GUILayout.Button("...", GUILayout.Width(20)))
-                ShowObjectListPopup();
+            AssetDatabase.CreateAsset(asset, path);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
 
-            EditorGUILayout.EndHorizontal();
-
-            targetList.Draw();
-        }
-
-        /// <summary>
-        /// Checks if any target in the target list has a custom icon set.
-        /// </summary>
-        /// <returns>True if any target has a custom icon set, otherwise false.</returns>
-        private bool AnyTargetHasCustomIcon()
-        {
-            return iconManager.AnyTargetHasCustomIcon(targetList);
-        }
-
-        /// <summary>
-        /// Draws buttons to clear the list and restore default icons.
-        /// </summary>
-        private void DrawClearListAndRestoreDefaultIconsButtons()
-        {
-            GUILayout.Space(5f);
-
-            Rect layoutRect = EditorGUILayout.BeginHorizontal();
-            {
-                GUILayout.FlexibleSpace();
-
-                // Calculate total available width for buttons
-                float totalAvailableWidth = layoutRect.width - 20f;
-
-                // Calculate dynamic button width based on available space
-                float buttonWidth = (totalAvailableWidth - 10f) / 2f;
-
-                GUI.enabled = targetList.Count > 0;
-
-                // Draw Clear List button
-                if (GUI.Button(new Rect(layoutRect.x + 10f, layoutRect.y, buttonWidth, EditorGUIUtility.singleLineHeight), "Clear List"))
-                {
-                    targetList.Clear();
-                    Event.current.Use();
-                }
-
-                GUI.enabled = targetList.Count > 0 && AnyTargetHasCustomIcon();
-
-                // Draw Restore Default Icons button
-                if (GUI.Button(new Rect(layoutRect.x + buttonWidth + 20f, layoutRect.y, buttonWidth, EditorGUIUtility.singleLineHeight), "Restore Default Icons"))
-                {
-                    iconManager.RestoreDefaultIcons(targetList);
-                    Event.current.Use();
-                }
-
-                GUILayout.FlexibleSpace();
-            }
-            EditorGUILayout.EndHorizontal();
-
-            GUILayout.Space(25f);
-        }
-
-        /// <summary>
-        /// Draws the section for available icons.
-        /// </summary>
-        private void DrawAvailableIconsSection()
-        {
-            GUILayout.BeginHorizontal();
-            GUI.enabled = true;
-            EditorGUILayout.LabelField("Available Icons", Styles.BoldLabel);
-
-            GUILayout.Label("Color:");
-            iconManager.SelectedColor = (IconColor)EditorGUILayout.EnumPopup(iconManager.SelectedColor, GUILayout.Width(80));
-
-            GUILayout.FlexibleSpace();
-
-            if (GUILayout.Button(iconManager.IsDarkMode ? "Dark" : "Light", GUILayout.Width(50), GUILayout.Height(20)))
-            {
-                iconManager.ToggleDarkMode();
-                RefreshAvailableTextures();
-            }
-
-            GUILayout.EndHorizontal();
-
-            DrawAvailableTextures();
-        }
-
-        /// <summary>
-        /// Draws the available textures in the GUI.
-        /// </summary>
-        private void DrawAvailableTextures()
-        {
-            int iconSize = 60;
-            int availableWidth = (int)(position.width - textureScrollbarWidth);
-            int texturesPerRow = Mathf.Max(1, availableWidth / iconSize);
-            int totalRows = Mathf.CeilToInt((float)iconManager.AvailableTextures.Count / texturesPerRow);
-            scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(position.width - textureScrollbarWidth), GUILayout.ExpandHeight(true));
-
-            for (int i = 0; i < totalRows; i++)
-            {
-                EditorGUILayout.BeginHorizontal();
-
-                int startIndex = i * texturesPerRow;
-                int endIndex = Mathf.Min(startIndex + texturesPerRow, iconManager.AvailableTextures.Count);
-
-                for (int j = startIndex; j < endIndex; j++)
-                {
-                    GUILayout.BeginVertical(GUILayout.Width(iconSize));
-                    GUILayout.Box(iconManager.AvailableTextures[j], GUILayout.Width(iconSize), GUILayout.Height(iconSize));
-
-                    if (Event.current.type == EventType.MouseDown && GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition))
-                        iconManager.SetIconForTargets(targetList, iconManager.AvailableTextures[j]);
-
-                    GUILayout.EndVertical();
-                }
-
-                EditorGUILayout.EndHorizontal();
-            }
-
-            EditorGUILayout.EndScrollView();
-        }
-
-        /// <summary>
-        /// Shows a context menu to remove selected objects.
-        /// </summary>
-        private void ShowObjectListPopup()
-        {
-            GenericMenu menu = new GenericMenu();
-
-            foreach (var target in targetList)
-            {
-                string label = $"Remove {target.name} ({target.GetType().Name})";
-                menu.AddItem(new GUIContent(label), false, () => targetList.RemoveTarget(target));
-            }
-
-            menu.ShowAsContext();
-        }
-
-        #endregion
-
-        #region EditorPrefs
-
-        /// <summary>
-        /// Loads preferences from EditorPrefs.
-        /// </summary>
-        private void LoadPreferences()
-        {
-            string preferencesJson = EditorPrefs.GetString(EditorPrefsKey, string.Empty);
-
-            if (!string.IsNullOrEmpty(preferencesJson))
-            {
-                try
-                {
-                    Preferences preferencesData = JsonUtility.FromJson<Preferences>(preferencesJson);
-
-                    iconManager.IsDarkMode = preferencesData.IsDarkMode;
-                    targetList.AddTargets(preferencesData.Targets);
-                    DisplayedObjectsCount = preferencesData.DisplayedObjectsCount;
-                }
-                catch (Exception ex)
-                {
-                    Debug.LogError($"Failed to load preferences: {ex.Message}");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Saves preferences to EditorPrefs.
-        /// </summary>
-        private void SavePreferences()
-        {
-            try
-            {
-                Preferences preferencesData = new Preferences
-                {
-                    IsDarkMode = iconManager.IsDarkMode,
-                    Targets = targetList.ToList(),
-                    DisplayedObjectsCount = DisplayedObjectsCount
-                };
-
-                string preferencesJson = JsonUtility.ToJson(preferencesData);
-
-                EditorPrefs.SetString(EditorPrefsKey, preferencesJson);
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"Failed to save preferences: {ex.Message}");
-            }
+            EditorUtility.FocusProjectWindow();
+            Selection.activeObject = asset;
+            Debug.Log($"Vibrant Icons: Settings file created at: {path}");
         }
 
         #endregion

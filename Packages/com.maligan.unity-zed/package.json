@@ -1,0 +1,10 @@
+{
+  "name": "com.maligan.unity-zed",
+  "displayName": "Zed Editor",
+  "description": "Zed Editor integration for Unity",
+  "version": "0.2.3-preview",
+  "dependencies": {
+    "com.unity.ide.visualstudio": "2.0.20"
+  },
+  "_fingerprint": "25f1b97fedb6cf7b4b566c4a83ec8311b68d3e82"
+}

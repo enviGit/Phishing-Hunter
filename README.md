@@ -1,7 +1,3 @@
-<!-- <p align="center">
-  <img src="docs/banner.png" alt="Phishing Hunter banner" width="60%">
-</p>-->
-
 <h1 align="center">Phishing Hunter</h1>
 <p align="center">
   <b>A cyber awareness game: hunt phishing, master security, and climb the corporate ladder.</b>
@@ -16,76 +12,65 @@
 
 **Phishing Hunter** is an educational game built with Unity, set in a simulated office environment. As a cybersecurity analyst, your core challenges are to identify suspicious emails (phishing), solve real-world security quizzes, and progress your virtual career by learning the fundamentals of digital hygiene.
 
-The project is designed to promote cyber awareness and foster safe online habits in an engaging, interactive way. Developed as part of a diploma project.
+The project is designed to promote cyber awareness and foster safe online habits in an engaging, interactive way.
+
+---
+
+## 👥 Team
+
+**Phishing Hunter** was developed by a two-person team, combining technical engineering with creative design:
+
+* **Paweł Trojański ([@enviGit](https://github.com/enviGit))** – **Lead Developer**
+    * System Architecture & Core Logic (C#)
+    * Implementation of OS simulation tools (Mail, Terminal, Paint)
+    * Save/Load System & Data Serialization
+    * Debugging & Preliminary Testing
+* **Dawid Mucha ([@BzykuuDM](https://github.com/BzykuuDM))** – **UI/UX Designer**
+    * Visual Identity & Interface Design
+    * Level Design & Environmental Assets
+    * Quality Assurance (QA) & Playtesting
 
 ---
 
 ## 🎮 Core Features
 
-- **Simulated operating system:** multiple applications (mail, quiz, paint, music, notes, terminal, etc.)
-- **Phishing detection gameplay:** tag emails as safe or phishing; review real-like attachments with PNG preview and zoom
-- **Interactive security quizzes:** single- and multiple-choice questions, feedback system
-- **Career progression:** experience levels, roles, achievements, adaptive difficulty
-- **Localization:** English, Polish (JSON-powered), and ready for more languages
-- **Full-featured UI:** modern design, smooth DOTween animations, custom shaders, sound feedback
-- **Achievements system** with unlock notifications and multilingual support
+- **Simulated Operating System:** Multiple functional applications (Mail, Quiz, Paint, Music Player, Notes, Terminal, etc.).
+- **Phishing Detection Gameplay:** Analyze headers and content to tag emails as safe or phishing; review realistic attachments with zoom functionality.
+- **Robust Save System:** Encrypted save/load functionality with auto-save support ensuring data persistence (JSON-based).
+- **Interactive Security Quizzes:** Single- and multiple-choice questions with instant educational feedback.
+- **Career Progression:** Experience levels, professional titles (Intern to Expert), achievements, and adaptive difficulty.
+- **Localization:** Support for multiple languages (English, Polish, etc.) via external JSON files.
+- **High Performance:** Optimized custom shaders and DOTween animations for smooth 60+ FPS UI transitions.
 
 ---
 
 ## ✨ Recent & Notable Improvements
 
-- Dynamic, incremental incoming emails instead of static lists
-- Attachment handling for emails: PNG preview + zoom (soon PDF, EXE and warning prompts)
-- Smooth font support for multilingual UI (incl. Chinese, Korean, Russian, Polish)
-- Dynamic language switching at runtime with safe string table loading
-- Sound effects & animated button feedback (hover/click)
-- Multiple-answer quiz support (“multiple choice” mode)
-- Fullscreen closing, better system time/resource usage
-- “Futuristic” UI shaders, improved scaling and performance
+- **Optimization:** Refactored UI rendering pipeline and shaders to boost framerate; optimized DOTween sequences for lag-free menu navigation.
+- **Data Persistence:** Fully implemented `IDataPersistence` interface for secure game state saving (player progress, unlocked achievements, flagged emails).
+- **Dynamic Content:** Incremental incoming emails generation instead of static lists.
+- **Attachment System:** PNG preview + zoom implemented (foundation laid for PDF/EXE simulation).
+- **Multilingual Support:** Smooth font support for complex scripts (Chinese, Korean, Russian, Polish) with runtime language switching.
+- **Audio/Visual Feedback:** Enhanced sound effects and responsive animated button states (hover/click).
 
 ---
-
-<!--  
-## 🖼️ Screenshots
-
-<p align="center">
-  <img src="docs/screenshots/mainmenu.png" alt="Main Menu" width="45%">
-  <img src="docs/screenshots/phishingmail.png" alt="Mail app" width="45%">
-  <img src="docs/screenshots/quiz.png" alt="Quiz app" width="45%">
-</p>
--->
 
 ---
 
 ## 🚧 Roadmap
 
-- Save/load system with autosave support
-- Support for more attachment/file types (.exe, .pdf, warnings)
-- Translations for emails and quizzes (beyond PL/EN)
-- Window/app focus switching from taskbar
-- “Cyberpedia” with collectible security fact cards
-- Achievement gallery/room
-- Cinematic cutscenes and story elements
-- Office simulation: NPCs, free walking, day cycle
-- Improved UI scaling for ultrawide and 4K
-- Further performance optimizations (object pooling, resource handling)
+- Expanded attachment simulations (.exe warnings, .pdf viewer)
+- "Cyberpedia" – collectible cards with security facts
+- Focus switching improvements (taskbar logic)
+- Cinematic cutscenes and narrative elements
+- Office simulation expansion (NPCs, day/night cycle)
+- Advanced UI scaling for 4K/Ultrawide monitors
+- Further resource management optimizations (Addressables)
 
 ---
 
 ## 📜 License
 
-**All rights reserved.**  
-Redistribution, modification, or commercial use of any part of this project is **prohibited** without explicit, written permission from the author.
+**All rights reserved.** Redistribution, modification, or commercial use of any part of this project is **prohibited** without explicit, written permission from the authors.
 
 ---
-
-## 📢 Contact
-
-Author: **Paweł Trojański ([@enviGit](https://github.com/enviGit))**  
-Contact: [paweltrojanski@gmail.com](mailto:paweltrojanski@gmail.com)
-
----
-
-<!--  
-_Phishing Hunter – Play safe. Stay sharp._  
--->

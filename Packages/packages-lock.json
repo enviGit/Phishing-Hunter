@@ -7,6 +7,14 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.maligan.unity-zed": {
+      "version": "file:com.maligan.unity-zed",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.ide.visualstudio": "2.0.20"
+      }
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

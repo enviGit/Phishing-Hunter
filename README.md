@@ -55,8 +55,6 @@ The project is designed to promote cyber awareness and foster safe online habits
 
 ---
 
----
-
 ## 🚧 Roadmap
 
 - Expanded attachment simulations (.exe warnings, .pdf viewer)
